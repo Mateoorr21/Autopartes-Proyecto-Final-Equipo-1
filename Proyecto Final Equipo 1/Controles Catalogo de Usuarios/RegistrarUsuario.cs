@@ -23,6 +23,16 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
         void AgregarUsuario(string Nombre, string Username, string Password, string Permiso)
         {
+            //Si alguno de los campos a añadir esta vacío mensaje de Error
+            if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Usuario.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Password.Text))
+            {
+                MessageBox.Show("Error. Ingrese información a añadir", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // Usamos un bloque 'using' para asegurarnos de que la conexión se cierre automáticamente
             using (OleDbConnection connection = new OleDbConnection(Inicio_Recibido.cadconexion)) //Accedemos a la cadena de la instancia Inicio (La Global)
             {
@@ -43,6 +53,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
                         // Ejecuta la consulta
                         command.ExecuteNonQuery();
                     }
+
+                //Limpiamos las cajas de texto
+                Txt_Nombre.Clear();
+                Txt_Usuario.Clear();
+                Txt_Password.Clear();
 
                 //Mensaje de registro de usuario exitoso
                 MessageBox.Show($"Registro de {Permiso} {Nombre} Exitoso",

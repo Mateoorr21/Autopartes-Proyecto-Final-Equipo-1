@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.LblTitulo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblOpciones = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnModificarUsuario = new System.Windows.Forms.Button();
             this.BtnEliminarUsuario = new System.Windows.Forms.Button();
@@ -50,32 +50,33 @@
             this.LblTitulo.TabIndex = 0;
             this.LblTitulo.Text = "Catálogo de Usuarios";
             // 
-            // label1
+            // LblOpciones
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 44);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Seleccione la \r\nOpción a Realizar";
+            this.LblOpciones.AutoSize = true;
+            this.LblOpciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblOpciones.Location = new System.Drawing.Point(20, 29);
+            this.LblOpciones.Name = "LblOpciones";
+            this.LblOpciones.Size = new System.Drawing.Size(122, 66);
+            this.LblOpciones.TabIndex = 1;
+            this.LblOpciones.Text = "Seleccione la \r\nOperación\r\na Realizar";
+            this.LblOpciones.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.LblOpciones);
             this.panel1.Controls.Add(this.BtnModificarUsuario);
             this.panel1.Controls.Add(this.BtnEliminarUsuario);
             this.panel1.Controls.Add(this.BtnRegistrarUsuario);
             this.panel1.Location = new System.Drawing.Point(-8, -2);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(188, 524);
+            this.panel1.Size = new System.Drawing.Size(181, 524);
             this.panel1.TabIndex = 2;
             // 
             // BtnModificarUsuario
             // 
-            this.BtnModificarUsuario.Location = new System.Drawing.Point(20, 242);
+            this.BtnModificarUsuario.Location = new System.Drawing.Point(20, 247);
             this.BtnModificarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnModificarUsuario.Name = "BtnModificarUsuario";
             this.BtnModificarUsuario.Size = new System.Drawing.Size(148, 102);
@@ -86,17 +87,18 @@
             // 
             // BtnEliminarUsuario
             // 
-            this.BtnEliminarUsuario.Location = new System.Drawing.Point(20, 361);
+            this.BtnEliminarUsuario.Location = new System.Drawing.Point(20, 366);
             this.BtnEliminarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnEliminarUsuario.Name = "BtnEliminarUsuario";
             this.BtnEliminarUsuario.Size = new System.Drawing.Size(148, 102);
             this.BtnEliminarUsuario.TabIndex = 4;
             this.BtnEliminarUsuario.Text = "Eliminar Usuario";
             this.BtnEliminarUsuario.UseVisualStyleBackColor = true;
+            this.BtnEliminarUsuario.Click += new System.EventHandler(this.BtnEliminarUsuario_Click);
             // 
             // BtnRegistrarUsuario
             // 
-            this.BtnRegistrarUsuario.Location = new System.Drawing.Point(20, 121);
+            this.BtnRegistrarUsuario.Location = new System.Drawing.Point(20, 126);
             this.BtnRegistrarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRegistrarUsuario.Name = "BtnRegistrarUsuario";
             this.BtnRegistrarUsuario.Size = new System.Drawing.Size(148, 105);
@@ -133,7 +135,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CatalogoUsuarios";
-            this.Text = "CatalogoUsuarios";
+            this.Text = "Catalogo de Usuarios Operativos (únicamente con acceso si se es Admin)";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -145,7 +147,7 @@
         #endregion
 
         private System.Windows.Forms.Label LblTitulo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblOpciones;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnModificarUsuario;
         private System.Windows.Forms.Button BtnRegistrarUsuario;

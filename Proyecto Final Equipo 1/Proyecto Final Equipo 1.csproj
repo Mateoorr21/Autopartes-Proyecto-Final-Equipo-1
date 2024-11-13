@@ -58,6 +58,12 @@
     <Compile Include="CatalogoUsuarios.Designer.cs">
       <DependentUpon>CatalogoUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controles Catalogo de Usuarios\EliminarUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles Catalogo de Usuarios\EliminarUsuario.Designer.cs">
+      <DependentUpon>EliminarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controles Catalogo de Usuarios\ModificarUsuario.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CatalogoUsuarios.resx">
       <DependentUpon>CatalogoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles Catalogo de Usuarios\EliminarUsuario.resx">
+      <DependentUpon>EliminarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles Catalogo de Usuarios\ModificarUsuario.resx">
       <DependentUpon>ModificarUsuario.cs</DependentUpon>
