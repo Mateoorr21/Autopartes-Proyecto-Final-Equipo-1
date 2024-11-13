@@ -44,9 +44,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
                         command.ExecuteNonQuery();
                     }
 
-                    //Mensaje de registro de usuario exitoso
-                    MessageBox.Show($"Registro de {Permiso} {Nombre} Exitoso",
-                        "Registro exitoso de Nuevo Usuario Operativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Mensaje de registro de usuario exitoso
+                MessageBox.Show($"Registro de {Permiso} {Nombre} Exitoso",
+                    "Registro exitoso de Nuevo Usuario Operativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                
             }
         } 
@@ -67,7 +67,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
             else
             {
-                LblErrorUsuario.Visible = false;
+                LblErrorNombre.Visible = false;
             }
         }
 

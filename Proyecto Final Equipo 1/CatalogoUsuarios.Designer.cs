@@ -82,6 +82,7 @@
             this.BtnModificarUsuario.TabIndex = 3;
             this.BtnModificarUsuario.Text = "Modificar Usuario";
             this.BtnModificarUsuario.UseVisualStyleBackColor = true;
+            this.BtnModificarUsuario.Click += new System.EventHandler(this.BtnModificarUsuario_Click);
             // 
             // BtnEliminarUsuario
             // 

@@ -56,6 +56,7 @@ namespace Proyecto_Final_Equipo_1
                         //Aplicacion también recibe la instancia de Inicio recibida en el formulario InicioSesion
                         aplicacion.Show();
                     }
+
                     else
                     {   //Error en caso de que no exista el usuario y/o contraseña
                         MessageBox.Show("Usuario y/o Contraseña incorrectos.", "Error. No existe la cuenta.", MessageBoxButtons.OK, MessageBoxIcon.Error);

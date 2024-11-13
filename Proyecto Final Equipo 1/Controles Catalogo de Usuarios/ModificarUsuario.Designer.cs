@@ -36,7 +36,7 @@
             this.RdUsuario = new System.Windows.Forms.RadioButton();
             this.RdNombre = new System.Windows.Forms.RadioButton();
             this.BtnBuscar = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.LvUsuarios = new System.Windows.Forms.ListView();
             this.LblDatos = new System.Windows.Forms.Label();
             this.Txt_Password = new System.Windows.Forms.TextBox();
             this.Txt_Usuario = new System.Windows.Forms.TextBox();
@@ -51,9 +51,9 @@
             this.LblErrorNombre = new System.Windows.Forms.Label();
             this.LblErrorPassword = new System.Windows.Forms.Label();
             this.BtnModificar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblCampoBuscar = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.GpBBusquedaTipo.SuspendLayout();
             this.GbBusquedaCampo.SuspendLayout();
             this.SuspendLayout();
@@ -73,9 +73,9 @@
             this.GpBBusquedaTipo.Controls.Add(this.RdExacta);
             this.GpBBusquedaTipo.Controls.Add(this.RdAproximada);
             this.GpBBusquedaTipo.Location = new System.Drawing.Point(7, 75);
-            this.GpBBusquedaTipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GpBBusquedaTipo.Margin = new System.Windows.Forms.Padding(4);
             this.GpBBusquedaTipo.Name = "GpBBusquedaTipo";
-            this.GpBBusquedaTipo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GpBBusquedaTipo.Padding = new System.Windows.Forms.Padding(4);
             this.GpBBusquedaTipo.Size = new System.Drawing.Size(168, 86);
             this.GpBBusquedaTipo.TabIndex = 2;
             this.GpBBusquedaTipo.TabStop = false;
@@ -85,19 +85,19 @@
             // 
             this.RdExacta.AutoSize = true;
             this.RdExacta.Location = new System.Drawing.Point(29, 52);
-            this.RdExacta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RdExacta.Margin = new System.Windows.Forms.Padding(4);
             this.RdExacta.Name = "RdExacta";
             this.RdExacta.Size = new System.Drawing.Size(69, 20);
             this.RdExacta.TabIndex = 1;
-            this.RdExacta.TabStop = true;
             this.RdExacta.Text = "Exacta";
             this.RdExacta.UseVisualStyleBackColor = true;
             // 
             // RdAproximada
             // 
             this.RdAproximada.AutoSize = true;
+            this.RdAproximada.Checked = true;
             this.RdAproximada.Location = new System.Drawing.Point(29, 23);
-            this.RdAproximada.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RdAproximada.Margin = new System.Windows.Forms.Padding(4);
             this.RdAproximada.Name = "RdAproximada";
             this.RdAproximada.Size = new System.Drawing.Size(101, 20);
             this.RdAproximada.TabIndex = 0;
@@ -110,9 +110,9 @@
             this.GbBusquedaCampo.Controls.Add(this.RdUsuario);
             this.GbBusquedaCampo.Controls.Add(this.RdNombre);
             this.GbBusquedaCampo.Location = new System.Drawing.Point(7, 169);
-            this.GbBusquedaCampo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GbBusquedaCampo.Margin = new System.Windows.Forms.Padding(4);
             this.GbBusquedaCampo.Name = "GbBusquedaCampo";
-            this.GbBusquedaCampo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GbBusquedaCampo.Padding = new System.Windows.Forms.Padding(4);
             this.GbBusquedaCampo.Size = new System.Drawing.Size(168, 86);
             this.GbBusquedaCampo.TabIndex = 3;
             this.GbBusquedaCampo.TabStop = false;
@@ -122,45 +122,50 @@
             // 
             this.RdUsuario.AutoSize = true;
             this.RdUsuario.Location = new System.Drawing.Point(29, 52);
-            this.RdUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RdUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.RdUsuario.Name = "RdUsuario";
             this.RdUsuario.Size = new System.Drawing.Size(75, 20);
             this.RdUsuario.TabIndex = 1;
-            this.RdUsuario.TabStop = true;
             this.RdUsuario.Text = "Usuario";
             this.RdUsuario.UseVisualStyleBackColor = true;
+            this.RdUsuario.CheckedChanged += new System.EventHandler(this.RdUsuario_CheckedChanged);
             // 
             // RdNombre
             // 
             this.RdNombre.AutoSize = true;
+            this.RdNombre.Checked = true;
             this.RdNombre.Location = new System.Drawing.Point(29, 23);
-            this.RdNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RdNombre.Margin = new System.Windows.Forms.Padding(4);
             this.RdNombre.Name = "RdNombre";
             this.RdNombre.Size = new System.Drawing.Size(77, 20);
             this.RdNombre.TabIndex = 0;
             this.RdNombre.TabStop = true;
             this.RdNombre.Text = "Nombre";
             this.RdNombre.UseVisualStyleBackColor = true;
+            this.RdNombre.CheckedChanged += new System.EventHandler(this.RdNombre_CheckedChanged);
             // 
             // BtnBuscar
             // 
             this.BtnBuscar.Location = new System.Drawing.Point(13, 379);
-            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(156, 44);
             this.BtnBuscar.TabIndex = 4;
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
-            // listView1
+            // LvUsuarios
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(183, 75);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(435, 347);
-            this.listView1.TabIndex = 5;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.LvUsuarios.HideSelection = false;
+            this.LvUsuarios.Location = new System.Drawing.Point(183, 75);
+            this.LvUsuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.LvUsuarios.MultiSelect = false;
+            this.LvUsuarios.Name = "LvUsuarios";
+            this.LvUsuarios.Size = new System.Drawing.Size(435, 347);
+            this.LvUsuarios.TabIndex = 5;
+            this.LvUsuarios.UseCompatibleStateImageBehavior = false;
+            this.LvUsuarios.SelectedIndexChanged += new System.EventHandler(this.LvUsuarios_SelectedIndexChanged);
             // 
             // LblDatos
             // 
@@ -179,6 +184,7 @@
             this.Txt_Password.Name = "Txt_Password";
             this.Txt_Password.Size = new System.Drawing.Size(240, 22);
             this.Txt_Password.TabIndex = 41;
+            this.Txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Password_KeyPress);
             // 
             // Txt_Usuario
             // 
@@ -187,6 +193,7 @@
             this.Txt_Usuario.Name = "Txt_Usuario";
             this.Txt_Usuario.Size = new System.Drawing.Size(240, 22);
             this.Txt_Usuario.TabIndex = 40;
+            this.Txt_Usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Usuario_KeyPress);
             // 
             // Txt_Nombre
             // 
@@ -195,6 +202,7 @@
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(239, 22);
             this.Txt_Nombre.TabIndex = 39;
+            this.Txt_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Nombre_KeyPress);
             // 
             // LblNombre
             // 
@@ -298,48 +306,50 @@
             // 
             this.BtnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnModificar.Location = new System.Drawing.Point(635, 362);
-            this.BtnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(237, 62);
             this.BtnModificar.TabIndex = 48;
             this.BtnModificar.Text = "Modificar Usuario";
             this.BtnModificar.UseVisualStyleBackColor = true;
+            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
-            // textBox1
+            // TxtBuscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 321);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 22);
-            this.textBox1.TabIndex = 50;
+            this.TxtBuscar.Location = new System.Drawing.Point(13, 324);
+            this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtBuscar.Name = "TxtBuscar";
+            this.TxtBuscar.Size = new System.Drawing.Size(156, 22);
+            this.TxtBuscar.TabIndex = 50;
+            this.TxtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBuscar_KeyPress);
             // 
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
-            this.LblCampoBuscar.Location = new System.Drawing.Point(9, 274);
+            this.LblCampoBuscar.Location = new System.Drawing.Point(10, 301);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
-            this.LblCampoBuscar.Size = new System.Drawing.Size(54, 16);
+            this.LblCampoBuscar.Size = new System.Drawing.Size(59, 16);
             this.LblCampoBuscar.TabIndex = 49;
-            this.LblCampoBuscar.Text = "Campo:";
+            this.LblCampoBuscar.Text = "Nombre:";
             // 
-            // label4
+            // LblErrorBuscar
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(9, 297);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 16);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "Mensaje de Error";
-            this.label4.Visible = false;
+            this.LblErrorBuscar.AutoSize = true;
+            this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorBuscar.Location = new System.Drawing.Point(10, 265);
+            this.LblErrorBuscar.Name = "LblErrorBuscar";
+            this.LblErrorBuscar.Size = new System.Drawing.Size(90, 13);
+            this.LblErrorBuscar.TabIndex = 51;
+            this.LblErrorBuscar.Text = "Solo admite letras";
+            this.LblErrorBuscar.Visible = false;
             // 
             // ModificarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.LblErrorBuscar);
+            this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.LblCampoBuscar);
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.LblErrorPassword);
@@ -355,14 +365,15 @@
             this.Controls.Add(this.LblPassword);
             this.Controls.Add(this.LblUsuario);
             this.Controls.Add(this.LblDatos);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.LvUsuarios);
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GbBusquedaCampo);
             this.Controls.Add(this.GpBBusquedaTipo);
             this.Controls.Add(this.LblTitulo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ModificarUsuario";
             this.Size = new System.Drawing.Size(885, 455);
+            this.Load += new System.EventHandler(this.ModificarUsuario_Load);
             this.GpBBusquedaTipo.ResumeLayout(false);
             this.GpBBusquedaTipo.PerformLayout();
             this.GbBusquedaCampo.ResumeLayout(false);
@@ -382,7 +393,7 @@
         private System.Windows.Forms.RadioButton RdUsuario;
         private System.Windows.Forms.RadioButton RdNombre;
         private System.Windows.Forms.Button BtnBuscar;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView LvUsuarios;
         private System.Windows.Forms.Label LblDatos;
         private System.Windows.Forms.TextBox Txt_Password;
         private System.Windows.Forms.TextBox Txt_Usuario;
@@ -397,8 +408,8 @@
         private System.Windows.Forms.Label LblErrorNombre;
         private System.Windows.Forms.Label LblErrorPassword;
         private System.Windows.Forms.Button BtnModificar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label LblCampoBuscar;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblErrorBuscar;
     }
 }
