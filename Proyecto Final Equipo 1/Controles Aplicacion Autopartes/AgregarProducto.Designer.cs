@@ -56,7 +56,7 @@
             // 
             // Txt_Tipo
             // 
-            this.Txt_Tipo.Location = new System.Drawing.Point(381, 205);
+            this.Txt_Tipo.Location = new System.Drawing.Point(381, 193);
             this.Txt_Tipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Tipo.Name = "Txt_Tipo";
             this.Txt_Tipo.Size = new System.Drawing.Size(312, 22);
@@ -64,7 +64,7 @@
             // 
             // Txt_Descripcion
             // 
-            this.Txt_Descripcion.Location = new System.Drawing.Point(381, 144);
+            this.Txt_Descripcion.Location = new System.Drawing.Point(381, 132);
             this.Txt_Descripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Descripcion.Multiline = true;
             this.Txt_Descripcion.Name = "Txt_Descripcion";
@@ -73,7 +73,7 @@
             // 
             // Txt_Nombre
             // 
-            this.Txt_Nombre.Location = new System.Drawing.Point(381, 109);
+            this.Txt_Nombre.Location = new System.Drawing.Point(381, 97);
             this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(312, 22);
@@ -94,7 +94,7 @@
             // 
             this.LblNota.AutoSize = true;
             this.LblNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNota.Location = new System.Drawing.Point(359, 80);
+            this.LblNota.Location = new System.Drawing.Point(359, 72);
             this.LblNota.Name = "LblNota";
             this.LblNota.Size = new System.Drawing.Size(305, 15);
             this.LblNota.TabIndex = 44;
@@ -103,7 +103,7 @@
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(319, 109);
+            this.LblNombre.Location = new System.Drawing.Point(319, 97);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(59, 16);
             this.LblNombre.TabIndex = 39;
@@ -112,7 +112,7 @@
             // LblTipo
             // 
             this.LblTipo.AutoSize = true;
-            this.LblTipo.Location = new System.Drawing.Point(264, 208);
+            this.LblTipo.Location = new System.Drawing.Point(264, 196);
             this.LblTipo.Name = "LblTipo";
             this.LblTipo.Size = new System.Drawing.Size(114, 16);
             this.LblTipo.TabIndex = 36;
@@ -121,7 +121,7 @@
             // LblDescripcion
             // 
             this.LblDescripcion.AutoSize = true;
-            this.LblDescripcion.Location = new System.Drawing.Point(228, 144);
+            this.LblDescripcion.Location = new System.Drawing.Point(228, 132);
             this.LblDescripcion.Name = "LblDescripcion";
             this.LblDescripcion.Size = new System.Drawing.Size(147, 16);
             this.LblDescripcion.TabIndex = 35;
@@ -131,7 +131,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(391, 19);
+            this.LblTitulo.Location = new System.Drawing.Point(391, 11);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(218, 29);
             this.LblTitulo.TabIndex = 33;
@@ -140,7 +140,7 @@
             // LblInstruccion
             // 
             this.LblInstruccion.AutoSize = true;
-            this.LblInstruccion.Location = new System.Drawing.Point(196, 56);
+            this.LblInstruccion.Location = new System.Drawing.Point(196, 48);
             this.LblInstruccion.Name = "LblInstruccion";
             this.LblInstruccion.Size = new System.Drawing.Size(612, 16);
             this.LblInstruccion.TabIndex = 49;
@@ -149,7 +149,7 @@
             // 
             // Txt_Marca
             // 
-            this.Txt_Marca.Location = new System.Drawing.Point(381, 240);
+            this.Txt_Marca.Location = new System.Drawing.Point(381, 229);
             this.Txt_Marca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Marca.Name = "Txt_Marca";
             this.Txt_Marca.Size = new System.Drawing.Size(312, 22);
@@ -158,7 +158,7 @@
             // LblMarca
             // 
             this.LblMarca.AutoSize = true;
-            this.LblMarca.Location = new System.Drawing.Point(327, 242);
+            this.LblMarca.Location = new System.Drawing.Point(327, 231);
             this.LblMarca.Name = "LblMarca";
             this.LblMarca.Size = new System.Drawing.Size(48, 16);
             this.LblMarca.TabIndex = 50;
@@ -166,7 +166,7 @@
             // 
             // Txt_Precio
             // 
-            this.Txt_Precio.Location = new System.Drawing.Point(381, 275);
+            this.Txt_Precio.Location = new System.Drawing.Point(381, 264);
             this.Txt_Precio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Precio.Name = "Txt_Precio";
             this.Txt_Precio.Size = new System.Drawing.Size(312, 22);
@@ -176,7 +176,7 @@
             // LblPrecio
             // 
             this.LblPrecio.AutoSize = true;
-            this.LblPrecio.Location = new System.Drawing.Point(311, 278);
+            this.LblPrecio.Location = new System.Drawing.Point(311, 267);
             this.LblPrecio.Name = "LblPrecio";
             this.LblPrecio.Size = new System.Drawing.Size(67, 16);
             this.LblPrecio.TabIndex = 52;
@@ -184,7 +184,7 @@
             // 
             // Txt_Cantidad
             // 
-            this.Txt_Cantidad.Location = new System.Drawing.Point(381, 309);
+            this.Txt_Cantidad.Location = new System.Drawing.Point(381, 298);
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(312, 22);
@@ -194,7 +194,7 @@
             // LblCantidad
             // 
             this.LblCantidad.AutoSize = true;
-            this.LblCantidad.Location = new System.Drawing.Point(229, 312);
+            this.LblCantidad.Location = new System.Drawing.Point(229, 301);
             this.LblCantidad.Name = "LblCantidad";
             this.LblCantidad.Size = new System.Drawing.Size(146, 16);
             this.LblCantidad.TabIndex = 54;
@@ -202,7 +202,7 @@
             // 
             // Txt_Proveedor
             // 
-            this.Txt_Proveedor.Location = new System.Drawing.Point(381, 346);
+            this.Txt_Proveedor.Location = new System.Drawing.Point(381, 335);
             this.Txt_Proveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Proveedor.Name = "Txt_Proveedor";
             this.Txt_Proveedor.Size = new System.Drawing.Size(312, 22);
@@ -211,7 +211,7 @@
             // LblProveedor
             // 
             this.LblProveedor.AutoSize = true;
-            this.LblProveedor.Location = new System.Drawing.Point(304, 348);
+            this.LblProveedor.Location = new System.Drawing.Point(304, 337);
             this.LblProveedor.Name = "LblProveedor";
             this.LblProveedor.Size = new System.Drawing.Size(74, 16);
             this.LblProveedor.TabIndex = 56;
@@ -220,7 +220,7 @@
             // LblImagen
             // 
             this.LblImagen.AutoSize = true;
-            this.LblImagen.Location = new System.Drawing.Point(304, 384);
+            this.LblImagen.Location = new System.Drawing.Point(304, 372);
             this.LblImagen.Name = "LblImagen";
             this.LblImagen.Size = new System.Drawing.Size(52, 16);
             this.LblImagen.TabIndex = 58;
@@ -228,15 +228,16 @@
             // 
             // PicImagenProducto
             // 
-            this.PicImagenProducto.Location = new System.Drawing.Point(381, 384);
+            this.PicImagenProducto.Location = new System.Drawing.Point(381, 370);
             this.PicImagenProducto.Name = "PicImagenProducto";
-            this.PicImagenProducto.Size = new System.Drawing.Size(196, 56);
+            this.PicImagenProducto.Size = new System.Drawing.Size(135, 95);
+            this.PicImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicImagenProducto.TabIndex = 59;
             this.PicImagenProducto.TabStop = false;
             // 
             // BtnCargarImagen
             // 
-            this.BtnCargarImagen.Location = new System.Drawing.Point(583, 382);
+            this.BtnCargarImagen.Location = new System.Drawing.Point(532, 369);
             this.BtnCargarImagen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnCargarImagen.Name = "BtnCargarImagen";
             this.BtnCargarImagen.Size = new System.Drawing.Size(110, 58);
@@ -250,7 +251,7 @@
             this.LblErrorPrecio.AutoSize = true;
             this.LblErrorPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorPrecio.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPrecio.Location = new System.Drawing.Point(699, 278);
+            this.LblErrorPrecio.Location = new System.Drawing.Point(699, 267);
             this.LblErrorPrecio.Name = "LblErrorPrecio";
             this.LblErrorPrecio.Size = new System.Drawing.Size(248, 16);
             this.LblErrorPrecio.TabIndex = 61;
@@ -262,7 +263,7 @@
             this.LblErrorCantidad.AutoSize = true;
             this.LblErrorCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorCantidad.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorCantidad.Location = new System.Drawing.Point(698, 312);
+            this.LblErrorCantidad.Location = new System.Drawing.Point(698, 301);
             this.LblErrorCantidad.Name = "LblErrorCantidad";
             this.LblErrorCantidad.Size = new System.Drawing.Size(182, 16);
             this.LblErrorCantidad.TabIndex = 62;

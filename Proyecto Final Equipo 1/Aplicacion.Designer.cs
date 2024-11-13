@@ -73,6 +73,7 @@
             this.BtnBuscar.TabIndex = 2;
             this.BtnBuscar.Text = "Buscar/Vender";
             this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // BtnEliminar
             // 

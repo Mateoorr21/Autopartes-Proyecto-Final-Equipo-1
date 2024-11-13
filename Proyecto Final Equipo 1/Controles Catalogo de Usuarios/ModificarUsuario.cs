@@ -90,7 +90,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         }
 
         void ActualizarUsuario(string Nombre, string Usuario, string Password, string Permiso, int Id)
-        {
+        {   
             //Si no hay registro seleccionado menssaje de Error
             if(LvUsuarios.SelectedItems.Count == 0)
             {
@@ -288,6 +288,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             PermisoUsuario = RdAdmin.Checked ? "Admin" : "Cajero"; //Obtenemos el Permiso del usuario operativo
+
 
             //Llamamos a la función actualizar y pasamos los parametros de texto, el permiso y el Id del Registro Seleccionado
             ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, PermisoUsuario, IdSeleccionado);

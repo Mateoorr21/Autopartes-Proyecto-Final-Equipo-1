@@ -119,7 +119,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //string RutaDestino = Path.Combine(Application.StartupPath, "Imagenes", NombreImagen); 
             string RutaCopiar = "..\\..\\..\\Imagenes\\" + NombreImagen;
 
-            string RutaInsertarEnBase = "..\\Imagenes\\" + NombreImagen;
+            //string RutaInsertarEnBase = "..\\Imagenes\\" + NombreImagen;
 
             // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
             File.Copy(RutaTemporal, RutaCopiar, true);
@@ -135,12 +135,23 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
                 {
-                    comando.Parameters.AddWithValue("@Imagen", RutaInsertarEnBase); //Parametro de Imagen es la RutaDestino
+                    comando.Parameters.AddWithValue("@Imagen", RutaCopiar); //Parametro de Imagen es la RutaDestino
                     comando.Parameters.AddWithValue("@Id", IdGenerado); //Parametro IdGenerado
 
                     comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
                 }
             }
+
+            //Limpiamos las cajas de texto y el Picture Box
+            Txt_Nombre.Clear();
+            Txt_Descripcion.Clear();
+            Txt_Tipo.Clear();
+            Txt_Marca.Clear();
+            Txt_Precio.Clear();
+            Txt_Cantidad.Clear();
+            Txt_Proveedor.Clear();
+            PicImagenProducto.Image = null;
+
 
             //Mensaje de registro de producto exitoso
             MessageBox.Show($"Registro de Producto {Nombre} Exitoso",

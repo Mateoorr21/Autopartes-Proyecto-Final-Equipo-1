@@ -64,6 +64,12 @@
     <Compile Include="Controles Aplicacion Autopartes\AgregarProducto.Designer.cs">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controles Aplicacion Autopartes\BuscarProducto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles Aplicacion Autopartes\BuscarProducto.Designer.cs">
+      <DependentUpon>BuscarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controles Catalogo de Usuarios\EliminarUsuario.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controles Aplicacion Autopartes\AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles Aplicacion Autopartes\BuscarProducto.resx">
+      <DependentUpon>BuscarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles Catalogo de Usuarios\EliminarUsuario.resx">
       <DependentUpon>EliminarUsuario.cs</DependentUpon>
