@@ -59,6 +59,7 @@ namespace Proyecto_Final_Equipo_1
         {
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(agregarProducto);
+
             agregarProducto.Dock = DockStyle.Fill;
         }
 

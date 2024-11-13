@@ -40,7 +40,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
             if (ConfirmarEliminar == DialogResult.No) return;
 
-
             //using para establecer conexion con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion))
             {
@@ -57,8 +56,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                     comando.ExecuteNonQuery(); //Ejecutamos consulta de acción
                 }
 
-                //Quitamos del ListView el eliminado y limpiamos el PictureBox
-                LvProductos.SelectedItems.Clear();
+                //Quitamos del ListView el regsitro eliminado y limpiamos el PictureBox
+                ListViewItem ItemSeleccionado = LvProductos.SelectedItems[0];
+                LvProductos.Items.Remove(ItemSeleccionado);
+                PicImagenProducto.Image = null;
 
                 //Mensaje de Eliminación de usuario exitosa
                 MessageBox.Show("Producto eliminado correctamente.", "ELIMINACION DE PRODUCTO DE LA BASE DE DATOS",
