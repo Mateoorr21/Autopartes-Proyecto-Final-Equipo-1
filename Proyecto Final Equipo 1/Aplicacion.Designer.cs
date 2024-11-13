@@ -39,10 +39,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.PanelAplicacion = new System.Windows.Forms.Panel();
             this.PanelAutoPartes = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.PanelAutoPartes.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblTitulo
@@ -153,20 +151,10 @@
             // PanelAutoPartes
             // 
             this.PanelAutoPartes.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.PanelAutoPartes.Controls.Add(this.button1);
             this.PanelAutoPartes.Location = new System.Drawing.Point(216, 78);
             this.PanelAutoPartes.Name = "PanelAutoPartes";
             this.PanelAutoPartes.Size = new System.Drawing.Size(1021, 490);
             this.PanelAutoPartes.TabIndex = 7;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(183, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(231, 117);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "boton preuba";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Aplicacion
             // 
@@ -183,7 +171,6 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.PanelAutoPartes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -201,6 +188,5 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel PanelAutoPartes;
         private System.Windows.Forms.Panel PanelAplicacion;
-        private System.Windows.Forms.Button button1;
     }
 }
