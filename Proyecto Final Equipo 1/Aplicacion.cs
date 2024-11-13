@@ -20,7 +20,8 @@ namespace Proyecto_Final_Equipo_1
         private string nombreCompleto;
         Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
         AgregarProducto agregarProducto; //Declaramos control de usuario tipo agergar producto
-        BuscarProducto buscarProducto;
+        BuscarProducto buscarProducto; //Declaramos control de usuario tipo buscar producto
+        EliminarProducto eliminarProducto; //Declaramos control de usuario tipo agergar producto
 
         //Aplicacion recibe parametro de instancia Inicio
         public Aplicacion(bool EsAdmin, string tipoUsuario, string nombreCompleto, Inicio inicio) //Indicamos que el formulario recibe parámetros
@@ -33,6 +34,7 @@ namespace Proyecto_Final_Equipo_1
             this.Inicio_Recibido = inicio; //a Inicio_Recibido le asignamos el parametro recibido
             agregarProducto = new AgregarProducto(Inicio_Recibido); //El user control AgregarProducto recibe como parametro un Inicio
             buscarProducto = new BuscarProducto(Inicio_Recibido); //El user control BuscarProducto recibe como parametro un Inicio
+            eliminarProducto = new EliminarProducto(Inicio_Recibido); //El user control EliminarProducto recibe como parametro un Inicio
         }
 
         private void Aplicacion_Load(object sender, EventArgs e)
@@ -65,6 +67,13 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(buscarProducto);
             buscarProducto.Dock = DockStyle.Fill;
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            PanelAutoPartes.Controls.Clear();
+            PanelAutoPartes.Controls.Add(eliminarProducto);
+            eliminarProducto.Dock = DockStyle.Fill;
         }
     }
 }

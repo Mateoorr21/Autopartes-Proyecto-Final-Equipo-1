@@ -12,16 +12,62 @@ using System.Windows.Forms;
 
 namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 {
-    public partial class BuscarProducto : UserControl
+    public partial class EliminarProducto : UserControl
     {
-        int IdSeleccionado;
         Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
-        public BuscarProducto(Inicio inicio)
+        int IdSeleccionado; //Variable glocal IdGenerado
+        public EliminarProducto(Inicio inicio)
         {
             InitializeComponent();
             Inicio_Recibido = inicio; //Asignamos a Recibido el que se pasa como parametro
         }
 
+        //Función para borrar un producto seleccionado
+        void BorrarProducto(int Id)
+        {
+            //Si no hay registro seleccionado menssaje de Error
+            if (LvProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Error. Seleccione un producto a Elimianr", "ERROR. NO SE SELECCIONÓ PRODUCTO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Confirmamos que el usuario desea eliminar el registro seleccioando
+            DialogResult ConfirmarEliminar;
+            ConfirmarEliminar = MessageBox.Show("¿Esta seguro que desea eliminar al producto seleccionado?",
+                "CONFIRMACIÓN DE ELIMINADO DE PRODUCTO DE LA BASE DE DATOS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarEliminar == DialogResult.No) return;
+
+
+            //using para establecer conexion con la base de datos
+            using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion))
+            {
+                conexion.Open(); //Abrimos conexion
+
+                //Consulta SQL para eliminar un producto
+                string query = "DELETE FROM Productos WHERE Id = @Id";
+
+                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //using para liberar objeto cuando se termine de usar
+                {
+                    //Asignamos a un parametro de consulta el Id del Registro seleccionado
+                    comando.Parameters.AddWithValue("@Id", Id);
+
+                    comando.ExecuteNonQuery(); //Ejecutamos consulta de acción
+                }
+
+                //Quitamos del ListView el eliminado y limpiamos el PictureBox
+                LvProductos.SelectedItems.Clear();
+
+                //Mensaje de Eliminación de usuario exitosa
+                MessageBox.Show("Producto eliminado correctamente.", "ELIMINACION DE PRODUCTO DE LA BASE DE DATOS",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        //Misma función para encontrar productos que en Buscar
         void EncontrarProductos(string buscar)
         {
             //Si la caja de texto esta vacía un mensaje de Error
@@ -91,6 +137,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             }
         }
 
+        //Misma función para mostrar la información de un Producto que en "Buscar"
         void MostrarProducto(int Id)
         {
             //Si no hay registro seleccionado menssaje de Error
@@ -114,7 +161,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
                     OleDbDataReader LeerProducto = comando.ExecuteReader(); //Objeto de Lectura y ejecutamos lectura
 
-                    while (LeerProducto.Read()) { //Para el regisro que se lee
+                    while (LeerProducto.Read())
+                    { //Para el regisro que se lee
 
                         //Mostramos en un Message Box la información obtenida de la consulta de selección
                         MessageBox.Show("Datos del Producto Seleccionado:" +
@@ -147,7 +195,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             }
         }
 
-        private void BuscarProducto_Load(object sender, EventArgs e)
+        private void EliminarProducto_Load(object sender, EventArgs e)
         {
             IdSeleccionado = 0;
 
@@ -165,11 +213,23 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.Columns.Add("Proveedor", 80);
         }
 
-        private void BtnBuscar_Click(object sender, EventArgs e)
+        private void BtnBuscar_Click_1(object sender, EventArgs e)
         {
             //Llamamos a la función EncontrarProductos y limpiamos la caja Buscar
             EncontrarProductos(TxtBuscar.Text);
             TxtBuscar.Clear();
+        }
+
+        /*  Idéntico que en User Control de BuscarProducto  */
+        private void RdNombre_CheckedChanged(object sender, EventArgs e)
+        {
+            //Si se selecciona RdNombre cambiar texto de las etiquetas
+            if (RdNombre.Checked)
+            {
+                LblCampoBuscar.Text = "Nombre";
+                LblErrorBuscar.Visible = false;
+                LblErrorBuscar.Text = "";
+            }
         }
 
         private void RdId_CheckedChanged(object sender, EventArgs e)
@@ -182,17 +242,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 LblCampoBuscar.Text = "Id";
                 LblErrorBuscar.Visible = false;
                 LblErrorBuscar.Text = "Solo admite numeros";
-            }
-        }
-
-        private void RdNombre_CheckedChanged(object sender, EventArgs e)
-        {
-            //Si se selecciona RdNombre cambiar texto de las etiquetas
-            if (RdNombre.Checked)
-            {
-                LblCampoBuscar.Text = "Nombre";
-                LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "";
             }
         }
 
@@ -214,20 +263,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             }
         }
 
-        //Controlar la entrada de datos en el apartado cantidad a vender
-        private void Txt_Cantidad_KeyPress(object sender, KeyPressEventArgs e)
+        private void BtnMostrarProducto_Click(object sender, EventArgs e)
         {
-            //Validar que solo es ingresen numeros o backspace
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                LblErrorCantidad.Visible = true;
-                e.Handled = true;
-            }
-
-            else //Si no hay errores, ocultar la etiqueta de error
-            {
-                LblErrorCantidad.Visible = false;
-            }
+            MostrarProducto(IdSeleccionado); //LLamamos a función MostrarProducto
         }
 
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)
@@ -243,10 +281,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             }
         }
 
-        private void BtnMostrarProducto_Click(object sender, EventArgs e)
+        private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            MostrarProducto(IdSeleccionado); //LLamamos a función MostrarProducto
+            //Llamamos a la función Eliminar y pasamos el parametro del Id del Registro Seleccionado
+            BorrarProducto(IdSeleccionado);
         }
-
     }
 }
