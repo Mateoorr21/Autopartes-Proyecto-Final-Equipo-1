@@ -31,15 +31,18 @@ namespace Proyecto_Final_Equipo_1
 
         private void Aplicacion_Load(object sender, EventArgs e)
         {
+            //Si no es Administrador únicamente puede acceder a "Buscar/Vender"
             if (!EsAdmin)
             {
-                //Inhabilitar Funciones
+                BtnAgregar.Enabled = false;
+                BtnEliminar.Enabled = false;
+                BtnModificar.Enabled = false;
+                BtnCatalogoUsuarios.Enabled = false;
             }
         }
 
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
         {
-            this.Hide();
             CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios(Inicio_Recibido); //Catalogo recibe la instancia de Inicio inicial
             catalogoUsuarios.ShowDialog();
         }

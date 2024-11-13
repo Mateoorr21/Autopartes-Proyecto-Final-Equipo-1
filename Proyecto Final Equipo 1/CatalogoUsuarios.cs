@@ -48,5 +48,10 @@ namespace Proyecto_Final_Equipo_1
             PanelCatalogo.Controls.Add(eliminarUsuario);
             eliminarUsuario.Dock = DockStyle.Fill;
         }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }
