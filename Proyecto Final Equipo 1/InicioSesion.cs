@@ -24,9 +24,7 @@ namespace Proyecto_Final_Equipo_1
 
         void IngresoUsuario(string Username, string Password)
         {
-            //Cadena de Conexion
-            string cadconexion = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\Base\Mi_prueva_personal.accdb;Persist Security Info=False;";
-            using (OleDbConnection inicio1 = new OleDbConnection(cadconexion))
+            using (OleDbConnection inicio1 = new OleDbConnection(Inicio_Recibido.cadconexion))
             {
                 try
                 {
@@ -83,7 +81,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void Txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar > 126 || e.KeyChar == 32)
+            if(e.KeyChar > 126 || e.KeyChar == 32) //Si es espacio o un caracter no admitido no ingresar
             {
                 LblErrorUsuario.Visible = true;
                 e.Handled = true;
@@ -97,7 +95,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void Txt_Password_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar > 126 || e.KeyChar == 32)
+            if (e.KeyChar > 126 || e.KeyChar == 32) //Si es espacio o es un caracter no admitido no ingresar
             {
                 LblErrorPassword.Visible = true;
                 e.Handled = true;

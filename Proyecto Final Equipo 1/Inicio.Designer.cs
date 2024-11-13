@@ -36,8 +36,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(220, 38);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(293, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(449, 42);
             this.label1.TabIndex = 0;
@@ -46,10 +45,10 @@
             // BtnInicio
             // 
             this.BtnInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInicio.Location = new System.Drawing.Point(226, 96);
-            this.BtnInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnInicio.Location = new System.Drawing.Point(301, 118);
+            this.BtnInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnInicio.Name = "BtnInicio";
-            this.BtnInicio.Size = new System.Drawing.Size(332, 63);
+            this.BtnInicio.Size = new System.Drawing.Size(443, 78);
             this.BtnInicio.TabIndex = 1;
             this.BtnInicio.Text = "Inicia Sesión";
             this.BtnInicio.UseVisualStyleBackColor = true;
@@ -57,12 +56,12 @@
             // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 374);
+            this.ClientSize = new System.Drawing.Size(924, 460);
             this.Controls.Add(this.BtnInicio);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Inicio";
             this.Text = "Form1";
             this.ResumeLayout(false);

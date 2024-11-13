@@ -33,9 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Txt_Password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.LblErrorUsuario = new System.Windows.Forms.Label();
-            this.LblErrorPassword = new System.Windows.Forms.Label();
             this.Txt_Usuario = new System.Windows.Forms.TextBox();
+            this.LblErrorPassword = new System.Windows.Forms.Label();
+            this.LblErrorUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Btn_Ingreso
@@ -88,32 +88,6 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Inicio de Sesión (Login)";
             // 
-            // LblErrorUsuario
-            // 
-            this.LblErrorUsuario.AutoSize = true;
-            this.LblErrorUsuario.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorUsuario.Location = new System.Drawing.Point(115, 133);
-            this.LblErrorUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblErrorUsuario.Name = "LblErrorUsuario";
-            this.LblErrorUsuario.Size = new System.Drawing.Size(650, 16);
-            this.LblErrorUsuario.TabIndex = 12;
-            this.LblErrorUsuario.Text = "El usuario solo admite letras, numeros y caracteres especiales   ! \" # $ % & \' ( " +
-    ") * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~\r\n";
-            this.LblErrorUsuario.Visible = false;
-            // 
-            // LblErrorPassword
-            // 
-            this.LblErrorPassword.AutoSize = true;
-            this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPassword.Location = new System.Drawing.Point(115, 234);
-            this.LblErrorPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblErrorPassword.Name = "LblErrorPassword";
-            this.LblErrorPassword.Size = new System.Drawing.Size(676, 16);
-            this.LblErrorPassword.TabIndex = 13;
-            this.LblErrorPassword.Text = "La contraseña solo admite letras, numeros y caracteres especiales   ! \" # $ % & \'" +
-    " ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~\r\n";
-            this.LblErrorPassword.Visible = false;
-            // 
             // Txt_Usuario
             // 
             this.Txt_Usuario.Location = new System.Drawing.Point(283, 153);
@@ -123,14 +97,40 @@
             this.Txt_Usuario.TabIndex = 14;
             this.Txt_Usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Usuario_KeyPress);
             // 
+            // LblErrorPassword
+            // 
+            this.LblErrorPassword.AutoSize = true;
+            this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorPassword.Location = new System.Drawing.Point(95, 234);
+            this.LblErrorPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblErrorPassword.Name = "LblErrorPassword";
+            this.LblErrorPassword.Size = new System.Drawing.Size(676, 16);
+            this.LblErrorPassword.TabIndex = 15;
+            this.LblErrorPassword.Text = "La contraseña solo admite letras, numeros y caracteres especiales   ! \" # $ % & \'" +
+    " ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~\r\n";
+            this.LblErrorPassword.Visible = false;
+            // 
+            // LblErrorUsuario
+            // 
+            this.LblErrorUsuario.AutoSize = true;
+            this.LblErrorUsuario.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorUsuario.Location = new System.Drawing.Point(95, 133);
+            this.LblErrorUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblErrorUsuario.Name = "LblErrorUsuario";
+            this.LblErrorUsuario.Size = new System.Drawing.Size(650, 16);
+            this.LblErrorUsuario.TabIndex = 16;
+            this.LblErrorUsuario.Text = "El usuario solo admite letras, numeros y caracteres especiales   ! \" # $ % & \' ( " +
+    ") * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~\r\n";
+            this.LblErrorUsuario.Visible = false;
+            // 
             // InicioSesion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(830, 450);
-            this.Controls.Add(this.Txt_Usuario);
-            this.Controls.Add(this.LblErrorPassword);
             this.Controls.Add(this.LblErrorUsuario);
+            this.Controls.Add(this.LblErrorPassword);
+            this.Controls.Add(this.Txt_Usuario);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Btn_Ingreso);
             this.Controls.Add(this.LblPassword);
@@ -150,8 +150,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Txt_Password;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label LblErrorUsuario;
-        private System.Windows.Forms.Label LblErrorPassword;
         private System.Windows.Forms.TextBox Txt_Usuario;
+        private System.Windows.Forms.Label LblErrorPassword;
+        private System.Windows.Forms.Label LblErrorUsuario;
     }
 }

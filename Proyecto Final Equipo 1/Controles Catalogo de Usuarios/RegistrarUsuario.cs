@@ -59,7 +59,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
         private void Txt_Nombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back)
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back) //Si no es letra, espacio o backspace no ingresar
             {
                 LblErrorNombre.Visible = true;
                 e.Handled = true;
@@ -73,7 +73,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
         private void Txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsPunctuation(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != ' ')
+            if (e.KeyChar > 126 || e.KeyChar == 32) //Si es espacio o un caracter no admitido no ingresar
             {
                 LblErrorUsuario.Visible = true;
                 e.Handled = true;
@@ -87,7 +87,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
         private void Txt_Password_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsPunctuation(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != ' ')
+            if (e.KeyChar > 126 || e.KeyChar == 32) //Si es espacio o un caracter no admitido no ingresar
             {
                 LblErrorPassword.Visible = true;
                 e.Handled = true;

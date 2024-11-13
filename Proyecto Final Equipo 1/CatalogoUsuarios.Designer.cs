@@ -44,10 +44,9 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(167, 11);
-            this.LblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblTitulo.Location = new System.Drawing.Point(223, 14);
             this.LblTitulo.Name = "LblTitulo";
-            this.LblTitulo.Size = new System.Drawing.Size(322, 36);
+            this.LblTitulo.Size = new System.Drawing.Size(398, 42);
             this.LblTitulo.TabIndex = 0;
             this.LblTitulo.Text = "Catálogo de Usuarios";
             // 
@@ -55,10 +54,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 21);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(16, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 36);
+            this.label1.Size = new System.Drawing.Size(152, 44);
             this.label1.TabIndex = 1;
             this.label1.Text = "Seleccione la \r\nOpción a Realizar";
             // 
@@ -69,38 +67,38 @@
             this.panel1.Controls.Add(this.BtnModificarUsuario);
             this.panel1.Controls.Add(this.BtnEliminarUsuario);
             this.panel1.Controls.Add(this.BtnRegistrarUsuario);
-            this.panel1.Location = new System.Drawing.Point(-6, -2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(-8, -2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(141, 426);
+            this.panel1.Size = new System.Drawing.Size(188, 524);
             this.panel1.TabIndex = 2;
             // 
             // BtnModificarUsuario
             // 
-            this.BtnModificarUsuario.Location = new System.Drawing.Point(15, 197);
-            this.BtnModificarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnModificarUsuario.Location = new System.Drawing.Point(20, 242);
+            this.BtnModificarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnModificarUsuario.Name = "BtnModificarUsuario";
-            this.BtnModificarUsuario.Size = new System.Drawing.Size(111, 83);
+            this.BtnModificarUsuario.Size = new System.Drawing.Size(148, 102);
             this.BtnModificarUsuario.TabIndex = 3;
             this.BtnModificarUsuario.Text = "Modificar Usuario";
             this.BtnModificarUsuario.UseVisualStyleBackColor = true;
             // 
             // BtnEliminarUsuario
             // 
-            this.BtnEliminarUsuario.Location = new System.Drawing.Point(15, 293);
-            this.BtnEliminarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnEliminarUsuario.Location = new System.Drawing.Point(20, 361);
+            this.BtnEliminarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnEliminarUsuario.Name = "BtnEliminarUsuario";
-            this.BtnEliminarUsuario.Size = new System.Drawing.Size(111, 83);
+            this.BtnEliminarUsuario.Size = new System.Drawing.Size(148, 102);
             this.BtnEliminarUsuario.TabIndex = 4;
             this.BtnEliminarUsuario.Text = "Eliminar Usuario";
             this.BtnEliminarUsuario.UseVisualStyleBackColor = true;
             // 
             // BtnRegistrarUsuario
             // 
-            this.BtnRegistrarUsuario.Location = new System.Drawing.Point(15, 101);
-            this.BtnRegistrarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnRegistrarUsuario.Location = new System.Drawing.Point(20, 121);
+            this.BtnRegistrarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRegistrarUsuario.Name = "BtnRegistrarUsuario";
-            this.BtnRegistrarUsuario.Size = new System.Drawing.Size(111, 83);
+            this.BtnRegistrarUsuario.Size = new System.Drawing.Size(148, 105);
             this.BtnRegistrarUsuario.TabIndex = 2;
             this.BtnRegistrarUsuario.Text = "Registrar Usuario";
             this.BtnRegistrarUsuario.UseVisualStyleBackColor = true;
@@ -108,31 +106,31 @@
             // 
             // PanelCatalogo
             // 
-            this.PanelCatalogo.Location = new System.Drawing.Point(130, 54);
-            this.PanelCatalogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelCatalogo.Location = new System.Drawing.Point(173, 66);
+            this.PanelCatalogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PanelCatalogo.Name = "PanelCatalogo";
-            this.PanelCatalogo.Size = new System.Drawing.Size(664, 370);
+            this.PanelCatalogo.Size = new System.Drawing.Size(885, 455);
             this.PanelCatalogo.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.panel3.Controls.Add(this.LblTitulo);
-            this.panel3.Location = new System.Drawing.Point(130, -2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Location = new System.Drawing.Point(173, -2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(662, 57);
+            this.panel3.Size = new System.Drawing.Size(883, 70);
             this.panel3.TabIndex = 4;
             // 
             // CatalogoUsuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 419);
+            this.ClientSize = new System.Drawing.Size(1056, 516);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.PanelCatalogo);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CatalogoUsuarios";
             this.Text = "CatalogoUsuarios";
             this.panel1.ResumeLayout(false);
