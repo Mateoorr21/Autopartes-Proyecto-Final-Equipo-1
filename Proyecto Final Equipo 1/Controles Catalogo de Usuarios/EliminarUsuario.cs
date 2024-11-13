@@ -125,6 +125,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
                     comando.ExecuteNonQuery(); //Ejecutamos consulta de acción
                 }
 
+                //Limpiamos del ListView el usuario eliminado
+                LvUsuarios.SelectedItems.Clear();
+
                 //Mensaje de Eliminación de usuario exitosa
                 MessageBox.Show("Datos del Usuario Operativo eliminados correctamente.", "ELIMINACION DE USUARIO OPERATIVO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -146,7 +149,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
                 ListViewItem ItemSeleccionado = LvUsuarios.SelectedItems[0]; //Obtenemos registro seleccionado
 
                 //Obtenemos el Valor del Id del Registro Seleccionado
-                IdSeleccionado = Convert.ToInt32(ItemSeleccionado.SubItems[0].Text);
+                IdSeleccionado = int.Parse(ItemSeleccionado.SubItems[0].Text);
             }
         }
 

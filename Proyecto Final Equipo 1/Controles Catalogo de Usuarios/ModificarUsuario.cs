@@ -90,7 +90,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         }
 
         void ActualizarUsuario(string Nombre, string Usuario, string Password, string Permiso, int Id)
-        {
+        {   
             //Si no hay registro seleccionado menssaje de Error
             if(LvUsuarios.SelectedItems.Count == 0)
             {
@@ -130,13 +130,19 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
                     comando.ExecuteNonQuery(); //Ejecutamos consulta
                 }
 
-                //Limpiamos los controles de Actualización de Datos (ListView y Cajas de Texto)
-                LvUsuarios.Items.Clear(); 
+                //Actualizamos el registro seleccionado
+                ListViewItem Modificado = LvUsuarios.SelectedItems[0];
+                Modificado.SubItems[1].Text = Nombre;
+                Modificado.SubItems[2].Text = Usuario;
+                Modificado.SubItems[3].Text = Password;
+                Modificado.SubItems[4].Text = Permiso;
+
+                //Limpiamos los controles de Actualización de Datos (Cajas de Texto y Radios)
                 Txt_Nombre.Clear();
                 Txt_Usuario.Clear();
                 Txt_Password.Clear();
-                if(RdAdmin.Checked) RdAdmin.Checked = false;
-                if(RdCajero.Checked)RdCajero.Checked = false;
+                RdAdmin.Checked = false;
+                RdCajero.Checked = false;
 
                 //Mensaje de Actualización de datos exitosa
                 MessageBox.Show("Datos del Usuario Operativo actualizados correctamente.", "ACTUALIZACION DE DATOS DE USUARIO",
@@ -174,7 +180,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
                 ListViewItem ItemSeleccionado = LvUsuarios.SelectedItems[0]; //Obtenemos registro seleccionado
 
                 //Obtenemos el Valor del Id del Registro Seleccionado
-                IdSeleccionado = Convert.ToInt32(ItemSeleccionado.SubItems[0].Text);
+                IdSeleccionado = int.Parse(ItemSeleccionado.SubItems[0].Text);
 
                 //Cargamos la información del ListView en las diferentes cajas de texto y radiobuttons
                 Txt_Nombre.Text = ItemSeleccionado.SubItems[1].Text;
@@ -288,6 +294,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             PermisoUsuario = RdAdmin.Checked ? "Admin" : "Cajero"; //Obtenemos el Permiso del usuario operativo
+
 
             //Llamamos a la función actualizar y pasamos los parametros de texto, el permiso y el Id del Registro Seleccionado
             ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, PermisoUsuario, IdSeleccionado);

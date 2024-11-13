@@ -75,7 +75,7 @@
             this.Txt_Password.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Password.Name = "Txt_Password";
             this.Txt_Password.Size = new System.Drawing.Size(237, 22);
-            this.Txt_Password.TabIndex = 7;
+            this.Txt_Password.TabIndex = 3;
             this.Txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Password_KeyPress);
             // 
             // label3
@@ -94,7 +94,7 @@
             this.Txt_Usuario.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Usuario.Name = "Txt_Usuario";
             this.Txt_Usuario.Size = new System.Drawing.Size(237, 22);
-            this.Txt_Usuario.TabIndex = 14;
+            this.Txt_Usuario.TabIndex = 2;
             this.Txt_Usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Usuario_KeyPress);
             // 
             // LblErrorPassword
