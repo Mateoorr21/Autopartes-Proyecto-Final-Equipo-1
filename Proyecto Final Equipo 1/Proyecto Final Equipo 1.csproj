@@ -58,6 +58,12 @@
     <Compile Include="CatalogoUsuarios.Designer.cs">
       <DependentUpon>CatalogoUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controles Aplicacion Autopartes\AgregarProducto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles Aplicacion Autopartes\AgregarProducto.Designer.cs">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controles Catalogo de Usuarios\EliminarUsuario.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <EmbeddedResource Include="CatalogoUsuarios.resx">
       <DependentUpon>CatalogoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles Aplicacion Autopartes\AgregarProducto.resx">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles Catalogo de Usuarios\EliminarUsuario.resx">
       <DependentUpon>EliminarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,8 +142,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controles Aplicación Autopartes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

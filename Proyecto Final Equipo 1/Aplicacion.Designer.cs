@@ -37,8 +37,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.PanelAutoPartes = new System.Windows.Forms.Panel();
             this.PanelAplicacion = new System.Windows.Forms.Panel();
+            this.PanelAutoPartes = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,7 @@
             this.BtnAgregar.TabIndex = 1;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnBuscar
             // 
@@ -114,7 +115,7 @@
             this.panel1.Controls.Add(this.BtnBuscar);
             this.panel1.Controls.Add(this.BtnAgregar);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(215, 571);
             this.panel1.TabIndex = 6;
@@ -122,7 +123,7 @@
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(251, 1);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(852, 90);
             this.panel2.TabIndex = 6;
@@ -133,10 +134,17 @@
             this.panel3.Controls.Add(this.PanelAplicacion);
             this.panel3.Controls.Add(this.LblTitulo);
             this.panel3.Location = new System.Drawing.Point(216, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1021, 87);
             this.panel3.TabIndex = 7;
+            // 
+            // PanelAplicacion
+            // 
+            this.PanelAplicacion.Location = new System.Drawing.Point(25, 116);
+            this.PanelAplicacion.Name = "PanelAplicacion";
+            this.PanelAplicacion.Size = new System.Drawing.Size(994, 455);
+            this.PanelAplicacion.TabIndex = 1;
             // 
             // PanelAutoPartes
             // 
@@ -146,17 +154,11 @@
             this.PanelAutoPartes.Size = new System.Drawing.Size(1021, 490);
             this.PanelAutoPartes.TabIndex = 7;
             // 
-            // PanelAplicacion
-            // 
-            this.PanelAplicacion.Location = new System.Drawing.Point(25, 116);
-            this.PanelAplicacion.Name = "PanelAplicacion";
-            this.PanelAplicacion.Size = new System.Drawing.Size(994, 455);
-            this.PanelAplicacion.TabIndex = 1;
-            // 
             // Aplicacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1237, 568);
             this.Controls.Add(this.PanelAutoPartes);
             this.Controls.Add(this.panel3);
