@@ -68,7 +68,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             }
         }
 
-        void RegistrarProducto(string Nombre, string Descripcion, string Tipo, string Marca, float Precio, int Cantidad, string Proveedor, string RutaTemporal)
+        void RegistrarProducto(string Nombre, string Descripcion, string Marca, float Precio, int Cantidad, string RutaTemporal)
         {
             //Establecemos el obejto OledbConnection para conectar con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion))
@@ -76,25 +76,20 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 conexion.Open(); //Abrimos conexion
 
                 //Primer comando SQL para insertar el registro
-                string query = "INSERT INTO Productos (Nombre, Descripcion, Tipo, Marca, Precio, Cantidad_en_Stock, Proveedor, Imagen) " +
-                   "VALUES (@Nombre, @Descripcion, @Tipo, @Marca, @Precio, @CantidadEnStock, @Proveedor, @Imagen)";
+                string query = "INSERT INTO Productos (Nombre, Descripcion, Marca, Precio, Cantidad_en_Stock, Imagen) " +
+                   "VALUES (@Nombre, @Descripcion, @Marca, @Precio, @CantidadEnStock, @Imagen)";
 
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
                 {
                     //Parametros de consulta, los valores que se van a insertar a la base de datos
                     comando.Parameters.AddWithValue("@Nombre", Nombre);
                     comando.Parameters.AddWithValue("@Descripcion", Descripcion);
-                    comando.Parameters.AddWithValue("@Tipo", Tipo);
                     comando.Parameters.AddWithValue("@Marca", Marca);
                     comando.Parameters.AddWithValue("@Precio", Precio);
                     comando.Parameters.AddWithValue("@CantidadEnStock", Cantidad);
-                    comando.Parameters.AddWithValue("@Proveedor", Proveedor);
                     comando.Parameters.AddWithValue("@Imagen", string.Empty); //Por el momento una cadena vacía en el apartado imagen
 
-                    comando.ExecuteNonQuery();
-                    //object resultado = comando.ExecuteScalar(); //Ejecutamos el comando y obtenemo como objeto el Id del Registro Insertado
-                    
-                    //IdGenerado = Convert.ToInt32(resultado); //Convertimos el objeto a un entero
+                    comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
                 }
 
                 //Segundo comando SQL para obtener el último Id Generado
@@ -114,17 +109,13 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
             string NombreImagen = IdGenerado.ToString() + ExtensionImagen; //Nuevo nombre de la imagen, con Id y extensión correcta
 
-            //NO ES UTIL
-            //Obtenemos la ruta destino usando el camino de aplicacion a carpeta imagenes y el nuevo nombre de la imagen
-            //string RutaDestino = Path.Combine(Application.StartupPath, "Imagenes", NombreImagen); 
-            string RutaCopiar = "..\\..\\..\\Imagenes\\" + NombreImagen;
-
-            //string RutaInsertarEnBase = "..\\Imagenes\\" + NombreImagen;
+            //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpte Imagenes y el nombre de la imagen
+            string RutaDestino = "..\\..\\..\\Imagenes\\" + NombreImagen;
 
             // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
-            File.Copy(RutaTemporal, RutaCopiar, true);
+            File.Copy(RutaTemporal, RutaDestino, true);
 
-            MessageBox.Show("El id generado es " + IdGenerado);
+            //MessageBox.Show("El id generado es " + IdGenerado);
 
             //Actualizamos la base de datos con la ruta correcta de la imagen
             using(OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion)) //Conexion
@@ -135,7 +126,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
                 {
-                    comando.Parameters.AddWithValue("@Imagen", RutaCopiar); //Parametro de Imagen es la RutaDestino
+                    comando.Parameters.AddWithValue("@Imagen", RutaDestino); //Parametro de Imagen es la RutaDestino
                     comando.Parameters.AddWithValue("@Id", IdGenerado); //Parametro IdGenerado
 
                     comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
@@ -145,13 +136,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //Limpiamos las cajas de texto y el Picture Box
             Txt_Nombre.Clear();
             Txt_Descripcion.Clear();
-            Txt_Tipo.Clear();
             Txt_Marca.Clear();
             Txt_Precio.Clear();
             Txt_Cantidad.Clear();
-            Txt_Proveedor.Clear();
             PicImagenProducto.Image = null;
-
 
             //Mensaje de registro de producto exitoso
             MessageBox.Show($"Registro de Producto {Nombre} Exitoso",
@@ -178,11 +166,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         {
             //Si algun campo esta vacío (exceptuando la descripción), o la ruta temporal es nula, mensaje de error
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Tipo.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Marca.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Precio.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Cantidad.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Proveedor.Text) ||
                 string.IsNullOrEmpty(RutaImagenTemporal))
             {
                 MessageBox.Show("Error. Ingrese la información del producto a ingresar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
@@ -194,7 +180,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Precio = float.Parse(Txt_Precio.Text);
             Cantidad = int.Parse(Txt_Cantidad.Text);
 
-            RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Tipo.Text, Txt_Marca.Text, Precio, Cantidad, Txt_Proveedor.Text, RutaImagenTemporal);
+            RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, Precio, Cantidad, RutaImagenTemporal);
         }
     }
 }

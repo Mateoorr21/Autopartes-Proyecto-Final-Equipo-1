@@ -62,30 +62,36 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
                     OleDbDataReader LeerProductos = comando.ExecuteReader(); //Objeto de lectura
 
+                    int ContarProductos = 0; //Variable para contar los registros
+
                     if (LeerProductos.HasRows) //Si se obtuvieron registros de la busqueda
                     {
-                        LvProductos.Items.Clear();
+                        LvProductos.Items.Clear(); //Limpiamos el contenido del ListView
 
                         while (LeerProductos.Read()) //Para cada registro obtenido
                         {
+                            //Aumentamos el contador de registros
+                            ContarProductos++;
+
                             //Ingresamos a las columnas del ListView los valores de la base de datos 
                             Producto = new ListViewItem(LeerProductos["Id"].ToString());
                             Producto.SubItems.Add(LeerProductos["Nombre"].ToString());
                             Producto.SubItems.Add(LeerProductos["Descripcion"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Tipo"].ToString());
                             Producto.SubItems.Add(LeerProductos["Marca"].ToString());
                             Producto.SubItems.Add(LeerProductos["Precio"].ToString());
                             Producto.SubItems.Add(LeerProductos["Cantidad_en_Stock"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Proveedor"].ToString());
 
                             //Cargamos  el registro al ListView
                             LvProductos.Items.Add(Producto);
+
+                            //Actualizamos la etiqueta que cuenta los registros
+                            LblCantidadRegistros.Text = "Productos Encontrados: " + ContarProductos.ToString();
                         }
                     }
 
                     else //Si no se obtuvieron registros, indicarlo con un MessageBox
                     {
-                        MessageBox.Show("No se encontraron Productos", "NO SE ENCONTRARON PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No se encontraron Productos", "NO SE ENCONTRARON PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -121,11 +127,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                             " \nId: " + LeerProducto["Id"].ToString() +
                             " \nNombre: " + LeerProducto["Nombre"].ToString() +
                             " \nDescripcion: " + LeerProducto["Id"].ToString() +
-                            " \nTipo: " + LeerProducto["Tipo"].ToString() +
                             " \nMarca: " + LeerProducto["Marca"].ToString() +
                             " \nPrecio: $ " + LeerProducto["Precio"].ToString() +
-                            " \nCantidad en Stock: " + LeerProducto["Cantidad_en_Stock"].ToString() +
-                            " \nProveedor: " + LeerProducto["Proveedor"].ToString(),
+                            " \nCantidad en Stock: " + LeerProducto["Cantidad_en_Stock"].ToString(),
                             "INFORMACIÓN DEL PRODUCTO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -155,14 +159,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.View = View.Details;
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;
-            LvProductos.Columns.Add("Id", 25);
-            LvProductos.Columns.Add("Nombre", 80);
-            LvProductos.Columns.Add("Descripcion", 80);
-            LvProductos.Columns.Add("Tipo", 70);
-            LvProductos.Columns.Add("Marca", 60);
-            LvProductos.Columns.Add("Precio", 50);
-            LvProductos.Columns.Add("Cantidad en Stock", 50);
-            LvProductos.Columns.Add("Proveedor", 80);
+            LvProductos.Columns.Add("Id", 40);
+            LvProductos.Columns.Add("Nombre", 120);
+            LvProductos.Columns.Add("Descripcion", 200);
+            LvProductos.Columns.Add("Marca", 100);
+            LvProductos.Columns.Add("Precio", 70);
+            LvProductos.Columns.Add("Cantidad en Stock", 120);
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -235,7 +237,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //Si se selecciona un registro
             if (LvProductos.SelectedItems.Count > 0)
             {
-
                 ListViewItem ItemSeleccionado = LvProductos.SelectedItems[0]; //Obtenemos registro seleccionado
 
                 //Obtenemos el Valor del Id del Registro Seleccionado

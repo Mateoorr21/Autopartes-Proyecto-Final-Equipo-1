@@ -46,6 +46,7 @@
             this.RdExacta = new System.Windows.Forms.RadioButton();
             this.RdAproximada = new System.Windows.Forms.RadioButton();
             this.BtnCarrito = new System.Windows.Forms.Button();
+            this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.GbBusquedaCampo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
             this.GpBBusquedaTipo.SuspendLayout();
@@ -56,7 +57,7 @@
             this.LblErrorBuscar.AutoSize = true;
             this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(28, 294);
+            this.LblErrorBuscar.Location = new System.Drawing.Point(26, 283);
             this.LblErrorBuscar.Name = "LblErrorBuscar";
             this.LblErrorBuscar.Size = new System.Drawing.Size(105, 13);
             this.LblErrorBuscar.TabIndex = 57;
@@ -65,7 +66,7 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(31, 339);
+            this.TxtBuscar.Location = new System.Drawing.Point(29, 328);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(124, 22);
@@ -75,7 +76,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
-            this.LblCampoBuscar.Location = new System.Drawing.Point(28, 316);
+            this.LblCampoBuscar.Location = new System.Drawing.Point(26, 305);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
             this.LblCampoBuscar.Size = new System.Drawing.Size(59, 16);
             this.LblCampoBuscar.TabIndex = 55;
@@ -83,7 +84,7 @@
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.Location = new System.Drawing.Point(31, 394);
+            this.BtnBuscar.Location = new System.Drawing.Point(29, 383);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(124, 64);
@@ -96,7 +97,7 @@
             // 
             this.GbBusquedaCampo.Controls.Add(this.RdId);
             this.GbBusquedaCampo.Controls.Add(this.RdNombre);
-            this.GbBusquedaCampo.Location = new System.Drawing.Point(25, 184);
+            this.GbBusquedaCampo.Location = new System.Drawing.Point(23, 173);
             this.GbBusquedaCampo.Margin = new System.Windows.Forms.Padding(4);
             this.GbBusquedaCampo.Name = "GbBusquedaCampo";
             this.GbBusquedaCampo.Padding = new System.Windows.Forms.Padding(4);
@@ -137,14 +138,14 @@
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo.Location = new System.Drawing.Point(372, 23);
             this.LblTitulo.Name = "LblTitulo";
-            this.LblTitulo.Size = new System.Drawing.Size(311, 29);
+            this.LblTitulo.Size = new System.Drawing.Size(315, 29);
             this.LblTitulo.TabIndex = 58;
-            this.LblTitulo.Text = "Buscar / Vender Producto";
+            this.LblTitulo.Text = "Buscar / Mostrar Producto";
             // 
             // LvProductos
             // 
             this.LvProductos.HideSelection = false;
-            this.LvProductos.Location = new System.Drawing.Point(169, 77);
+            this.LvProductos.Location = new System.Drawing.Point(167, 66);
             this.LvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
@@ -156,7 +157,7 @@
             // BtnMostrarProducto
             // 
             this.BtnMostrarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMostrarProducto.Location = new System.Drawing.Point(829, 77);
+            this.BtnMostrarProducto.Location = new System.Drawing.Point(827, 66);
             this.BtnMostrarProducto.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMostrarProducto.Name = "BtnMostrarProducto";
             this.BtnMostrarProducto.Size = new System.Drawing.Size(173, 83);
@@ -167,7 +168,7 @@
             // 
             // PicImagenProducto
             // 
-            this.PicImagenProducto.Location = new System.Drawing.Point(829, 167);
+            this.PicImagenProducto.Location = new System.Drawing.Point(827, 156);
             this.PicImagenProducto.Name = "PicImagenProducto";
             this.PicImagenProducto.Size = new System.Drawing.Size(173, 127);
             this.PicImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -176,7 +177,7 @@
             // 
             // Txt_Cantidad
             // 
-            this.Txt_Cantidad.Location = new System.Drawing.Point(829, 378);
+            this.Txt_Cantidad.Location = new System.Drawing.Point(827, 367);
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(173, 22);
@@ -186,7 +187,7 @@
             // LblCantidad
             // 
             this.LblCantidad.AutoSize = true;
-            this.LblCantidad.Location = new System.Drawing.Point(830, 355);
+            this.LblCantidad.Location = new System.Drawing.Point(828, 344);
             this.LblCantidad.Name = "LblCantidad";
             this.LblCantidad.Size = new System.Drawing.Size(122, 16);
             this.LblCantidad.TabIndex = 63;
@@ -197,7 +198,7 @@
             this.LblErrorCantidad.AutoSize = true;
             this.LblErrorCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorCantidad.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorCantidad.Location = new System.Drawing.Point(830, 339);
+            this.LblErrorCantidad.Location = new System.Drawing.Point(828, 328);
             this.LblErrorCantidad.Name = "LblErrorCantidad";
             this.LblErrorCantidad.Size = new System.Drawing.Size(143, 13);
             this.LblErrorCantidad.TabIndex = 66;
@@ -208,7 +209,7 @@
             // 
             this.GpBBusquedaTipo.Controls.Add(this.RdExacta);
             this.GpBBusquedaTipo.Controls.Add(this.RdAproximada);
-            this.GpBBusquedaTipo.Location = new System.Drawing.Point(25, 77);
+            this.GpBBusquedaTipo.Location = new System.Drawing.Point(23, 66);
             this.GpBBusquedaTipo.Margin = new System.Windows.Forms.Padding(4);
             this.GpBBusquedaTipo.Name = "GpBBusquedaTipo";
             this.GpBBusquedaTipo.Padding = new System.Windows.Forms.Padding(4);
@@ -244,7 +245,7 @@
             // BtnCarrito
             // 
             this.BtnCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCarrito.Location = new System.Drawing.Point(829, 406);
+            this.BtnCarrito.Location = new System.Drawing.Point(827, 395);
             this.BtnCarrito.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCarrito.Name = "BtnCarrito";
             this.BtnCarrito.Size = new System.Drawing.Size(173, 49);
@@ -252,10 +253,20 @@
             this.BtnCarrito.Text = "Agregar Carrito";
             this.BtnCarrito.UseVisualStyleBackColor = true;
             // 
+            // LblCantidadRegistros
+            // 
+            this.LblCantidadRegistros.AutoSize = true;
+            this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCantidadRegistros.Location = new System.Drawing.Point(615, 451);
+            this.LblCantidadRegistros.Name = "LblCantidadRegistros";
+            this.LblCantidadRegistros.Size = new System.Drawing.Size(174, 18);
+            this.LblCantidadRegistros.TabIndex = 68;
+            this.LblCantidadRegistros.Text = "Productos Encontrados: ";
+            // 
             // BuscarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.BtnCarrito);
             this.Controls.Add(this.GpBBusquedaTipo);
             this.Controls.Add(this.LblErrorCantidad);
@@ -303,5 +314,6 @@
         private System.Windows.Forms.RadioButton RdExacta;
         private System.Windows.Forms.RadioButton RdAproximada;
         private System.Windows.Forms.Button BtnCarrito;
+        private System.Windows.Forms.Label LblCantidadRegistros;
     }
 }

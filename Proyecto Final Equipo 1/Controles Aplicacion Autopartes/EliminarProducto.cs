@@ -16,6 +16,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
     {
         Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
         int IdSeleccionado; //Variable glocal IdGenerado
+        int ContarProductos; //Variable Global para contar registros
         public EliminarProducto(Inicio inicio)
         {
             InitializeComponent();
@@ -57,8 +58,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                     comando.ExecuteNonQuery(); //Ejecutamos consulta de acción
                 }
 
-                //Quitamos del ListView el eliminado y limpiamos el PictureBox
-                LvProductos.SelectedItems.Clear();
+                //Quitamos del ListView el eliminado
+                ListViewItem Seleccionado = LvProductos.SelectedItems[0];
+                LvProductos.Items.Remove(Seleccionado);
+
+                //Actualizamos la etiqueta de Cantidad de Registros
+                LblCantidadRegistros.Text = "Productos Encontrados: " + (ContarProductos - 1).ToString();
 
                 //Mensaje de Eliminación de usuario exitosa
                 MessageBox.Show("Producto eliminado correctamente.", "ELIMINACION DE PRODUCTO DE LA BASE DE DATOS",
@@ -108,88 +113,36 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
                     OleDbDataReader LeerProductos = comando.ExecuteReader(); //Objeto de lectura
 
+                    ContarProductos = 0; //Variable para contar los registros
+
                     if (LeerProductos.HasRows) //Si se obtuvieron registros de la busqueda
                     {
-                        LvProductos.Items.Clear();
+                        LvProductos.Items.Clear(); //Limpiamos el contenido del ListView
 
                         while (LeerProductos.Read()) //Para cada registro obtenido
                         {
+                            //Aumentamos el contador de registros
+                            ContarProductos++;
+
                             //Ingresamos a las columnas del ListView los valores de la base de datos 
                             Producto = new ListViewItem(LeerProductos["Id"].ToString());
                             Producto.SubItems.Add(LeerProductos["Nombre"].ToString());
                             Producto.SubItems.Add(LeerProductos["Descripcion"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Tipo"].ToString());
                             Producto.SubItems.Add(LeerProductos["Marca"].ToString());
                             Producto.SubItems.Add(LeerProductos["Precio"].ToString());
                             Producto.SubItems.Add(LeerProductos["Cantidad_en_Stock"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Proveedor"].ToString());
 
                             //Cargamos  el registro al ListView
                             LvProductos.Items.Add(Producto);
+
+                            //Actualizamos la etiqueta que cuenta los registros
+                            LblCantidadRegistros.Text = "Productos Encontrados: " + ContarProductos.ToString();
                         }
                     }
 
                     else //Si no se obtuvieron registros, indicarlo con un MessageBox
                     {
-                        MessageBox.Show("No se encontraron Productos", "NO SE ENCONTRARON PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-
-        //Misma función para mostrar la información de un Producto que en "Buscar"
-        void MostrarProducto(int Id)
-        {
-            //Si no hay registro seleccionado menssaje de Error
-            if (LvProductos.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Seleccione un producto para mostrar su información",
-                    "ERROR. NO HAY REGISTRO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //Objeto de conexion con la base de datos
-            using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion))
-            {
-                conexion.Open(); //Abrimos conexion
-
-                string query = "SELECT * FROM Productos WHERE Id = @IdSeleccionado"; //Consulta de selección
-
-                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de consulta
-                {
-                    comando.Parameters.AddWithValue("@IdSeleccionado", Id); //Parametro IdSeleccioando
-
-                    OleDbDataReader LeerProducto = comando.ExecuteReader(); //Objeto de Lectura y ejecutamos lectura
-
-                    while (LeerProducto.Read())
-                    { //Para el regisro que se lee
-
-                        //Mostramos en un Message Box la información obtenida de la consulta de selección
-                        MessageBox.Show("Datos del Producto Seleccionado:" +
-                            " \nId: " + LeerProducto["Id"].ToString() +
-                            " \nNombre: " + LeerProducto["Nombre"].ToString() +
-                            " \nDescripcion: " + LeerProducto["Id"].ToString() +
-                            " \nTipo: " + LeerProducto["Tipo"].ToString() +
-                            " \nMarca: " + LeerProducto["Marca"].ToString() +
-                            " \nPrecio: $ " + LeerProducto["Precio"].ToString() +
-                            " \nCantidad en Stock: " + LeerProducto["Cantidad_en_Stock"].ToString() +
-                            " \nProveedor: " + LeerProducto["Proveedor"].ToString(),
-                            "INFORMACIÓN DEL PRODUCTO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                        // Revisamos si el registro tiene una ruta existente o válida
-                        string rutaImagen = LeerProducto["Imagen"].ToString(); //Obtenemos la ruta
-
-                        if (!string.IsNullOrEmpty(rutaImagen) && System.IO.File.Exists(rutaImagen)) //Si la ruta no es nula y la imagen existe
-                        {
-                            PicImagenProducto.Image = Image.FromFile(rutaImagen); // Cargar la imagen en el PictureBox
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("La Imagen no está disponible.", "IMAGEN NO DISPONIBLE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            PicImagenProducto.Image = null; // Limpiamos el Picture Box
-                        }
+                        MessageBox.Show("No se encontraron Productos", "NO SE ENCONTRARON PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -203,14 +156,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.View = View.Details;
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;
-            LvProductos.Columns.Add("Id", 25);
-            LvProductos.Columns.Add("Nombre", 80);
-            LvProductos.Columns.Add("Descripcion", 80);
-            LvProductos.Columns.Add("Tipo", 70);
-            LvProductos.Columns.Add("Marca", 60);
-            LvProductos.Columns.Add("Precio", 50);
-            LvProductos.Columns.Add("Cantidad en Stock", 50);
-            LvProductos.Columns.Add("Proveedor", 80);
+            LvProductos.Columns.Add("Id", 40);
+            LvProductos.Columns.Add("Nombre", 150);
+            LvProductos.Columns.Add("Descripcion", 210);
+            LvProductos.Columns.Add("Marca", 150);
+            LvProductos.Columns.Add("Precio", 100);
+            LvProductos.Columns.Add("Cantidad en Stock", 120);
         }
 
         private void BtnBuscar_Click_1(object sender, EventArgs e)
@@ -261,11 +212,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                     LblErrorBuscar.Visible = false;
                 }
             }
-        }
-
-        private void BtnMostrarProducto_Click(object sender, EventArgs e)
-        {
-            MostrarProducto(IdSeleccionado); //LLamamos a función MostrarProducto
         }
 
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)

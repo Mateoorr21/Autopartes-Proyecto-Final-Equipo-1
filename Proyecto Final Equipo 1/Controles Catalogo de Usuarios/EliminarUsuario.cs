@@ -125,8 +125,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
                     comando.ExecuteNonQuery(); //Ejecutamos consulta de acción
                 }
 
-                //Limpiamos del ListView el usuario eliminado
-                LvUsuarios.SelectedItems.Clear();
+                //Quitamos del ListView el ususario eliminado
+                ListViewItem Seleccionado = LvUsuarios.SelectedItems[0];
+                LvUsuarios.Items.Remove(Seleccionado);
 
                 //Mensaje de Eliminación de usuario exitosa
                 MessageBox.Show("Datos del Usuario Operativo eliminados correctamente.", "ELIMINACION DE USUARIO OPERATIVO",

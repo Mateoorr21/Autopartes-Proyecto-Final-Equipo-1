@@ -127,7 +127,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(830, 450);
+            this.ClientSize = new System.Drawing.Size(832, 453);
             this.Controls.Add(this.LblErrorUsuario);
             this.Controls.Add(this.LblErrorPassword);
             this.Controls.Add(this.Txt_Usuario);
@@ -136,7 +136,11 @@
             this.Controls.Add(this.LblPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Txt_Password);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "InicioSesion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioSesion";
             this.Load += new System.EventHandler(this.InicioSesion_Load);
             this.ResumeLayout(false);

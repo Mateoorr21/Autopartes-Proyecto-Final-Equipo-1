@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Txt_Tipo = new System.Windows.Forms.TextBox();
             this.Txt_Descripcion = new System.Windows.Forms.TextBox();
             this.Txt_Nombre = new System.Windows.Forms.TextBox();
             this.BtnRegistrarProducto = new System.Windows.Forms.Button();
             this.LblNota = new System.Windows.Forms.Label();
             this.LblNombre = new System.Windows.Forms.Label();
-            this.LblTipo = new System.Windows.Forms.Label();
             this.LblDescripcion = new System.Windows.Forms.Label();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.LblInstruccion = new System.Windows.Forms.Label();
@@ -44,8 +42,6 @@
             this.LblPrecio = new System.Windows.Forms.Label();
             this.Txt_Cantidad = new System.Windows.Forms.TextBox();
             this.LblCantidad = new System.Windows.Forms.Label();
-            this.Txt_Proveedor = new System.Windows.Forms.TextBox();
-            this.LblProveedor = new System.Windows.Forms.Label();
             this.LblImagen = new System.Windows.Forms.Label();
             this.PicImagenProducto = new System.Windows.Forms.PictureBox();
             this.BtnCargarImagen = new System.Windows.Forms.Button();
@@ -54,17 +50,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
             this.SuspendLayout();
             // 
-            // Txt_Tipo
-            // 
-            this.Txt_Tipo.Location = new System.Drawing.Point(381, 193);
-            this.Txt_Tipo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Txt_Tipo.Name = "Txt_Tipo";
-            this.Txt_Tipo.Size = new System.Drawing.Size(312, 22);
-            this.Txt_Tipo.TabIndex = 48;
-            // 
             // Txt_Descripcion
             // 
-            this.Txt_Descripcion.Location = new System.Drawing.Point(381, 132);
+            this.Txt_Descripcion.Location = new System.Drawing.Point(381, 151);
             this.Txt_Descripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Descripcion.Multiline = true;
             this.Txt_Descripcion.Name = "Txt_Descripcion";
@@ -73,7 +61,7 @@
             // 
             // Txt_Nombre
             // 
-            this.Txt_Nombre.Location = new System.Drawing.Point(381, 97);
+            this.Txt_Nombre.Location = new System.Drawing.Point(381, 116);
             this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(312, 22);
@@ -94,7 +82,7 @@
             // 
             this.LblNota.AutoSize = true;
             this.LblNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNota.Location = new System.Drawing.Point(359, 72);
+            this.LblNota.Location = new System.Drawing.Point(361, 73);
             this.LblNota.Name = "LblNota";
             this.LblNota.Size = new System.Drawing.Size(305, 15);
             this.LblNota.TabIndex = 44;
@@ -103,25 +91,16 @@
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(319, 97);
+            this.LblNombre.Location = new System.Drawing.Point(319, 116);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(59, 16);
             this.LblNombre.TabIndex = 39;
             this.LblNombre.Text = "Nombre:";
             // 
-            // LblTipo
-            // 
-            this.LblTipo.AutoSize = true;
-            this.LblTipo.Location = new System.Drawing.Point(264, 196);
-            this.LblTipo.Name = "LblTipo";
-            this.LblTipo.Size = new System.Drawing.Size(114, 16);
-            this.LblTipo.TabIndex = 36;
-            this.LblTipo.Text = "Tipo de Producto:";
-            // 
             // LblDescripcion
             // 
             this.LblDescripcion.AutoSize = true;
-            this.LblDescripcion.Location = new System.Drawing.Point(228, 132);
+            this.LblDescripcion.Location = new System.Drawing.Point(228, 151);
             this.LblDescripcion.Name = "LblDescripcion";
             this.LblDescripcion.Size = new System.Drawing.Size(147, 16);
             this.LblDescripcion.TabIndex = 35;
@@ -131,7 +110,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(391, 11);
+            this.LblTitulo.Location = new System.Drawing.Point(393, 12);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(218, 29);
             this.LblTitulo.TabIndex = 33;
@@ -140,7 +119,7 @@
             // LblInstruccion
             // 
             this.LblInstruccion.AutoSize = true;
-            this.LblInstruccion.Location = new System.Drawing.Point(196, 48);
+            this.LblInstruccion.Location = new System.Drawing.Point(198, 49);
             this.LblInstruccion.Name = "LblInstruccion";
             this.LblInstruccion.Size = new System.Drawing.Size(612, 16);
             this.LblInstruccion.TabIndex = 49;
@@ -149,7 +128,7 @@
             // 
             // Txt_Marca
             // 
-            this.Txt_Marca.Location = new System.Drawing.Point(381, 229);
+            this.Txt_Marca.Location = new System.Drawing.Point(381, 212);
             this.Txt_Marca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Marca.Name = "Txt_Marca";
             this.Txt_Marca.Size = new System.Drawing.Size(312, 22);
@@ -158,7 +137,7 @@
             // LblMarca
             // 
             this.LblMarca.AutoSize = true;
-            this.LblMarca.Location = new System.Drawing.Point(327, 231);
+            this.LblMarca.Location = new System.Drawing.Point(327, 214);
             this.LblMarca.Name = "LblMarca";
             this.LblMarca.Size = new System.Drawing.Size(48, 16);
             this.LblMarca.TabIndex = 50;
@@ -166,7 +145,7 @@
             // 
             // Txt_Precio
             // 
-            this.Txt_Precio.Location = new System.Drawing.Point(381, 264);
+            this.Txt_Precio.Location = new System.Drawing.Point(381, 247);
             this.Txt_Precio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Precio.Name = "Txt_Precio";
             this.Txt_Precio.Size = new System.Drawing.Size(312, 22);
@@ -176,7 +155,7 @@
             // LblPrecio
             // 
             this.LblPrecio.AutoSize = true;
-            this.LblPrecio.Location = new System.Drawing.Point(311, 267);
+            this.LblPrecio.Location = new System.Drawing.Point(311, 250);
             this.LblPrecio.Name = "LblPrecio";
             this.LblPrecio.Size = new System.Drawing.Size(67, 16);
             this.LblPrecio.TabIndex = 52;
@@ -184,7 +163,7 @@
             // 
             // Txt_Cantidad
             // 
-            this.Txt_Cantidad.Location = new System.Drawing.Point(381, 298);
+            this.Txt_Cantidad.Location = new System.Drawing.Point(381, 281);
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(312, 22);
@@ -194,33 +173,16 @@
             // LblCantidad
             // 
             this.LblCantidad.AutoSize = true;
-            this.LblCantidad.Location = new System.Drawing.Point(229, 301);
+            this.LblCantidad.Location = new System.Drawing.Point(229, 284);
             this.LblCantidad.Name = "LblCantidad";
             this.LblCantidad.Size = new System.Drawing.Size(146, 16);
             this.LblCantidad.TabIndex = 54;
             this.LblCantidad.Text = "Cantidad en Existencia:";
             // 
-            // Txt_Proveedor
-            // 
-            this.Txt_Proveedor.Location = new System.Drawing.Point(381, 335);
-            this.Txt_Proveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Txt_Proveedor.Name = "Txt_Proveedor";
-            this.Txt_Proveedor.Size = new System.Drawing.Size(312, 22);
-            this.Txt_Proveedor.TabIndex = 57;
-            // 
-            // LblProveedor
-            // 
-            this.LblProveedor.AutoSize = true;
-            this.LblProveedor.Location = new System.Drawing.Point(304, 337);
-            this.LblProveedor.Name = "LblProveedor";
-            this.LblProveedor.Size = new System.Drawing.Size(74, 16);
-            this.LblProveedor.TabIndex = 56;
-            this.LblProveedor.Text = "Proveedor:";
-            // 
             // LblImagen
             // 
             this.LblImagen.AutoSize = true;
-            this.LblImagen.Location = new System.Drawing.Point(304, 372);
+            this.LblImagen.Location = new System.Drawing.Point(311, 323);
             this.LblImagen.Name = "LblImagen";
             this.LblImagen.Size = new System.Drawing.Size(52, 16);
             this.LblImagen.TabIndex = 58;
@@ -228,16 +190,16 @@
             // 
             // PicImagenProducto
             // 
-            this.PicImagenProducto.Location = new System.Drawing.Point(381, 370);
+            this.PicImagenProducto.Location = new System.Drawing.Point(381, 323);
             this.PicImagenProducto.Name = "PicImagenProducto";
-            this.PicImagenProducto.Size = new System.Drawing.Size(135, 95);
+            this.PicImagenProducto.Size = new System.Drawing.Size(196, 131);
             this.PicImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicImagenProducto.TabIndex = 59;
             this.PicImagenProducto.TabStop = false;
             // 
             // BtnCargarImagen
             // 
-            this.BtnCargarImagen.Location = new System.Drawing.Point(532, 369);
+            this.BtnCargarImagen.Location = new System.Drawing.Point(583, 323);
             this.BtnCargarImagen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnCargarImagen.Name = "BtnCargarImagen";
             this.BtnCargarImagen.Size = new System.Drawing.Size(110, 58);
@@ -251,7 +213,7 @@
             this.LblErrorPrecio.AutoSize = true;
             this.LblErrorPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorPrecio.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPrecio.Location = new System.Drawing.Point(699, 267);
+            this.LblErrorPrecio.Location = new System.Drawing.Point(699, 250);
             this.LblErrorPrecio.Name = "LblErrorPrecio";
             this.LblErrorPrecio.Size = new System.Drawing.Size(248, 16);
             this.LblErrorPrecio.TabIndex = 61;
@@ -263,7 +225,7 @@
             this.LblErrorCantidad.AutoSize = true;
             this.LblErrorCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorCantidad.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorCantidad.Location = new System.Drawing.Point(698, 301);
+            this.LblErrorCantidad.Location = new System.Drawing.Point(698, 284);
             this.LblErrorCantidad.Name = "LblErrorCantidad";
             this.LblErrorCantidad.Size = new System.Drawing.Size(182, 16);
             this.LblErrorCantidad.TabIndex = 62;
@@ -272,15 +234,12 @@
             // 
             // AgregarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.LblErrorCantidad);
             this.Controls.Add(this.LblErrorPrecio);
             this.Controls.Add(this.BtnCargarImagen);
             this.Controls.Add(this.PicImagenProducto);
             this.Controls.Add(this.LblImagen);
-            this.Controls.Add(this.Txt_Proveedor);
-            this.Controls.Add(this.LblProveedor);
             this.Controls.Add(this.Txt_Cantidad);
             this.Controls.Add(this.LblCantidad);
             this.Controls.Add(this.Txt_Precio);
@@ -288,13 +247,11 @@
             this.Controls.Add(this.Txt_Marca);
             this.Controls.Add(this.LblMarca);
             this.Controls.Add(this.LblInstruccion);
-            this.Controls.Add(this.Txt_Tipo);
             this.Controls.Add(this.Txt_Descripcion);
             this.Controls.Add(this.Txt_Nombre);
             this.Controls.Add(this.BtnRegistrarProducto);
             this.Controls.Add(this.LblNota);
             this.Controls.Add(this.LblNombre);
-            this.Controls.Add(this.LblTipo);
             this.Controls.Add(this.LblDescripcion);
             this.Controls.Add(this.LblTitulo);
             this.Name = "AgregarProducto";
@@ -306,14 +263,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox Txt_Tipo;
         private System.Windows.Forms.TextBox Txt_Descripcion;
         private System.Windows.Forms.TextBox Txt_Nombre;
         private System.Windows.Forms.Button BtnRegistrarProducto;
         private System.Windows.Forms.Label LblNota;
         private System.Windows.Forms.Label LblNombre;
-        private System.Windows.Forms.Label LblTipo;
         private System.Windows.Forms.Label LblDescripcion;
         private System.Windows.Forms.Label LblTitulo;
         private System.Windows.Forms.Label LblInstruccion;
@@ -323,8 +277,6 @@
         private System.Windows.Forms.Label LblPrecio;
         private System.Windows.Forms.TextBox Txt_Cantidad;
         private System.Windows.Forms.Label LblCantidad;
-        private System.Windows.Forms.TextBox Txt_Proveedor;
-        private System.Windows.Forms.Label LblProveedor;
         private System.Windows.Forms.Label LblImagen;
         private System.Windows.Forms.PictureBox PicImagenProducto;
         private System.Windows.Forms.Button BtnCargarImagen;
