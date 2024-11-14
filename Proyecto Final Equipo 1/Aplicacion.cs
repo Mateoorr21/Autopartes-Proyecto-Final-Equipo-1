@@ -18,11 +18,15 @@ namespace Proyecto_Final_Equipo_1
         private bool EsAdmin;
         private string tipoUsuario;
         private string nombreCompleto;
+
         Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
-        AgregarProducto agregarProducto; //Declaramos control de usuario tipo agergar producto
-        BuscarProducto buscarProducto; //Declaramos control de usuario tipo buscar producto
-        EliminarProducto eliminarProducto; //Declaramos control de usuario tipo agergar producto
-        InventarioProductos inventarioProductos; //Declaramos control de usuario tipo inventario
+
+        //Declaramos los diferentes tipos de controles de usuario que se utilizaran en la aplicacion
+        AgregarProducto agregarProducto; 
+        BuscarProducto buscarProducto; 
+        EliminarProducto eliminarProducto; 
+        InventarioProductos inventarioProductos; 
+        ModificarProducto modificarProducto;
 
         //Aplicacion recibe parametro de instancia Inicio
         public Aplicacion(bool EsAdmin, string tipoUsuario, string nombreCompleto, Inicio inicio) //Indicamos que el formulario recibe parámetros
@@ -39,6 +43,7 @@ namespace Proyecto_Final_Equipo_1
             buscarProducto = new BuscarProducto(Inicio_Recibido); 
             eliminarProducto = new EliminarProducto(Inicio_Recibido); 
             inventarioProductos = new InventarioProductos(Inicio_Recibido);
+            modificarProducto = new ModificarProducto(Inicio_Recibido);
         }
 
         private void Aplicacion_Load(object sender, EventArgs e)
@@ -88,6 +93,13 @@ namespace Proyecto_Final_Equipo_1
 
             //LLamamos a la función CargarProductos
             inventarioProductos.CargarProductos();
+        }
+
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            PanelAutoPartes.Controls.Clear();
+            PanelAutoPartes.Controls.Add(modificarProducto);
+            modificarProducto.Dock = DockStyle.Fill;
         }
     }
 }

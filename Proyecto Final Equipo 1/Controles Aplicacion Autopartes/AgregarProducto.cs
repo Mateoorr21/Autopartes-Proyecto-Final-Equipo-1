@@ -112,7 +112,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
                 string NombreImagen = IdGenerado.ToString() + ExtensionImagen; //Nuevo nombre de la imagen, con Id y extensión correcta
 
-                //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpte Imagenes y el nombre de la imagen
+                //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes y el nombre de la imagen
                 string RutaDestino = "..\\..\\..\\Imagenes\\" + NombreImagen;
 
                 // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
@@ -166,7 +166,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnRegistrarProducto_Click(object sender, EventArgs e)
         {
-            //Si algun campo esta vacío (exceptuando la descripción), o la ruta temporal es nula, mensaje de error
+            //Si algun campo esta vacío (exceptuando la descripción)  mensaje de error
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Marca.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Precio.Text) ||

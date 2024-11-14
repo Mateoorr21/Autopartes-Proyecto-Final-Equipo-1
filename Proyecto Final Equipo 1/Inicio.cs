@@ -51,8 +51,6 @@ namespace Proyecto_Final_Equipo_1
         private void BtnInicio_Click(object sender, EventArgs e)
         {
             InicioSesion inicioSesion = new InicioSesion(this); //Pasamos al siguiente formulario una instancia de Inicio
-            //inicioSesion.Width = 818;   // Ancho deseado
-            //inicioSesion.Height = 497;  // Alto deseado
             inicioSesion.ShowDialog();
         }
     }
