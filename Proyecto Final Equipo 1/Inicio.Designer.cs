@@ -36,7 +36,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(293, 47);
+            this.label1.Location = new System.Drawing.Point(298, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(449, 42);
             this.label1.TabIndex = 0;
@@ -45,7 +45,7 @@
             // BtnInicio
             // 
             this.BtnInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInicio.Location = new System.Drawing.Point(301, 118);
+            this.BtnInicio.Location = new System.Drawing.Point(306, 115);
             this.BtnInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnInicio.Name = "BtnInicio";
             this.BtnInicio.Size = new System.Drawing.Size(443, 78);
