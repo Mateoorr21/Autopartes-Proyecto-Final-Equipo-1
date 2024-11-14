@@ -124,7 +124,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
                         //Mostramos en un Message Box la información obtenida de la consulta de selección
                         MessageBox.Show("Datos del Producto Seleccionado:" +
-                            " \nId: " + LeerProducto["Id"].ToString() +
+                            " \n\nId: " + LeerProducto["Id"].ToString() +
                             " \nNombre: " + LeerProducto["Nombre"].ToString() +
                             " \nDescripcion: " + LeerProducto["Id"].ToString() +
                             " \nMarca: " + LeerProducto["Marca"].ToString() +

@@ -19,7 +19,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
     {
         Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
         int IdGenerado; //Variable glocal IdGenerado
-        float Precio;
+        float Precio; 
         int Cantidad;
         string RutaImagenTemporal; //Variable Global Ruta Temporal
         public AgregarProducto(Inicio inicio)
@@ -101,35 +101,37 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 }
             }
 
+            //Si se proporciono una imagen, copiamos esta imagen a la carpeta y actualizamos la base de datos
 
-            //Copiamos la imagen ingresada por el usuario a nuestra carpeta, con el nombre que deseamos 
-
-            //Obtenemos la extensión del archivo (si es .png o .jpg)
-            string ExtensionImagen = Path.GetExtension(RutaTemporal).ToLower();
-
-            string NombreImagen = IdGenerado.ToString() + ExtensionImagen; //Nuevo nombre de la imagen, con Id y extensión correcta
-
-            //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpte Imagenes y el nombre de la imagen
-            string RutaDestino = "..\\..\\..\\Imagenes\\" + NombreImagen;
-
-            // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
-            File.Copy(RutaTemporal, RutaDestino, true);
-
-            //MessageBox.Show("El id generado es " + IdGenerado);
-
-            //Actualizamos la base de datos con la ruta correcta de la imagen
-            using(OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion)) //Conexion
+            if(!string.IsNullOrEmpty(RutaTemporal))
             {
-                conexion.Open(); //Abrimos conexion
+                //Copiamos la imagen ingresada por el usuario a nuestra carpeta, con el nombre que deseamos 
 
-                string query = "UPDATE Productos SET Imagen = @Imagen WHERE Id = @Id "; //Sentencia de actualización
+                //Obtenemos la extensión del archivo (si es .png o .jpg)
+                string ExtensionImagen = Path.GetExtension(RutaTemporal).ToLower();
 
-                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
+                string NombreImagen = IdGenerado.ToString() + ExtensionImagen; //Nuevo nombre de la imagen, con Id y extensión correcta
+
+                //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpte Imagenes y el nombre de la imagen
+                string RutaDestino = "..\\..\\..\\Imagenes\\" + NombreImagen;
+
+                // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
+                File.Copy(RutaTemporal, RutaDestino, true);
+
+                //Actualizamos la base de datos con la ruta correcta de la imagen
+                using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion)) //Conexion
                 {
-                    comando.Parameters.AddWithValue("@Imagen", RutaDestino); //Parametro de Imagen es la RutaDestino
-                    comando.Parameters.AddWithValue("@Id", IdGenerado); //Parametro IdGenerado
+                    conexion.Open(); //Abrimos conexion
 
-                    comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
+                    string query = "UPDATE Productos SET Imagen = @Imagen WHERE Id = @Id "; //Sentencia de actualización
+
+                    using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
+                    {
+                        comando.Parameters.AddWithValue("@Imagen", RutaDestino); //Parametro de Imagen es la RutaDestino
+                        comando.Parameters.AddWithValue("@Id", IdGenerado); //Parametro IdGenerado
+
+                        comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
+                    }
                 }
             }
 
@@ -168,8 +170,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Marca.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Precio.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Cantidad.Text) ||
-                string.IsNullOrEmpty(RutaImagenTemporal))
+                string.IsNullOrWhiteSpace(Txt_Cantidad.Text))
             {
                 MessageBox.Show("Error. Ingrese la información del producto a ingresar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

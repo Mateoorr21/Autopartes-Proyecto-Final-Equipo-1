@@ -22,6 +22,7 @@ namespace Proyecto_Final_Equipo_1
         AgregarProducto agregarProducto; //Declaramos control de usuario tipo agergar producto
         BuscarProducto buscarProducto; //Declaramos control de usuario tipo buscar producto
         EliminarProducto eliminarProducto; //Declaramos control de usuario tipo agergar producto
+        InventarioProductos inventarioProductos; //Declaramos control de usuario tipo inventario
 
         //Aplicacion recibe parametro de instancia Inicio
         public Aplicacion(bool EsAdmin, string tipoUsuario, string nombreCompleto, Inicio inicio) //Indicamos que el formulario recibe parámetros
@@ -32,9 +33,12 @@ namespace Proyecto_Final_Equipo_1
             this.tipoUsuario = tipoUsuario; //Recibimos el permiso
             this.nombreCompleto = nombreCompleto; //Recibimos el nombre completo
             this.Inicio_Recibido = inicio; //a Inicio_Recibido le asignamos el parametro recibido
-            agregarProducto = new AgregarProducto(Inicio_Recibido); //El user control AgregarProducto recibe como parametro un Inicio
-            buscarProducto = new BuscarProducto(Inicio_Recibido); //El user control BuscarProducto recibe como parametro un Inicio
-            eliminarProducto = new EliminarProducto(Inicio_Recibido); //El user control EliminarProducto recibe como parametro un Inicio
+
+            //Todos los controles de usuario reciben como parametro un Inicio para tener acceso a cadconexion
+            agregarProducto = new AgregarProducto(Inicio_Recibido); 
+            buscarProducto = new BuscarProducto(Inicio_Recibido); 
+            eliminarProducto = new EliminarProducto(Inicio_Recibido); 
+            inventarioProductos = new InventarioProductos(Inicio_Recibido);
         }
 
         private void Aplicacion_Load(object sender, EventArgs e)
@@ -74,6 +78,16 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(eliminarProducto);
             eliminarProducto.Dock = DockStyle.Fill;
+        }
+
+        private void BtnInventario_Click(object sender, EventArgs e)
+        {
+            PanelAutoPartes.Controls.Clear();
+            PanelAutoPartes.Controls.Add(inventarioProductos);
+            inventarioProductos.Dock = DockStyle.Fill;
+
+            //LLamamos a la función CargarProductos
+            inventarioProductos.CargarProductos();
         }
     }
 }

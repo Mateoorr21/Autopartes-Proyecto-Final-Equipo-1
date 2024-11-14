@@ -171,6 +171,7 @@
             this.BtnInventario.TabIndex = 7;
             this.BtnInventario.Text = "Inventario";
             this.BtnInventario.UseVisualStyleBackColor = true;
+            this.BtnInventario.Click += new System.EventHandler(this.BtnInventario_Click);
             // 
             // BtnVender
             // 

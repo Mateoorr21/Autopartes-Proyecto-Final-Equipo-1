@@ -182,11 +182,11 @@
             // LblImagen
             // 
             this.LblImagen.AutoSize = true;
-            this.LblImagen.Location = new System.Drawing.Point(311, 323);
+            this.LblImagen.Location = new System.Drawing.Point(258, 323);
             this.LblImagen.Name = "LblImagen";
-            this.LblImagen.Size = new System.Drawing.Size(52, 16);
+            this.LblImagen.Size = new System.Drawing.Size(117, 16);
             this.LblImagen.TabIndex = 58;
-            this.LblImagen.Text = "Imagen";
+            this.LblImagen.Text = "Imagen (Opcional)";
             // 
             // PicImagenProducto
             // 
