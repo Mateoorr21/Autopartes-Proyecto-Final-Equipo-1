@@ -154,8 +154,8 @@ namespace Proyecto_Final_Equipo_1
                 {
                     conexion.Open(); //Abrimos conexion
 
-                    //Obtenemos la ruta que se va agregar a la base de datos
-                    string RutaAgregar = "..\\Imagenes\\" + IdGenerado.ToString() + ".jpg";
+                    //Obtenemos la ruta que se va agregar a la base de datos (Añadimos # para que el hipervinculo en la BDDS funcione)
+                    string RutaAgregar = "#..\\Imagenes\\" + IdGenerado.ToString() + ".jpg#";
 
                     string query = "UPDATE Productos SET Imagen = @Imagen WHERE Id = @Id "; //Sentencia de actualización
 
@@ -242,7 +242,7 @@ namespace Proyecto_Final_Equipo_1
                             Producto.SubItems.Add(LeerProductos["Marca"].ToString());
                             Producto.SubItems.Add(LeerProductos["Precio"].ToString());
                             Producto.SubItems.Add(LeerProductos["Cantidad_en_Stock"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Imagen"].ToString());
+                            Producto.SubItems.Add(LeerProductos["Imagen"].ToString().Trim('#')); //Siempre cargamos a ListView eliminando los #
 
                             //Cargamos  el registro al ListView
                             LvProductos.Items.Add(Producto);

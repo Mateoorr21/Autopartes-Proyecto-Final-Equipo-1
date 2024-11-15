@@ -20,6 +20,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         int Cantidad;
         int IdSeleccionado;
         string RutaImagenTemporal;
+        bool SeModificoImagen;
         public ModificarProducto(Inicio inicio) 
         {
             InitializeComponent();
@@ -159,8 +160,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                     comando.Parameters.AddWithValue("@Marca", Marca);
                     comando.Parameters.AddWithValue("@Precio", Precio);
                     comando.Parameters.AddWithValue("@Cantidad", Cantidad);
-                    comando.Parameters.AddWithValue("@Ruta", string.Empty);
-                    comando.Parameters.AddWithValue("@Id", Id); //Insertamos una ruta vacía que se modificará si se ingreso una imagen
+
+                    //Si no se modifico la imagen, insertamos la ruta obtenido del ListView
+                    if(SeModificoImagen == false) comando.Parameters.AddWithValue("@Ruta", RutaImagenTemporal);
+                    else comando.Parameters.AddWithValue("@Ruta", string.Empty); //De lo contrario lo vaciamos
+
+                    comando.Parameters.AddWithValue("@Id", Id); 
 
                     comando.ExecuteNonQuery(); //Ejecutamos consulta
                 }
@@ -173,61 +178,50 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 PicImagenProducto.Image = null;
             }
 
-            //ELIMINAMOS LA IMAGEN CON ESE ID
-            //Obtenemos la posible ruta de la imagen existente con el mismo ID
-            string RutaImagenExistenteJpg = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
+            //La ruta a poner en el ListView es la misma que ya se tenía
+            string RutaAgregar = LvProductos.SelectedItems[0].SubItems[6].Text;
 
-            // EN REVISION TODAVIA ERRONEO
-            if (!string.IsNullOrEmpty(RutaImagenTemporal) && File.Exists(RutaImagenExistenteJpg))
+            //Solo si se modifico la imagen, borramos la existente, copiamos la nueva y actualizamos la base de datos
+            if (SeModificoImagen)
             {
-                File.Delete(RutaImagenExistenteJpg); // Eliminamos la imagen existente
-            }
+                //ELIMINAMOS LA IMAGEN CON ESE ID 
+                //Obtenemos la posible ruta de la imagen existente con el mismo ID
+                string RutaImagenExistenteJpg = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
 
-            //Borramos la imagen existente si se encuentra en la carpeta
-            if (File.Exists(RutaImagenExistenteJpg)) File.Delete(RutaImagenExistenteJpg); // Eliminamos la imagen existente .jpg
+                //Borramos la imagen existente si se encuentra en la carpeta
+                if (File.Exists(RutaImagenExistenteJpg)) File.Delete(RutaImagenExistenteJpg); // Eliminamos la imagen existente .jpg
 
-            string RutaAgregar = null; //Declaramos la ruta que se pondra en el ListView y la base de datos (Por el Momento Nula)
-            string RutaDestino = null; //Declaramos la ruta que se va usar para copiar la imagen a la carpeta
-            
-            //SI SE PROPORCIONO
-                //Insertamos la iamgen en carpeta, cambiamos RutaAgregar y actualizamos la base de datos
+                RutaAgregar = null; //Ruta que se pondra en el ListView y la base de datos (Por el Momento Nula)
+                string RutaDestino = null; //Declaramos la ruta que se va usar para copiar la imagen a la carpeta
 
-            //FALTA UN POCO, ERROR SI SE MANTIENE LA MISMA IAMGEN Y NO SE SELECCIONA NADA
-
-            if (!string.IsNullOrEmpty(RutaImagenTemporal))
-            {
-                //Obtenemos la extensión del archivo (si es .png o .jpg)
-                string ExtensionImagen = Path.GetExtension(RutaImagenTemporal).ToLower(); 
-
-                //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes y el nombre de la imagen
-                RutaDestino = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
-
-                // Pasamos el reemplazo a la ruta destino 
-                File.Copy(RutaImagenTemporal, RutaDestino, true);
-
-                //Obtenemos la ruta que se pondra en la base de datos
-                RutaAgregar = "..\\Imagenes\\" + Id.ToString() + ExtensionImagen;
-
-                //Actualizamos la base de datos con la ruta de la imagen del archivo de base de datos a la carpeta imagenes
-                using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion)) //Conexion
+                //Si se selecciono una imagen insertamos la imagen en carpeta, cambiamos RutaAgregar y actualizamos la base de datos
+                if (!string.IsNullOrEmpty(RutaImagenTemporal))
                 {
-                    conexion.Open(); //Abrimos conexion
+                    //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes y el nombre de la imagen
+                    RutaDestino = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
 
-                    string query = "UPDATE Productos SET Imagen = @Imagen WHERE Id = @Id "; //Sentencia de actualización
+                    // Pasamos el reemplazo a la ruta destino 
+                    File.Copy(RutaImagenTemporal, RutaDestino, true);
 
-                    using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
+                    //Obtenemos la ruta que se pondra en el ListView y la BDDS
+                    RutaAgregar = "..\\Imagenes\\" + Id.ToString() + ".jpg";
+
+                    //Actualizamos la base de datos con la ruta de la imagen del archivo de base de datos a la carpeta imagenes
+                    using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion)) //Conexion
                     {
-                        comando.Parameters.AddWithValue("@Imagen", RutaAgregar); //Parametro de Imagen es la RutaAgregar
-                        comando.Parameters.AddWithValue("@Id", Id); //Parametro IdGenerado
+                        conexion.Open(); //Abrimos conexion
 
-                        comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
+                        string query = "UPDATE Productos SET Imagen = @Imagen WHERE Id = @Id "; //Sentencia de actualización
+
+                        using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
+                        {
+                            comando.Parameters.AddWithValue("@Imagen", "#" + RutaAgregar + "#"); //Parametro de Imagen es la RutaAgregar mas los # para el hipervinculo
+                            comando.Parameters.AddWithValue("@Id", Id); //Parametro IdGenerado
+
+                            comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
+                        }
                     }
                 }
-            }
-
-            else
-            {
-
             }
 
             //Actualizamos el registro seleccionado
@@ -254,6 +248,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void BtnCargarImagen_Click(object sender, EventArgs e)
         {
             Inicio_Recibido.CargarImagen(PicImagenProducto, ref RutaImagenTemporal); //LLamamos a la función Cargar Imagen
+            SeModificoImagen = true; //Cambiamos el centinela a True para indicar que hubo un cambio y que se puede borrar la imagen
         }
 
         private void BtnActualizar_Click(object sender, EventArgs e)
