@@ -70,84 +70,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
-        //Misma función para encontrar productos que en Buscar
-        void EncontrarProductos(string buscar)
-        {
-            //Si la caja de texto esta vacía un mensaje de Error
-            if (string.IsNullOrWhiteSpace(TxtBuscar.Text))
-            {
-                MessageBox.Show("Error. Ingrese información a buscar", "ERROR. CAMPO DE BUSQUEDA VACÍO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //using para establecer conexion con la base de datos
-            using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion))
-            {
-                conexion.Open(); //Abrimos conexion
-                string query;
-                ListViewItem Producto;
-
-                //Consulta SQL si la casilla Aproximada esta seleccionada
-                if (RdAproximada.Checked)
-                {
-                    if (RdNombre.Checked) query = "SELECT * FROM Productos WHERE Nombre LIKE @PorBuscar";
-                    else query = "SELECT * FROM Productos WHERE Id LIKE @PorBuscar";
-                }
-
-                //Consulta SQL si la casilla Exacta esta seleccionada
-                else
-                {
-                    if (RdNombre.Checked) query = "SELECT * FROM Prodcutos WHERE Nombre = @PorBuscar";
-                    else query = "SELECT * FROM Productos WHERE Id = @PorBuscar";
-                }
-
-                //Using para liberar objeto cuando ya no se use
-                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //pasamos consulta y conexion
-                {
-                    //Si la casilla aproximada esta seleccionada el parametro de busqueda usa %
-                    if (RdAproximada.Checked) comando.Parameters.AddWithValue("@PorBuscar", "%" + buscar + "%");
-                    else comando.Parameters.AddWithValue("@PorBuscar", buscar); //De lo contrario no
-
-                    OleDbDataReader LeerProductos = comando.ExecuteReader(); //Objeto de lectura
-
-                    ContarProductos = 0; //Variable para contar los registros
-
-                    if (LeerProductos.HasRows) //Si se obtuvieron registros de la busqueda
-                    {
-                        LvProductos.Items.Clear(); //Limpiamos el contenido del ListView
-
-                        while (LeerProductos.Read()) //Para cada registro obtenido
-                        {
-                            //Aumentamos el contador de registros
-                            ContarProductos++;
-
-                            //Ingresamos a las columnas del ListView los valores de la base de datos 
-                            Producto = new ListViewItem(LeerProductos["Id"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Nombre"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Descripcion"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Marca"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Precio"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Cantidad_en_Stock"].ToString());
-
-                            //Cargamos  el registro al ListView
-                            LvProductos.Items.Add(Producto);
-
-                            //Actualizamos la etiqueta que cuenta los registros
-                            LblCantidadRegistros.Text = "Productos Encontrados: " + ContarProductos.ToString();
-                        }
-                    }
-
-                    else //Si no se obtuvieron registros, indicarlo con un MessageBox
-                    {
-                        MessageBox.Show("No se encontraron Productos", "NO SE ENCONTRARON PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-        }
-
         private void EliminarProducto_Load(object sender, EventArgs e)
         {
             IdSeleccionado = 0;
@@ -162,56 +84,30 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.Columns.Add("Marca", 150);
             LvProductos.Columns.Add("Precio", 100);
             LvProductos.Columns.Add("Cantidad en Stock", 120);
+            LvProductos.Columns.Add("Imagen", 0);
         }
 
         private void BtnBuscar_Click_1(object sender, EventArgs e)
         {
-            //Llamamos a la función EncontrarProductos y limpiamos la caja Buscar
-            EncontrarProductos(TxtBuscar.Text);
+            //Llamamos a la función EncontrarProductos de Inicio y limpiamos la caja Buscar
+            Inicio_Recibido.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros);
             TxtBuscar.Clear();
         }
 
         /*  Idéntico que en User Control de BuscarProducto  */
         private void RdNombre_CheckedChanged(object sender, EventArgs e)
         {
-            //Si se selecciona RdNombre cambiar texto de las etiquetas
-            if (RdNombre.Checked)
-            {
-                LblCampoBuscar.Text = "Nombre";
-                LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "";
-            }
+            Inicio_Recibido.SeleccionoNombre(RdNombre, LblCampoBuscar, LblErrorBuscar); //LLamamos a la Función SeleccionoNombre
         }
 
         private void RdId_CheckedChanged(object sender, EventArgs e)
         {
-            //Si se selecciona RdId cambiar texto de las etiquetas
-            if (RdId.Checked)
-            {
-                //Reemplazar todos los que no sean letras (^ niega el patrón)
-                TxtBuscar.Text = Regex.Replace(TxtBuscar.Text, @"[^0-9]", "");
-                LblCampoBuscar.Text = "Id";
-                LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "Solo admite numeros";
-            }
+            Inicio_Recibido.SeleccionoId(RdId, TxtBuscar, LblCampoBuscar, LblErrorBuscar); //Llamamos a la Funcion SeleccionoId
         }
 
         private void TxtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (RdId.Checked) //Si esta seleccionado el RadioButton de Id hay restricciones
-            {
-                //Validar que solo es ingresen numeros o backspace
-                if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-                {
-                    LblErrorBuscar.Visible = true;
-                    e.Handled = true;
-                }
-
-                else //Si no hay errores, ocultar la etiqueta de error
-                {
-                    LblErrorBuscar.Visible = false;
-                }
-            }
+            Inicio_Recibido.ValidarEntradaTxtBuscar(e, RdId, LblErrorBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
         }
 
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)

@@ -24,11 +24,11 @@ namespace Proyecto_Final_Equipo_1
 
         void IngresoUsuario(string Username, string Password)
         {
-            OleDbConnection inicio1 = new OleDbConnection(Inicio_Recibido.cadconexion);
+            OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion);
 
-            inicio1.Open(); //Abrimos la conexion
+            conexion.Open(); //Abrimos la conexion
             string consulta = "SELECT Nombre_Completo, Tipo FROM Usuarios_Operativos WHERE Usuario = @usuario AND Password = @password"; //Consulta
-            OleDbCommand comando = new OleDbCommand(consulta, inicio1);
+            OleDbCommand comando = new OleDbCommand(consulta, conexion);
             comando.Parameters.AddWithValue("@usuario", Username); //Parametro de busqueda Username
             comando.Parameters.AddWithValue("@password", Password); //Parametro de bsuqueda Password
             OleDbDataReader lector = comando.ExecuteReader(); //Ejecutar lectura
@@ -62,9 +62,9 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            if (inicio1.State == ConnectionState.Open) //Si la conexion esta abierta la cerramos
+            if (conexion.State == ConnectionState.Open) //Si la conexion esta abierta la cerramos
             {
-                inicio1.Close();
+                conexion.Close();
             }
         }
 

@@ -47,6 +47,7 @@
             this.BtnCargarImagen = new System.Windows.Forms.Button();
             this.LblErrorPrecio = new System.Windows.Forms.Label();
             this.LblErrorCantidad = new System.Windows.Forms.Label();
+            this.BtnDeseleccionarImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -232,9 +233,21 @@
             this.LblErrorCantidad.Text = "Solo admite números enteros\r\n";
             this.LblErrorCantidad.Visible = false;
             // 
+            // BtnDeseleccionarImagen
+            // 
+            this.BtnDeseleccionarImagen.Location = new System.Drawing.Point(583, 385);
+            this.BtnDeseleccionarImagen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnDeseleccionarImagen.Name = "BtnDeseleccionarImagen";
+            this.BtnDeseleccionarImagen.Size = new System.Drawing.Size(110, 69);
+            this.BtnDeseleccionarImagen.TabIndex = 64;
+            this.BtnDeseleccionarImagen.Text = "Deseleccionar Imagen";
+            this.BtnDeseleccionarImagen.UseVisualStyleBackColor = true;
+            this.BtnDeseleccionarImagen.Click += new System.EventHandler(this.BtnDeseleccionarImagen_Click);
+            // 
             // AgregarProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.BtnDeseleccionarImagen);
             this.Controls.Add(this.LblErrorCantidad);
             this.Controls.Add(this.LblErrorPrecio);
             this.Controls.Add(this.BtnCargarImagen);
@@ -282,5 +295,6 @@
         private System.Windows.Forms.Button BtnCargarImagen;
         private System.Windows.Forms.Label LblErrorPrecio;
         private System.Windows.Forms.Label LblErrorCantidad;
+        private System.Windows.Forms.Button BtnDeseleccionarImagen;
     }
 }

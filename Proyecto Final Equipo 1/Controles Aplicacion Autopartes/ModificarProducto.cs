@@ -26,79 +26,24 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Inicio_Recibido = inicio; //Asignamos a Recibido el que se pasa como parametro
         }
 
-        void EncontrarProductos(string buscar)
+        public void LiberarPictureBox() //llamamos a la funcion LiberarPictureBox del Inicio
         {
-            //Si la caja de texto esta vacía un mensaje de Error
-            if (string.IsNullOrWhiteSpace(TxtBuscar.Text))
+            Inicio_Recibido.LiberarPictureBox(PicImagenProducto);
+        }
+        public bool EstaEnUso(string archivo)
+        {
+            try
             {
-                MessageBox.Show("Error. Ingrese información a buscar", "ERROR. CAMPO DE BUSQUEDA VACÍO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                using (FileStream fs = new FileStream(archivo, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
+                {
+                    // Si no lanza una excepción, el archivo no está en uso
+                    return false;
+                }
             }
-
-            //using para establecer conexion con la base de datos
-            using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion))
+            catch (IOException)
             {
-                conexion.Open(); //Abrimos conexion
-                string query;
-                ListViewItem Producto;
-
-                //Consulta SQL si la casilla Aproximada esta seleccionada
-                if (RdAproximada.Checked)
-                {
-                    if (RdNombre.Checked) query = "SELECT * FROM Productos WHERE Nombre LIKE @PorBuscar";
-                    else query = "SELECT * FROM Productos WHERE Id LIKE @PorBuscar";
-                }
-
-                //Consulta SQL si la casilla Exacta esta seleccionada
-                else
-                {
-                    if (RdNombre.Checked) query = "SELECT * FROM Prodcutos WHERE Nombre = @PorBuscar";
-                    else query = "SELECT * FROM Productos WHERE Id = @PorBuscar";
-                }
-
-                //Using para liberar objeto cuando ya no se use
-                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //pasamos consulta y conexion
-                {
-                    //Si la casilla aproximada esta seleccionada el parametro de busqueda usa %
-                    if (RdAproximada.Checked) comando.Parameters.AddWithValue("@PorBuscar", "%" + buscar + "%");
-                    else comando.Parameters.AddWithValue("@PorBuscar", buscar); //De lo contrario no
-
-                    OleDbDataReader LeerProductos = comando.ExecuteReader(); //Objeto de lectura
-
-                    int ContarProductos = 0; //Variable para contar los registros
-
-                    if (LeerProductos.HasRows) //Si se obtuvieron registros de la busqueda
-                    {
-                        LvProductos.Items.Clear(); //Limpiamos el contenido del ListView
-
-                        while (LeerProductos.Read()) //Para cada registro obtenido
-                        {
-                            //Aumentamos el contador de registros
-                            ContarProductos++;
-
-                            //Ingresamos a las columnas del ListView los valores de la base de datos 
-                            Producto = new ListViewItem(LeerProductos["Id"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Nombre"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Descripcion"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Marca"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Precio"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Cantidad_en_Stock"].ToString());
-                            Producto.SubItems.Add(LeerProductos["Imagen"].ToString()); //Cargamos en ListView. El ancho de esa columna es 0
-
-                            //Cargamos  el registro al ListView
-                            LvProductos.Items.Add(Producto);
-
-                            //Actualizamos la etiqueta que cuenta los registros
-                            LblCantidadRegistros.Text = "Productos Encontrados: " + ContarProductos.ToString();
-                        }
-                    }
-
-                    else //Si no se obtuvieron registros, indicarlo con un MessageBox
-                    {
-                        MessageBox.Show("No se encontraron Productos", "NO SE ENCONTRARON PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
+                // Si ocurre una excepción, significa que el archivo está en uso
+                return true;
             }
         }
 
@@ -121,51 +66,24 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            //Llamamos a la función EncontrarProductos y limpiamos la caja Buscar
-            EncontrarProductos(TxtBuscar.Text);
+            //Llamamos a la función EncontrarProductos de Inicio y limpiamos la caja Buscar
+            Inicio_Recibido.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros);
             TxtBuscar.Clear();
         }
 
         private void RdId_CheckedChanged(object sender, EventArgs e)
         {
-            //Si se selecciona RdId cambiar texto de las etiquetas
-            if (RdId.Checked)
-            {
-                //Reemplazar todos los que no sean letras (^ niega el patrón)
-                TxtBuscar.Text = Regex.Replace(TxtBuscar.Text, @"[^0-9]", "");
-                LblCampoBuscar.Text = "Id";
-                LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "Solo admite numeros";
-            }
+            Inicio_Recibido.SeleccionoId(RdId, TxtBuscar, LblCampoBuscar, LblErrorBuscar); //Llamamos a la Funcion SeleccionoId
         }
 
         private void RdNombre_CheckedChanged(object sender, EventArgs e)
         {
-            //Si se selecciona RdNombre cambiar texto de las etiquetas
-            if (RdNombre.Checked)
-            {
-                LblCampoBuscar.Text = "Nombre";
-                LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "";
-            }
+            Inicio_Recibido.SeleccionoNombre(RdNombre, LblCampoBuscar, LblErrorBuscar); //LLamamos a la Función SeleccionoNombre
         }
 
         private void TxtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (RdId.Checked) //Si esta seleccionado el RadioButton de Id hay restricciones
-            {
-                //Validar que solo es ingresen numeros o backspace
-                if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-                {
-                    LblErrorBuscar.Visible = true;
-                    e.Handled = true;
-                }
-
-                else //Si no hay errores, ocultar la etiqueta de error
-                {
-                    LblErrorBuscar.Visible = false;
-                }
-            }
+            Inicio_Recibido.ValidarEntradaTxtBuscar(e, RdId, LblErrorBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
         }
 
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)
@@ -173,7 +91,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //Si se selecciona un registro
             if (LvProductos.SelectedItems.Count > 0)
             {
-
                 ListViewItem ItemSeleccionado = LvProductos.SelectedItems[0]; //Obtenemos registro seleccionado
 
                 //Obtenemos el Valor del Id del Registro Seleccionado
@@ -186,14 +103,22 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 Txt_Precio.Text = ItemSeleccionado.SubItems[4].Text;
                 Txt_Cantidad.Text = ItemSeleccionado.SubItems[5].Text;
 
-                //Obtenemos la ruta de la imagen
-                RutaImagenTemporal = ItemSeleccionado.SubItems[6].Text;
+                //Obtenemos la ruta guardada en el ListView y quitamos los caracteres #
+                RutaImagenTemporal = ItemSeleccionado.SubItems[6].Text.Trim('#');
 
-                // Si la ruta no esta vacía y el archivo existe cargamos la imagen
-                if (!string.IsNullOrEmpty(RutaImagenTemporal) && System.IO.File.Exists(RutaImagenTemporal)) PicImagenProducto.Image = Image.FromFile(RutaImagenTemporal);
+                // Si la ruta no esta vacía creamos la nueva ruta
+                if (!string.IsNullOrEmpty(RutaImagenTemporal))
+                {
+                    string RutaImagenAbrir = "..\\..\\" + RutaImagenTemporal; //Creamos la nueva ruta (saliendo varias carpetas mas)
+
+                    if (System.IO.File.Exists(RutaImagenAbrir)) //Si el archivo de imagen existe se carga la Imagen en el PictureBox
+                    {
+                        PicImagenProducto.Image = Image.FromFile(RutaImagenAbrir);
+                    }
+                }
 
                 // Si la ruta está vacía o no existe no se muestra nada
-                else  PicImagenProducto.Image = null; 
+                else PicImagenProducto.Image = null; 
             }
         }
 
@@ -210,9 +135,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //Si alguno de los campos a actualizar esta vacío mensaje de Error
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Descripcion.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Marca.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Precio.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Cantidad.Text))
+                string.IsNullOrWhiteSpace(Txt_Marca.Text))
             {
                 MessageBox.Show("Error. Ingrese información a modificar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -225,7 +148,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 conexion.Open(); //Abrimos conexion
 
                 //Consulta SQL para actualizar los campos de un registro
-                string query = "UPDATE Productos SET Nombre = @Nombre, Decripcion = @Descripcion, " +
+                string query = "UPDATE Productos SET Nombre = @Nombre, Descripcion = @Descripcion, " +
                                 "Marca = @Marca, Precio = @Precio, Cantidad_en_Stock = @Cantidad, Imagen = @Ruta WHERE Id = @Id";
 
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //using para liberar objeto cuando se termine de usar
@@ -243,35 +166,49 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 }
             }
 
-            //Declaramos a RutaDesttno (que se colocara en el ListView)
-            string RutaDestino = null;
+            // Liberamos la imagen del PictureBox
+            if (PicImagenProducto.Image != null)
+            {
+                PicImagenProducto.Image.Dispose();
+                PicImagenProducto.Image = null;
+            }
 
-            //Si se proporciono una imagen, reeemplazar esta imagen por la que esta en la carpeta y actualizamos la base de datos
+            //ELIMINAMOS LA IMAGEN CON ESE ID
+            //Obtenemos la posible ruta de la imagen existente con el mismo ID
+            string RutaImagenExistenteJpg = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
+
+            // EN REVISION TODAVIA ERRONEO
+            if (!string.IsNullOrEmpty(RutaImagenTemporal) && File.Exists(RutaImagenExistenteJpg))
+            {
+                File.Delete(RutaImagenExistenteJpg); // Eliminamos la imagen existente
+            }
+
+            //Borramos la imagen existente si se encuentra en la carpeta
+            if (File.Exists(RutaImagenExistenteJpg)) File.Delete(RutaImagenExistenteJpg); // Eliminamos la imagen existente .jpg
+
+            string RutaAgregar = null; //Declaramos la ruta que se pondra en el ListView y la base de datos (Por el Momento Nula)
+            string RutaDestino = null; //Declaramos la ruta que se va usar para copiar la imagen a la carpeta
+            
+            //SI SE PROPORCIONO
+                //Insertamos la iamgen en carpeta, cambiamos RutaAgregar y actualizamos la base de datos
+
+            //FALTA UN POCO, ERROR SI SE MANTIENE LA MISMA IAMGEN Y NO SE SELECCIONA NADA
 
             if (!string.IsNullOrEmpty(RutaImagenTemporal))
             {
-                //Reemplazamos la imagen ingresada por el usuario por la que esta en nuestra carpeta que lleva el mismo nombre
-
                 //Obtenemos la extensión del archivo (si es .png o .jpg)
-                string ExtensionImagen = Path.GetExtension(RutaImagenTemporal).ToLower();
-
-                string NombreImagen = Id.ToString() + ExtensionImagen; //Nombre que tendrá la imagen, con Id y extensión correcta
+                string ExtensionImagen = Path.GetExtension(RutaImagenTemporal).ToLower(); 
 
                 //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes y el nombre de la imagen
-                RutaDestino = "..\\..\\..\\Imagenes\\" + NombreImagen;
-
-                //Obtenemos las dos posibles rutas de la imagen existente con el mismo ID
-                string RutaImagenExistentePng = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".png";
-                string RutaImagenExistenteJpg = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
-
-                //Borramos las imagenes existentes si se encuentran en la carpeta
-                if (File.Exists(RutaImagenExistentePng)) File.Delete(RutaImagenExistentePng); // Eliminamos la imagen existente .png
-                if (File.Exists(RutaImagenExistenteJpg)) File.Delete(RutaImagenExistenteJpg); // Eliminamos la imagen existente .jpg
+                RutaDestino = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
 
                 // Pasamos el reemplazo a la ruta destino 
                 File.Copy(RutaImagenTemporal, RutaDestino, true);
 
-                //Actualizamos la base de datos con la ruta correcta de la imagen
+                //Obtenemos la ruta que se pondra en la base de datos
+                RutaAgregar = "..\\Imagenes\\" + Id.ToString() + ExtensionImagen;
+
+                //Actualizamos la base de datos con la ruta de la imagen del archivo de base de datos a la carpeta imagenes
                 using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion)) //Conexion
                 {
                     conexion.Open(); //Abrimos conexion
@@ -280,12 +217,17 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
                     using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
                     {
-                        comando.Parameters.AddWithValue("@Imagen", RutaDestino); //Parametro de Imagen es la RutaDestino
+                        comando.Parameters.AddWithValue("@Imagen", RutaAgregar); //Parametro de Imagen es la RutaAgregar
                         comando.Parameters.AddWithValue("@Id", Id); //Parametro IdGenerado
 
                         comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
                     }
                 }
+            }
+
+            else
+            {
+
             }
 
             //Actualizamos el registro seleccionado
@@ -295,7 +237,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Modificado.SubItems[3].Text = Marca;
             Modificado.SubItems[4].Text = Precio.ToString();
             Modificado.SubItems[5].Text = Cantidad.ToString();
-            Modificado.SubItems[6].Text = RutaDestino;
+            Modificado.SubItems[6].Text = RutaAgregar;
 
             //Limpiamos los controles de Actualización de Datos (Cajas de Texto y PictureBox)
             Txt_Nombre.Clear();
@@ -303,7 +245,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Txt_Marca.Clear();
             Txt_Precio.Clear();
             Txt_Cantidad.Clear();
-            PicImagenProducto.Image = null;
 
             //Mensaje de Actualización de datos exitosa
             MessageBox.Show("Datos del Producto actualizados correctamente.", "ACTUALIZACION DE DATOS DE PRODUCTO",
@@ -312,27 +253,40 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnCargarImagen_Click(object sender, EventArgs e)
         {
-            //Instancia de OpenFileDialog que permite al usuario seleccionar un archivo
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.Filter = "Archivos de imagen|*.jpg;*.png"; //Filtro para los tipos de archivo
-
-            //Abrimos openFileDialog, si el usuario selecciona Abrir el archivo se selecciono correctamente
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                PicImagenProducto.ImageLocation = openFileDialog.FileName; //La imagen seleccionada se muestra en el picture box
-
-                RutaImagenTemporal = openFileDialog.FileName; // Almacena la ruta seleccionada para despues modificarla
-            }
+            Inicio_Recibido.CargarImagen(PicImagenProducto, ref RutaImagenTemporal); //LLamamos a la función Cargar Imagen
         }
 
         private void BtnActualizar_Click(object sender, EventArgs e)
         {
+            //Si alguno de los campos a actualizar esta vacío mensaje de Error (excepto imagen y descripcion)
+            if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Descripcion.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Marca.Text) || 
+                string.IsNullOrWhiteSpace(Txt_Precio.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Cantidad.Text))
+            {
+                MessageBox.Show("Error. Ingrese información a modificar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             //Convertimos el valor de las cajas en tipo float y entero
             Precio = float.Parse(Txt_Precio.Text);
             Cantidad = int.Parse(Txt_Cantidad.Text);
 
+            // Liberamos la imagen del PictureBox
+            if (PicImagenProducto.Image != null)
+            {
+                PicImagenProducto.Image.Dispose();
+                PicImagenProducto.Image = null;
+            }
+
             ActualizarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, Precio, Cantidad, RutaImagenTemporal, IdSeleccionado);
+        }
+
+        private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)
+        {
+            Inicio_Recibido.DeseleccionarImagen(PicImagenProducto, ref RutaImagenTemporal); //Llamamos a la función Deseleccionar Imagen
         }
     }
 

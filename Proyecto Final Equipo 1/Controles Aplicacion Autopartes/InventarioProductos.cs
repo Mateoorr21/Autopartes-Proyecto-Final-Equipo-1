@@ -24,6 +24,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         public void CargarProductos()
         {
+            Inicio_Recibido.CargarProductos(LvProductos, LblCantidadRegistros);
+        }
+        /*
+        public void CargarProductos()
+        {
             ContarProductos = 0; //Reseteamos el contador de productos
 
             LvProductos.Items.Clear(); //Limpiamos el contenido del ListView
@@ -60,7 +65,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                     }
                 }
             }
-        }
+        }*/
         private void InventarioProductos_Load(object sender, EventArgs e)
         {
             //Declaramos el ListView, sus propiedades y columnas

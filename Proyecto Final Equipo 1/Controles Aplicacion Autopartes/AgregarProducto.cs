@@ -28,6 +28,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Inicio_Recibido = inicio; //Asignamos a Recibido el que se pasa como parametro
         }
 
+        public void LiberarPictureBox() //llamamos a la funcion LiberarPictureBox del Inicio
+        {
+            Inicio_Recibido.LiberarPictureBox(PicImagenProducto);
+        }
+
         private void Txt_Precio_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Validar que solo es ingresen numeros, backspace o punto decimal
@@ -68,105 +73,14 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             }
         }
 
-        void RegistrarProducto(string Nombre, string Descripcion, string Marca, float Precio, int Cantidad, string RutaTemporal)
-        {
-            //Establecemos el obejto OledbConnection para conectar con la base de datos
-            using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion))
-            {
-                conexion.Open(); //Abrimos conexion
-
-                //Primer comando SQL para insertar el registro
-                string query = "INSERT INTO Productos (Nombre, Descripcion, Marca, Precio, Cantidad_en_Stock, Imagen) " +
-                   "VALUES (@Nombre, @Descripcion, @Marca, @Precio, @CantidadEnStock, @Imagen)";
-
-                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
-                {
-                    //Parametros de consulta, los valores que se van a insertar a la base de datos
-                    comando.Parameters.AddWithValue("@Nombre", Nombre);
-                    comando.Parameters.AddWithValue("@Descripcion", Descripcion);
-                    comando.Parameters.AddWithValue("@Marca", Marca);
-                    comando.Parameters.AddWithValue("@Precio", Precio);
-                    comando.Parameters.AddWithValue("@CantidadEnStock", Cantidad);
-                    comando.Parameters.AddWithValue("@Imagen", string.Empty); //Por el momento una cadena vacía en el apartado imagen
-
-                    comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
-                }
-
-                //Segundo comando SQL para obtener el último Id Generado
-                string queryID = "SELECT LAST(Id) FROM Productos";
-
-                using (OleDbCommand comando = new OleDbCommand(queryID, conexion))
-                {
-                    IdGenerado = (int)comando.ExecuteScalar(); //Ejecutamos comando y obtenemos el último Id generado
-                }
-            }
-
-            //Si se proporciono una imagen, copiamos esta imagen a la carpeta y actualizamos la base de datos
-
-            if(!string.IsNullOrEmpty(RutaTemporal))
-            {
-                //Copiamos la imagen ingresada por el usuario a nuestra carpeta, con el nombre que deseamos 
-
-                //Obtenemos la extensión del archivo (si es .png o .jpg)
-                string ExtensionImagen = Path.GetExtension(RutaTemporal).ToLower();
-
-                string NombreImagen = IdGenerado.ToString() + ExtensionImagen; //Nuevo nombre de la imagen, con Id y extensión correcta
-
-                //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes y el nombre de la imagen
-                string RutaDestino = "..\\..\\..\\Imagenes\\" + NombreImagen;
-
-                // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
-                File.Copy(RutaTemporal, RutaDestino, true);
-
-                //Actualizamos la base de datos con la ruta correcta de la imagen
-                using (OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion)) //Conexion
-                {
-                    conexion.Open(); //Abrimos conexion
-
-                    string query = "UPDATE Productos SET Imagen = @Imagen WHERE Id = @Id "; //Sentencia de actualización
-
-                    using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
-                    {
-                        comando.Parameters.AddWithValue("@Imagen", RutaDestino); //Parametro de Imagen es la RutaDestino
-                        comando.Parameters.AddWithValue("@Id", IdGenerado); //Parametro IdGenerado
-
-                        comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
-                    }
-                }
-            }
-
-            //Limpiamos las cajas de texto y el Picture Box
-            Txt_Nombre.Clear();
-            Txt_Descripcion.Clear();
-            Txt_Marca.Clear();
-            Txt_Precio.Clear();
-            Txt_Cantidad.Clear();
-            PicImagenProducto.Image = null;
-
-            //Mensaje de registro de producto exitoso
-            MessageBox.Show($"Registro de Producto {Nombre} Exitoso",
-                "Registro exitoso de Producto a Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void BtnCargarImagen_Click(object sender, EventArgs e)
         {
-            //Instancia de OpenFileDialog que permite al usuario seleccionar un archivo
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.Filter = "Archivos de imagen|*.jpg;*.png"; //Filtro para los tipos de archivo
-
-            //Abrimos openFileDialog, si el usuario selecciona Abrir el archivo se selecciono correctamente
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                PicImagenProducto.ImageLocation = openFileDialog.FileName; //La imagen seleccionada se muestra en el picture box
-
-                RutaImagenTemporal = openFileDialog.FileName; // Almacena la ruta seleccionada para despues modificarla
-            }
+            Inicio_Recibido.CargarImagen(PicImagenProducto, ref RutaImagenTemporal); //LLamamos a la función Cargar Imagen
         }
 
         private void BtnRegistrarProducto_Click(object sender, EventArgs e)
         {
-            //Si algun campo esta vacío (exceptuando la descripción)  mensaje de error
+            //Si algun campo esta vacío (exceptuando la descripción o la imagen)  mensaje de error
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Marca.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Precio.Text) ||
@@ -181,7 +95,14 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Precio = float.Parse(Txt_Precio.Text);
             Cantidad = int.Parse(Txt_Cantidad.Text);
 
-            RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, Precio, Cantidad, RutaImagenTemporal);
+            //LLamamos a la función RegistrarProducto
+            Inicio_Recibido.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, Precio, Cantidad, RutaImagenTemporal, IdGenerado,
+                Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
+        }
+
+        private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)
+        {
+            Inicio_Recibido.DeseleccionarImagen(PicImagenProducto, ref RutaImagenTemporal); //Llamamos a la función Deseleccionar Imagen
         }
     }
 }

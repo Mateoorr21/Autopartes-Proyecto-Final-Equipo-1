@@ -69,6 +69,9 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(agregarProducto);
             agregarProducto.Dock = DockStyle.Fill;
+
+            modificarProducto.LiberarPictureBox();
+            buscarProducto.LiberarPictureBox();
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -76,6 +79,9 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(buscarProducto);
             buscarProducto.Dock = DockStyle.Fill;
+
+            modificarProducto.LiberarPictureBox();
+            agregarProducto.LiberarPictureBox();
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
@@ -100,6 +106,9 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(modificarProducto);
             modificarProducto.Dock = DockStyle.Fill;
+
+            buscarProducto.LiberarPictureBox();
+            agregarProducto.LiberarPictureBox();
         }
     }
 }
