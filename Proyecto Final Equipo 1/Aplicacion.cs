@@ -15,9 +15,10 @@ namespace Proyecto_Final_Equipo_1
     public partial class Aplicacion : Form
     {
         //Variables que contendran la información del usuario que inicia sesión
-        private bool EsAdmin;
-        private string tipoUsuario;
-        private string nombreCompleto;
+        public bool TienePermiso;
+        public string Usuario;
+        public string TipoUsuario;
+        public string NombreCompleto;
 
         Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
 
@@ -29,13 +30,14 @@ namespace Proyecto_Final_Equipo_1
         ModificarProducto modificarProducto;
 
         //Aplicacion recibe parametro de instancia Inicio
-        public Aplicacion(bool EsAdmin, string tipoUsuario, string nombreCompleto, Inicio inicio) //Indicamos que el formulario recibe parámetros
+        public Aplicacion(bool EsAdmin, string TipoUsuario, string Usuario, string NombreCompleto, Inicio inicio) //Indicamos que el formulario recibe parámetros
         {
             InitializeComponent();
             //Asignamos a variables de este formulario la información del usuario obtenida al iniciar sesión
-            this.EsAdmin = EsAdmin; //Recibimos si es Admin o no
-            this.tipoUsuario = tipoUsuario; //Recibimos el permiso
-            this.nombreCompleto = nombreCompleto; //Recibimos el nombre completo
+            this.TienePermiso = EsAdmin; //Recibimos si es Admin o no
+            this.TipoUsuario = TipoUsuario; //Recibimos el permiso
+            this.Usuario = Usuario;
+            this.NombreCompleto = NombreCompleto; //Recibimos el nombre completo
             this.Inicio_Recibido = inicio; //a Inicio_Recibido le asignamos el parametro recibido
 
             //Todos los controles de usuario reciben como parametro un Inicio para tener acceso a cadconexion
@@ -49,7 +51,7 @@ namespace Proyecto_Final_Equipo_1
         private void Aplicacion_Load(object sender, EventArgs e)
         {
             //Si no es Administrador únicamente puede acceder a "Buscar/Vender"
-            if (!EsAdmin)
+            if (!TienePermiso)
             {
                 BtnAgregar.Enabled = false;
                 BtnEliminar.Enabled = false;
@@ -60,7 +62,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
         {
-            CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios(Inicio_Recibido); //Catalogo recibe la instancia de Inicio inicial
+            CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios(Inicio_Recibido, this); //Catalogo recibe la instancia de Inicio inicial
             catalogoUsuarios.ShowDialog();
         }
 

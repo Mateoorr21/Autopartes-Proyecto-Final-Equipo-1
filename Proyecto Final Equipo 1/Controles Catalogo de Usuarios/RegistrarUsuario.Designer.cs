@@ -50,7 +50,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(319, 55);
+            this.LblTitulo.Location = new System.Drawing.Point(370, 103);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(217, 29);
             this.LblTitulo.TabIndex = 0;
@@ -59,7 +59,7 @@
             // LblInstruccion
             // 
             this.LblInstruccion.AutoSize = true;
-            this.LblInstruccion.Location = new System.Drawing.Point(184, 94);
+            this.LblInstruccion.Location = new System.Drawing.Point(235, 142);
             this.LblInstruccion.Name = "LblInstruccion";
             this.LblInstruccion.Size = new System.Drawing.Size(487, 16);
             this.LblInstruccion.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             this.LblErrorUsuario.AutoSize = true;
             this.LblErrorUsuario.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorUsuario.Location = new System.Drawing.Point(240, 199);
+            this.LblErrorUsuario.Location = new System.Drawing.Point(291, 247);
             this.LblErrorUsuario.Name = "LblErrorUsuario";
             this.LblErrorUsuario.Size = new System.Drawing.Size(380, 16);
             this.LblErrorUsuario.TabIndex = 18;
@@ -79,7 +79,7 @@
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(235, 279);
+            this.LblPassword.Location = new System.Drawing.Point(293, 328);
             this.LblPassword.Name = "LblPassword";
             this.LblPassword.Size = new System.Drawing.Size(79, 16);
             this.LblPassword.TabIndex = 17;
@@ -88,7 +88,7 @@
             // LblUsuario
             // 
             this.LblUsuario.AutoSize = true;
-            this.LblUsuario.Location = new System.Drawing.Point(256, 222);
+            this.LblUsuario.Location = new System.Drawing.Point(314, 271);
             this.LblUsuario.Name = "LblUsuario";
             this.LblUsuario.Size = new System.Drawing.Size(57, 16);
             this.LblUsuario.TabIndex = 16;
@@ -98,7 +98,7 @@
             // 
             this.LblErrorPassword.AutoSize = true;
             this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPassword.Location = new System.Drawing.Point(220, 258);
+            this.LblErrorPassword.Location = new System.Drawing.Point(271, 306);
             this.LblErrorPassword.Name = "LblErrorPassword";
             this.LblErrorPassword.Size = new System.Drawing.Size(406, 16);
             this.LblErrorPassword.TabIndex = 21;
@@ -108,7 +108,7 @@
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(243, 165);
+            this.LblNombre.Location = new System.Drawing.Point(301, 214);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(59, 16);
             this.LblNombre.TabIndex = 22;
@@ -118,7 +118,7 @@
             // 
             this.LblErrorNombre.AutoSize = true;
             this.LblErrorNombre.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorNombre.Location = new System.Drawing.Point(232, 140);
+            this.LblErrorNombre.Location = new System.Drawing.Point(283, 188);
             this.LblErrorNombre.Name = "LblErrorNombre";
             this.LblErrorNombre.Size = new System.Drawing.Size(387, 16);
             this.LblErrorNombre.TabIndex = 24;
@@ -128,7 +128,7 @@
             // LblPermiso
             // 
             this.LblPermiso.AutoSize = true;
-            this.LblPermiso.Location = new System.Drawing.Point(227, 330);
+            this.LblPermiso.Location = new System.Drawing.Point(285, 379);
             this.LblPermiso.Name = "LblPermiso";
             this.LblPermiso.Size = new System.Drawing.Size(60, 16);
             this.LblPermiso.TabIndex = 25;
@@ -137,7 +137,7 @@
             // RdAdmin
             // 
             this.RdAdmin.AutoSize = true;
-            this.RdAdmin.Location = new System.Drawing.Point(300, 327);
+            this.RdAdmin.Location = new System.Drawing.Point(351, 375);
             this.RdAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RdAdmin.Name = "RdAdmin";
             this.RdAdmin.Size = new System.Drawing.Size(66, 20);
@@ -149,7 +149,7 @@
             // 
             this.RdCajero.AutoSize = true;
             this.RdCajero.Checked = true;
-            this.RdCajero.Location = new System.Drawing.Point(392, 327);
+            this.RdCajero.Location = new System.Drawing.Point(443, 375);
             this.RdCajero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RdCajero.Name = "RdCajero";
             this.RdCajero.Size = new System.Drawing.Size(68, 20);
@@ -162,7 +162,7 @@
             // 
             this.LblNota.AutoSize = true;
             this.LblNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNota.Location = new System.Drawing.Point(261, 114);
+            this.LblNota.Location = new System.Drawing.Point(312, 162);
             this.LblNota.Name = "LblNota";
             this.LblNota.Size = new System.Drawing.Size(298, 15);
             this.LblNota.TabIndex = 28;
@@ -170,7 +170,7 @@
             // 
             // BtnRegistrarUsuario
             // 
-            this.BtnRegistrarUsuario.Location = new System.Drawing.Point(501, 314);
+            this.BtnRegistrarUsuario.Location = new System.Drawing.Point(552, 362);
             this.BtnRegistrarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRegistrarUsuario.Name = "BtnRegistrarUsuario";
             this.BtnRegistrarUsuario.Size = new System.Drawing.Size(125, 58);
@@ -181,7 +181,7 @@
             // 
             // Txt_Nombre
             // 
-            this.Txt_Nombre.Location = new System.Drawing.Point(305, 165);
+            this.Txt_Nombre.Location = new System.Drawing.Point(356, 213);
             this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(312, 22);
@@ -190,7 +190,7 @@
             // 
             // Txt_Usuario
             // 
-            this.Txt_Usuario.Location = new System.Drawing.Point(315, 219);
+            this.Txt_Usuario.Location = new System.Drawing.Point(366, 267);
             this.Txt_Usuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Usuario.Name = "Txt_Usuario";
             this.Txt_Usuario.Size = new System.Drawing.Size(312, 22);
@@ -199,7 +199,7 @@
             // 
             // Txt_Password
             // 
-            this.Txt_Password.Location = new System.Drawing.Point(315, 279);
+            this.Txt_Password.Location = new System.Drawing.Point(366, 327);
             this.Txt_Password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Password.Name = "Txt_Password";
             this.Txt_Password.Size = new System.Drawing.Size(312, 22);
@@ -228,7 +228,7 @@
             this.Controls.Add(this.LblTitulo);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RegistrarUsuario";
-            this.Size = new System.Drawing.Size(885, 455);
+            this.Size = new System.Drawing.Size(977, 532);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -16,6 +16,9 @@ namespace Proyecto_Final_Equipo_1
     {
         int ErroresInicioSesion;
         Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
+        string Nombre_Completo;
+        string Usuario;
+        string Permiso;
         public InicioSesion(Inicio inicio) //InicioSesion recibe parametro de instancia Inicio
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace Proyecto_Final_Equipo_1
             OleDbConnection conexion = new OleDbConnection(Inicio_Recibido.cadconexion);
 
             conexion.Open(); //Abrimos la conexion
-            string consulta = "SELECT Nombre_Completo, Tipo FROM Usuarios_Operativos WHERE Usuario = @usuario AND Password = @password"; //Consulta
+            string consulta = "SELECT Nombre_Completo, Usuario, Tipo FROM Usuarios_Operativos WHERE Usuario = @usuario AND Password = @password"; //Consulta
             OleDbCommand comando = new OleDbCommand(consulta, conexion);
             comando.Parameters.AddWithValue("@usuario", Username); //Parametro de busqueda Username
             comando.Parameters.AddWithValue("@password", Password); //Parametro de bsuqueda Password
@@ -36,18 +39,19 @@ namespace Proyecto_Final_Equipo_1
             if (lector.HasRows) //Si hay un resultado, es decir, si existe la cuenta
             {
                 lector.Read(); //Leemos el registro obtenido
-                string nombreCompleto = lector["Nombre_Completo"].ToString(); //Nombre a cadena String
-                string tipoUsuario = lector["Tipo"].ToString(); //Tipo de Permiso a cadena String
+                string NombreCompleto = lector["Nombre_Completo"].ToString(); //Nombre a cadena String
+                string Usuario = lector["Usuario"].ToString(); //Usuario a cadena String
+                string TipoUsuario = lector["Tipo"].ToString(); //Tipo de Permiso a cadena String
 
                 //Mensaje de inicio de sesión exitoso
-                MessageBox.Show($"Bienvenido {tipoUsuario} {nombreCompleto}",
+                MessageBox.Show( "Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",
                     "INICIO DE SESIÓN EXITOSO. Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Variable booleana (Es un Admin o no)
-                bool EsAdmin = tipoUsuario == "Admin";
+                bool TienePermiso = TipoUsuario == "Admin" || TipoUsuario == "Propietario";
 
                 // Abrir el formulario
-                Aplicacion aplicacion = new Aplicacion(EsAdmin, tipoUsuario, nombreCompleto, Inicio_Recibido); //Aplicacion recibe el booleano, permiso y nombre
+                Aplicacion aplicacion = new Aplicacion(TienePermiso, TipoUsuario, Usuario, NombreCompleto, Inicio_Recibido); //Aplicacion recibe el booleano, permiso y nombre
                                                                                                                //Aplicacion también recibe la instancia de Inicio recibida en el formulario InicioSesion
                 aplicacion.ShowDialog();
             }

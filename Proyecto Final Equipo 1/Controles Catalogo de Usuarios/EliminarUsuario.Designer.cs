@@ -50,7 +50,7 @@
             this.LblErrorBuscar.AutoSize = true;
             this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(8, 268);
+            this.LblErrorBuscar.Location = new System.Drawing.Point(58, 303);
             this.LblErrorBuscar.Name = "LblErrorBuscar";
             this.LblErrorBuscar.Size = new System.Drawing.Size(115, 16);
             this.LblErrorBuscar.TabIndex = 73;
@@ -59,7 +59,7 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(11, 336);
+            this.TxtBuscar.Location = new System.Drawing.Point(61, 371);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(213, 22);
@@ -69,7 +69,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
-            this.LblCampoBuscar.Location = new System.Drawing.Point(8, 311);
+            this.LblCampoBuscar.Location = new System.Drawing.Point(58, 346);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
             this.LblCampoBuscar.Size = new System.Drawing.Size(59, 16);
             this.LblCampoBuscar.TabIndex = 71;
@@ -78,7 +78,7 @@
             // LvUsuarios
             // 
             this.LvUsuarios.HideSelection = false;
-            this.LvUsuarios.Location = new System.Drawing.Point(250, 83);
+            this.LvUsuarios.Location = new System.Drawing.Point(300, 118);
             this.LvUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.LvUsuarios.MultiSelect = false;
             this.LvUsuarios.Name = "LvUsuarios";
@@ -89,7 +89,7 @@
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.Location = new System.Drawing.Point(11, 382);
+            this.BtnBuscar.Location = new System.Drawing.Point(61, 417);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(213, 44);
@@ -102,7 +102,7 @@
             // 
             this.GbBusquedaCampo.Controls.Add(this.RdUsuario);
             this.GbBusquedaCampo.Controls.Add(this.RdNombre);
-            this.GbBusquedaCampo.Location = new System.Drawing.Point(11, 173);
+            this.GbBusquedaCampo.Location = new System.Drawing.Point(61, 208);
             this.GbBusquedaCampo.Margin = new System.Windows.Forms.Padding(4);
             this.GbBusquedaCampo.Name = "GbBusquedaCampo";
             this.GbBusquedaCampo.Padding = new System.Windows.Forms.Padding(4);
@@ -141,7 +141,7 @@
             // 
             this.GpBBusquedaTipo.Controls.Add(this.RdExacta);
             this.GpBBusquedaTipo.Controls.Add(this.RdAproximada);
-            this.GpBBusquedaTipo.Location = new System.Drawing.Point(11, 79);
+            this.GpBBusquedaTipo.Location = new System.Drawing.Point(61, 114);
             this.GpBBusquedaTipo.Margin = new System.Windows.Forms.Padding(4);
             this.GpBBusquedaTipo.Name = "GpBBusquedaTipo";
             this.GpBBusquedaTipo.Padding = new System.Windows.Forms.Padding(4);
@@ -178,7 +178,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(261, 28);
+            this.LblTitulo.Location = new System.Drawing.Point(311, 63);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(206, 29);
             this.LblTitulo.TabIndex = 52;
@@ -187,7 +187,7 @@
             // BtnEliminar
             // 
             this.BtnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminar.Location = new System.Drawing.Point(573, 26);
+            this.BtnEliminar.Location = new System.Drawing.Point(623, 61);
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(268, 37);
@@ -210,7 +210,7 @@
             this.Controls.Add(this.GpBBusquedaTipo);
             this.Controls.Add(this.LblTitulo);
             this.Name = "EliminarUsuario";
-            this.Size = new System.Drawing.Size(885, 455);
+            this.Size = new System.Drawing.Size(977, 532);
             this.Load += new System.EventHandler(this.EliminarUsuario_Load);
             this.GbBusquedaCampo.ResumeLayout(false);
             this.GbBusquedaCampo.PerformLayout();

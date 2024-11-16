@@ -62,7 +62,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(263, 25);
+            this.LblTitulo.Location = new System.Drawing.Point(304, 54);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(218, 29);
             this.LblTitulo.TabIndex = 1;
@@ -72,7 +72,7 @@
             // 
             this.GpBBusquedaTipo.Controls.Add(this.RdExacta);
             this.GpBBusquedaTipo.Controls.Add(this.RdAproximada);
-            this.GpBBusquedaTipo.Location = new System.Drawing.Point(7, 75);
+            this.GpBBusquedaTipo.Location = new System.Drawing.Point(48, 104);
             this.GpBBusquedaTipo.Margin = new System.Windows.Forms.Padding(4);
             this.GpBBusquedaTipo.Name = "GpBBusquedaTipo";
             this.GpBBusquedaTipo.Padding = new System.Windows.Forms.Padding(4);
@@ -109,7 +109,7 @@
             // 
             this.GbBusquedaCampo.Controls.Add(this.RdUsuario);
             this.GbBusquedaCampo.Controls.Add(this.RdNombre);
-            this.GbBusquedaCampo.Location = new System.Drawing.Point(7, 169);
+            this.GbBusquedaCampo.Location = new System.Drawing.Point(48, 198);
             this.GbBusquedaCampo.Margin = new System.Windows.Forms.Padding(4);
             this.GbBusquedaCampo.Name = "GbBusquedaCampo";
             this.GbBusquedaCampo.Padding = new System.Windows.Forms.Padding(4);
@@ -146,7 +146,7 @@
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.Location = new System.Drawing.Point(13, 379);
+            this.BtnBuscar.Location = new System.Drawing.Point(54, 408);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(156, 44);
@@ -158,7 +158,7 @@
             // LvUsuarios
             // 
             this.LvUsuarios.HideSelection = false;
-            this.LvUsuarios.Location = new System.Drawing.Point(183, 75);
+            this.LvUsuarios.Location = new System.Drawing.Point(224, 104);
             this.LvUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.LvUsuarios.MultiSelect = false;
             this.LvUsuarios.Name = "LvUsuarios";
@@ -171,7 +171,7 @@
             // 
             this.LblDatos.AutoSize = true;
             this.LblDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDatos.Location = new System.Drawing.Point(635, 28);
+            this.LblDatos.Location = new System.Drawing.Point(676, 57);
             this.LblDatos.Name = "LblDatos";
             this.LblDatos.Size = new System.Drawing.Size(178, 25);
             this.LblDatos.TabIndex = 6;
@@ -179,7 +179,7 @@
             // 
             // Txt_Password
             // 
-            this.Txt_Password.Location = new System.Drawing.Point(631, 254);
+            this.Txt_Password.Location = new System.Drawing.Point(672, 283);
             this.Txt_Password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Password.Name = "Txt_Password";
             this.Txt_Password.Size = new System.Drawing.Size(240, 22);
@@ -188,7 +188,7 @@
             // 
             // Txt_Usuario
             // 
-            this.Txt_Usuario.Location = new System.Drawing.Point(632, 177);
+            this.Txt_Usuario.Location = new System.Drawing.Point(673, 206);
             this.Txt_Usuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Usuario.Name = "Txt_Usuario";
             this.Txt_Usuario.Size = new System.Drawing.Size(240, 22);
@@ -197,7 +197,7 @@
             // 
             // Txt_Nombre
             // 
-            this.Txt_Nombre.Location = new System.Drawing.Point(633, 98);
+            this.Txt_Nombre.Location = new System.Drawing.Point(674, 127);
             this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(239, 22);
@@ -207,7 +207,7 @@
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(631, 75);
+            this.LblNombre.Location = new System.Drawing.Point(672, 104);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(59, 16);
             this.LblNombre.TabIndex = 37;
@@ -216,7 +216,7 @@
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(628, 225);
+            this.LblPassword.Location = new System.Drawing.Point(669, 254);
             this.LblPassword.Name = "LblPassword";
             this.LblPassword.Size = new System.Drawing.Size(79, 16);
             this.LblPassword.TabIndex = 34;
@@ -225,7 +225,7 @@
             // LblUsuario
             // 
             this.LblUsuario.AutoSize = true;
-            this.LblUsuario.Location = new System.Drawing.Point(632, 149);
+            this.LblUsuario.Location = new System.Drawing.Point(673, 178);
             this.LblUsuario.Name = "LblUsuario";
             this.LblUsuario.Size = new System.Drawing.Size(57, 16);
             this.LblUsuario.TabIndex = 33;
@@ -235,7 +235,7 @@
             // 
             this.RdCajero.AutoSize = true;
             this.RdCajero.Checked = true;
-            this.RdCajero.Location = new System.Drawing.Point(727, 324);
+            this.RdCajero.Location = new System.Drawing.Point(768, 353);
             this.RdCajero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RdCajero.Name = "RdCajero";
             this.RdCajero.Size = new System.Drawing.Size(68, 20);
@@ -247,7 +247,7 @@
             // RdAdmin
             // 
             this.RdAdmin.AutoSize = true;
-            this.RdAdmin.Location = new System.Drawing.Point(636, 322);
+            this.RdAdmin.Location = new System.Drawing.Point(677, 351);
             this.RdAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RdAdmin.Name = "RdAdmin";
             this.RdAdmin.Size = new System.Drawing.Size(66, 20);
@@ -258,7 +258,7 @@
             // LblPermiso
             // 
             this.LblPermiso.AutoSize = true;
-            this.LblPermiso.Location = new System.Drawing.Point(632, 302);
+            this.LblPermiso.Location = new System.Drawing.Point(673, 331);
             this.LblPermiso.Name = "LblPermiso";
             this.LblPermiso.Size = new System.Drawing.Size(60, 16);
             this.LblPermiso.TabIndex = 42;
@@ -269,7 +269,7 @@
             this.LblErrorUsuario.AutoSize = true;
             this.LblErrorUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorUsuario.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorUsuario.Location = new System.Drawing.Point(695, 139);
+            this.LblErrorUsuario.Location = new System.Drawing.Point(736, 168);
             this.LblErrorUsuario.Name = "LblErrorUsuario";
             this.LblErrorUsuario.Size = new System.Drawing.Size(176, 32);
             this.LblErrorUsuario.TabIndex = 45;
@@ -282,7 +282,7 @@
             this.LblErrorNombre.AutoSize = true;
             this.LblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorNombre.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorNombre.Location = new System.Drawing.Point(708, 73);
+            this.LblErrorNombre.Location = new System.Drawing.Point(749, 102);
             this.LblErrorNombre.Name = "LblErrorNombre";
             this.LblErrorNombre.Size = new System.Drawing.Size(115, 16);
             this.LblErrorNombre.TabIndex = 46;
@@ -294,7 +294,7 @@
             this.LblErrorPassword.AutoSize = true;
             this.LblErrorPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPassword.Location = new System.Drawing.Point(706, 215);
+            this.LblErrorPassword.Location = new System.Drawing.Point(747, 244);
             this.LblErrorPassword.Name = "LblErrorPassword";
             this.LblErrorPassword.Size = new System.Drawing.Size(176, 32);
             this.LblErrorPassword.TabIndex = 47;
@@ -305,7 +305,7 @@
             // BtnModificar
             // 
             this.BtnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificar.Location = new System.Drawing.Point(635, 362);
+            this.BtnModificar.Location = new System.Drawing.Point(676, 391);
             this.BtnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(237, 62);
@@ -316,7 +316,7 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(13, 324);
+            this.TxtBuscar.Location = new System.Drawing.Point(54, 353);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(156, 22);
@@ -326,7 +326,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
-            this.LblCampoBuscar.Location = new System.Drawing.Point(10, 301);
+            this.LblCampoBuscar.Location = new System.Drawing.Point(51, 330);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
             this.LblCampoBuscar.Size = new System.Drawing.Size(59, 16);
             this.LblCampoBuscar.TabIndex = 49;
@@ -337,7 +337,7 @@
             this.LblErrorBuscar.AutoSize = true;
             this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(10, 265);
+            this.LblErrorBuscar.Location = new System.Drawing.Point(51, 294);
             this.LblErrorBuscar.Name = "LblErrorBuscar";
             this.LblErrorBuscar.Size = new System.Drawing.Size(90, 13);
             this.LblErrorBuscar.TabIndex = 51;
@@ -372,7 +372,7 @@
             this.Controls.Add(this.LblTitulo);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ModificarUsuario";
-            this.Size = new System.Drawing.Size(885, 455);
+            this.Size = new System.Drawing.Size(977, 532);
             this.Load += new System.EventHandler(this.ModificarUsuario_Load);
             this.GpBBusquedaTipo.ResumeLayout(false);
             this.GpBBusquedaTipo.PerformLayout();
