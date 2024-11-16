@@ -63,11 +63,11 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA CARGAR PRODUCTOS EN EL INVENTARIO
-        public void CargarProductos(ListView lvProductos, Label lblCantidadRegistros)
+        public void CargarProductos(ListView LvProductos, Label lblCantidadRegistros)
         {
             int ContarProductos = 0; // Reseteamos el contador de productos
 
-            lvProductos.Items.Clear(); // Limpiamos el contenido del ListView
+            LvProductos.Items.Clear(); // Limpiamos el contenido del ListView
 
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
             {
@@ -94,7 +94,7 @@ namespace Proyecto_Final_Equipo_1
                         Producto.SubItems.Add(LeerProductos["Cantidad_en_Stock"].ToString());
 
                         // Cargamos el registro al ListView
-                        lvProductos.Items.Add(Producto);
+                        LvProductos.Items.Add(Producto);
                     }
 
                     // Actualizamos la etiqueta que cuenta los registros
@@ -104,9 +104,26 @@ namespace Proyecto_Final_Equipo_1
         }
 
         //FUNCION PARA AGREGAR UN PRODUCTO A LA BASE DE DATOS
-        public void RegistrarProducto(string Nombre, string Descripcion, string Marca, float Precio, int Cantidad, string RutaTemporal, int IdGenerado,
+        public void RegistrarProducto(string Nombre, string Descripcion, string Marca, string RutaTemporal, int IdGenerado,
                 TextBox Txt_Nombre, TextBox Txt_Descripcion, TextBox Txt_Marca, TextBox Txt_Precio, TextBox Txt_Cantidad, PictureBox PicImagenProducto)
         {
+            //Si algun campo esta vacío (exceptuando la descripción)  mensaje de error
+            if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Descripcion.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Marca.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Precio.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Cantidad.Text) ||
+                PicImagenProducto.Image == null)
+            {
+                MessageBox.Show("Error. Ingrese la información del producto a ingresar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Convertimos el valor de las cajas en tipo float y entero
+            float Precio = float.Parse(Txt_Precio.Text);
+            int Cantidad = int.Parse(Txt_Cantidad.Text);
+
             //Establecemos el obejto OledbConnection para conectar con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
             {
@@ -138,34 +155,30 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            //Si se proporciono una imagen, copiamos esta imagen a la carpeta y actualizamos la base de datos
-            if (!string.IsNullOrEmpty(RutaTemporal))
+            //Copiamos la imagen ingresada por el usuario a nuestra carpeta, con el nombre que deseamos 
+
+            //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes, el nombre de la imagen y .jpg
+            string RutaDestino = "..\\..\\..\\Imagenes\\" + IdGenerado.ToString() + ".jpg";
+
+            // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
+            File.Copy(RutaTemporal, RutaDestino, true);
+
+            //Actualizamos la base de datos con la ruta correcta de la imagen
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion)) //Conexion
             {
-                //Copiamos la imagen ingresada por el usuario a nuestra carpeta, con el nombre que deseamos 
+                conexion.Open(); //Abrimos conexion
 
-                //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes, el nombre de la imagen y .jpg
-                string RutaDestino = "..\\..\\..\\Imagenes\\" + IdGenerado.ToString() + ".jpg";
+                //Obtenemos la ruta que se va agregar a la base de datos (Añadimos # para que el hipervinculo en la BDDS funcione)
+                string RutaAgregar = "#..\\Imagenes\\" + IdGenerado.ToString() + ".jpg#";
 
-                // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
-                File.Copy(RutaTemporal, RutaDestino, true);
+                string query = "UPDATE Productos SET Imagen = @Imagen WHERE Id = @Id "; //Sentencia de actualización
 
-                //Actualizamos la base de datos con la ruta correcta de la imagen
-                using (OleDbConnection conexion = new OleDbConnection(cadconexion)) //Conexion
+                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
                 {
-                    conexion.Open(); //Abrimos conexion
+                    comando.Parameters.AddWithValue("@Imagen", RutaAgregar); //Parametro de Imagen es la RutaDestino
+                    comando.Parameters.AddWithValue("@Id", IdGenerado); //Parametro IdGenerado
 
-                    //Obtenemos la ruta que se va agregar a la base de datos (Añadimos # para que el hipervinculo en la BDDS funcione)
-                    string RutaAgregar = "#..\\Imagenes\\" + IdGenerado.ToString() + ".jpg#";
-
-                    string query = "UPDATE Productos SET Imagen = @Imagen WHERE Id = @Id "; //Sentencia de actualización
-
-                    using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de clase Comando SQL
-                    {
-                        comando.Parameters.AddWithValue("@Imagen", RutaAgregar); //Parametro de Imagen es la RutaDestino
-                        comando.Parameters.AddWithValue("@Id", IdGenerado); //Parametro IdGenerado
-
-                        comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
-                    }
+                    comando.ExecuteNonQuery(); //Ejecutamos el comando de actualizacion
                 }
             }
 
@@ -181,6 +194,7 @@ namespace Proyecto_Final_Equipo_1
             MessageBox.Show("Registro de Producto " + Nombre + " Exitoso",
                 "Registro exitoso de Producto a Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
 
         //FUNCION PARA BUSCAR UN PRODUCTO
@@ -258,6 +272,202 @@ namespace Proyecto_Final_Equipo_1
                     }
                 }
             }
+
+            TxtBuscar.Clear(); //Limpiamos el TextBox Buscar
+        }
+
+
+        //FUNCION PARA MOSTRAR LA INFORMACION DE UN PRODUCTO
+        public void MostrarProducto(int Id, ListView LvProductos, PictureBox PicImagenProducto)
+        {
+            //Si no hay registro seleccionado menssaje de Error
+            if (LvProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Seleccione un producto para mostrar su información",
+                    "ERROR. NO HAY REGISTRO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Objeto de conexion con la base de datos
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            {
+                conexion.Open(); //Abrimos conexion
+
+                string query = "SELECT * FROM Productos WHERE Id = @IdSeleccionado"; //Consulta de selección
+
+                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de consulta
+                {
+                    comando.Parameters.AddWithValue("@IdSeleccionado", Id); //Parametro IdSeleccioando
+
+                    OleDbDataReader LeerProducto = comando.ExecuteReader(); //Objeto de Lectura y ejecutamos lectura
+
+                    while (LeerProducto.Read())
+                    { //Para el regisro que se lee
+
+                        //Mostramos en un Message Box la información obtenida de la consulta de selección
+                        MessageBox.Show("Datos del Producto Seleccionado:" +
+                            " \n\n\nId: " + LeerProducto["Id"].ToString() +
+                            " \n\nNombre: " + LeerProducto["Nombre"].ToString() +
+                            " \n\nDescripcion: " + LeerProducto["Id"].ToString() +
+                            " \n\nMarca: " + LeerProducto["Marca"].ToString() +
+                            " \n\nPrecio: $ " + LeerProducto["Precio"].ToString() +
+                            " \n\nCantidad en Stock: " + LeerProducto["Cantidad_en_Stock"].ToString(),
+                            "INFORMACIÓN DEL PRODUCTO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        string RutaImagenTemporal = LeerProducto["Imagen"].ToString().Trim('#'); //Obtenemos la ruta y quitamos los #
+
+                        string RutaImagenAbrir = "..\\..\\" + RutaImagenTemporal; //Creamos la nueva ruta (saliendo varias carpetas mas)
+
+                        PicImagenProducto.Image = Image.FromFile(RutaImagenAbrir); //Cargamos la Imagen                
+                    }
+                }
+            }
+        }
+
+
+        //FUNCION PARA MODIFICAR LA INFORMACION DE UN PRODUCTO
+        public void ActualizarProducto(string Nombre, string Descripcion, string Marca, string RutaImagenTemporal, int Id, bool SeModificoImagen, ListView LvProductos,
+            TextBox Txt_Nombre, TextBox Txt_Descripcion, TextBox Txt_Marca, TextBox Txt_Precio, TextBox Txt_Cantidad, PictureBox PicImagenProducto)
+        {
+
+            //Si no hay registro seleccionado menssaje de Error
+            if (LvProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Error. Seleccione un producto a modificar", "ERROR. NO SE SELECCIONÓ PRODUCTO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Si alguno de los campos a actualizar esta vacío mensaje de Error
+            if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Descripcion.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Marca.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Precio.Text) ||
+                string.IsNullOrWhiteSpace(Txt_Cantidad.Text) ||
+                RutaImagenTemporal == null)
+            {
+                MessageBox.Show("Error. Ingrese información a modificar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Convertimos el valor de las cajas en tipo float y entero
+            float Precio = float.Parse(Txt_Precio.Text);
+            float Cantidad = int.Parse(Txt_Cantidad.Text);
+
+            //using para establecer conexion con la base de datos
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            {
+                conexion.Open(); //Abrimos conexion
+
+                //Consulta SQL para actualizar los campos de un registro
+                string query = "UPDATE Productos SET Nombre = @Nombre, Descripcion = @Descripcion, " +
+                                "Marca = @Marca, Precio = @Precio, Cantidad_en_Stock = @Cantidad WHERE Id = @Id";
+
+                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //using para liberar objeto cuando se termine de usar
+                {
+                    //Asignamos a los parámetros de la consulta los valores de las variables que recibe la función 
+                    comando.Parameters.AddWithValue("@Nombre", Nombre);
+                    comando.Parameters.AddWithValue("@Descripcion", Descripcion);
+                    comando.Parameters.AddWithValue("@Marca", Marca);
+                    comando.Parameters.AddWithValue("@Precio", Precio);
+                    comando.Parameters.AddWithValue("@Cantidad", Cantidad);
+                    //La ruta de la imagen no la actualizamos ya que seguira siendo la misma
+                    comando.Parameters.AddWithValue("@Id", Id);
+
+                    comando.ExecuteNonQuery(); //Ejecutamos consulta
+                }
+            }
+
+            // Liberamos la imagen del PictureBox
+            PicImagenProducto.Image = null;
+
+            //Solo si se modifico la imagen, borramos la existente y copiamos la nueva
+            if (SeModificoImagen)
+            {
+                //ELIMINAMOS LA IMAGEN CON ESE ID 
+                //Obtenemos la posible ruta de la imagen existente con el mismo ID
+                string RutaImagenEnCarpetaJpg = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
+
+                //Borramos la imagen existente si se encuentra en la carpeta
+                if (File.Exists(RutaImagenEnCarpetaJpg)) File.Delete(RutaImagenEnCarpetaJpg); // Eliminamos la imagen existente .jpg
+
+                // Pasamos el reemplazo a la carpeta usando RutaImagenEnCarpetaJpg
+                File.Copy(RutaImagenTemporal, RutaImagenEnCarpetaJpg, true);
+            }
+
+            //Actualizamos el registro seleccionado
+            ListViewItem Modificado = LvProductos.SelectedItems[0];
+            Modificado.SubItems[1].Text = Nombre;
+            Modificado.SubItems[2].Text = Descripcion;
+            Modificado.SubItems[3].Text = Marca;
+            Modificado.SubItems[4].Text = Precio.ToString();
+            Modificado.SubItems[5].Text = Cantidad.ToString();
+
+            //Limpiamos los controles de Actualización de Datos (Cajas de Texto y PictureBox)
+            Txt_Nombre.Clear();
+            Txt_Descripcion.Clear();
+            Txt_Marca.Clear();
+            Txt_Precio.Clear();
+            Txt_Cantidad.Clear();
+
+            //Mensaje de Actualización de datos exitosa
+            MessageBox.Show("Datos del Producto actualizados correctamente.", "ACTUALIZACION DE DATOS DE PRODUCTO",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        //FUNCION PARA BORRAR UN PRODUCTO
+        public void BorrarProducto (int Id, ListView LvProductos, Label LblCantidadRegistros, int ContarProductos)
+        {
+            //Si no hay registro seleccionado menssaje de Error
+            if (LvProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Error. Seleccione un producto a Elimianr", "ERROR. NO SE SELECCIONÓ PRODUCTO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Confirmamos que el usuario desea eliminar el registro seleccioando
+            DialogResult ConfirmarEliminar;
+            ConfirmarEliminar = MessageBox.Show("¿Esta seguro que desea eliminar al producto seleccionado?",
+                "CONFIRMACIÓN DE ELIMINADO DE PRODUCTO DE LA BASE DE DATOS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarEliminar == DialogResult.No) return;
+
+            //using para establecer conexion con la base de datos
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            {
+                conexion.Open(); //Abrimos conexion
+
+                //Consulta SQL para eliminar un producto
+                string query = "DELETE FROM Productos WHERE Id = @Id";
+
+                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //using para liberar objeto cuando se termine de usar
+                {
+                    //Asignamos a un parametro de consulta el Id del Registro seleccionado
+                    comando.Parameters.AddWithValue("@Id", Id);
+
+                    comando.ExecuteNonQuery(); //Ejecutamos consulta de acción
+                }
+
+                //Obtenemos la ruta a la Imagen referente al producto
+                string RutaImagenEnCarpetaJpg = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
+
+                //Borramos la imagen de la carpeta
+                if (File.Exists(RutaImagenEnCarpetaJpg)) File.Delete(RutaImagenEnCarpetaJpg);
+
+                //Quitamos del ListView el eliminado
+                ListViewItem Seleccionado = LvProductos.SelectedItems[0];
+                LvProductos.Items.Remove(Seleccionado);
+
+                //Actualizamos la etiqueta de Cantidad de Registros
+                if(ContarProductos > 0) LblCantidadRegistros.Text = "Productos Encontrados: " + (ContarProductos - 1).ToString();
+
+                //Mensaje de Eliminación de usuario exitosa
+                MessageBox.Show("Producto eliminado correctamente.", "ELIMINACION DE PRODUCTO DE LA BASE DE DATOS",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
 
@@ -301,86 +511,59 @@ namespace Proyecto_Final_Equipo_1
             }
         }
 
-
-        //FUNCION PARA MOSTRAR LA INFORMACION DE UN PRODUCTO
-        public void MostrarProducto(int Id, ListView LvProductos, PictureBox PicImagenProducto)
+        //FUNCIONES PARA VALIDAR LA ENTRADA DE LOS CAMPOS CANTIDAD Y PRECIO 
+        public void ValidarEntradaTxtPrecio(KeyPressEventArgs e, TextBox Txt_Precio, Label LblErrorPrecio)
         {
-            //Si no hay registro seleccionado menssaje de Error
-            if (LvProductos.SelectedItems.Count == 0)
+            //Validar que solo es ingresen numeros, backspace o punto decimal
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != 46)
             {
-                MessageBox.Show("Seleccione un producto para mostrar su información",
-                    "ERROR. NO HAY REGISTRO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                LblErrorPrecio.Text = "Solo se permiten números y un punto decimal";
+                LblErrorPrecio.Visible = true;
+                e.Handled = true;
             }
 
-            //Objeto de conexion con la base de datos
-            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            //Validar para que únicmente se ingrese un punto decimal
+            else if (Txt_Precio.Text.IndexOf('.') >= 0 && e.KeyChar == 46)
+            //Si en la caja ya hay un "." y la tecla preionada es "."
             {
-                conexion.Open(); //Abrimos conexion
+                LblErrorPrecio.Text = "Solo se permite un punto decimal";
+                LblErrorPrecio.Visible = true;
+                e.Handled = true; //No se permite ingresar el "."
+            }
 
-                string query = "SELECT * FROM Productos WHERE Id = @IdSeleccionado"; //Consulta de selección
-
-                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de consulta
-                {
-                    comando.Parameters.AddWithValue("@IdSeleccionado", Id); //Parametro IdSeleccioando
-
-                    OleDbDataReader LeerProducto = comando.ExecuteReader(); //Objeto de Lectura y ejecutamos lectura
-
-                    while (LeerProducto.Read())
-                    { //Para el regisro que se lee
-
-                        //Mostramos en un Message Box la información obtenida de la consulta de selección
-                        MessageBox.Show("Datos del Producto Seleccionado:" +
-                            " \n\nId: " + LeerProducto["Id"].ToString() +
-                            " \nNombre: " + LeerProducto["Nombre"].ToString() +
-                            " \nDescripcion: " + LeerProducto["Id"].ToString() +
-                            " \nMarca: " + LeerProducto["Marca"].ToString() +
-                            " \nPrecio: $ " + LeerProducto["Precio"].ToString() +
-                            " \nCantidad en Stock: " + LeerProducto["Cantidad_en_Stock"].ToString(),
-                            "INFORMACIÓN DEL PRODUCTO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        string RutaImagenTemporal = LeerProducto["Imagen"].ToString().Trim('#'); //Obtenemos la ruta y quitamos los #
-
-                        // Si la ruta no esta vacía creamos la nueva ruta
-                        if (!string.IsNullOrEmpty(RutaImagenTemporal))
-                        {
-                            string RutaImagenAbrir = "..\\..\\" + RutaImagenTemporal; //Creamos la nueva ruta (saliendo varias carpetas mas)
-
-                            if (System.IO.File.Exists(RutaImagenAbrir)) //Si el archivo de imagen existe se carga la Imagen en el PictureBox
-                            {
-                                PicImagenProducto.Image = Image.FromFile(RutaImagenAbrir);
-                            }
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("La Imagen no está disponible.", "IMAGEN NO DISPONIBLE", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            PicImagenProducto.Image = null; // Limpiamos el Picture Box
-                        }
-                    }
-                }
+            else //Si no hay errores, ocultar la etiqueta de error
+            {
+                LblErrorPrecio.Visible = false;
             }
         }
 
+        public void ValidarEntradaTxtCantidad(KeyPressEventArgs e, Label LblErrorCantidad)
+        {
+            //Validar que solo es ingresen numeros o backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                LblErrorCantidad.Visible = true;
+                e.Handled = true;
+            }
+
+            else //Si no hay errores, ocultar la etiqueta de error
+            {
+                LblErrorCantidad.Visible = false;
+            }
+        }
+
+
+        
 
         //FUNCION PARA CARGAR UNA IMAGEN A UN PICTUREBOX Y PARA ELIMINAR UNA IMAGEN DEL PICTUREBOX
         //LA RUTA LA PASAMOS POR REFERENCIA PORQUE QUEREMOS QUE SE MODIFIQUE SU VALOR
         public void LiberarPictureBox(PictureBox PicImagenProducto)
         {
             PicImagenProducto.Image = null;
-            /* if (PicImagenProducto != null && PicImagenProducto.Image != null) // Verifica que no sea null
-             {
-                 PicImagenProducto.Image.Dispose(); // Liberamos la imagen
-                 PicImagenProducto.Image = null;    // Limpiamos el PictureBox
-             } */
         }
 
-        public void CargarImagen (PictureBox PicImagenProducto, ref string RutaImagenTemporal)
+        public void CargarImagen (PictureBox PicImagenProducto, ref string RutaImagenTemporal, ref bool SeModificoImagen)
         {
-            // Si ya existe una imagen cargada, se limpia
-            PicImagenProducto.Image = null;
-            RutaImagenTemporal = null;
-
             //Instancia de OpenFileDialog que permite al usuario seleccionar un archivo
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
@@ -389,14 +572,18 @@ namespace Proyecto_Final_Equipo_1
             //Abrimos openFileDialog, si el usuario selecciona Abrir el archivo se selecciono correctamente
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                PicImagenProducto.Image = null; //Limpiamos la Imagen en el PictureBox
+
+                SeModificoImagen = true; //Indicamos que la imagen se modifico
+
                 PicImagenProducto.ImageLocation = openFileDialog.FileName; //La imagen seleccionada se muestra en el picture box
 
                 RutaImagenTemporal = openFileDialog.FileName; // Almacena la ruta seleccionada para despues modificarla
             }
         }
+
         public void DeseleccionarImagen(PictureBox PicImagenProducto, ref string RutaImagenTemporal)
         {
-            PicImagenProducto.Image.Dispose(); //Liberamos la imagen
             PicImagenProducto.Image = null; //Limpiamos el PictureBox
             RutaImagenTemporal = null; //La ruta temporal será nula
         }

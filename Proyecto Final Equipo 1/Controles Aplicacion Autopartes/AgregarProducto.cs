@@ -19,9 +19,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
     {
         Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
         int IdGenerado; //Variable glocal IdGenerado
-        float Precio; 
-        int Cantidad;
+        bool SeModificoImagen;
         string RutaImagenTemporal; //Variable Global Ruta Temporal
+
         public AgregarProducto(Inicio inicio)
         {
             InitializeComponent(); 
@@ -35,74 +35,37 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void Txt_Precio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Validar que solo es ingresen numeros, backspace o punto decimal
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != 46)
-            {
-                LblErrorPrecio.Text = "Solo se permiten números y un punto decimal";
-                LblErrorPrecio.Visible = true;
-                e.Handled = true;
-            }
-
-            //Validar para que únicmente se ingrese un punto decimal
-            else if (Txt_Precio.Text.IndexOf('.') >= 0 && e.KeyChar == 46)
-            //Si en la caja ya hay un "." y la tecla preionada es "."
-            {
-                LblErrorPrecio.Text = "Solo se permite un punto decimal";
-                LblErrorPrecio.Visible = true;
-                e.Handled = true; //No se permite ingresar el "."
-            }
-
-            else //Si no hay errores, ocultar la etiqueta de error
-            {
-                LblErrorPrecio.Visible = false;
-            }
+            Inicio_Recibido.ValidarEntradaTxtPrecio(e, Txt_Precio, LblErrorPrecio); //LLamamos a la función de validar entrada del TextBox Precio
         }
 
         private void Txt_Cantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Validar que solo es ingresen numeros o backspace
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                LblErrorCantidad.Visible = true;
-                e.Handled = true;
-            }
-
-            else //Si no hay errores, ocultar la etiqueta de error
-            {
-                LblErrorCantidad.Visible = false;
-            }
+            Inicio_Recibido.ValidarEntradaTxtCantidad(e, LblErrorCantidad); //LLamamos a la función de validar entrada del TextBox Cantidad
         }
 
         private void BtnCargarImagen_Click(object sender, EventArgs e)
         {
-            Inicio_Recibido.CargarImagen(PicImagenProducto, ref RutaImagenTemporal); //LLamamos a la función Cargar Imagen
+            Inicio_Recibido.CargarImagen(PicImagenProducto, ref RutaImagenTemporal, ref SeModificoImagen); //LLamamos a la función Cargar Imagen
         }
 
         private void BtnRegistrarProducto_Click(object sender, EventArgs e)
-        {
-            //Si algun campo esta vacío (exceptuando la descripción o la imagen)  mensaje de error
-            if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Marca.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Precio.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Cantidad.Text))
-            {
-                MessageBox.Show("Error. Ingrese la información del producto a ingresar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //Convertimos el valor de las cajas en tipo float y entero
-            Precio = float.Parse(Txt_Precio.Text);
-            Cantidad = int.Parse(Txt_Cantidad.Text);
-
+        {     
             //LLamamos a la función RegistrarProducto
-            Inicio_Recibido.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, Precio, Cantidad, RutaImagenTemporal, IdGenerado,
+            Inicio_Recibido.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, RutaImagenTemporal, IdGenerado,
                 Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
         }
 
         private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)
         {
             Inicio_Recibido.DeseleccionarImagen(PicImagenProducto, ref RutaImagenTemporal); //Llamamos a la función Deseleccionar Imagen
+        }
+
+        private void AgregarProducto_Load(object sender, EventArgs e)
+        {
+            //Inicializamos Variables
+            IdGenerado = 0; //Inicializamos IdSeleccionado
+            SeModificoImagen = false; //Centinela es Falso
+            RutaImagenTemporal = null;
         }
     }
 }

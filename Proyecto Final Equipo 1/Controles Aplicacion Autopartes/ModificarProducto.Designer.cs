@@ -248,6 +248,7 @@
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(104, 22);
             this.Txt_Cantidad.TabIndex = 87;
+            this.Txt_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Cantidad_KeyPress);
             // 
             // LblCantidad
             // 
@@ -265,6 +266,7 @@
             this.Txt_Precio.Name = "Txt_Precio";
             this.Txt_Precio.Size = new System.Drawing.Size(180, 22);
             this.Txt_Precio.TabIndex = 85;
+            this.Txt_Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Precio_KeyPress);
             // 
             // LblPrecio
             // 

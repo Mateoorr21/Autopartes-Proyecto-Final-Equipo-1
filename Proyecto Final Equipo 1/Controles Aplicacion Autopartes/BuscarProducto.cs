@@ -45,9 +45,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            //Llamamos a la función EncontrarProductos y limpiamos la caja Buscar
+            //Llamamos a la función EncontrarProductos
             Inicio_Recibido.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros);
-            TxtBuscar.Clear();
         }
 
         private void RdId_CheckedChanged(object sender, EventArgs e)

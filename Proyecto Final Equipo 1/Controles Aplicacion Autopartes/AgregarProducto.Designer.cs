@@ -101,11 +101,11 @@
             // LblDescripcion
             // 
             this.LblDescripcion.AutoSize = true;
-            this.LblDescripcion.Location = new System.Drawing.Point(228, 151);
+            this.LblDescripcion.Location = new System.Drawing.Point(293, 151);
             this.LblDescripcion.Name = "LblDescripcion";
-            this.LblDescripcion.Size = new System.Drawing.Size(147, 16);
+            this.LblDescripcion.Size = new System.Drawing.Size(82, 16);
             this.LblDescripcion.TabIndex = 35;
-            this.LblDescripcion.Text = "Descripción (Opcional):";
+            this.LblDescripcion.Text = "Descripción:";
             // 
             // LblTitulo
             // 
@@ -183,11 +183,11 @@
             // LblImagen
             // 
             this.LblImagen.AutoSize = true;
-            this.LblImagen.Location = new System.Drawing.Point(258, 323);
+            this.LblImagen.Location = new System.Drawing.Point(319, 323);
             this.LblImagen.Name = "LblImagen";
-            this.LblImagen.Size = new System.Drawing.Size(117, 16);
+            this.LblImagen.Size = new System.Drawing.Size(52, 16);
             this.LblImagen.TabIndex = 58;
-            this.LblImagen.Text = "Imagen (Opcional)";
+            this.LblImagen.Text = "Imagen";
             // 
             // PicImagenProducto
             // 
@@ -269,6 +269,7 @@
             this.Controls.Add(this.LblTitulo);
             this.Name = "AgregarProducto";
             this.Size = new System.Drawing.Size(1021, 490);
+            this.Load += new System.EventHandler(this.AgregarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
