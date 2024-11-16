@@ -134,7 +134,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
                     RdCajero.Enabled = false;
                 }
 
-                else //Si no se selecciona a si mismo esta opcion esta habilitada
+                else if (Aplicacion_Recibida.TipoUsuario == "Propietario") //Si no se selecciona a si mismo esta opcion esta habilitada
                 {
                     RdAdmin.Enabled = true;
                     RdCajero.Enabled = true;
