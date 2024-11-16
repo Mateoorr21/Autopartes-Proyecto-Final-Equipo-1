@@ -83,5 +83,18 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //Llamamos a la función Eliminar que se encuentra en Inicio, pasamos paramatros solicitados
             Inicio_Recibido.BorrarProducto(IdSeleccionado, LvProductos, LblCantidadRegistros, ContarProductos);
         }
+
+        //Funcion para Reinciar Variables de control ModificarProducto
+        public void ReiniciarVariables()
+        {
+            IdSeleccionado = 0;
+            ContarProductos = 0;
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Inicio_Recibido.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            ReiniciarVariables(); //Reiniciamos Variables
+        }
     }
 }

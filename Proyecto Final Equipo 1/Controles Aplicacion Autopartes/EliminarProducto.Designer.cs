@@ -42,6 +42,7 @@
             this.RdId = new System.Windows.Forms.RadioButton();
             this.RdNombre = new System.Windows.Forms.RadioButton();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.GpBBusquedaTipo.SuspendLayout();
             this.GbBusquedaCampo.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             // 
             this.BtnEliminar.BackColor = System.Drawing.Color.LightCoral;
             this.BtnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminar.Location = new System.Drawing.Point(808, 19);
+            this.BtnEliminar.Location = new System.Drawing.Point(691, 20);
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(173, 46);
@@ -208,9 +209,25 @@
             this.LblCantidadRegistros.TabIndex = 82;
             this.LblCantidadRegistros.Text = "Productos Encontrados: ";
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.Beige;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelar.ForeColor = System.Drawing.Color.DarkRed;
+            this.BtnCancelar.Location = new System.Drawing.Point(871, 19);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(110, 46);
+            this.BtnCancelar.TabIndex = 96;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // EliminarProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.GpBBusquedaTipo);
@@ -249,5 +266,6 @@
         private System.Windows.Forms.RadioButton RdId;
         private System.Windows.Forms.RadioButton RdNombre;
         private System.Windows.Forms.Label LblCantidadRegistros;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

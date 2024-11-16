@@ -21,11 +21,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             InitializeComponent();
             Inicio_Recibido = inicio; //Asignamos a Recibido el que se pasa como parametro
         }
-        public void LiberarPictureBox() //llamamos a la funcion LiberarPictureBox del Inicio
-        {
-            Inicio_Recibido.LiberarPictureBox(PicImagenProducto);
-        }
-
         private void BuscarProducto_Load(object sender, EventArgs e)
         {
             IdSeleccionado = 0;
@@ -64,22 +59,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Inicio_Recibido.ValidarEntradaTxtBuscar(e, RdId, LblErrorBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
         }
 
-        //Controlar la entrada de datos en el apartado cantidad a vender
-        private void Txt_Cantidad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //Validar que solo es ingresen numeros o backspace
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                LblErrorCantidad.Visible = true;
-                e.Handled = true;
-            }
-
-            else //Si no hay errores, ocultar la etiqueta de error
-            {
-                LblErrorCantidad.Visible = false;
-            }
-        }
-
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Si se selecciona un registro
@@ -97,5 +76,16 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Inicio_Recibido.MostrarProducto(IdSeleccionado, LvProductos, PicImagenProducto); //LLamamos a función MostrarProducto
         }
 
+        //Funcion para Reinciar Variables de control ModificarProducto
+        public void ReiniciarVariables()
+        {
+            IdSeleccionado = 0;
+        }
+
+        private void BtnRestaurarBusqueda_Click(object sender, EventArgs e)
+        {
+            Inicio_Recibido.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            ReiniciarVariables(); //Reiniciamos Variables
+        }
     }
 }

@@ -39,14 +39,11 @@
             this.LvProductos = new System.Windows.Forms.ListView();
             this.BtnMostrarProducto = new System.Windows.Forms.Button();
             this.PicImagenProducto = new System.Windows.Forms.PictureBox();
-            this.Txt_Cantidad = new System.Windows.Forms.TextBox();
-            this.LblCantidad = new System.Windows.Forms.Label();
-            this.LblErrorCantidad = new System.Windows.Forms.Label();
             this.GpBBusquedaTipo = new System.Windows.Forms.GroupBox();
             this.RdExacta = new System.Windows.Forms.RadioButton();
             this.RdAproximada = new System.Windows.Forms.RadioButton();
-            this.BtnCarrito = new System.Windows.Forms.Button();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
+            this.BtnRestaurarBusqueda = new System.Windows.Forms.Button();
             this.GbBusquedaCampo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
             this.GpBBusquedaTipo.SuspendLayout();
@@ -170,40 +167,10 @@
             // 
             this.PicImagenProducto.Location = new System.Drawing.Point(827, 156);
             this.PicImagenProducto.Name = "PicImagenProducto";
-            this.PicImagenProducto.Size = new System.Drawing.Size(173, 127);
+            this.PicImagenProducto.Size = new System.Drawing.Size(173, 152);
             this.PicImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicImagenProducto.TabIndex = 62;
             this.PicImagenProducto.TabStop = false;
-            // 
-            // Txt_Cantidad
-            // 
-            this.Txt_Cantidad.Location = new System.Drawing.Point(827, 367);
-            this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Txt_Cantidad.Name = "Txt_Cantidad";
-            this.Txt_Cantidad.Size = new System.Drawing.Size(173, 22);
-            this.Txt_Cantidad.TabIndex = 64;
-            this.Txt_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Cantidad_KeyPress);
-            // 
-            // LblCantidad
-            // 
-            this.LblCantidad.AutoSize = true;
-            this.LblCantidad.Location = new System.Drawing.Point(828, 344);
-            this.LblCantidad.Name = "LblCantidad";
-            this.LblCantidad.Size = new System.Drawing.Size(122, 16);
-            this.LblCantidad.TabIndex = 63;
-            this.LblCantidad.Text = "Cantidad a Vender:";
-            // 
-            // LblErrorCantidad
-            // 
-            this.LblErrorCantidad.AutoSize = true;
-            this.LblErrorCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblErrorCantidad.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorCantidad.Location = new System.Drawing.Point(828, 328);
-            this.LblErrorCantidad.Name = "LblErrorCantidad";
-            this.LblErrorCantidad.Size = new System.Drawing.Size(143, 13);
-            this.LblErrorCantidad.TabIndex = 66;
-            this.LblErrorCantidad.Text = "Solo admite números enteros";
-            this.LblErrorCantidad.Visible = false;
             // 
             // GpBBusquedaTipo
             // 
@@ -242,17 +209,6 @@
             this.RdAproximada.Text = "Aproximada";
             this.RdAproximada.UseVisualStyleBackColor = true;
             // 
-            // BtnCarrito
-            // 
-            this.BtnCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCarrito.Location = new System.Drawing.Point(827, 395);
-            this.BtnCarrito.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnCarrito.Name = "BtnCarrito";
-            this.BtnCarrito.Size = new System.Drawing.Size(173, 49);
-            this.BtnCarrito.TabIndex = 67;
-            this.BtnCarrito.Text = "Agregar Carrito";
-            this.BtnCarrito.UseVisualStyleBackColor = true;
-            // 
             // LblCantidadRegistros
             // 
             this.LblCantidadRegistros.AutoSize = true;
@@ -263,15 +219,27 @@
             this.LblCantidadRegistros.TabIndex = 68;
             this.LblCantidadRegistros.Text = "Productos Encontrados: ";
             // 
+            // BtnRestaurarBusqueda
+            // 
+            this.BtnRestaurarBusqueda.BackColor = System.Drawing.Color.Beige;
+            this.BtnRestaurarBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnRestaurarBusqueda.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRestaurarBusqueda.ForeColor = System.Drawing.Color.DarkRed;
+            this.BtnRestaurarBusqueda.Location = new System.Drawing.Point(827, 356);
+            this.BtnRestaurarBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnRestaurarBusqueda.Name = "BtnRestaurarBusqueda";
+            this.BtnRestaurarBusqueda.Size = new System.Drawing.Size(173, 91);
+            this.BtnRestaurarBusqueda.TabIndex = 96;
+            this.BtnRestaurarBusqueda.Text = "Restaurar Búsqueda";
+            this.BtnRestaurarBusqueda.UseVisualStyleBackColor = false;
+            this.BtnRestaurarBusqueda.Click += new System.EventHandler(this.BtnRestaurarBusqueda_Click);
+            // 
             // BuscarProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.BtnRestaurarBusqueda);
             this.Controls.Add(this.LblCantidadRegistros);
-            this.Controls.Add(this.BtnCarrito);
             this.Controls.Add(this.GpBBusquedaTipo);
-            this.Controls.Add(this.LblErrorCantidad);
-            this.Controls.Add(this.Txt_Cantidad);
-            this.Controls.Add(this.LblCantidad);
             this.Controls.Add(this.PicImagenProducto);
             this.Controls.Add(this.BtnMostrarProducto);
             this.Controls.Add(this.LvProductos);
@@ -307,13 +275,10 @@
         private System.Windows.Forms.ListView LvProductos;
         private System.Windows.Forms.Button BtnMostrarProducto;
         private System.Windows.Forms.PictureBox PicImagenProducto;
-        private System.Windows.Forms.TextBox Txt_Cantidad;
-        private System.Windows.Forms.Label LblCantidad;
-        private System.Windows.Forms.Label LblErrorCantidad;
         private System.Windows.Forms.GroupBox GpBBusquedaTipo;
         private System.Windows.Forms.RadioButton RdExacta;
         private System.Windows.Forms.RadioButton RdAproximada;
-        private System.Windows.Forms.Button BtnCarrito;
         private System.Windows.Forms.Label LblCantidadRegistros;
+        private System.Windows.Forms.Button BtnRestaurarBusqueda;
     }
 }

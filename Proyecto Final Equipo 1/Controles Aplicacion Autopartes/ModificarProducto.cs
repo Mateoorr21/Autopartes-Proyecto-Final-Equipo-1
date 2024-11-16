@@ -25,11 +25,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Inicio_Recibido = inicio; //Asignamos a Recibido el que se pasa como parametro
         }
 
-        public void LiberarPictureBox() //llamamos a la funcion LiberarPictureBox del Inicio
-        {
-            Inicio_Recibido.LiberarPictureBox(PicImagenProducto);
-        }
-
         private void ModificarProducto_Load(object sender, EventArgs e)
         {
             IdSeleccionado = 0; //Inicializamos IdSeleccionado
@@ -88,9 +83,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 Txt_Cantidad.Text = ItemSeleccionado.SubItems[5].Text;
 
                 //Obtenemos la ruta guardada en el ListView y quitamos los caracteres #
-                string RutaImagenListView = ItemSeleccionado.SubItems[6].Text.Trim('#');
+                RutaImagenTemporal = ItemSeleccionado.SubItems[6].Text.Trim('#');
 
-                string RutaImagenAbrir = "..\\..\\" + RutaImagenListView; //Creamos la nueva ruta (saliendo varias carpetas mas)
+                string RutaImagenAbrir = "..\\..\\" + RutaImagenTemporal; //Creamos la nueva ruta (saliendo varias carpetas mas)
+
+                SeModificoImagen = false; //Cada que seleccionamos un registro la imagen no se ha modificado
+                PicImagenProducto.Image = null; //Limpiamos el PictureBox si existe una imagen cargada
 
                 PicImagenProducto.Image = Image.FromFile(RutaImagenAbrir); //Cargamos la Imagen 
             }
@@ -106,6 +104,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //LLamamos a la función ActualizarProducto
             Inicio_Recibido.ActualizarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, RutaImagenTemporal, IdSeleccionado, SeModificoImagen, LvProductos,
                 Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
+
+            ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)
@@ -121,6 +121,20 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void Txt_Cantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             Inicio_Recibido.ValidarEntradaTxtCantidad(e, LblErrorCantidad); //LLamamos a la función de validar entrada del TextBox Cantidad
+        }
+
+        //Funcion para Reinciar Variables de control ModificarProducto
+        public void ReiniciarVariables()
+        {
+            IdSeleccionado = 0;
+            RutaImagenTemporal = null;
+            SeModificoImagen = false;
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Inicio_Recibido.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            ReiniciarVariables(); //Reinciamos variables
         }
     }
 

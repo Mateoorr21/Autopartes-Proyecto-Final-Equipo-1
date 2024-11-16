@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -61,6 +62,45 @@ namespace Proyecto_Final_Equipo_1
         //Como pasamos una instancia de este Formulario Inicio siempre que abrimos uno nuevo
         //Podemos llamar a cualquier función desde cualquier parte del programa
 
+        //FUNCION PARA LIMPIAR TODOS LOS CONTROLES DE UN CONTROL DE USUARIO 
+        public void LimpiarControles(Control ControlUsuario)
+        {
+            foreach (Control control in ControlUsuario.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Text = string.Empty;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = -1;
+                }
+                else if (control is RadioButton radioButton)
+                {
+                    //El radioButton de Aproximada y Nombre se seleccionan por Default
+                    if (radioButton.Name.Contains("Aproximada") || radioButton.Name.Contains("Nombre")) radioButton.Checked = true;
+
+                    else radioButton.Checked = false;
+                }
+                else if (control is PictureBox pictureBox)
+                {
+                    pictureBox.Image = null;
+                }
+                else if (control is Label Etiqueta && Etiqueta.Name.Contains("Error"))
+                {
+                    Etiqueta.Visible = false; // Ocultamos los labels que son de mensaje de Error
+                }
+                else if (control is ListView listView)
+                {
+                    listView.Items.Clear(); //Limpiamos el ListView
+                }
+                // Si el control es otro contenedor de controles, llamamos a la funcion de nuevo
+                else if (control.HasChildren)
+                {
+                    LimpiarControles(control);
+                }
+            }
+        }
 
         //FUNCION PARA CARGAR PRODUCTOS EN EL INVENTARIO
         public void CargarProductos(ListView LvProductos, Label lblCantidadRegistros)
@@ -329,7 +369,7 @@ namespace Proyecto_Final_Equipo_1
         public void ActualizarProducto(string Nombre, string Descripcion, string Marca, string RutaImagenTemporal, int Id, bool SeModificoImagen, ListView LvProductos,
             TextBox Txt_Nombre, TextBox Txt_Descripcion, TextBox Txt_Marca, TextBox Txt_Precio, TextBox Txt_Cantidad, PictureBox PicImagenProducto)
         {
-
+            
             //Si no hay registro seleccionado menssaje de Error
             if (LvProductos.SelectedItems.Count == 0)
             {
@@ -337,6 +377,8 @@ namespace Proyecto_Final_Equipo_1
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            MessageBox.Show("La ruta es" + RutaImagenTemporal);
 
             //Si alguno de los campos a actualizar esta vacío mensaje de Error
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
@@ -385,12 +427,8 @@ namespace Proyecto_Final_Equipo_1
             //Solo si se modifico la imagen, borramos la existente y copiamos la nueva
             if (SeModificoImagen)
             {
-                //ELIMINAMOS LA IMAGEN CON ESE ID 
-                //Obtenemos la posible ruta de la imagen existente con el mismo ID
+                // Obtenemos la ruta de la imagen existente con el mismo ID
                 string RutaImagenEnCarpetaJpg = "..\\..\\..\\Imagenes\\" + Id.ToString() + ".jpg";
-
-                //Borramos la imagen existente si se encuentra en la carpeta
-                if (File.Exists(RutaImagenEnCarpetaJpg)) File.Delete(RutaImagenEnCarpetaJpg); // Eliminamos la imagen existente .jpg
 
                 // Pasamos el reemplazo a la carpeta usando RutaImagenEnCarpetaJpg
                 File.Copy(RutaImagenTemporal, RutaImagenEnCarpetaJpg, true);
@@ -404,12 +442,13 @@ namespace Proyecto_Final_Equipo_1
             Modificado.SubItems[4].Text = Precio.ToString();
             Modificado.SubItems[5].Text = Cantidad.ToString();
 
-            //Limpiamos los controles de Actualización de Datos (Cajas de Texto y PictureBox)
+            //Limpiamos los controles de Actualización de Datos (Cajas de Texto ) y deseleccionamos ListView
             Txt_Nombre.Clear();
             Txt_Descripcion.Clear();
             Txt_Marca.Clear();
             Txt_Precio.Clear();
             Txt_Cantidad.Clear();
+            LvProductos.SelectedItems.Clear();
 
             //Mensaje de Actualización de datos exitosa
             MessageBox.Show("Datos del Producto actualizados correctamente.", "ACTUALIZACION DE DATOS DE PRODUCTO",
@@ -552,16 +591,8 @@ namespace Proyecto_Final_Equipo_1
             }
         }
 
-
-        
-
         //FUNCION PARA CARGAR UNA IMAGEN A UN PICTUREBOX Y PARA ELIMINAR UNA IMAGEN DEL PICTUREBOX
         //LA RUTA LA PASAMOS POR REFERENCIA PORQUE QUEREMOS QUE SE MODIFIQUE SU VALOR
-        public void LiberarPictureBox(PictureBox PicImagenProducto)
-        {
-            PicImagenProducto.Image = null;
-        }
-
         public void CargarImagen (PictureBox PicImagenProducto, ref string RutaImagenTemporal, ref bool SeModificoImagen)
         {
             //Instancia de OpenFileDialog que permite al usuario seleccionar un archivo
@@ -588,4 +619,10 @@ namespace Proyecto_Final_Equipo_1
             RutaImagenTemporal = null; //La ruta temporal será nula
         }
     }
+
+
+
+
+    //FUNCIONES DE CATALOGO DE USUARIOS
+
 }

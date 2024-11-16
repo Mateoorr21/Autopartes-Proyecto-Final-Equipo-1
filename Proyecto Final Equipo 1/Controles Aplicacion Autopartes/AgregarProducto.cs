@@ -28,11 +28,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             Inicio_Recibido = inicio; //Asignamos a Recibido el que se pasa como parametro
         }
 
-        public void LiberarPictureBox() //llamamos a la funcion LiberarPictureBox del Inicio
-        {
-            Inicio_Recibido.LiberarPictureBox(PicImagenProducto);
-        }
-
         private void Txt_Precio_KeyPress(object sender, KeyPressEventArgs e)
         {
             Inicio_Recibido.ValidarEntradaTxtPrecio(e, Txt_Precio, LblErrorPrecio); //LLamamos a la función de validar entrada del TextBox Precio
@@ -67,5 +62,21 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             SeModificoImagen = false; //Centinela es Falso
             RutaImagenTemporal = null;
         }
+
+        //Funcion para Reinciar Variables de control ModificarProducto
+        public void ReiniciarVariables()
+        {
+            IdGenerado = 0;
+            SeModificoImagen = false;
+            RutaImagenTemporal = null;
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Inicio_Recibido.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            ReiniciarVariables();
+        }
+
+
     }
 }

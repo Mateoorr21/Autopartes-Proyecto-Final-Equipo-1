@@ -66,36 +66,45 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            //Limpiamos panel y cargamos el Control de Usuario AgregarProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(agregarProducto);
             agregarProducto.Dock = DockStyle.Fill;
 
-            modificarProducto.LiberarPictureBox();
-            buscarProducto.LiberarPictureBox();
+            Inicio_Recibido.LimpiarControles(agregarProducto); //Limpiamos los controles del Control de Usuario
+            agregarProducto.ReiniciarVariables(); //Reiniciamos variables
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
+            //Limpiamos panel y cargamos el Control de Usuario BuscarProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(buscarProducto);
             buscarProducto.Dock = DockStyle.Fill;
 
-            modificarProducto.LiberarPictureBox();
-            agregarProducto.LiberarPictureBox();
+            Inicio_Recibido.LimpiarControles(buscarProducto); //Limpiamos los controles del Control de Usuario
+            buscarProducto.ReiniciarVariables(); //Reiniciamos variables
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            //Limpiamos panel y cargamos el Control de Usuario BuscarProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(eliminarProducto);
             eliminarProducto.Dock = DockStyle.Fill;
+
+            Inicio_Recibido.LimpiarControles(eliminarProducto); //Limpiamos los controles del Control de Usuario
+            eliminarProducto.ReiniciarVariables(); //Reiniciamos variables
         }
 
         private void BtnInventario_Click(object sender, EventArgs e)
         {
+            //Limpiamos panel y cargamos el Control de Usuario InventarioProductos
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(inventarioProductos);
             inventarioProductos.Dock = DockStyle.Fill;
+
+            Inicio_Recibido.LimpiarControles(inventarioProductos); //Limpiamos los controles del Control de Usuario
 
             //LLamamos a la función CargarProductos
             inventarioProductos.CargarProductos();
@@ -103,12 +112,13 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            //Limpiamos panel y cargamos el Control de Usuario ModificarProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(modificarProducto);
             modificarProducto.Dock = DockStyle.Fill;
-
-            buscarProducto.LiberarPictureBox();
-            agregarProducto.LiberarPictureBox();
+           
+            Inicio_Recibido.LimpiarControles(modificarProducto); //Limpiamos los controles del Control de Usuario
+            modificarProducto.ReiniciarVariables(); //Reiniciamos variables
         }
     }
 }

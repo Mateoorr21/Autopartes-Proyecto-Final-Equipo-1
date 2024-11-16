@@ -48,6 +48,7 @@
             this.LblErrorPrecio = new System.Windows.Forms.Label();
             this.LblErrorCantidad = new System.Windows.Forms.Label();
             this.BtnDeseleccionarImagen = new System.Windows.Forms.Button();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             // 
             // BtnRegistrarProducto
             // 
-            this.BtnRegistrarProducto.Location = new System.Drawing.Point(788, 345);
+            this.BtnRegistrarProducto.Location = new System.Drawing.Point(788, 368);
             this.BtnRegistrarProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRegistrarProducto.Name = "BtnRegistrarProducto";
             this.BtnRegistrarProducto.Size = new System.Drawing.Size(125, 94);
@@ -244,9 +245,25 @@
             this.BtnDeseleccionarImagen.UseVisualStyleBackColor = true;
             this.BtnDeseleccionarImagen.Click += new System.EventHandler(this.BtnDeseleccionarImagen_Click);
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.Beige;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelar.ForeColor = System.Drawing.Color.DarkRed;
+            this.BtnCancelar.Location = new System.Drawing.Point(788, 323);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(125, 41);
+            this.BtnCancelar.TabIndex = 65;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // AgregarProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnDeseleccionarImagen);
             this.Controls.Add(this.LblErrorCantidad);
             this.Controls.Add(this.LblErrorPrecio);
@@ -297,5 +314,6 @@
         private System.Windows.Forms.Label LblErrorPrecio;
         private System.Windows.Forms.Label LblErrorCantidad;
         private System.Windows.Forms.Button BtnDeseleccionarImagen;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }
