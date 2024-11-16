@@ -379,6 +379,7 @@ namespace Proyecto_Final_Equipo_1
         {
             // Si ya existe una imagen cargada, se limpia
             PicImagenProducto.Image = null;
+            RutaImagenTemporal = null;
 
             //Instancia de OpenFileDialog que permite al usuario seleccionar un archivo
             OpenFileDialog openFileDialog = new OpenFileDialog();
