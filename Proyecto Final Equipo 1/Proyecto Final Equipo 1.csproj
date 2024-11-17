@@ -70,6 +70,12 @@
     <Compile Include="Controles Aplicacion Autopartes\BuscarProducto.Designer.cs">
       <DependentUpon>BuscarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controles Aplicacion Autopartes\CorteCaja.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles Aplicacion Autopartes\CorteCaja.Designer.cs">
+      <DependentUpon>CorteCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controles Aplicacion Autopartes\EliminarProducto.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +93,12 @@
     </Compile>
     <Compile Include="Controles Aplicacion Autopartes\ModificarProducto.Designer.cs">
       <DependentUpon>ModificarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controles Aplicacion Autopartes\Ventas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles Aplicacion Autopartes\Ventas.Designer.cs">
+      <DependentUpon>Ventas.cs</DependentUpon>
     </Compile>
     <Compile Include="Controles Catalogo de Usuarios\EliminarUsuario.cs">
       <SubType>UserControl</SubType>
@@ -135,6 +147,9 @@
     <EmbeddedResource Include="Controles Aplicacion Autopartes\BuscarProducto.resx">
       <DependentUpon>BuscarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controles Aplicacion Autopartes\CorteCaja.resx">
+      <DependentUpon>CorteCaja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controles Aplicacion Autopartes\EliminarProducto.resx">
       <DependentUpon>EliminarProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controles Aplicacion Autopartes\ModificarProducto.resx">
       <DependentUpon>ModificarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles Aplicacion Autopartes\Ventas.resx">
+      <DependentUpon>Ventas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controles Catalogo de Usuarios\EliminarUsuario.resx">
       <DependentUpon>EliminarUsuario.cs</DependentUpon>

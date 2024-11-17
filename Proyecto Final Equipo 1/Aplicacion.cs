@@ -20,6 +20,7 @@ namespace Proyecto_Final_Equipo_1
         EliminarProducto eliminarProducto; 
         InventarioProductos inventarioProductos; 
         ModificarProducto modificarProducto;
+        Ventas ventaProducto;
 
         //Aplicacion recibe parametro de instancia Inicio
         public Aplicacion() //Indicamos que el formulario recibe parámetros
@@ -31,6 +32,7 @@ namespace Proyecto_Final_Equipo_1
             eliminarProducto = new EliminarProducto(); 
             inventarioProductos = new InventarioProductos();
             modificarProducto = new ModificarProducto();
+            ventaProducto = new Ventas();
         }
 
         private void Aplicacion_Load(object sender, EventArgs e)
@@ -125,6 +127,16 @@ namespace Proyecto_Final_Equipo_1
         private void BtnSalir_Click(object sender, EventArgs e)
         {
             Dispose(); //Salimos de la Aplicacion
+        }
+
+        private void BtnVender_Click(object sender, EventArgs e)
+        {
+            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+
+            //Limpiamos panel y cargamos el Control de Usuario ModificarProducto
+            PanelAutoPartes.Controls.Clear();
+            PanelAutoPartes.Controls.Add(ventaProducto);
+            ventaProducto.Dock = DockStyle.Fill;
         }
     }
 }
