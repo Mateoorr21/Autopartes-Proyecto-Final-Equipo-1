@@ -167,6 +167,7 @@
             this.LvUsuarios.Size = new System.Drawing.Size(435, 347);
             this.LvUsuarios.TabIndex = 5;
             this.LvUsuarios.UseCompatibleStateImageBehavior = false;
+            this.LvUsuarios.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvUsuarios_ColumnClick);
             this.LvUsuarios.SelectedIndexChanged += new System.EventHandler(this.LvUsuarios_SelectedIndexChanged);
             // 
             // LblDatos

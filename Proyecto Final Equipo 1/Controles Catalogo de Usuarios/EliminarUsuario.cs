@@ -77,5 +77,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         {
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
         }
+
+        private void LvUsuarios_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            FuncionesAplicacion.OrdenamientoColumnas(e, LvUsuarios); //Llamamos a la funcion Ordenamiento de Columnas
+        }
     }
 }

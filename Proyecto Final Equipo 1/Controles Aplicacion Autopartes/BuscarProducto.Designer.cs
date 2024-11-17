@@ -149,6 +149,7 @@
             this.LvProductos.Size = new System.Drawing.Size(652, 381);
             this.LvProductos.TabIndex = 59;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
+            this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
             this.LvProductos.SelectedIndexChanged += new System.EventHandler(this.LvProductos_SelectedIndexChanged);
             // 
             // BtnMostrarProducto

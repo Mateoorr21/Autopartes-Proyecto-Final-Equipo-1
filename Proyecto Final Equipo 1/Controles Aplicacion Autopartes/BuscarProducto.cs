@@ -78,5 +78,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
+
+        private void LvProductos_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            FuncionesAplicacion.OrdenamientoColumnas(e, LvProductos); //Llamamos a la funcion Ordenamiento de Columnas
+        }
     }
 }

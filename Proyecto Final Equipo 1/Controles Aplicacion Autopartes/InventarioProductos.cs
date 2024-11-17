@@ -37,5 +37,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.Columns.Add("Precio", 70);
             LvProductos.Columns.Add("Cantidad en Stock", 120);
         }
+
+        private void LvProductos_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            FuncionesAplicacion.OrdenamientoColumnas(e, LvProductos); //Llamamos a la funcion Ordenamiento de Columnas
+        }
     }
 }

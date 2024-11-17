@@ -53,6 +53,7 @@
             this.LvProductos.Size = new System.Drawing.Size(939, 381);
             this.LvProductos.TabIndex = 76;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
+            this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
             // 
             // LblTitulo
             // 

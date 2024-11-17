@@ -87,6 +87,7 @@
             this.LvUsuarios.Size = new System.Drawing.Size(591, 347);
             this.LvUsuarios.TabIndex = 56;
             this.LvUsuarios.UseCompatibleStateImageBehavior = false;
+            this.LvUsuarios.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvUsuarios_ColumnClick);
             this.LvUsuarios.SelectedIndexChanged += new System.EventHandler(this.LvUsuarios_SelectedIndexChanged);
             // 
             // BtnBuscar

@@ -31,7 +31,39 @@ namespace Proyecto_Final_Equipo_1
         public static string RutaImagenTemporal = null;
         public static int IdSeleccionado = 0;
         public static int ContarProductos = 0;
-        
+
+        public static int ColumnaOrdenar = -1; //Variable para OrdenarColumnas
+
+
+
+        //FUNCION PARA ORDENAR LAS COLUMANS DE UN LISTVIEW, RECIBE UN LISTVIEW COMO PARAMETRO
+        public static void OrdenamientoColumnas(ColumnClickEventArgs e, ListView LvTabla)
+        {
+            if (e.Column != ColumnaOrdenar)
+            { //Si la columna elegida no esta ordenada
+                ColumnaOrdenar = e.Column;
+                LvTabla.Sorting = SortOrder.Ascending; //La ordenamos ascendente
+            }
+
+            else
+            { //Si ya esta ordenada, cambiamos su ordenacion...
+                if (LvTabla.Sorting == SortOrder.Ascending)
+                {
+                    LvTabla.Sorting = SortOrder.Descending;
+                }
+
+                else
+                {
+                    LvTabla.Sorting = SortOrder.Ascending;
+                }
+            }
+
+            LvTabla.Sort();
+            LvTabla.ListViewItemSorter =
+                new ListViewItemComparer(e.Column, LvTabla.Sorting);
+        }
+
+
 
         //FUNCION PARA REINICIAR VARIABLES (MENOS ContarProductos)
         public static void ReiniciarVariables()
