@@ -41,6 +41,7 @@
             this.RdAproximada = new System.Windows.Forms.RadioButton();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.BtnEliminar = new System.Windows.Forms.Button();
+            this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.GbBusquedaCampo.SuspendLayout();
             this.GpBBusquedaTipo.SuspendLayout();
             this.SuspendLayout();
@@ -196,10 +197,21 @@
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
+            // LblCantidadRegistros
+            // 
+            this.LblCantidadRegistros.AutoSize = true;
+            this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCantidadRegistros.Location = new System.Drawing.Point(713, 469);
+            this.LblCantidadRegistros.Name = "LblCantidadRegistros";
+            this.LblCantidadRegistros.Size = new System.Drawing.Size(165, 18);
+            this.LblCantidadRegistros.TabIndex = 84;
+            this.LblCantidadRegistros.Text = "Usuarios Encontrados: ";
+            // 
             // EliminarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.TxtBuscar);
@@ -236,5 +248,6 @@
         private System.Windows.Forms.RadioButton RdAproximada;
         private System.Windows.Forms.Label LblTitulo;
         private System.Windows.Forms.Button BtnEliminar;
+        private System.Windows.Forms.Label LblCantidadRegistros;
     }
 }

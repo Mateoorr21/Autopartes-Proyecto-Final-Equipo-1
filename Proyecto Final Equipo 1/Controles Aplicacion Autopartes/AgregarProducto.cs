@@ -17,64 +17,49 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 {
     public partial class AgregarProducto : UserControl
     {
-        Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
-        int IdGenerado; //Variable glocal IdGenerado
-        bool SeModificoImagen;
-        string RutaImagenTemporal; //Variable Global Ruta Temporal
-
-        public AgregarProducto(Inicio inicio)
+        public AgregarProducto()
         {
             InitializeComponent(); 
-            Inicio_Recibido = inicio; //Asignamos a Recibido el que se pasa como parametro
         }
 
         private void Txt_Precio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Inicio_Recibido.ValidarEntradaTxtPrecio(e, Txt_Precio, LblErrorPrecio); //LLamamos a la función de validar entrada del TextBox Precio
+            FuncionesAplicacion.ValidarEntradaTxtPrecio(e, Txt_Precio, LblErrorPrecio); //LLamamos a la función de validar entrada del TextBox Precio
         }
 
         private void Txt_Cantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Inicio_Recibido.ValidarEntradaTxtCantidad(e, LblErrorCantidad); //LLamamos a la función de validar entrada del TextBox Cantidad
+            FuncionesAplicacion.ValidarEntradaTxtCantidad(e, LblErrorCantidad); //LLamamos a la función de validar entrada del TextBox Cantidad
         }
 
         private void BtnCargarImagen_Click(object sender, EventArgs e)
         {
-            Inicio_Recibido.CargarImagen(PicImagenProducto, ref RutaImagenTemporal, ref SeModificoImagen); //LLamamos a la función Cargar Imagen
+            FuncionesAplicacion.CargarImagen(PicImagenProducto); //LLamamos a la función Cargar Imagen
         }
 
         private void BtnRegistrarProducto_Click(object sender, EventArgs e)
         {     
             //LLamamos a la función RegistrarProducto
-            Inicio_Recibido.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, RutaImagenTemporal, IdGenerado,
-                Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
+            FuncionesAplicacion.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, LblErrorPrecio, 
+                LblErrorCantidad, Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
+
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)
         {
-            Inicio_Recibido.DeseleccionarImagen(PicImagenProducto, ref RutaImagenTemporal); //Llamamos a la función Deseleccionar Imagen
+            FuncionesAplicacion.DeseleccionarImagen(PicImagenProducto); //Llamamos a la función Deseleccionar Imagen
         }
 
         private void AgregarProducto_Load(object sender, EventArgs e)
         {
-            //Inicializamos Variables
-            IdGenerado = 0; //Inicializamos IdSeleccionado
-            SeModificoImagen = false; //Centinela es Falso
-            RutaImagenTemporal = null;
-        }
-
-        //Funcion para Reinciar Variables de control ModificarProducto
-        public void ReiniciarVariables()
-        {
-            IdGenerado = 0;
-            SeModificoImagen = false;
-            RutaImagenTemporal = null;
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-            Inicio_Recibido.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
-            ReiniciarVariables();
+            FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
 

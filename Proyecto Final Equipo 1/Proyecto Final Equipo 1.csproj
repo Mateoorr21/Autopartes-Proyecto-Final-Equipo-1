@@ -106,6 +106,8 @@
     <Compile Include="Controles Catalogo de Usuarios\RegistrarUsuario.Designer.cs">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FuncionesAplicacion.cs" />
+    <Compile Include="FuncionesCatalogoUsuarios.cs" />
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>

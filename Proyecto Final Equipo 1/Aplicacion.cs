@@ -14,14 +14,6 @@ namespace Proyecto_Final_Equipo_1
 {
     public partial class Aplicacion : Form
     {
-        //Variables que contendran la información del usuario que inicia sesión
-        public bool TienePermiso;
-        public string Usuario;
-        public string TipoUsuario;
-        public string NombreCompleto;
-
-        Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
-
         //Declaramos los diferentes tipos de controles de usuario que se utilizaran en la aplicacion
         AgregarProducto agregarProducto; 
         BuscarProducto buscarProducto; 
@@ -30,28 +22,21 @@ namespace Proyecto_Final_Equipo_1
         ModificarProducto modificarProducto;
 
         //Aplicacion recibe parametro de instancia Inicio
-        public Aplicacion(bool EsAdmin, string TipoUsuario, string Usuario, string NombreCompleto, Inicio inicio) //Indicamos que el formulario recibe parámetros
+        public Aplicacion() //Indicamos que el formulario recibe parámetros
         {
             InitializeComponent();
-            //Asignamos a variables de este formulario la información del usuario obtenida al iniciar sesión
-            this.TienePermiso = EsAdmin; //Recibimos si es Admin o no
-            this.TipoUsuario = TipoUsuario; //Recibimos el permiso
-            this.Usuario = Usuario;
-            this.NombreCompleto = NombreCompleto; //Recibimos el nombre completo
-            this.Inicio_Recibido = inicio; //a Inicio_Recibido le asignamos el parametro recibido
-
             //Todos los controles de usuario reciben como parametro un Inicio para tener acceso a cadconexion
-            agregarProducto = new AgregarProducto(Inicio_Recibido); 
-            buscarProducto = new BuscarProducto(Inicio_Recibido); 
-            eliminarProducto = new EliminarProducto(Inicio_Recibido); 
-            inventarioProductos = new InventarioProductos(Inicio_Recibido);
-            modificarProducto = new ModificarProducto(Inicio_Recibido);
+            agregarProducto = new AgregarProducto(); 
+            buscarProducto = new BuscarProducto(); 
+            eliminarProducto = new EliminarProducto(); 
+            inventarioProductos = new InventarioProductos();
+            modificarProducto = new ModificarProducto();
         }
 
         private void Aplicacion_Load(object sender, EventArgs e)
         {
             //Si no es Administrador únicamente puede acceder a "Buscar/Vender"
-            if (!TienePermiso)
+            if (!FuncionesAplicacion.TienePermiso)
             {
                 BtnAgregar.Enabled = false;
                 BtnEliminar.Enabled = false;
@@ -62,7 +47,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
         {
-            CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios(Inicio_Recibido, this); //Catalogo recibe la instancia de Inicio inicial
+            CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios(); //Abrimos formulario de Catalogo de Usuarios
             catalogoUsuarios.ShowDialog();
         }
 
@@ -73,8 +58,8 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Add(agregarProducto);
             agregarProducto.Dock = DockStyle.Fill;
 
-            Inicio_Recibido.LimpiarControles(agregarProducto); //Limpiamos los controles del Control de Usuario
-            agregarProducto.ReiniciarVariables(); //Reiniciamos variables
+            FuncionesAplicacion.LimpiarControles(agregarProducto); //Limpiamos los controles del Control de Usuario
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -84,8 +69,8 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Add(buscarProducto);
             buscarProducto.Dock = DockStyle.Fill;
 
-            Inicio_Recibido.LimpiarControles(buscarProducto); //Limpiamos los controles del Control de Usuario
-            buscarProducto.ReiniciarVariables(); //Reiniciamos variables
+            FuncionesAplicacion.LimpiarControles(buscarProducto); //Limpiamos los controles del Control de Usuario
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
@@ -95,8 +80,8 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Add(eliminarProducto);
             eliminarProducto.Dock = DockStyle.Fill;
 
-            Inicio_Recibido.LimpiarControles(eliminarProducto); //Limpiamos los controles del Control de Usuario
-            eliminarProducto.ReiniciarVariables(); //Reiniciamos variables
+            FuncionesAplicacion.LimpiarControles(eliminarProducto); //Limpiamos los controles del Control de Usuario
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnInventario_Click(object sender, EventArgs e)
@@ -106,7 +91,7 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Add(inventarioProductos);
             inventarioProductos.Dock = DockStyle.Fill;
 
-            Inicio_Recibido.LimpiarControles(inventarioProductos); //Limpiamos los controles del Control de Usuario
+            FuncionesAplicacion.LimpiarControles(inventarioProductos); //Limpiamos los controles del Control de Usuario
 
             //LLamamos a la función CargarProductos
             inventarioProductos.CargarProductos();
@@ -119,8 +104,8 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Add(modificarProducto);
             modificarProducto.Dock = DockStyle.Fill;
            
-            Inicio_Recibido.LimpiarControles(modificarProducto); //Limpiamos los controles del Control de Usuario
-            modificarProducto.ReiniciarVariables(); //Reiniciamos variables
+            FuncionesAplicacion.LimpiarControles(modificarProducto); //Limpiamos los controles del Control de Usuario
+            FuncionesAplicacion.ReiniciarVariables();
         }
     }
 }

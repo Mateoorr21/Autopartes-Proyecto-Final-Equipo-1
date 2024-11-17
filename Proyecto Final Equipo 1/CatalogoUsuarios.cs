@@ -14,27 +14,26 @@ namespace Proyecto_Final_Equipo_1
 {
     public partial class CatalogoUsuarios : Form
     {
-        Inicio Inicio_Recibido; //Declaramos el Inicio que asignaremos al que se recibe como parametro
-        Aplicacion Aplicacion_Recibida; //Declaramos el Aplicacion que asignaremos al que se recibe como parametro
         //Declaramos variables de tipo UserControl a utilizar
         RegistrarUsuario registroUsuario;
         ModificarUsuario modificarUsuario;
         EliminarUsuario eliminarUsuario;
-        public CatalogoUsuarios(Inicio inicio, Aplicacion aplicacion)
+        public CatalogoUsuarios()
         {
             InitializeComponent();
-            this.Inicio_Recibido = inicio; //a Inicio_Recibido le asignamos el parametro recibido
-            this.Aplicacion_Recibida = aplicacion; //a Aplicacion_Recibido le asignamos el parametro recibido
-            registroUsuario = new RegistrarUsuario(Inicio_Recibido); //El UserControl RegistrarUsuario recibe una instancia Inicio
-            modificarUsuario = new ModificarUsuario(Inicio_Recibido, Aplicacion_Recibida); //El UserControl ModificarUsuario recibe una instancia Inicio
-            eliminarUsuario = new EliminarUsuario(Inicio_Recibido, Aplicacion_Recibida); //El UserControl EliminarUsuario recibe una instancia Inicio
+            //Incializamos los controles de Usuario
+            registroUsuario = new RegistrarUsuario(); 
+            modificarUsuario = new ModificarUsuario(); 
+            eliminarUsuario = new EliminarUsuario(); 
         }
 
         private void BtnRegistrarUsuario_Click(object sender, EventArgs e)
         {
             PanelCatalogo.Controls.Clear();
             PanelCatalogo.Controls.Add(registroUsuario);
-            registroUsuario.Dock = DockStyle.Fill; 
+            registroUsuario.Dock = DockStyle.Fill;
+            
+            FuncionesAplicacion.LimpiarControles(registroUsuario); //Limpiamos los controles del Control de Usuario
         }
 
         private void BtnModificarUsuario_Click(object sender, EventArgs e)
@@ -42,6 +41,8 @@ namespace Proyecto_Final_Equipo_1
             PanelCatalogo.Controls.Clear();
             PanelCatalogo.Controls.Add(modificarUsuario);
             modificarUsuario.Dock = DockStyle.Fill;
+
+            FuncionesAplicacion.LimpiarControles(modificarUsuario); //Limpiamos los controles del Control de Usuario
         }
 
         private void BtnEliminarUsuario_Click(object sender, EventArgs e)
@@ -49,11 +50,13 @@ namespace Proyecto_Final_Equipo_1
             PanelCatalogo.Controls.Clear();
             PanelCatalogo.Controls.Add(eliminarUsuario);
             eliminarUsuario.Dock = DockStyle.Fill;
+
+            FuncionesAplicacion.LimpiarControles(modificarUsuario); //Limpiamos los controles del Control de Usuario
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
         {
-            Dispose();
+            Dispose(); //Salimos del Catalogo
         }
     }
 }

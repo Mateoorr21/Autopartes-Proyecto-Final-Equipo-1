@@ -54,6 +54,7 @@
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblCampoBuscar = new System.Windows.Forms.Label();
             this.LblErrorBuscar = new System.Windows.Forms.Label();
+            this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.GpBBusquedaTipo.SuspendLayout();
             this.GbBusquedaCampo.SuspendLayout();
             this.SuspendLayout();
@@ -344,10 +345,21 @@
             this.LblErrorBuscar.Text = "Solo admite letras";
             this.LblErrorBuscar.Visible = false;
             // 
+            // LblCantidadRegistros
+            // 
+            this.LblCantidadRegistros.AutoSize = true;
+            this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCantidadRegistros.Location = new System.Drawing.Point(475, 457);
+            this.LblCantidadRegistros.Name = "LblCantidadRegistros";
+            this.LblCantidadRegistros.Size = new System.Drawing.Size(165, 18);
+            this.LblCantidadRegistros.TabIndex = 83;
+            this.LblCantidadRegistros.Text = "Usuarios Encontrados: ";
+            // 
             // ModificarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.LblCampoBuscar);
@@ -411,5 +423,6 @@
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label LblCampoBuscar;
         private System.Windows.Forms.Label LblErrorBuscar;
+        private System.Windows.Forms.Label LblCantidadRegistros;
     }
 }
