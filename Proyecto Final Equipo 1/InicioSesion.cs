@@ -14,7 +14,6 @@ namespace Proyecto_Final_Equipo_1
 {
     public partial class InicioSesion : Form
     {
-        int ErroresInicioSesion;
         public InicioSesion() 
         {
             InitializeComponent();
@@ -22,7 +21,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void Btn_Ingreso_Click(object sender, EventArgs e)
         {
-            FuncionesAplicacion.IniciarSesion(Txt_Usuario.Text, Txt_Password.Text);
+            FuncionesAplicacion.IniciarSesion(Txt_Usuario.Text, Txt_Password.Text, Txt_Usuario, Txt_Password);
         }
 
         private void Txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -37,7 +36,11 @@ namespace Proyecto_Final_Equipo_1
 
         private void InicioSesion_Load(object sender, EventArgs e)
         {
-            ErroresInicioSesion = 0;
+        }
+
+        private void BtnVolverInicio_Click(object sender, EventArgs e)
+        {
+            Dispose(); //Volvemos a la Ventana de Inicio con el Logo de la Aplicacion
         }
     }
 }

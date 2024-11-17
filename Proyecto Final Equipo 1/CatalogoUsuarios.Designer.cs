@@ -35,16 +35,16 @@
             this.BtnEliminarUsuario = new System.Windows.Forms.Button();
             this.BtnRegistrarUsuario = new System.Windows.Forms.Button();
             this.PanelCatalogo = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.BtnSalir = new System.Windows.Forms.Button();
+            this.LblNotaCajero = new System.Windows.Forms.Label();
+            this.LblNotaAdmin = new System.Windows.Forms.Label();
+            this.LblNotaPropietario = new System.Windows.Forms.Label();
+            this.LblNota = new System.Windows.Forms.Label();
             this.LblEliminarUsuario = new System.Windows.Forms.Label();
             this.LblModificarUsuario = new System.Windows.Forms.Label();
             this.LblRegistrarUsuario = new System.Windows.Forms.Label();
             this.LblTituloInstrucción = new System.Windows.Forms.Label();
-            this.LblNota = new System.Windows.Forms.Label();
-            this.LblNotaPropietario = new System.Windows.Forms.Label();
-            this.LblNotaAdmin = new System.Windows.Forms.Label();
-            this.LblNotaCajero = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.BtnSalir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.PanelCatalogo.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -133,28 +133,56 @@
             this.PanelCatalogo.Size = new System.Drawing.Size(977, 532);
             this.PanelCatalogo.TabIndex = 3;
             // 
-            // panel3
+            // LblNotaCajero
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.panel3.Controls.Add(this.BtnSalir);
-            this.panel3.Controls.Add(this.LblTitulo);
-            this.panel3.Location = new System.Drawing.Point(173, -2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(977, 70);
-            this.panel3.TabIndex = 4;
+            this.LblNotaCajero.AutoSize = true;
+            this.LblNotaCajero.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNotaCajero.ForeColor = System.Drawing.Color.Navy;
+            this.LblNotaCajero.Location = new System.Drawing.Point(56, 425);
+            this.LblNotaCajero.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblNotaCajero.Name = "LblNotaCajero";
+            this.LblNotaCajero.Size = new System.Drawing.Size(730, 24);
+            this.LblNotaCajero.TabIndex = 15;
+            this.LblNotaCajero.Text = "Cajero: No tiene acceso a este apartado. Si eres cajero, notifica del error a un " +
+    "Admin.";
             // 
-            // BtnSalir
+            // LblNotaAdmin
             // 
-            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir.Location = new System.Drawing.Point(776, 13);
-            this.BtnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(148, 43);
-            this.BtnSalir.TabIndex = 5;
-            this.BtnSalir.Text = "Salir";
-            this.BtnSalir.UseVisualStyleBackColor = true;
-            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
+            this.LblNotaAdmin.AutoSize = true;
+            this.LblNotaAdmin.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNotaAdmin.ForeColor = System.Drawing.Color.Navy;
+            this.LblNotaAdmin.Location = new System.Drawing.Point(56, 359);
+            this.LblNotaAdmin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblNotaAdmin.Name = "LblNotaAdmin";
+            this.LblNotaAdmin.Size = new System.Drawing.Size(718, 48);
+            this.LblNotaAdmin.TabIndex = 14;
+            this.LblNotaAdmin.Text = "Admin: Puede crear, modificar y eliminar Cajeros, mas no puede cambiar Permisos.\r" +
+    "\nPuede actualizar su propia información, mas no eliminarse.";
+            // 
+            // LblNotaPropietario
+            // 
+            this.LblNotaPropietario.AutoSize = true;
+            this.LblNotaPropietario.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNotaPropietario.ForeColor = System.Drawing.Color.Navy;
+            this.LblNotaPropietario.Location = new System.Drawing.Point(56, 295);
+            this.LblNotaPropietario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblNotaPropietario.Name = "LblNotaPropietario";
+            this.LblNotaPropietario.Size = new System.Drawing.Size(742, 48);
+            this.LblNotaPropietario.TabIndex = 13;
+            this.LblNotaPropietario.Text = "Propietario: Puede crear, modificar y eliminar Admins y Cajeros.\r\nPuede actualiza" +
+    "r su propia información (exceptuando su Permiso), mas no eliminarse.";
+            // 
+            // LblNota
+            // 
+            this.LblNota.AutoSize = true;
+            this.LblNota.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LblNota.Location = new System.Drawing.Point(33, 253);
+            this.LblNota.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblNota.Name = "LblNota";
+            this.LblNota.Size = new System.Drawing.Size(623, 24);
+            this.LblNota.TabIndex = 12;
+            this.LblNota.Text = "Nota: De acuerdo al pemiso del Usuario (Propietario, Admin o Cajero) ...";
             // 
             // LblEliminarUsuario
             // 
@@ -198,56 +226,28 @@
             this.LblTituloInstrucción.TabIndex = 8;
             this.LblTituloInstrucción.Text = "Bienvenido al Catálogo de Usuarios Operativos";
             // 
-            // LblNota
+            // panel3
             // 
-            this.LblNota.AutoSize = true;
-            this.LblNota.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.LblNota.Location = new System.Drawing.Point(33, 253);
-            this.LblNota.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblNota.Name = "LblNota";
-            this.LblNota.Size = new System.Drawing.Size(623, 24);
-            this.LblNota.TabIndex = 12;
-            this.LblNota.Text = "Nota: De acuerdo al pemiso del Usuario (Propietario, Admin o Cajero) ...";
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel3.Controls.Add(this.BtnSalir);
+            this.panel3.Controls.Add(this.LblTitulo);
+            this.panel3.Location = new System.Drawing.Point(173, -2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(977, 70);
+            this.panel3.TabIndex = 4;
             // 
-            // LblNotaPropietario
+            // BtnSalir
             // 
-            this.LblNotaPropietario.AutoSize = true;
-            this.LblNotaPropietario.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNotaPropietario.ForeColor = System.Drawing.Color.Navy;
-            this.LblNotaPropietario.Location = new System.Drawing.Point(56, 295);
-            this.LblNotaPropietario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblNotaPropietario.Name = "LblNotaPropietario";
-            this.LblNotaPropietario.Size = new System.Drawing.Size(555, 48);
-            this.LblNotaPropietario.TabIndex = 13;
-            this.LblNotaPropietario.Text = "Propietario: Puede crear, modificar y eliminar Admins y Cajeros.\r\nPuede actualiza" +
-    "r su propia información, mas no eliminarse.";
-            // 
-            // LblNotaAdmin
-            // 
-            this.LblNotaAdmin.AutoSize = true;
-            this.LblNotaAdmin.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNotaAdmin.ForeColor = System.Drawing.Color.Navy;
-            this.LblNotaAdmin.Location = new System.Drawing.Point(56, 359);
-            this.LblNotaAdmin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblNotaAdmin.Name = "LblNotaAdmin";
-            this.LblNotaAdmin.Size = new System.Drawing.Size(514, 48);
-            this.LblNotaAdmin.TabIndex = 14;
-            this.LblNotaAdmin.Text = "Admin: Puede crear, modificar y eliminar Cajeros.\r\nPuede actualizar su propia inf" +
-    "ormación, mas no eliminarse.";
-            // 
-            // LblNotaCajero
-            // 
-            this.LblNotaCajero.AutoSize = true;
-            this.LblNotaCajero.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNotaCajero.ForeColor = System.Drawing.Color.Navy;
-            this.LblNotaCajero.Location = new System.Drawing.Point(56, 425);
-            this.LblNotaCajero.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblNotaCajero.Name = "LblNotaCajero";
-            this.LblNotaCajero.Size = new System.Drawing.Size(730, 24);
-            this.LblNotaCajero.TabIndex = 15;
-            this.LblNotaCajero.Text = "Cajero: No tiene acceso a este apartado. Si eres cajero, notifica del error a un " +
-    "Admin.";
+            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalir.Location = new System.Drawing.Point(776, 13);
+            this.BtnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(148, 43);
+            this.BtnSalir.TabIndex = 5;
+            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // CatalogoUsuarios
             // 

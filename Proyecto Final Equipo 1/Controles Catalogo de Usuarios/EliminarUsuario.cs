@@ -72,5 +72,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             //Llamamos a la función Eliminar que está en Inicio y pasamos el parametro del Id del Registro Seleccionado
             FuncionesCatalogoUsuarios.BorrarUsuario(FuncionesCatalogoUsuarios.IdSeleccionado, LvUsuarios, LblCantidadRegistros);
         }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+        }
     }
 }

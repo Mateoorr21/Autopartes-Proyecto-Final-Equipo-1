@@ -39,5 +39,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         {
             FuncionesCatalogoUsuarios.ValidarEntradaTxtUsuarioOPassword(e, LblErrorPassword); //LLamamos a la función de validar entrada del TextBox Password
         }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+        }
     }
 }

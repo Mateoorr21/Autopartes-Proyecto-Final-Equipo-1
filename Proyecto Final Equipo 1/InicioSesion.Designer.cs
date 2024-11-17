@@ -36,14 +36,15 @@
             this.Txt_Usuario = new System.Windows.Forms.TextBox();
             this.LblErrorPassword = new System.Windows.Forms.Label();
             this.LblErrorUsuario = new System.Windows.Forms.Label();
+            this.BtnVolverInicio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btn_Ingreso
             // 
-            this.Btn_Ingreso.Location = new System.Drawing.Point(329, 318);
+            this.Btn_Ingreso.Location = new System.Drawing.Point(257, 318);
             this.Btn_Ingreso.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_Ingreso.Name = "Btn_Ingreso";
-            this.Btn_Ingreso.Size = new System.Drawing.Size(135, 62);
+            this.Btn_Ingreso.Size = new System.Drawing.Size(135, 70);
             this.Btn_Ingreso.TabIndex = 10;
             this.Btn_Ingreso.Text = "Ingresar";
             this.Btn_Ingreso.UseVisualStyleBackColor = true;
@@ -123,11 +124,24 @@
     ") * + , - . / : ; < = > ? @ [ \\ ] ^ _` { | } ~\r\n";
             this.LblErrorUsuario.Visible = false;
             // 
+            // BtnVolverInicio
+            // 
+            this.BtnVolverInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnVolverInicio.Location = new System.Drawing.Point(411, 318);
+            this.BtnVolverInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnVolverInicio.Name = "BtnVolverInicio";
+            this.BtnVolverInicio.Size = new System.Drawing.Size(148, 70);
+            this.BtnVolverInicio.TabIndex = 17;
+            this.BtnVolverInicio.Text = "Volver a Inicio";
+            this.BtnVolverInicio.UseVisualStyleBackColor = true;
+            this.BtnVolverInicio.Click += new System.EventHandler(this.BtnVolverInicio_Click);
+            // 
             // InicioSesion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(832, 453);
+            this.Controls.Add(this.BtnVolverInicio);
             this.Controls.Add(this.LblErrorUsuario);
             this.Controls.Add(this.LblErrorPassword);
             this.Controls.Add(this.Txt_Usuario);
@@ -157,5 +171,6 @@
         private System.Windows.Forms.TextBox Txt_Usuario;
         private System.Windows.Forms.Label LblErrorPassword;
         private System.Windows.Forms.Label LblErrorUsuario;
+        private System.Windows.Forms.Button BtnVolverInicio;
     }
 }

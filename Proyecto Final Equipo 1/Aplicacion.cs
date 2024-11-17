@@ -45,6 +45,16 @@ namespace Proyecto_Final_Equipo_1
             }
         }
 
+        private void LimpiarTodosLosControles()
+        {
+            //Funcion para Limpiar todos los Controles de Usuario 
+            FuncionesAplicacion.LimpiarControles(modificarProducto);
+            FuncionesAplicacion.LimpiarControles(eliminarProducto);
+            FuncionesAplicacion.LimpiarControles(buscarProducto);
+            FuncionesAplicacion.LimpiarControles(agregarProducto);
+            FuncionesAplicacion.LimpiarControles(inventarioProductos);
+        }
+
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
         {
             CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios(); //Abrimos formulario de Catalogo de Usuarios
@@ -53,45 +63,48 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+
             //Limpiamos panel y cargamos el Control de Usuario AgregarProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(agregarProducto);
             agregarProducto.Dock = DockStyle.Fill;
 
-            FuncionesAplicacion.LimpiarControles(agregarProducto); //Limpiamos los controles del Control de Usuario
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
+            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+
             //Limpiamos panel y cargamos el Control de Usuario BuscarProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(buscarProducto);
             buscarProducto.Dock = DockStyle.Fill;
 
-            FuncionesAplicacion.LimpiarControles(buscarProducto); //Limpiamos los controles del Control de Usuario
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+
             //Limpiamos panel y cargamos el Control de Usuario BuscarProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(eliminarProducto);
             eliminarProducto.Dock = DockStyle.Fill;
 
-            FuncionesAplicacion.LimpiarControles(eliminarProducto); //Limpiamos los controles del Control de Usuario
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnInventario_Click(object sender, EventArgs e)
         {
+            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+
             //Limpiamos panel y cargamos el Control de Usuario InventarioProductos
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(inventarioProductos);
             inventarioProductos.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.LimpiarControles(inventarioProductos); //Limpiamos los controles del Control de Usuario
 
             //LLamamos a la función CargarProductos
             inventarioProductos.CargarProductos();
@@ -99,13 +112,19 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+
             //Limpiamos panel y cargamos el Control de Usuario ModificarProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(modificarProducto);
             modificarProducto.Dock = DockStyle.Fill;
-           
-            FuncionesAplicacion.LimpiarControles(modificarProducto); //Limpiamos los controles del Control de Usuario
-            FuncionesAplicacion.ReiniciarVariables();
+
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+        }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Dispose(); //Salimos de la Aplicacion
         }
     }
 }

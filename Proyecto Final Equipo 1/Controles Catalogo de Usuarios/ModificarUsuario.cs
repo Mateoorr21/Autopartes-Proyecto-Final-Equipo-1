@@ -101,12 +101,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
         private void Txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FuncionesCatalogoUsuarios.ValidarEntradaTxtUsuarioOPassword(e, LblErrorNombre); //LLamamos a la función de validar entrada del TextBox Nombre
+            FuncionesCatalogoUsuarios.ValidarEntradaTxtUsuarioOPassword(e, LblErrorUsuario); //LLamamos a la función de validar entrada del TextBox Nombre
         }
 
         private void Txt_Password_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FuncionesCatalogoUsuarios.ValidarEntradaTxtUsuarioOPassword(e, LblErrorNombre); //LLamamos a la función de validar entrada del TextBox Nombre
+            FuncionesCatalogoUsuarios.ValidarEntradaTxtUsuarioOPassword(e, LblErrorPassword); //LLamamos a la función de validar entrada del TextBox Nombre
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
@@ -114,6 +114,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             //Llamamos a la función actualizar y pasamos los parametros
             FuncionesCatalogoUsuarios.ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, FuncionesCatalogoUsuarios.IdSeleccionado, 
                 LvUsuarios,Txt_Nombre, Txt_Usuario, Txt_Password, RdAdmin, RdCajero);
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
         }
     }
 }

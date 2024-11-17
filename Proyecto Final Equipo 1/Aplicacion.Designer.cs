@@ -35,23 +35,24 @@
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnCatalogoUsuarios = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnCorte = new System.Windows.Forms.Button();
+            this.BtnVender = new System.Windows.Forms.Button();
+            this.BtnInventario = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.PanelAplicacion = new System.Windows.Forms.Panel();
             this.PanelAutoPartes = new System.Windows.Forms.Panel();
-            this.BtnInventario = new System.Windows.Forms.Button();
-            this.BtnVender = new System.Windows.Forms.Button();
-            this.BtnCorte = new System.Windows.Forms.Button();
-            this.LblTituloInstrucción = new System.Windows.Forms.Label();
-            this.LblInventario = new System.Windows.Forms.Label();
-            this.LblAgregar = new System.Windows.Forms.Label();
-            this.LblBuscar = new System.Windows.Forms.Label();
-            this.LblVender = new System.Windows.Forms.Label();
-            this.LblEliminar = new System.Windows.Forms.Label();
-            this.LblModificar = new System.Windows.Forms.Label();
-            this.LblCorte = new System.Windows.Forms.Label();
-            this.LblCatalogo = new System.Windows.Forms.Label();
             this.LblNota = new System.Windows.Forms.Label();
+            this.LblCatalogo = new System.Windows.Forms.Label();
+            this.LblCorte = new System.Windows.Forms.Label();
+            this.LblModificar = new System.Windows.Forms.Label();
+            this.LblEliminar = new System.Windows.Forms.Label();
+            this.LblVender = new System.Windows.Forms.Label();
+            this.LblBuscar = new System.Windows.Forms.Label();
+            this.LblAgregar = new System.Windows.Forms.Label();
+            this.LblInventario = new System.Windows.Forms.Label();
+            this.LblTituloInstrucción = new System.Windows.Forms.Label();
+            this.BtnSalir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.PanelAutoPartes.SuspendLayout();
@@ -140,6 +141,37 @@
             this.panel1.Size = new System.Drawing.Size(161, 553);
             this.panel1.TabIndex = 6;
             // 
+            // BtnCorte
+            // 
+            this.BtnCorte.Location = new System.Drawing.Point(11, 413);
+            this.BtnCorte.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnCorte.Name = "BtnCorte";
+            this.BtnCorte.Size = new System.Drawing.Size(130, 51);
+            this.BtnCorte.TabIndex = 9;
+            this.BtnCorte.Text = "Corte de Caja";
+            this.BtnCorte.UseVisualStyleBackColor = true;
+            // 
+            // BtnVender
+            // 
+            this.BtnVender.Location = new System.Drawing.Point(11, 217);
+            this.BtnVender.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnVender.Name = "BtnVender";
+            this.BtnVender.Size = new System.Drawing.Size(130, 51);
+            this.BtnVender.TabIndex = 8;
+            this.BtnVender.Text = "Vender";
+            this.BtnVender.UseVisualStyleBackColor = true;
+            // 
+            // BtnInventario
+            // 
+            this.BtnInventario.Location = new System.Drawing.Point(11, 20);
+            this.BtnInventario.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnInventario.Name = "BtnInventario";
+            this.BtnInventario.Size = new System.Drawing.Size(130, 51);
+            this.BtnInventario.TabIndex = 7;
+            this.BtnInventario.Text = "Inventario";
+            this.BtnInventario.UseVisualStyleBackColor = true;
+            this.BtnInventario.Click += new System.EventHandler(this.BtnInventario_Click);
+            // 
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(188, 1);
@@ -150,6 +182,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MistyRose;
+            this.panel3.Controls.Add(this.BtnSalir);
             this.panel3.Controls.Add(this.PanelAplicacion);
             this.panel3.Controls.Add(this.LblTitulo);
             this.panel3.Location = new System.Drawing.Point(160, 0);
@@ -184,118 +217,18 @@
             this.PanelAutoPartes.Size = new System.Drawing.Size(1021, 490);
             this.PanelAutoPartes.TabIndex = 7;
             // 
-            // BtnInventario
+            // LblNota
             // 
-            this.BtnInventario.Location = new System.Drawing.Point(11, 20);
-            this.BtnInventario.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnInventario.Name = "BtnInventario";
-            this.BtnInventario.Size = new System.Drawing.Size(130, 51);
-            this.BtnInventario.TabIndex = 7;
-            this.BtnInventario.Text = "Inventario";
-            this.BtnInventario.UseVisualStyleBackColor = true;
-            this.BtnInventario.Click += new System.EventHandler(this.BtnInventario_Click);
-            // 
-            // BtnVender
-            // 
-            this.BtnVender.Location = new System.Drawing.Point(11, 217);
-            this.BtnVender.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnVender.Name = "BtnVender";
-            this.BtnVender.Size = new System.Drawing.Size(130, 51);
-            this.BtnVender.TabIndex = 8;
-            this.BtnVender.Text = "Vender";
-            this.BtnVender.UseVisualStyleBackColor = true;
-            // 
-            // BtnCorte
-            // 
-            this.BtnCorte.Location = new System.Drawing.Point(11, 413);
-            this.BtnCorte.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnCorte.Name = "BtnCorte";
-            this.BtnCorte.Size = new System.Drawing.Size(130, 51);
-            this.BtnCorte.TabIndex = 9;
-            this.BtnCorte.Text = "Corte de Caja";
-            this.BtnCorte.UseVisualStyleBackColor = true;
-            // 
-            // LblTituloInstrucción
-            // 
-            this.LblTituloInstrucción.AutoSize = true;
-            this.LblTituloInstrucción.Font = new System.Drawing.Font("Microsoft YaHei", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTituloInstrucción.Location = new System.Drawing.Point(36, 17);
-            this.LblTituloInstrucción.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblTituloInstrucción.Name = "LblTituloInstrucción";
-            this.LblTituloInstrucción.Size = new System.Drawing.Size(945, 45);
-            this.LblTituloInstrucción.TabIndex = 2;
-            this.LblTituloInstrucción.Text = "Bienvenido a la Aplicación de la Tienda de Autopartes";
-            // 
-            // LblInventario
-            // 
-            this.LblInventario.AutoSize = true;
-            this.LblInventario.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblInventario.Location = new System.Drawing.Point(39, 86);
-            this.LblInventario.Name = "LblInventario";
-            this.LblInventario.Size = new System.Drawing.Size(698, 27);
-            this.LblInventario.TabIndex = 3;
-            this.LblInventario.Text = "Seleccione Inventario para ver los productos de la Tienda de Autopartes";
-            // 
-            // LblAgregar
-            // 
-            this.LblAgregar.AutoSize = true;
-            this.LblAgregar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblAgregar.Location = new System.Drawing.Point(39, 127);
-            this.LblAgregar.Name = "LblAgregar";
-            this.LblAgregar.Size = new System.Drawing.Size(685, 27);
-            this.LblAgregar.TabIndex = 4;
-            this.LblAgregar.Text = "Seleccione Agregar para añadir un producto a la Tienda de Autopartes";
-            // 
-            // LblBuscar
-            // 
-            this.LblBuscar.AutoSize = true;
-            this.LblBuscar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblBuscar.Location = new System.Drawing.Point(39, 167);
-            this.LblBuscar.Name = "LblBuscar";
-            this.LblBuscar.Size = new System.Drawing.Size(724, 27);
-            this.LblBuscar.TabIndex = 5;
-            this.LblBuscar.Text = "Seleccione Buscar para encontrar y mostrar la información de un producto";
-            // 
-            // LblVender
-            // 
-            this.LblVender.AutoSize = true;
-            this.LblVender.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblVender.Location = new System.Drawing.Point(42, 208);
-            this.LblVender.Name = "LblVender";
-            this.LblVender.Size = new System.Drawing.Size(645, 27);
-            this.LblVender.TabIndex = 6;
-            this.LblVender.Text = "Seleccione Vender para realizar una venta a un cliente de la Tienda";
-            // 
-            // LblEliminar
-            // 
-            this.LblEliminar.AutoSize = true;
-            this.LblEliminar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEliminar.Location = new System.Drawing.Point(42, 250);
-            this.LblEliminar.Name = "LblEliminar";
-            this.LblEliminar.Size = new System.Drawing.Size(697, 27);
-            this.LblEliminar.TabIndex = 7;
-            this.LblEliminar.Text = "Seleccione Eliminar para borrar un producto de la Tienda de Autopartes";
-            // 
-            // LblModificar
-            // 
-            this.LblModificar.AutoSize = true;
-            this.LblModificar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblModificar.Location = new System.Drawing.Point(42, 294);
-            this.LblModificar.Name = "LblModificar";
-            this.LblModificar.Size = new System.Drawing.Size(653, 27);
-            this.LblModificar.TabIndex = 8;
-            this.LblModificar.Text = "Seleccione Modificar para actualizar la información de un producto";
-            // 
-            // LblCorte
-            // 
-            this.LblCorte.AutoSize = true;
-            this.LblCorte.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCorte.Location = new System.Drawing.Point(42, 339);
-            this.LblCorte.Name = "LblCorte";
-            this.LblCorte.Size = new System.Drawing.Size(868, 27);
-            this.LblCorte.TabIndex = 9;
-            this.LblCorte.Text = "Seleccione Corte de Caja para cerrar sesión y contabilizar las ventas hechas por " +
-    "el usuario \r\n";
+            this.LblNota.AutoSize = true;
+            this.LblNota.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LblNota.Location = new System.Drawing.Point(43, 418);
+            this.LblNota.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblNota.Name = "LblNota";
+            this.LblNota.Size = new System.Drawing.Size(670, 48);
+            this.LblNota.TabIndex = 11;
+            this.LblNota.Text = "Nota: Funciones de Agregar, Eliminar, Modificar y Catálogo de Usuarios \r\núnicamen" +
+    "te están disponibles para usuarios con permiso Admin o Propietario\r\n";
             // 
             // LblCatalogo
             // 
@@ -308,18 +241,99 @@
             this.LblCatalogo.Text = "Seleccione Catálogo para añadir, eliminar y modificar usuarios operativos del sis" +
     "tema";
             // 
-            // LblNota
+            // LblCorte
             // 
-            this.LblNota.AutoSize = true;
-            this.LblNota.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.LblNota.Location = new System.Drawing.Point(43, 418);
-            this.LblNota.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblNota.Name = "LblNota";
-            this.LblNota.Size = new System.Drawing.Size(624, 48);
-            this.LblNota.TabIndex = 11;
-            this.LblNota.Text = "Nota: Funciones de Agregar, Eliminar, Modificar y Catálogo de Usuarios \r\núnicamen" +
-    "te están disponibles para usuarios con permiso Admin";
+            this.LblCorte.AutoSize = true;
+            this.LblCorte.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCorte.Location = new System.Drawing.Point(42, 339);
+            this.LblCorte.Name = "LblCorte";
+            this.LblCorte.Size = new System.Drawing.Size(868, 27);
+            this.LblCorte.TabIndex = 9;
+            this.LblCorte.Text = "Seleccione Corte de Caja para cerrar sesión y contabilizar las ventas hechas por " +
+    "el usuario \r\n";
+            // 
+            // LblModificar
+            // 
+            this.LblModificar.AutoSize = true;
+            this.LblModificar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblModificar.Location = new System.Drawing.Point(42, 294);
+            this.LblModificar.Name = "LblModificar";
+            this.LblModificar.Size = new System.Drawing.Size(653, 27);
+            this.LblModificar.TabIndex = 8;
+            this.LblModificar.Text = "Seleccione Modificar para actualizar la información de un producto";
+            // 
+            // LblEliminar
+            // 
+            this.LblEliminar.AutoSize = true;
+            this.LblEliminar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEliminar.Location = new System.Drawing.Point(42, 250);
+            this.LblEliminar.Name = "LblEliminar";
+            this.LblEliminar.Size = new System.Drawing.Size(697, 27);
+            this.LblEliminar.TabIndex = 7;
+            this.LblEliminar.Text = "Seleccione Eliminar para borrar un producto de la Tienda de Autopartes";
+            // 
+            // LblVender
+            // 
+            this.LblVender.AutoSize = true;
+            this.LblVender.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblVender.Location = new System.Drawing.Point(42, 208);
+            this.LblVender.Name = "LblVender";
+            this.LblVender.Size = new System.Drawing.Size(645, 27);
+            this.LblVender.TabIndex = 6;
+            this.LblVender.Text = "Seleccione Vender para realizar una venta a un cliente de la Tienda";
+            // 
+            // LblBuscar
+            // 
+            this.LblBuscar.AutoSize = true;
+            this.LblBuscar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBuscar.Location = new System.Drawing.Point(39, 167);
+            this.LblBuscar.Name = "LblBuscar";
+            this.LblBuscar.Size = new System.Drawing.Size(724, 27);
+            this.LblBuscar.TabIndex = 5;
+            this.LblBuscar.Text = "Seleccione Buscar para encontrar y mostrar la información de un producto";
+            // 
+            // LblAgregar
+            // 
+            this.LblAgregar.AutoSize = true;
+            this.LblAgregar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblAgregar.Location = new System.Drawing.Point(39, 127);
+            this.LblAgregar.Name = "LblAgregar";
+            this.LblAgregar.Size = new System.Drawing.Size(685, 27);
+            this.LblAgregar.TabIndex = 4;
+            this.LblAgregar.Text = "Seleccione Agregar para añadir un producto a la Tienda de Autopartes";
+            // 
+            // LblInventario
+            // 
+            this.LblInventario.AutoSize = true;
+            this.LblInventario.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInventario.Location = new System.Drawing.Point(39, 86);
+            this.LblInventario.Name = "LblInventario";
+            this.LblInventario.Size = new System.Drawing.Size(698, 27);
+            this.LblInventario.TabIndex = 3;
+            this.LblInventario.Text = "Seleccione Inventario para ver los productos de la Tienda de Autopartes";
+            // 
+            // LblTituloInstrucción
+            // 
+            this.LblTituloInstrucción.AutoSize = true;
+            this.LblTituloInstrucción.Font = new System.Drawing.Font("Microsoft YaHei", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTituloInstrucción.Location = new System.Drawing.Point(36, 17);
+            this.LblTituloInstrucción.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblTituloInstrucción.Name = "LblTituloInstrucción";
+            this.LblTituloInstrucción.Size = new System.Drawing.Size(915, 44);
+            this.LblTituloInstrucción.TabIndex = 2;
+            this.LblTituloInstrucción.Text = "Bienvenido a la Aplicación de la Tienda de Autopartes";
+            // 
+            // BtnSalir
+            // 
+            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalir.Location = new System.Drawing.Point(803, 9);
+            this.BtnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(148, 43);
+            this.BtnSalir.TabIndex = 6;
+            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // Aplicacion
             // 
@@ -369,5 +383,6 @@
         private System.Windows.Forms.Label LblCatalogo;
         private System.Windows.Forms.Label LblCorte;
         private System.Windows.Forms.Label LblModificar;
+        private System.Windows.Forms.Button BtnSalir;
     }
 }

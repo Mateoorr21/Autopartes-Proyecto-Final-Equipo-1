@@ -44,6 +44,7 @@
             this.Txt_Nombre = new System.Windows.Forms.TextBox();
             this.Txt_Usuario = new System.Windows.Forms.TextBox();
             this.Txt_Password = new System.Windows.Forms.TextBox();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LblTitulo
@@ -79,7 +80,7 @@
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(293, 328);
+            this.LblPassword.Location = new System.Drawing.Point(285, 330);
             this.LblPassword.Name = "LblPassword";
             this.LblPassword.Size = new System.Drawing.Size(79, 16);
             this.LblPassword.TabIndex = 17;
@@ -88,7 +89,7 @@
             // LblUsuario
             // 
             this.LblUsuario.AutoSize = true;
-            this.LblUsuario.Location = new System.Drawing.Point(314, 271);
+            this.LblUsuario.Location = new System.Drawing.Point(303, 270);
             this.LblUsuario.Name = "LblUsuario";
             this.LblUsuario.Size = new System.Drawing.Size(57, 16);
             this.LblUsuario.TabIndex = 16;
@@ -108,7 +109,7 @@
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(301, 214);
+            this.LblNombre.Location = new System.Drawing.Point(293, 215);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(59, 16);
             this.LblNombre.TabIndex = 22;
@@ -206,10 +207,26 @@
             this.Txt_Password.TabIndex = 32;
             this.Txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Password_KeyPress);
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.Beige;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelar.ForeColor = System.Drawing.Color.DarkRed;
+            this.BtnCancelar.Location = new System.Drawing.Point(696, 362);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(112, 58);
+            this.BtnCancelar.TabIndex = 97;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // RegistrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.Txt_Password);
             this.Controls.Add(this.Txt_Usuario);
             this.Controls.Add(this.Txt_Nombre);
@@ -252,5 +269,6 @@
         private System.Windows.Forms.TextBox Txt_Nombre;
         private System.Windows.Forms.TextBox Txt_Usuario;
         private System.Windows.Forms.TextBox Txt_Password;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

@@ -55,6 +55,7 @@
             this.LblCampoBuscar = new System.Windows.Forms.Label();
             this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.GpBBusquedaTipo.SuspendLayout();
             this.GbBusquedaCampo.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(304, 54);
+            this.LblTitulo.Location = new System.Drawing.Point(289, 54);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(218, 29);
             this.LblTitulo.TabIndex = 1;
@@ -73,7 +74,7 @@
             // 
             this.GpBBusquedaTipo.Controls.Add(this.RdExacta);
             this.GpBBusquedaTipo.Controls.Add(this.RdAproximada);
-            this.GpBBusquedaTipo.Location = new System.Drawing.Point(48, 104);
+            this.GpBBusquedaTipo.Location = new System.Drawing.Point(33, 104);
             this.GpBBusquedaTipo.Margin = new System.Windows.Forms.Padding(4);
             this.GpBBusquedaTipo.Name = "GpBBusquedaTipo";
             this.GpBBusquedaTipo.Padding = new System.Windows.Forms.Padding(4);
@@ -110,7 +111,7 @@
             // 
             this.GbBusquedaCampo.Controls.Add(this.RdUsuario);
             this.GbBusquedaCampo.Controls.Add(this.RdNombre);
-            this.GbBusquedaCampo.Location = new System.Drawing.Point(48, 198);
+            this.GbBusquedaCampo.Location = new System.Drawing.Point(33, 198);
             this.GbBusquedaCampo.Margin = new System.Windows.Forms.Padding(4);
             this.GbBusquedaCampo.Name = "GbBusquedaCampo";
             this.GbBusquedaCampo.Padding = new System.Windows.Forms.Padding(4);
@@ -147,7 +148,7 @@
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.Location = new System.Drawing.Point(54, 408);
+            this.BtnBuscar.Location = new System.Drawing.Point(39, 408);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(156, 44);
@@ -159,7 +160,7 @@
             // LvUsuarios
             // 
             this.LvUsuarios.HideSelection = false;
-            this.LvUsuarios.Location = new System.Drawing.Point(224, 104);
+            this.LvUsuarios.Location = new System.Drawing.Point(209, 104);
             this.LvUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.LvUsuarios.MultiSelect = false;
             this.LvUsuarios.Name = "LvUsuarios";
@@ -172,7 +173,7 @@
             // 
             this.LblDatos.AutoSize = true;
             this.LblDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDatos.Location = new System.Drawing.Point(676, 57);
+            this.LblDatos.Location = new System.Drawing.Point(661, 57);
             this.LblDatos.Name = "LblDatos";
             this.LblDatos.Size = new System.Drawing.Size(178, 25);
             this.LblDatos.TabIndex = 6;
@@ -180,35 +181,35 @@
             // 
             // Txt_Password
             // 
-            this.Txt_Password.Location = new System.Drawing.Point(672, 283);
+            this.Txt_Password.Location = new System.Drawing.Point(657, 283);
             this.Txt_Password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Password.Name = "Txt_Password";
-            this.Txt_Password.Size = new System.Drawing.Size(240, 22);
+            this.Txt_Password.Size = new System.Drawing.Size(264, 22);
             this.Txt_Password.TabIndex = 41;
             this.Txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Password_KeyPress);
             // 
             // Txt_Usuario
             // 
-            this.Txt_Usuario.Location = new System.Drawing.Point(673, 206);
+            this.Txt_Usuario.Location = new System.Drawing.Point(658, 206);
             this.Txt_Usuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Usuario.Name = "Txt_Usuario";
-            this.Txt_Usuario.Size = new System.Drawing.Size(240, 22);
+            this.Txt_Usuario.Size = new System.Drawing.Size(264, 22);
             this.Txt_Usuario.TabIndex = 40;
             this.Txt_Usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Usuario_KeyPress);
             // 
             // Txt_Nombre
             // 
-            this.Txt_Nombre.Location = new System.Drawing.Point(674, 127);
+            this.Txt_Nombre.Location = new System.Drawing.Point(659, 127);
             this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Nombre.Name = "Txt_Nombre";
-            this.Txt_Nombre.Size = new System.Drawing.Size(239, 22);
+            this.Txt_Nombre.Size = new System.Drawing.Size(263, 22);
             this.Txt_Nombre.TabIndex = 39;
             this.Txt_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Nombre_KeyPress);
             // 
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(672, 104);
+            this.LblNombre.Location = new System.Drawing.Point(657, 104);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(59, 16);
             this.LblNombre.TabIndex = 37;
@@ -217,7 +218,7 @@
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(669, 254);
+            this.LblPassword.Location = new System.Drawing.Point(654, 254);
             this.LblPassword.Name = "LblPassword";
             this.LblPassword.Size = new System.Drawing.Size(79, 16);
             this.LblPassword.TabIndex = 34;
@@ -226,7 +227,7 @@
             // LblUsuario
             // 
             this.LblUsuario.AutoSize = true;
-            this.LblUsuario.Location = new System.Drawing.Point(673, 178);
+            this.LblUsuario.Location = new System.Drawing.Point(658, 178);
             this.LblUsuario.Name = "LblUsuario";
             this.LblUsuario.Size = new System.Drawing.Size(57, 16);
             this.LblUsuario.TabIndex = 33;
@@ -236,7 +237,7 @@
             // 
             this.RdCajero.AutoSize = true;
             this.RdCajero.Checked = true;
-            this.RdCajero.Location = new System.Drawing.Point(768, 353);
+            this.RdCajero.Location = new System.Drawing.Point(753, 353);
             this.RdCajero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RdCajero.Name = "RdCajero";
             this.RdCajero.Size = new System.Drawing.Size(68, 20);
@@ -248,7 +249,7 @@
             // RdAdmin
             // 
             this.RdAdmin.AutoSize = true;
-            this.RdAdmin.Location = new System.Drawing.Point(677, 351);
+            this.RdAdmin.Location = new System.Drawing.Point(662, 351);
             this.RdAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RdAdmin.Name = "RdAdmin";
             this.RdAdmin.Size = new System.Drawing.Size(66, 20);
@@ -259,7 +260,7 @@
             // LblPermiso
             // 
             this.LblPermiso.AutoSize = true;
-            this.LblPermiso.Location = new System.Drawing.Point(673, 331);
+            this.LblPermiso.Location = new System.Drawing.Point(658, 331);
             this.LblPermiso.Name = "LblPermiso";
             this.LblPermiso.Size = new System.Drawing.Size(60, 16);
             this.LblPermiso.TabIndex = 42;
@@ -270,7 +271,7 @@
             this.LblErrorUsuario.AutoSize = true;
             this.LblErrorUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorUsuario.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorUsuario.Location = new System.Drawing.Point(736, 168);
+            this.LblErrorUsuario.Location = new System.Drawing.Point(721, 168);
             this.LblErrorUsuario.Name = "LblErrorUsuario";
             this.LblErrorUsuario.Size = new System.Drawing.Size(176, 32);
             this.LblErrorUsuario.TabIndex = 45;
@@ -283,7 +284,7 @@
             this.LblErrorNombre.AutoSize = true;
             this.LblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorNombre.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorNombre.Location = new System.Drawing.Point(749, 102);
+            this.LblErrorNombre.Location = new System.Drawing.Point(734, 102);
             this.LblErrorNombre.Name = "LblErrorNombre";
             this.LblErrorNombre.Size = new System.Drawing.Size(115, 16);
             this.LblErrorNombre.TabIndex = 46;
@@ -295,7 +296,7 @@
             this.LblErrorPassword.AutoSize = true;
             this.LblErrorPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPassword.Location = new System.Drawing.Point(747, 244);
+            this.LblErrorPassword.Location = new System.Drawing.Point(732, 244);
             this.LblErrorPassword.Name = "LblErrorPassword";
             this.LblErrorPassword.Size = new System.Drawing.Size(176, 32);
             this.LblErrorPassword.TabIndex = 47;
@@ -306,10 +307,10 @@
             // BtnModificar
             // 
             this.BtnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificar.Location = new System.Drawing.Point(676, 391);
+            this.BtnModificar.Location = new System.Drawing.Point(661, 391);
             this.BtnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(237, 62);
+            this.BtnModificar.Size = new System.Drawing.Size(143, 62);
             this.BtnModificar.TabIndex = 48;
             this.BtnModificar.Text = "Modificar Usuario";
             this.BtnModificar.UseVisualStyleBackColor = true;
@@ -317,7 +318,7 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(54, 353);
+            this.TxtBuscar.Location = new System.Drawing.Point(39, 353);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(156, 22);
@@ -327,7 +328,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
-            this.LblCampoBuscar.Location = new System.Drawing.Point(51, 330);
+            this.LblCampoBuscar.Location = new System.Drawing.Point(36, 330);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
             this.LblCampoBuscar.Size = new System.Drawing.Size(59, 16);
             this.LblCampoBuscar.TabIndex = 49;
@@ -338,7 +339,7 @@
             this.LblErrorBuscar.AutoSize = true;
             this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(51, 294);
+            this.LblErrorBuscar.Location = new System.Drawing.Point(36, 294);
             this.LblErrorBuscar.Name = "LblErrorBuscar";
             this.LblErrorBuscar.Size = new System.Drawing.Size(90, 13);
             this.LblErrorBuscar.TabIndex = 51;
@@ -349,16 +350,32 @@
             // 
             this.LblCantidadRegistros.AutoSize = true;
             this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCantidadRegistros.Location = new System.Drawing.Point(475, 457);
+            this.LblCantidadRegistros.Location = new System.Drawing.Point(460, 457);
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
             this.LblCantidadRegistros.Size = new System.Drawing.Size(165, 18);
             this.LblCantidadRegistros.TabIndex = 83;
             this.LblCantidadRegistros.Text = "Usuarios Encontrados: ";
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.Beige;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelar.ForeColor = System.Drawing.Color.DarkRed;
+            this.BtnCancelar.Location = new System.Drawing.Point(811, 393);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(112, 60);
+            this.BtnCancelar.TabIndex = 96;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // ModificarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.TxtBuscar);
@@ -424,5 +441,6 @@
         private System.Windows.Forms.Label LblCampoBuscar;
         private System.Windows.Forms.Label LblErrorBuscar;
         private System.Windows.Forms.Label LblCantidadRegistros;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

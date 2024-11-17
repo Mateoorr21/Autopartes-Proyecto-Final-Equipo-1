@@ -44,9 +44,8 @@ namespace Proyecto_Final_Equipo_1
         }
 
 
-
         //FUNCION PARA INICIAR SESION AL SISTEMA
-        public static void IniciarSesion(string Username, string Password)
+        public static void IniciarSesion(string Username, string Password, TextBox TxtUsuario, TextBox TxtPassword)
         {
             // Usamos 'using' para gestionar la conexión y asegurar que se liberen los recursos automáticamente
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -70,6 +69,10 @@ namespace Proyecto_Final_Equipo_1
                             NombreCompleto = lector["Nombre_Completo"].ToString(); //Nombre a cadena String
                             Usuario = lector["Usuario"].ToString(); //Usuario a cadena String
                             TipoUsuario = lector["Tipo"].ToString(); //Tipo de Permiso a cadena String
+
+                            //Limpiamos las cajas de Texto
+                            TxtUsuario.Clear();
+                            TxtPassword.Clear();
 
                             //Mensaje de inicio de sesión exitoso
                             MessageBox.Show("Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",

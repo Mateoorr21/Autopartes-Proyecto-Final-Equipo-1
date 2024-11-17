@@ -200,7 +200,7 @@ namespace Proyecto_Final_Equipo_1
             //Si no hay registro seleccionado menssaje de Error
             if (LvUsuarios.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Error. Seleccione un usuario a Elimianr", "ERROR. NO SE SELECCIONÓ USUARIO",
+                MessageBox.Show("Error. Seleccione un Usuario a Eliminar", "ERROR. NO SE SELECCIONÓ USUARIO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -340,7 +340,7 @@ namespace Proyecto_Final_Equipo_1
             //Si no hay registro seleccionado menssaje de Error
             if (LvUsuarios.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Error. Seleccione un usuario a modificar", "ERROR. NO SE SELECCIONÓ USUARIO",
+                MessageBox.Show("Error. Seleccione un Usuario a modificar", "ERROR. NO SE SELECCIONÓ USUARIO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

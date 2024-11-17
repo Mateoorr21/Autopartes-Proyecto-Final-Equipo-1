@@ -42,6 +42,7 @@
             this.LblTitulo = new System.Windows.Forms.Label();
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.GbBusquedaCampo.SuspendLayout();
             this.GpBBusquedaTipo.SuspendLayout();
             this.SuspendLayout();
@@ -179,7 +180,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(311, 63);
+            this.LblTitulo.Location = new System.Drawing.Point(295, 64);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(206, 29);
             this.LblTitulo.TabIndex = 52;
@@ -188,10 +189,10 @@
             // BtnEliminar
             // 
             this.BtnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminar.Location = new System.Drawing.Point(623, 61);
+            this.BtnEliminar.Location = new System.Drawing.Point(639, 61);
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(268, 37);
+            this.BtnEliminar.Size = new System.Drawing.Size(252, 37);
             this.BtnEliminar.TabIndex = 74;
             this.BtnEliminar.Text = "Eliminar Usuario Operativo";
             this.BtnEliminar.UseVisualStyleBackColor = true;
@@ -207,10 +208,26 @@
             this.LblCantidadRegistros.TabIndex = 84;
             this.LblCantidadRegistros.Text = "Usuarios Encontrados: ";
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.Beige;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelar.ForeColor = System.Drawing.Color.DarkRed;
+            this.BtnCancelar.Location = new System.Drawing.Point(523, 62);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(112, 35);
+            this.BtnCancelar.TabIndex = 97;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // EliminarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.LblErrorBuscar);
@@ -249,5 +266,6 @@
         private System.Windows.Forms.Label LblTitulo;
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Label LblCantidadRegistros;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }
