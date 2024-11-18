@@ -22,8 +22,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             //Llamamos a la función BuscarUsuarioModificar de Inicio
-            FuncionesCatalogoUsuarios.BuscarUsuarioModificar(TxtBuscar.Text, FuncionesAplicacion.Usuario, 
-                FuncionesAplicacion.TipoUsuario, TxtBuscar, RdAproximada, RdNombre, LvUsuarios,LblCantidadRegistros);
+            FuncionesCatalogoUsuarios.BuscarUsuarioModificar(TxtBuscar.Text, FuncionesAplicacion.Usuario, FuncionesAplicacion.TipoUsuario, 
+                TxtBuscar, RdAproximada, RdNombre, LvUsuarios,LblCantidadRegistros, LblErrorBuscar);
         }
 
         private void ModificarUsuario_Load(object sender, EventArgs e)

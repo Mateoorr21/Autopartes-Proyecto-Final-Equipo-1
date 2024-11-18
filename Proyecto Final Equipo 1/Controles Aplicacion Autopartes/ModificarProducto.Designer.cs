@@ -72,6 +72,7 @@
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
             this.LblCantidadRegistros.Size = new System.Drawing.Size(174, 18);
             this.LblCantidadRegistros.TabIndex = 77;
+            this.LblCantidadRegistros.Tag = "Productos Encontrados: ";
             this.LblCantidadRegistros.Text = "Productos Encontrados: ";
             // 
             // GpBBusquedaTipo

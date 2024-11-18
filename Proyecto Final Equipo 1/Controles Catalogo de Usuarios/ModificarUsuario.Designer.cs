@@ -355,6 +355,7 @@
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
             this.LblCantidadRegistros.Size = new System.Drawing.Size(165, 18);
             this.LblCantidadRegistros.TabIndex = 83;
+            this.LblCantidadRegistros.Tag = "Usuarios Encontrados: ";
             this.LblCantidadRegistros.Text = "Usuarios Encontrados: ";
             // 
             // BtnCancelar

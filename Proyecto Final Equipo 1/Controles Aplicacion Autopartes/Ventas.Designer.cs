@@ -43,7 +43,6 @@
             this.RdId = new System.Windows.Forms.RadioButton();
             this.RdNombre = new System.Windows.Forms.RadioButton();
             this.AgregarCarrito = new System.Windows.Forms.Button();
-            this.LvCarrito = new System.Windows.Forms.ListView();
             this.LblErrorCantidad = new System.Windows.Forms.Label();
             this.Txt_Cantidad = new System.Windows.Forms.TextBox();
             this.LblCantidad = new System.Windows.Forms.Label();
@@ -52,12 +51,13 @@
             this.LblProductoVender = new System.Windows.Forms.Label();
             this.LblProducto = new System.Windows.Forms.Label();
             this.BtnVender = new System.Windows.Forms.Button();
-            this.LblRegistrosCarrito = new System.Windows.Forms.Label();
+            this.LblCantidadRegistrosCarrito = new System.Windows.Forms.Label();
             this.Lbl = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtPorPagar = new System.Windows.Forms.TextBox();
             this.BtnEliminarRegistroCarrito = new System.Windows.Forms.Button();
             this.VaciarCarrito = new System.Windows.Forms.Button();
             this.BtnCancelarVenta = new System.Windows.Forms.Button();
+            this.LvCarrito = new System.Windows.Forms.ListView();
             this.GpBBusquedaTipo.SuspendLayout();
             this.GbBusquedaCampo.SuspendLayout();
             this.SuspendLayout();
@@ -68,13 +68,14 @@
             this.BtnRestaurarBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnRestaurarBusqueda.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRestaurarBusqueda.ForeColor = System.Drawing.Color.DarkRed;
-            this.BtnRestaurarBusqueda.Location = new System.Drawing.Point(28, 327);
+            this.BtnRestaurarBusqueda.Location = new System.Drawing.Point(28, 407);
             this.BtnRestaurarBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRestaurarBusqueda.Name = "BtnRestaurarBusqueda";
             this.BtnRestaurarBusqueda.Size = new System.Drawing.Size(124, 65);
             this.BtnRestaurarBusqueda.TabIndex = 108;
             this.BtnRestaurarBusqueda.Text = "Restaurar Búsqueda";
             this.BtnRestaurarBusqueda.UseVisualStyleBackColor = false;
+            this.BtnRestaurarBusqueda.Click += new System.EventHandler(this.BtnRestaurarBusqueda_Click);
             // 
             // LblCantidadRegistrosBuscar
             // 
@@ -84,6 +85,7 @@
             this.LblCantidadRegistrosBuscar.Name = "LblCantidadRegistrosBuscar";
             this.LblCantidadRegistrosBuscar.Size = new System.Drawing.Size(174, 18);
             this.LblCantidadRegistrosBuscar.TabIndex = 107;
+            this.LblCantidadRegistrosBuscar.Tag = "Productos Encontrados: ";
             this.LblCantidadRegistrosBuscar.Text = "Productos Encontrados: ";
             // 
             // GpBBusquedaTipo
@@ -133,6 +135,8 @@
             this.LvProductos.Size = new System.Drawing.Size(450, 281);
             this.LvProductos.TabIndex = 104;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
+            this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
+            this.LvProductos.SelectedIndexChanged += new System.EventHandler(this.LvProductos_SelectedIndexChanged);
             // 
             // LblTitulo
             // 
@@ -163,6 +167,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(124, 22);
             this.TxtBuscar.TabIndex = 101;
+            this.TxtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBuscar_KeyPress);
             // 
             // LblCampoBuscar
             // 
@@ -176,13 +181,14 @@
             // BtnBuscar
             // 
             this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscar.Location = new System.Drawing.Point(28, 398);
+            this.BtnBuscar.Location = new System.Drawing.Point(28, 327);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(124, 74);
             this.BtnBuscar.TabIndex = 99;
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // GbBusquedaCampo
             // 
@@ -207,6 +213,7 @@
             this.RdId.TabIndex = 1;
             this.RdId.Text = "Id";
             this.RdId.UseVisualStyleBackColor = true;
+            this.RdId.CheckedChanged += new System.EventHandler(this.RdId_CheckedChanged);
             // 
             // RdNombre
             // 
@@ -220,6 +227,7 @@
             this.RdNombre.TabStop = true;
             this.RdNombre.Text = "Nombre";
             this.RdNombre.UseVisualStyleBackColor = true;
+            this.RdNombre.CheckedChanged += new System.EventHandler(this.RdNombre_CheckedChanged);
             // 
             // AgregarCarrito
             // 
@@ -231,17 +239,7 @@
             this.AgregarCarrito.TabIndex = 109;
             this.AgregarCarrito.Text = "Añadir a Carrito";
             this.AgregarCarrito.UseVisualStyleBackColor = true;
-            // 
-            // LvCarrito
-            // 
-            this.LvCarrito.HideSelection = false;
-            this.LvCarrito.Location = new System.Drawing.Point(633, 52);
-            this.LvCarrito.Margin = new System.Windows.Forms.Padding(4);
-            this.LvCarrito.MultiSelect = false;
-            this.LvCarrito.Name = "LvCarrito";
-            this.LvCarrito.Size = new System.Drawing.Size(359, 281);
-            this.LvCarrito.TabIndex = 110;
-            this.LvCarrito.UseCompatibleStateImageBehavior = false;
+            this.AgregarCarrito.Click += new System.EventHandler(this.AgregarCarrito_Click);
             // 
             // LblErrorCantidad
             // 
@@ -262,6 +260,8 @@
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(135, 22);
             this.Txt_Cantidad.TabIndex = 112;
+            this.Txt_Cantidad.TextChanged += new System.EventHandler(this.Txt_Cantidad_TextChanged);
+            this.Txt_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Cantidad_KeyPress);
             // 
             // LblCantidad
             // 
@@ -274,6 +274,7 @@
             // 
             // BtnMas
             // 
+            this.BtnMas.Enabled = false;
             this.BtnMas.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnMas.Location = new System.Drawing.Point(374, 402);
             this.BtnMas.Margin = new System.Windows.Forms.Padding(4);
@@ -282,9 +283,11 @@
             this.BtnMas.TabIndex = 114;
             this.BtnMas.Text = "+";
             this.BtnMas.UseVisualStyleBackColor = true;
+            this.BtnMas.Click += new System.EventHandler(this.BtnMas_Click);
             // 
             // BtnMenos
             // 
+            this.BtnMenos.Enabled = false;
             this.BtnMenos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnMenos.Location = new System.Drawing.Point(304, 402);
             this.BtnMenos.Margin = new System.Windows.Forms.Padding(4);
@@ -293,6 +296,7 @@
             this.BtnMenos.TabIndex = 115;
             this.BtnMenos.Text = "-";
             this.BtnMenos.UseVisualStyleBackColor = true;
+            this.BtnMenos.Click += new System.EventHandler(this.BtnMenos_Click);
             // 
             // LblProductoVender
             // 
@@ -311,6 +315,7 @@
             this.LblProducto.Size = new System.Drawing.Size(208, 16);
             this.LblProducto.TabIndex = 117;
             this.LblProducto.Text = "Bujía para Vehículo de Alta Gama";
+            this.LblProducto.Visible = false;
             // 
             // BtnVender
             // 
@@ -322,16 +327,18 @@
             this.BtnVender.TabIndex = 118;
             this.BtnVender.Text = "Hacer Venta";
             this.BtnVender.UseVisualStyleBackColor = true;
+            this.BtnVender.Click += new System.EventHandler(this.BtnVender_Click);
             // 
-            // LblRegistrosCarrito
+            // LblCantidadRegistrosCarrito
             // 
-            this.LblRegistrosCarrito.AutoSize = true;
-            this.LblRegistrosCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblRegistrosCarrito.Location = new System.Drawing.Point(808, 30);
-            this.LblRegistrosCarrito.Name = "LblRegistrosCarrito";
-            this.LblRegistrosCarrito.Size = new System.Drawing.Size(150, 18);
-            this.LblRegistrosCarrito.TabIndex = 119;
-            this.LblRegistrosCarrito.Text = "Productos en Carrito:";
+            this.LblCantidadRegistrosCarrito.AutoSize = true;
+            this.LblCantidadRegistrosCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCantidadRegistrosCarrito.Location = new System.Drawing.Point(825, 30);
+            this.LblCantidadRegistrosCarrito.Name = "LblCantidadRegistrosCarrito";
+            this.LblCantidadRegistrosCarrito.Size = new System.Drawing.Size(150, 18);
+            this.LblCantidadRegistrosCarrito.TabIndex = 119;
+            this.LblCantidadRegistrosCarrito.Tag = "Productos en Carrito:";
+            this.LblCantidadRegistrosCarrito.Text = "Productos en Carrito:";
             // 
             // Lbl
             // 
@@ -342,13 +349,14 @@
             this.Lbl.TabIndex = 120;
             this.Lbl.Text = "Cantidad a Pagar (en MXN):";
             // 
-            // textBox1
+            // TxtPorPagar
             // 
-            this.textBox1.Location = new System.Drawing.Point(632, 367);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 22);
-            this.textBox1.TabIndex = 121;
+            this.TxtPorPagar.Location = new System.Drawing.Point(632, 367);
+            this.TxtPorPagar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtPorPagar.Name = "TxtPorPagar";
+            this.TxtPorPagar.ReadOnly = true;
+            this.TxtPorPagar.Size = new System.Drawing.Size(170, 22);
+            this.TxtPorPagar.TabIndex = 121;
             // 
             // BtnEliminarRegistroCarrito
             // 
@@ -360,6 +368,7 @@
             this.BtnEliminarRegistroCarrito.TabIndex = 122;
             this.BtnEliminarRegistroCarrito.Text = "Borrar de Carrito";
             this.BtnEliminarRegistroCarrito.UseVisualStyleBackColor = true;
+            this.BtnEliminarRegistroCarrito.Click += new System.EventHandler(this.BtnEliminarRegistroCarrito_Click);
             // 
             // VaciarCarrito
             // 
@@ -371,6 +380,7 @@
             this.VaciarCarrito.TabIndex = 123;
             this.VaciarCarrito.Text = "Vaciar Carrito";
             this.VaciarCarrito.UseVisualStyleBackColor = true;
+            this.VaciarCarrito.Click += new System.EventHandler(this.VaciarCarrito_Click);
             // 
             // BtnCancelarVenta
             // 
@@ -385,16 +395,30 @@
             this.BtnCancelarVenta.TabIndex = 124;
             this.BtnCancelarVenta.Text = "Cancelar Venta";
             this.BtnCancelarVenta.UseVisualStyleBackColor = false;
+            this.BtnCancelarVenta.Click += new System.EventHandler(this.BtnCancelarVenta_Click);
+            // 
+            // LvCarrito
+            // 
+            this.LvCarrito.HideSelection = false;
+            this.LvCarrito.Location = new System.Drawing.Point(633, 52);
+            this.LvCarrito.Margin = new System.Windows.Forms.Padding(4);
+            this.LvCarrito.MultiSelect = false;
+            this.LvCarrito.Name = "LvCarrito";
+            this.LvCarrito.Size = new System.Drawing.Size(359, 281);
+            this.LvCarrito.TabIndex = 125;
+            this.LvCarrito.UseCompatibleStateImageBehavior = false;
+            this.LvCarrito.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvCarrito_ColumnClick);
             // 
             // Ventas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.LvCarrito);
             this.Controls.Add(this.BtnCancelarVenta);
             this.Controls.Add(this.VaciarCarrito);
             this.Controls.Add(this.BtnEliminarRegistroCarrito);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtPorPagar);
             this.Controls.Add(this.Lbl);
-            this.Controls.Add(this.LblRegistrosCarrito);
+            this.Controls.Add(this.LblCantidadRegistrosCarrito);
             this.Controls.Add(this.BtnVender);
             this.Controls.Add(this.LblProducto);
             this.Controls.Add(this.LblProductoVender);
@@ -403,7 +427,6 @@
             this.Controls.Add(this.LblErrorCantidad);
             this.Controls.Add(this.Txt_Cantidad);
             this.Controls.Add(this.LblCantidad);
-            this.Controls.Add(this.LvCarrito);
             this.Controls.Add(this.AgregarCarrito);
             this.Controls.Add(this.BtnRestaurarBusqueda);
             this.Controls.Add(this.LblCantidadRegistrosBuscar);
@@ -417,6 +440,7 @@
             this.Controls.Add(this.GbBusquedaCampo);
             this.Name = "Ventas";
             this.Size = new System.Drawing.Size(1021, 490);
+            this.Load += new System.EventHandler(this.Ventas_Load);
             this.GpBBusquedaTipo.ResumeLayout(false);
             this.GpBBusquedaTipo.PerformLayout();
             this.GbBusquedaCampo.ResumeLayout(false);
@@ -443,7 +467,6 @@
         private System.Windows.Forms.RadioButton RdId;
         private System.Windows.Forms.RadioButton RdNombre;
         private System.Windows.Forms.Button AgregarCarrito;
-        private System.Windows.Forms.ListView LvCarrito;
         private System.Windows.Forms.Label LblErrorCantidad;
         private System.Windows.Forms.TextBox Txt_Cantidad;
         private System.Windows.Forms.Label LblCantidad;
@@ -452,11 +475,12 @@
         private System.Windows.Forms.Label LblProductoVender;
         private System.Windows.Forms.Label LblProducto;
         private System.Windows.Forms.Button BtnVender;
-        private System.Windows.Forms.Label LblRegistrosCarrito;
+        private System.Windows.Forms.Label LblCantidadRegistrosCarrito;
         private System.Windows.Forms.Label Lbl;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtPorPagar;
         private System.Windows.Forms.Button BtnEliminarRegistroCarrito;
         private System.Windows.Forms.Button VaciarCarrito;
         private System.Windows.Forms.Button BtnCancelarVenta;
+        private System.Windows.Forms.ListView LvCarrito;
     }
 }

@@ -41,6 +41,7 @@
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
             this.LblCantidadRegistros.Size = new System.Drawing.Size(167, 18);
             this.LblCantidadRegistros.TabIndex = 83;
+            this.LblCantidadRegistros.Tag = "Cantidad de Productos: ";
             this.LblCantidadRegistros.Text = "Cantidad de Productos: ";
             // 
             // LvProductos

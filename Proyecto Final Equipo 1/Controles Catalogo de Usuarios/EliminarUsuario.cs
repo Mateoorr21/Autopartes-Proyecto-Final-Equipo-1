@@ -22,7 +22,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         {
             //Llamamos a la función BuscarUsuarioEliminar de Inicio
             FuncionesCatalogoUsuarios.BuscarUsuarioEliminar(TxtBuscar.Text, FuncionesAplicacion.Usuario, FuncionesAplicacion.TipoUsuario,
-                TxtBuscar, RdAproximada, RdNombre, LvUsuarios, LblCantidadRegistros);
+                TxtBuscar, RdAproximada, RdNombre, LvUsuarios, LblCantidadRegistros, LblErrorBuscar);
         }
 
         private void LvUsuarios_SelectedIndexChanged(object sender, EventArgs e)

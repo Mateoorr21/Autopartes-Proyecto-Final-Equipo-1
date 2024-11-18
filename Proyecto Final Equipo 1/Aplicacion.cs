@@ -55,6 +55,7 @@ namespace Proyecto_Final_Equipo_1
             FuncionesAplicacion.LimpiarControles(buscarProducto);
             FuncionesAplicacion.LimpiarControles(agregarProducto);
             FuncionesAplicacion.LimpiarControles(inventarioProductos);
+            FuncionesAplicacion.LimpiarControles(ventaProducto);
         }
 
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
@@ -137,6 +138,9 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(ventaProducto);
             ventaProducto.Dock = DockStyle.Fill;
+
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+
         }
     }
 }

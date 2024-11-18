@@ -40,7 +40,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void BtnBuscar_Click_1(object sender, EventArgs e)
         {
             //Llamamos a la función EncontrarProductos de Inicio
-            FuncionesAplicacion.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros);
+            FuncionesAplicacion.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros, LblErrorBuscar);
         }
 
         /*  Idéntico que en User Control de BuscarProducto  */
@@ -64,7 +64,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //Si se selecciona un registro
             if (LvProductos.SelectedItems.Count > 0)
             {
-
                 ListViewItem ItemSeleccionado = LvProductos.SelectedItems[0]; //Obtenemos registro seleccionado
 
                 //Obtenemos el Valor del Id del Registro Seleccionado

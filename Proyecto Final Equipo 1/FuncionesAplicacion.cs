@@ -32,6 +32,13 @@ namespace Proyecto_Final_Equipo_1
         public static int IdSeleccionado = 0;
         public static int ContarProductos = 0;
 
+        //Declaramos e Inicializamos variables que se utilizan en Ventas
+        public static int CantidadEnStockSeleccionado = 0;
+        public static int CantidadIngresada = 0;
+        public static int CantidadEnCarrito = 0;
+        public static float PorPagar = 0;
+        public static float ProductoPaga = 0;
+        
         public static int ColumnaOrdenar = -1; //Variable para OrdenarColumnas
 
 
@@ -73,7 +80,12 @@ namespace Proyecto_Final_Equipo_1
             SeModificoImagen = false;
             RutaImagenTemporal = null;
             IdSeleccionado = 0;
-        }
+            CantidadEnStockSeleccionado = 0;
+            CantidadIngresada = 0;
+            CantidadEnCarrito = 0;
+            PorPagar = 0;
+            ProductoPaga = 0;
+    }
 
 
         //FUNCION PARA INICIAR SESION AL SISTEMA
@@ -158,6 +170,10 @@ namespace Proyecto_Final_Equipo_1
                 else if (control is Label Etiqueta && Etiqueta.Name.Contains("Error"))
                 {
                     Etiqueta.Visible = false; // Ocultamos los labels que son de mensaje de Error
+                }
+                else if (control is Label Etiqueta2 && Etiqueta2.Name.Contains("CantidadRegistros"))
+                {
+                    Etiqueta2.Text = Etiqueta2.Tag.ToString(); //Si la etiqueta indica cantidad de Registros vuelve a su texto original
                 }
                 else if (control is ListView listView)
                 {
@@ -315,8 +331,11 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA BUSCAR UN PRODUCTO
-        public static void EncontrarProductos(string buscar, TextBox TxtBuscar, RadioButton RdAproximada, RadioButton RdNombre, ListView LvProductos, Label LblCantidadRegistros)
+        public static void EncontrarProductos(string buscar, TextBox TxtBuscar, RadioButton RdAproximada, 
+            RadioButton RdNombre, ListView LvProductos, Label LblCantidadRegistros, Label LblErrorBuscar)
         {
+            LblErrorBuscar.Visible = false; //Ocultamos la etiqueta del Error al Buscar
+
             //Si la caja de texto esta vacía un mensaje de Error
             if (string.IsNullOrWhiteSpace(TxtBuscar.Text))
             {
@@ -342,7 +361,7 @@ namespace Proyecto_Final_Equipo_1
                 //Consulta SQL si la casilla Exacta esta seleccionada
                 else
                 {
-                    if (RdNombre.Checked) query = "SELECT * FROM Prodcutos WHERE Nombre = @PorBuscar";
+                    if (RdNombre.Checked) query = "SELECT * FROM Productos WHERE Nombre = @PorBuscar";
                     else query = "SELECT * FROM Productos WHERE Id = @PorBuscar";
                 }
 
@@ -448,7 +467,6 @@ namespace Proyecto_Final_Equipo_1
         public static void ActualizarProducto(string Nombre, string Descripcion, string Marca, ListView LvProductos,
             TextBox Txt_Nombre, TextBox Txt_Descripcion, TextBox Txt_Marca, TextBox Txt_Precio, TextBox Txt_Cantidad, PictureBox PicImagenProducto)
         {
-
             //Si no hay registro seleccionado menssaje de Error
             if (LvProductos.SelectedItems.Count == 0)
             {
@@ -469,6 +487,13 @@ namespace Proyecto_Final_Equipo_1
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            //Confirmamos que el usuario desea modificar el registro seleccioando
+            DialogResult ConfirmarModificar;
+            ConfirmarModificar = MessageBox.Show("¿Esta seguro que desea modificar la información del producto seleccionado?",
+                "CONFIRMACIÓN DE ACTUALIZACIÓN DE PRODUCTO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarModificar == DialogResult.No) return;
 
             //Convertimos el valor de las cajas en tipo float y entero
             float Precio = float.Parse(Txt_Precio.Text);
@@ -501,7 +526,6 @@ namespace Proyecto_Final_Equipo_1
             // Liberamos la imagen del PictureBox
             PicImagenProducto.Image = null;
 
-            MessageBox.Show(RutaImagenTemporal + " " + SeModificoImagen);
             //Solo si se modifico la imagen, borramos la existente y copiamos la nueva
             if (SeModificoImagen)
             {
@@ -660,7 +684,7 @@ namespace Proyecto_Final_Equipo_1
 
         public static void ValidarEntradaTxtCantidad(KeyPressEventArgs e, Label LblErrorCantidad)
         {
-            //Validar que solo es ingresen numeros o backspace
+            //Validar que solo se ingresen numeros o backspace
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 LblErrorCantidad.Visible = true;
@@ -702,5 +726,266 @@ namespace Proyecto_Final_Equipo_1
             RutaImagenTemporal = null; //La ruta temporal será nula
         }
 
+
+
+
+        //FUNCIONES RELACIONADAS AL APARTADO DE VENTAS
+
+
+        //FUNCION PARA AGREGAR UN PRODUCTO AL CARRITO
+        public static void AgregarAlCarrito(ListView LvProductos, ListView LvCarrito, TextBox Txt_Cantidad, TextBox TxtPorPagar, Label LblCantidadRegistrosCarrito)
+        {
+            //Si no se ha seleccionado producto mensaje de error
+            if (LvProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Seleccione un producto para agregar al carrito.",
+                    "ERROR. NO SE SELECCIONO PRODUCTO PARA EL CARRITO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Si la cantidad ingresada es 0 mensaje de error
+            if (CantidadIngresada == 0)
+            {
+                MessageBox.Show("No se pueden agregar 0 productos al carrito.",
+                    "ERROR. CANTIDAD INVALIDA DE PRODUCTOS PARA AGREGAR AL CARRITO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ListViewItem ItemSeleccionado = LvProductos.SelectedItems[0]; //Obtenemos registro seleccionado
+
+            //Obtenemos la información que se cargara al Carrito
+            string ProductoId = ItemSeleccionado.SubItems[0].Text;
+            string ProductoNombre = ItemSeleccionado.SubItems[1].Text;
+            string ProductoPrecio = ItemSeleccionado.SubItems[4].Text;
+            string ProductoCantidad = CantidadIngresada.ToString();
+
+
+            //Validamos que el producto no se encuentre en el carrito
+            foreach (ListViewItem ProductoEnCarrito in LvCarrito.Items)
+            {
+                //Comparamos el Id del que se quiere agregar con los de los productos del carrito
+                if (ProductoEnCarrito.SubItems[0].Text == ProductoId)
+                {
+                    //Limpiamos la caja cantidad y desceleccionamos el producto
+                    Txt_Cantidad.Clear();
+                    LvProductos.SelectedItems.Clear();
+
+                    //Si ya se encuentra en Carrito mensaje de advertencia
+                    MessageBox.Show("El producto que selecciono ya está en el carrito." +
+                        "\nSi desea modificar este producto, elimínelo del carrito y vuélvalo a agregar.",
+                        "ADVERTENCIA. PRODUCTO YA SE ENCUENTRA EN CARRITO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            ProductoPaga = CantidadIngresada * float.Parse(ProductoPrecio); //Obtenemos lo que se pagara por ese producto.
+
+            PorPagar += ProductoPaga; //Lo agregamos al total de la venta
+
+            TxtPorPagar.Text = PorPagar.ToString(); //Actualizamos la caja de texto
+
+            //Creamos el nuevo registro del ListView carrito y definimos los valores de sus campos
+            ListViewItem ProductoCarrito = new ListViewItem(ProductoId);
+            ProductoCarrito.SubItems.Add(ProductoNombre);
+            ProductoCarrito.SubItems.Add(ProductoPrecio);
+            ProductoCarrito.SubItems.Add(ProductoCantidad);
+            ProductoCarrito.SubItems.Add(ProductoPaga.ToString());
+
+            LvCarrito.Items.Add(ProductoCarrito); //Cargamos el producto
+            CantidadEnCarrito++; //Agregamos uno a la cantidad de productos en carrito
+
+            LblCantidadRegistrosCarrito.Text = "Productos en Carrito: " + CantidadEnCarrito.ToString(); //Actualizamos etiqueta 
+
+            LvProductos.SelectedItems.Clear(); //Desceleccionamos el Producto
+        }
+
+
+        //FUNCION PARA VACIAR EL CARRITO
+        public static void VaciarElCarrito(ListView LvCarrito, TextBox TxtPorPagar, Label LblCantidadRegistrosCarrito)
+        {
+            //Si el Carrito esta vacío mensaje de error
+            if (LvCarrito.Items.Count == 0)
+            {
+                MessageBox.Show("Agregue productos al carrito.",
+                    "ERROR. CARRITO ESTA VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Confirmamos que el usuario desea vaciar el carrito
+            DialogResult ConfirmarVaciarCarrito;
+            ConfirmarVaciarCarrito = MessageBox.Show("¿Esta seguro que desea vaciar el carrito de productos?",
+                "CONFIRMACIÓN DE VACIADO DE CARRITO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarVaciarCarrito == DialogResult.No) return;
+
+            LvCarrito.Items.Clear(); //Limpiamos ListView de Carrito
+            TxtPorPagar.Clear(); //Limpiamos caja de texto PorPagar
+            LblCantidadRegistrosCarrito.Text = LblCantidadRegistrosCarrito.Tag.ToString(); //Etiqueta cantidad a su original
+            CantidadEnCarrito = 0;
+        }
+
+
+        //FUNCION PARA BORRAR UN PRODUCTO DEL CARRITO
+        public static void EliminarProductoCarrito(ListView LvCarrito, TextBox TxtPorPagar, Label LblCantidadRegistrosCarrito)
+        {
+            //Si el Carrito esta vacío mensaje de error
+            if (LvCarrito.Items.Count == 0)
+            {
+                MessageBox.Show("Agregue productos al carrito.",
+                    "ERROR. CARRITO ESTA VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Si no se ha seleccionado producto del carrito mensaje de error
+            if (LvCarrito.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Seleccione un producto para eliminar del carrito.",
+                    "ERROR. NO SE SELECCIONO PRODUCTO PARA BORRAR DEL CARRITO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ListViewItem ItemSeleccionado = LvCarrito.SelectedItems[0]; //Obtenemos el producto seleccionado del carrito
+
+            ProductoPaga = float.Parse(ItemSeleccionado.SubItems[4].Text); //Obtenemos lo que se paga por los ejemplares de ese producto
+
+            PorPagar -= ProductoPaga; //Lo restamos del total de la venta
+
+            TxtPorPagar.Text = PorPagar.ToString(); //Actualizamos la caja de texto
+
+            LvCarrito.Items.Remove(ItemSeleccionado); //Eliminamos el producto del Carrito
+
+            CantidadEnCarrito--; //Quitamos uno a la cantidad de productos en carrito y actualizamos la etiqueta
+            LblCantidadRegistrosCarrito.Text = "Productos en Carrito: " + CantidadEnCarrito.ToString();
+        }
+
+
+        //FUNCION PARA HACER LA VENTA DE LOS PRODUCTOS DEL CARRITO
+        public static bool VenderProductos(ListView LvCarrito, TextBox TxtPorPagar, Label LblCantidadRegistrosCarrito)
+        {
+            //Si el Carrito esta vacío mensaje de error
+            if (LvCarrito.Items.Count == 0)
+            {
+                MessageBox.Show("Agregue productos al carrito para poder hacer venta.",
+                    "ERROR. CARRITO ESTA VACÍO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            //Establecemos el obejto OledbConnection para conectar con la base de datos
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            {
+                conexion.Open(); //Abrimos conexion
+
+                //Primer Comando SQL para insertar la venta de un producto a la BDDS de ventas
+                string query = "INSERT INTO Ventas (Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total) " +
+                   "VALUES (@Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total)";
+
+                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
+                {
+                    //Para cada registro del Carrito
+                    foreach (ListViewItem ProductoEnCarrito in LvCarrito.Items)
+                    {
+                        // Limpiar los parámetros para cada registro
+                        comando.Parameters.Clear();
+
+                        // Parametros de consulta, los valores que se van a insertar a la base de datos
+                        comando.Parameters.AddWithValue("@Usuario", Usuario);
+                        comando.Parameters.AddWithValue("@TipoUsuario", TipoUsuario);
+                        comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
+                        comando.Parameters.AddWithValue("@NombreProducto", ProductoEnCarrito.SubItems[1].Text);
+                        comando.Parameters.AddWithValue("@Precio", float.Parse(ProductoEnCarrito.SubItems[2].Text));
+                        comando.Parameters.AddWithValue("@Cantidad", int.Parse(ProductoEnCarrito.SubItems[3].Text));
+                        comando.Parameters.AddWithValue("@Total", float.Parse(ProductoEnCarrito.SubItems[4].Text));
+
+                        comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
+                    }
+                }
+
+                //Segundo Comando SQL para actualizar la cantidad de productos en Stock en la tabla Productos
+                string ActualizarStock = "UPDATE Productos SET Cantidad_en_Stock = Cantidad_en_Stock - @Cantidad WHERE Id = @IdProducto";
+
+                using (OleDbCommand comando = new OleDbCommand(ActualizarStock, conexion)) //Comando SQL
+                {
+                    //Para cada registro del Carrito
+                    foreach (ListViewItem ProductoEnCarrito in LvCarrito.Items)
+                    {
+                        // Limpiar los parámetros para cada registro
+                        comando.Parameters.Clear();
+
+                        // Parametros de consulta, los valores que se van a insertar a la base de datos
+                        comando.Parameters.AddWithValue("@Cantidad", int.Parse(ProductoEnCarrito.SubItems[3].Text));
+                        comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
+
+                        comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
+                    }
+                }
+            }
+
+            LblCantidadRegistrosCarrito.Text = "Productos en Carrito: "; //AActualizamos la etiqueta de Cantidad de Registros de Carrito
+
+            LvCarrito.Items.Clear(); //Limpiamos el Carrito
+            TxtPorPagar.Clear(); //Limpiamos la caja con el total de la venta
+
+            //Mensaje de Venta Exitosa
+            MessageBox.Show("La venta ha sido completada.", "VENTA EXITOSA DE PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            return true; //Devolvemos True si la venta fue un exito
+        }
+
+        //FUNCION PARA LIMPIAR EL SUBAPARTADO DE BUSQUEDA DE VENTAS
+        public static void RestaurarBusquedaVentas(ListView LvProductos, TextBox TxtBuscar, TextBox Txt_Cantidad, 
+            Label LblErrorBuscar, Label LblErrorCantidad, Label LblProducto, RadioButton RdAproximada, 
+            RadioButton RdExacta, RadioButton RdNombre, RadioButton RdId, Label LblCantidadRegistrosBuscar)
+        {
+            //Limpiamos los controles relacionados a buscar y agregar un producto al carrito
+            LvProductos.Items.Clear();
+            TxtBuscar.Clear();
+            Txt_Cantidad.Clear();
+            LblErrorBuscar.Visible = false;
+            LblErrorCantidad.Visible = false;
+            LblProducto.Visible = false;
+            RdAproximada.Checked = true;
+            RdExacta.Checked = false;
+            RdNombre.Checked = true;
+            RdId.Checked = false;
+            LblCantidadRegistrosBuscar.Text = LblCantidadRegistrosBuscar.Tag.ToString();
+        }
+
+
+        //FUNCION PARA VALIDAR LA ENTRADA DE CANTIDAD, QUE LA CANTIDAD INGRESADA NO PASE DE STOCK
+        public static void ValidarCantidadConStock(TextBox Txt_Cantidad, Button BtnMenos, Button BtnMas, ListView LvProductos)
+        {
+            //Verificamos si la caja esta vacia. Si lo esta, solo deshabilitamos el boton de menos y cantidad ingresada es 0
+            if (string.IsNullOrEmpty(Txt_Cantidad.Text))
+            {
+                CantidadIngresada = 0;
+                BtnMenos.Enabled = false;
+                BtnMas.Enabled = true;
+                return;
+            }
+
+            //Si no se ha seleccionado producto mensaje de error
+            if (LvProductos.SelectedItems.Count == 0)
+            {
+                Txt_Cantidad.Clear(); //Limpiamos la caja
+                MessageBox.Show("Seleccione un registro antes de ingresar la cantidad de productos a vender.",
+                    "ERROR. NO SE HA SELECCIONADO PRODUCTO PARA VENDER", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (int.TryParse(Txt_Cantidad.Text, out CantidadIngresada)) //Si lo contenido en la Caja es un entero, validamos
+            {
+                BtnMenos.Enabled = CantidadIngresada > 0; //Si es mayor a 0 se habilita, de lo contrario se deshabilita.
+                BtnMas.Enabled = CantidadIngresada < CantidadEnStockSeleccionado; //Solo se habilita si cantidad es menor a la de Stock se habilita.
+
+                if (CantidadIngresada > CantidadEnStockSeleccionado) //Si sobrepasa la cantidad en Stock mensaje de Error
+                {
+                    MessageBox.Show("La Cantidad a Vender no debe ser mayor que la cantidad de ejemplares en stock: " +
+                        CantidadEnStockSeleccionado + ".", "ERROR. CANTIDAD A VENDER SOBREPASA CANTIDAD EN STOCK",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    Txt_Cantidad.Clear(); //Limpiamos la caja de Cantidad
+                }
+            }
+        }
     }
 }

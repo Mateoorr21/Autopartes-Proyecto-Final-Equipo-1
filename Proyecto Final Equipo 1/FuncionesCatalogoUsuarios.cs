@@ -110,8 +110,9 @@ namespace Proyecto_Final_Equipo_1
 
         //FUNCION DE BUSCAR USUARIOS PARA ELIMINARLOS
         public static void BuscarUsuarioEliminar(string buscar, string Username, string Permiso, TextBox TxtBuscar, 
-            RadioButton RdAproximada, RadioButton RdNombre, ListView LvUsuarios, Label LblCantidadRegistros)
+            RadioButton RdAproximada, RadioButton RdNombre, ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar)
         {
+            LblErrorBuscar.Visible = false; //Ocultamos la etiqueta de Error al Buscar
             ContarUsuarios = 0; //Valor de ContarUsuarios en 0
 
             //Si la caja de texto esta vacía un mensaje de Error
@@ -249,8 +250,9 @@ namespace Proyecto_Final_Equipo_1
 
         //FUNCION BUSCAR UN USUARIO PARA MODIFICARLO
         public static void BuscarUsuarioModificar(string buscar, string Username, string Permiso, TextBox TxtBuscar, 
-            RadioButton RdAproximada, RadioButton RdNombre, ListView LvUsuarios, Label LblCantidadRegistros)
+            RadioButton RdAproximada, RadioButton RdNombre, ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar)
         {
+            LblErrorBuscar.Visible = false; //Ocultamos la etiqueta de Error al Buscar
             ContarUsuarios = 0; //Valor de ContarUsuarios en 0
 
             //Si la caja de texto esta vacía un mensaje de Error
@@ -355,7 +357,14 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
-            string PermisoModificado = RdAdmin.Checked ? "Admin" : "Cajero"; //Obtenemos el Permiso del usuario operativo
+            //Confirmamos que el usuario desea modificar el registro seleccioando
+            DialogResult ConfirmarModificar;
+            ConfirmarModificar = MessageBox.Show("¿Esta seguro que desea modificar la información del Usuario Operativo seleccionado?",
+                "CONFIRMACIÓN DE ACTUALIZACIÓN DE USUARIO OPERATIVO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarModificar == DialogResult.No) return;
+
+            string PermisoModificado = RdAdmin.Checked ? "Admin" : "Cajero"; //Obtenemos el Permiso Modificado del usuario operativo
 
             //Si el usuario es Propietario y se selecciono a si mismo, el permiso continua siendo propietario
             if (FuncionesAplicacion.TipoUsuario == "Propietario" && RdAdmin.Enabled == false) PermisoModificado = "Propietario";
