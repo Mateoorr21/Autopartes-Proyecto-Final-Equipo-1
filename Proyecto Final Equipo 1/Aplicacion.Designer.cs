@@ -195,7 +195,7 @@
             // BtnSalir
             // 
             this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir.Location = new System.Drawing.Point(803, 9);
+            this.BtnSalir.Location = new System.Drawing.Point(845, 11);
             this.BtnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(148, 43);
@@ -228,7 +228,7 @@
             this.PanelAutoPartes.Location = new System.Drawing.Point(160, 63);
             this.PanelAutoPartes.Margin = new System.Windows.Forms.Padding(2);
             this.PanelAutoPartes.Name = "PanelAutoPartes";
-            this.PanelAutoPartes.Size = new System.Drawing.Size(1021, 490);
+            this.PanelAutoPartes.Size = new System.Drawing.Size(1023, 490);
             this.PanelAutoPartes.TabIndex = 7;
             // 
             // LblNota

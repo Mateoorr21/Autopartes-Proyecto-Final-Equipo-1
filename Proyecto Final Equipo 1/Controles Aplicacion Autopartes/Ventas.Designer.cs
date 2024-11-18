@@ -107,7 +107,7 @@
             this.RdExacta.Location = new System.Drawing.Point(29, 52);
             this.RdExacta.Margin = new System.Windows.Forms.Padding(4);
             this.RdExacta.Name = "RdExacta";
-            this.RdExacta.Size = new System.Drawing.Size(69, 20);
+            this.RdExacta.Size = new System.Drawing.Size(65, 19);
             this.RdExacta.TabIndex = 1;
             this.RdExacta.Text = "Exacta";
             this.RdExacta.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@
             this.RdAproximada.Location = new System.Drawing.Point(29, 23);
             this.RdAproximada.Margin = new System.Windows.Forms.Padding(4);
             this.RdAproximada.Name = "RdAproximada";
-            this.RdAproximada.Size = new System.Drawing.Size(101, 20);
+            this.RdAproximada.Size = new System.Drawing.Size(94, 19);
             this.RdAproximada.TabIndex = 0;
             this.RdAproximada.TabStop = true;
             this.RdAproximada.Text = "Aproximada";
@@ -165,7 +165,7 @@
             this.TxtBuscar.Location = new System.Drawing.Point(28, 297);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(124, 22);
+            this.TxtBuscar.Size = new System.Drawing.Size(124, 20);
             this.TxtBuscar.TabIndex = 101;
             this.TxtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBuscar_KeyPress);
             // 
@@ -174,7 +174,7 @@
             this.LblCampoBuscar.AutoSize = true;
             this.LblCampoBuscar.Location = new System.Drawing.Point(25, 274);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
-            this.LblCampoBuscar.Size = new System.Drawing.Size(59, 16);
+            this.LblCampoBuscar.Size = new System.Drawing.Size(55, 15);
             this.LblCampoBuscar.TabIndex = 100;
             this.LblCampoBuscar.Text = "Nombre:";
             // 
@@ -209,7 +209,7 @@
             this.RdId.Location = new System.Drawing.Point(29, 52);
             this.RdId.Margin = new System.Windows.Forms.Padding(4);
             this.RdId.Name = "RdId";
-            this.RdId.Size = new System.Drawing.Size(39, 20);
+            this.RdId.Size = new System.Drawing.Size(38, 19);
             this.RdId.TabIndex = 1;
             this.RdId.Text = "Id";
             this.RdId.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             this.RdNombre.Location = new System.Drawing.Point(29, 23);
             this.RdNombre.Margin = new System.Windows.Forms.Padding(4);
             this.RdNombre.Name = "RdNombre";
-            this.RdNombre.Size = new System.Drawing.Size(77, 20);
+            this.RdNombre.Size = new System.Drawing.Size(73, 19);
             this.RdNombre.TabIndex = 0;
             this.RdNombre.TabStop = true;
             this.RdNombre.Text = "Nombre";
@@ -258,7 +258,7 @@
             this.Txt_Cantidad.Location = new System.Drawing.Point(303, 374);
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
-            this.Txt_Cantidad.Size = new System.Drawing.Size(135, 22);
+            this.Txt_Cantidad.Size = new System.Drawing.Size(135, 20);
             this.Txt_Cantidad.TabIndex = 112;
             this.Txt_Cantidad.TextChanged += new System.EventHandler(this.Txt_Cantidad_TextChanged);
             this.Txt_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Cantidad_KeyPress);
@@ -268,7 +268,7 @@
             this.LblCantidad.AutoSize = true;
             this.LblCantidad.Location = new System.Drawing.Point(172, 374);
             this.LblCantidad.Name = "LblCantidad";
-            this.LblCantidad.Size = new System.Drawing.Size(122, 16);
+            this.LblCantidad.Size = new System.Drawing.Size(111, 15);
             this.LblCantidad.TabIndex = 111;
             this.LblCantidad.Text = "Cantidad a Vender:";
             // 
@@ -303,7 +303,7 @@
             this.LblProductoVender.AutoSize = true;
             this.LblProductoVender.Location = new System.Drawing.Point(173, 343);
             this.LblProductoVender.Name = "LblProductoVender";
-            this.LblProductoVender.Size = new System.Drawing.Size(122, 16);
+            this.LblProductoVender.Size = new System.Drawing.Size(111, 15);
             this.LblProductoVender.TabIndex = 116;
             this.LblProductoVender.Text = "Producto a Vender:";
             // 
@@ -312,7 +312,7 @@
             this.LblProducto.AutoSize = true;
             this.LblProducto.Location = new System.Drawing.Point(301, 343);
             this.LblProducto.Name = "LblProducto";
-            this.LblProducto.Size = new System.Drawing.Size(208, 16);
+            this.LblProducto.Size = new System.Drawing.Size(190, 15);
             this.LblProducto.TabIndex = 117;
             this.LblProducto.Text = "Bujía para Vehículo de Alta Gama";
             this.LblProducto.Visible = false;
@@ -345,17 +345,18 @@
             this.Lbl.AutoSize = true;
             this.Lbl.Location = new System.Drawing.Point(630, 345);
             this.Lbl.Name = "Lbl";
-            this.Lbl.Size = new System.Drawing.Size(173, 16);
+            this.Lbl.Size = new System.Drawing.Size(161, 15);
             this.Lbl.TabIndex = 120;
             this.Lbl.Text = "Cantidad a Pagar (en MXN):";
             // 
             // TxtPorPagar
             // 
+            this.TxtPorPagar.Enabled = false;
             this.TxtPorPagar.Location = new System.Drawing.Point(632, 367);
             this.TxtPorPagar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtPorPagar.Name = "TxtPorPagar";
             this.TxtPorPagar.ReadOnly = true;
-            this.TxtPorPagar.Size = new System.Drawing.Size(170, 22);
+            this.TxtPorPagar.Size = new System.Drawing.Size(170, 20);
             this.TxtPorPagar.TabIndex = 121;
             // 
             // BtnEliminarRegistroCarrito

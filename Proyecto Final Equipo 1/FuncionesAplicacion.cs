@@ -89,6 +89,8 @@ namespace Proyecto_Final_Equipo_1
             CantidadEnCarrito = 0;
             PorPagar = 0;
             ProductoPaga = 0;
+            ContarVentas = 0;
+            DineroVentas = 0;
     }
 
 
@@ -132,6 +134,8 @@ namespace Proyecto_Final_Equipo_1
                             // Abrir el formulario
                             Aplicacion aplicacion = new Aplicacion();                                                 
                             aplicacion.ShowDialog();
+
+                            ReiniciarVariables(); //Reinciamos las variables a usar.
                         }
                         else
                         {
@@ -769,7 +773,7 @@ namespace Proyecto_Final_Equipo_1
 
             PorPagar += ProductoPaga; //Lo agregamos al total de la venta
 
-            TxtPorPagar.Text = PorPagar.ToString(); //Actualizamos la caja de texto
+            TxtPorPagar.Text = PorPagar.ToString("C"); //Actualizamos la caja de texto
 
             //Creamos el nuevo registro del ListView carrito y definimos los valores de sus campos
             ListViewItem ProductoCarrito = new ListViewItem(ProductoId);
@@ -837,7 +841,7 @@ namespace Proyecto_Final_Equipo_1
 
             PorPagar -= ProductoPaga; //Lo restamos del total de la venta
 
-            TxtPorPagar.Text = PorPagar.ToString(); //Actualizamos la caja de texto
+            TxtPorPagar.Text = PorPagar.ToString("C"); //Actualizamos la caja de texto
 
             LvCarrito.Items.Remove(ItemSeleccionado); //Eliminamos el producto del Carrito
 
@@ -1051,7 +1055,7 @@ namespace Proyecto_Final_Equipo_1
                     }
                 }
 
-                TxtDineroVentas.Text = DineroVentas.ToString(); //Actualizamos la caja de texto de Dinero Ventas
+                TxtDineroVentas.Text = DineroVentas.ToString("C"); //Actualizamos la caja de texto de Dinero Ventas
             }
         }
 
@@ -1125,9 +1129,11 @@ namespace Proyecto_Final_Equipo_1
             // Sumar las ventas del usuario al dinero que tenemos en la caja
             Properties.Settings.Default.DineroEnCaja += DineroVentas;
 
+            Properties.Settings.Default.Save(); // Guardamos los cambios de la variable DineroEnCaja
+
             //Mostramos un mensaje de éxito en el Guardado de Ventas
             MessageBox.Show("Las ventas han sido guardadas con Éxito. Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
-                "VENTAS HAN SIDOO GUARDADAS CON EXITO. CERRANADO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                "VENTAS GUARDADAS CON EXITO. CERRANDO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Application.Exit(); //Cerramos Aplicacion
         }

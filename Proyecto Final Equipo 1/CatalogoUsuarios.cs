@@ -56,6 +56,13 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnSalir_Click(object sender, EventArgs e)
         {
+            //Confirmamos que el usuario desea salir del Catálogo
+            DialogResult ConfirmarCierreCatalogo;
+            ConfirmarCierreCatalogo = MessageBox.Show("¿Esta seguro que desea salir del Catálogo de Usuarios?",
+                "CONFIRMACIÓN DE CIERRE CATALOGO DE USUARIOS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarCierreCatalogo == DialogResult.No) return;
+
             Dispose(); //Salimos del Catalogo
         }
     }

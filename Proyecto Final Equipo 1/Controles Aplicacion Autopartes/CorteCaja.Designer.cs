@@ -105,11 +105,12 @@
             // 
             // TxtDineroCaja
             // 
+            this.TxtDineroCaja.Enabled = false;
             this.TxtDineroCaja.Location = new System.Drawing.Point(737, 170);
             this.TxtDineroCaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtDineroCaja.Name = "TxtDineroCaja";
             this.TxtDineroCaja.ReadOnly = true;
-            this.TxtDineroCaja.Size = new System.Drawing.Size(253, 20);
+            this.TxtDineroCaja.Size = new System.Drawing.Size(253, 22);
             this.TxtDineroCaja.TabIndex = 126;
             // 
             // LblDineroCaja
@@ -117,17 +118,18 @@
             this.LblDineroCaja.AutoSize = true;
             this.LblDineroCaja.Location = new System.Drawing.Point(735, 148);
             this.LblDineroCaja.Name = "LblDineroCaja";
-            this.LblDineroCaja.Size = new System.Drawing.Size(184, 15);
+            this.LblDineroCaja.Size = new System.Drawing.Size(196, 16);
             this.LblDineroCaja.TabIndex = 125;
             this.LblDineroCaja.Text = "Dinero actual en Caja (en MXN):";
             // 
             // TxtDineroVentas
             // 
+            this.TxtDineroVentas.Enabled = false;
             this.TxtDineroVentas.Location = new System.Drawing.Point(737, 237);
             this.TxtDineroVentas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtDineroVentas.Name = "TxtDineroVentas";
             this.TxtDineroVentas.ReadOnly = true;
-            this.TxtDineroVentas.Size = new System.Drawing.Size(253, 20);
+            this.TxtDineroVentas.Size = new System.Drawing.Size(253, 22);
             this.TxtDineroVentas.TabIndex = 128;
             // 
             // LblDineroVentas
@@ -135,7 +137,7 @@
             this.LblDineroVentas.AutoSize = true;
             this.LblDineroVentas.Location = new System.Drawing.Point(735, 215);
             this.LblDineroVentas.Name = "LblDineroVentas";
-            this.LblDineroVentas.Size = new System.Drawing.Size(234, 15);
+            this.LblDineroVentas.Size = new System.Drawing.Size(253, 16);
             this.LblDineroVentas.TabIndex = 127;
             this.LblDineroVentas.Text = "Dinero obtenido por las Ventas (en MXN):";
             // 

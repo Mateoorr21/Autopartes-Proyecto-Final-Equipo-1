@@ -12,9 +12,7 @@ using System.Windows.Forms;
 namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 {
     public partial class CorteCaja : UserControl
-    {
-        int ContarVentas = 0;
-        float DineroVentas = 0;
+    {   
         public CorteCaja()
         {
             InitializeComponent();
@@ -54,6 +52,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona cancelar limpiamos el control de Usuario
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
             CargarDineroCaja(); //Cargamos el dinero en caja
         }
 

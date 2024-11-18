@@ -51,7 +51,7 @@
             this.LvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
-            this.LvProductos.Size = new System.Drawing.Size(939, 381);
+            this.LvProductos.Size = new System.Drawing.Size(914, 381);
             this.LvProductos.TabIndex = 76;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
             this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
@@ -60,7 +60,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(314, 19);
+            this.LblTitulo.Location = new System.Drawing.Point(306, 19);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(385, 29);
             this.LblTitulo.TabIndex = 75;
