@@ -118,6 +118,13 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
+            // Confirmamos que el usuario desea cancelar la modificación del Usuario Operativo
+            DialogResult ConfirmarCancelarModificar;
+            ConfirmarCancelarModificar = MessageBox.Show("¿Esta seguro que desea cancelar la modificación del Usuario Operativo?",
+                "CONFIRMAR CANCELAR MODIFICACIÓN DE USUARIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarCancelarModificar == DialogResult.No) return;
+
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
         }
 

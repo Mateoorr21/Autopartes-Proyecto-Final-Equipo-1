@@ -118,6 +118,13 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
+            // Confirmamos que el usuario desea cancelar la modificación del producto
+            DialogResult ConfirmarCancelarModificar;
+            ConfirmarCancelarModificar = MessageBox.Show("¿Esta seguro que desea cancelar la modificación del producto?",
+                "CONFIRMAR CANCELAR MODIFICACIÓN DE PRODUCTO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarCancelarModificar == DialogResult.No) return;
+
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos Variables
         }
