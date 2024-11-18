@@ -40,6 +40,7 @@
             this.BtnInventario = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.BtnSalir = new System.Windows.Forms.Button();
             this.PanelAplicacion = new System.Windows.Forms.Panel();
             this.PanelAutoPartes = new System.Windows.Forms.Panel();
             this.LblNota = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.LblAgregar = new System.Windows.Forms.Label();
             this.LblInventario = new System.Windows.Forms.Label();
             this.LblTituloInstrucción = new System.Windows.Forms.Label();
-            this.BtnSalir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.PanelAutoPartes.SuspendLayout();
@@ -150,6 +150,7 @@
             this.BtnCorte.TabIndex = 9;
             this.BtnCorte.Text = "Corte de Caja";
             this.BtnCorte.UseVisualStyleBackColor = true;
+            this.BtnCorte.Click += new System.EventHandler(this.BtnCorte_Click);
             // 
             // BtnVender
             // 
@@ -190,6 +191,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1023, 71);
             this.panel3.TabIndex = 7;
+            // 
+            // BtnSalir
+            // 
+            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSalir.Location = new System.Drawing.Point(803, 9);
+            this.BtnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(148, 43);
+            this.BtnSalir.TabIndex = 6;
+            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // PanelAplicacion
             // 
@@ -323,18 +336,6 @@
             this.LblTituloInstrucción.Size = new System.Drawing.Size(915, 44);
             this.LblTituloInstrucción.TabIndex = 2;
             this.LblTituloInstrucción.Text = "Bienvenido a la Aplicación de la Tienda de Autopartes";
-            // 
-            // BtnSalir
-            // 
-            this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir.Location = new System.Drawing.Point(803, 9);
-            this.BtnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(148, 43);
-            this.BtnSalir.TabIndex = 6;
-            this.BtnSalir.Text = "Salir";
-            this.BtnSalir.UseVisualStyleBackColor = true;
-            this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // Aplicacion
             // 

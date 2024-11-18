@@ -22,7 +22,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         {
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
 
-            //Declaramos el ListView, sus propiedades y columnas
+            //Establecemos el ListView, sus propiedades y columnas
             LvProductos.View = View.Details;
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;

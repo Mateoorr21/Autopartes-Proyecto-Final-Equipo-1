@@ -29,9 +29,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;
             LvProductos.Columns.Add("Id", 40);
-            LvProductos.Columns.Add("Nombre", 100);
+            LvProductos.Columns.Add("Nombre", 125);
             LvProductos.Columns.Add("Descripcion", 120);
-            LvProductos.Columns.Add("Marca", 80);
+            LvProductos.Columns.Add("Marca", 100);
             LvProductos.Columns.Add("Precio", 70);
             LvProductos.Columns.Add("Cantidad en Stock", 80);
             LvProductos.Columns.Add("Imagen", 0);

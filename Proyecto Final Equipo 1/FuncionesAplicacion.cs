@@ -10,6 +10,7 @@ using System.IO;
 using System.Drawing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Security.Policy;
+using Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes;
 
 namespace Proyecto_Final_Equipo_1
 {
@@ -32,13 +33,16 @@ namespace Proyecto_Final_Equipo_1
         public static int IdSeleccionado = 0;
         public static int ContarProductos = 0;
 
-        //Declaramos e Inicializamos variables que se utilizan en Ventas
+        //Declaramos e Inicializamos variables que se utilizan en Ventas y Corte de Caja
         public static int CantidadEnStockSeleccionado = 0;
         public static int CantidadIngresada = 0;
         public static int CantidadEnCarrito = 0;
         public static float PorPagar = 0;
         public static float ProductoPaga = 0;
-        
+        public static bool HayVentas = false;
+        public static int ContarVentas = 0;
+        public static float DineroVentas = 0;
+
         public static int ColumnaOrdenar = -1; //Variable para OrdenarColumnas
 
 
@@ -425,40 +429,23 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
-            //Objeto de conexion con la base de datos
-            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
-            {
-                conexion.Open(); //Abrimos conexion
+            ListViewItem ProductoSeleccionado = LvProductos.SelectedItems[0]; //Obtenemos el producto seleccionado
 
-                string query = "SELECT * FROM Productos WHERE Id = @IdSeleccionado"; //Consulta de selección
+            //MessageBox con los datos del Producto
+            MessageBox.Show("Datos del Producto Seleccionado:" +
+                " \n\n\nId: " + ProductoSeleccionado.SubItems[0].Text +
+                " \n\nNombre: " + ProductoSeleccionado.SubItems[1].Text +
+                " \n\nDescripcion: " + ProductoSeleccionado.SubItems[2].Text +
+                " \n\nMarca: " + ProductoSeleccionado.SubItems[3].Text +
+                " \n\nPrecio: $ " + ProductoSeleccionado.SubItems[4].Text +
+                " \n\nCantidad en Stock: " + ProductoSeleccionado.SubItems[5].Text,
+                "INFORMACIÓN DEL PRODUCTO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Objeto de consulta
-                {
-                    comando.Parameters.AddWithValue("@IdSeleccionado", IdSeleccionado); //Parametro IdSeleccioando
+            string RutaImagen = ProductoSeleccionado.SubItems[6].Text; //Obtenemos la ruta 
 
-                    OleDbDataReader LeerProducto = comando.ExecuteReader(); //Objeto de Lectura y ejecutamos lectura
+            string RutaImagenAbrir = "..\\..\\" + RutaImagen; //Creamos la nueva ruta (saliendo varias carpetas mas)
 
-                    while (LeerProducto.Read())
-                    { //Para el regisro que se lee
-
-                        //Mostramos en un Message Box la información obtenida de la consulta de selección
-                        MessageBox.Show("Datos del Producto Seleccionado:" +
-                            " \n\n\nId: " + LeerProducto["Id"].ToString() +
-                            " \n\nNombre: " + LeerProducto["Nombre"].ToString() +
-                            " \n\nDescripcion: " + LeerProducto["Id"].ToString() +
-                            " \n\nMarca: " + LeerProducto["Marca"].ToString() +
-                            " \n\nPrecio: $ " + LeerProducto["Precio"].ToString() +
-                            " \n\nCantidad en Stock: " + LeerProducto["Cantidad_en_Stock"].ToString(),
-                            "INFORMACIÓN DEL PRODUCTO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        string RutaImagen = LeerProducto["Imagen"].ToString().Trim('#'); //Obtenemos la ruta y quitamos los #
-
-                        string RutaImagenAbrir = "..\\..\\" + RutaImagen; //Creamos la nueva ruta (saliendo varias carpetas mas)
-
-                        PicImagenProducto.Image = Image.FromFile(RutaImagenAbrir); //Cargamos la Imagen                
-                    }
-                }
-            }
+            PicImagenProducto.Image = Image.FromFile(RutaImagenAbrir); //Cargamos la Imagen
         }
 
 
@@ -870,14 +857,21 @@ namespace Proyecto_Final_Equipo_1
                 return false;
             }
 
+            //Confirmamos que el usuario desea realizar la venta de los productos seleccionados
+            DialogResult ConfirmarVenta;
+            ConfirmarVenta = MessageBox.Show("¿Esta seguro que desea realizar la venta de los productos en el carrito?",
+                "CONFIRMACIÓN DE VENTA DE PRODUCTOS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarVenta == DialogResult.No) return false;
+
             //Establecemos el obejto OledbConnection para conectar con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
             {
                 conexion.Open(); //Abrimos conexion
 
                 //Primer Comando SQL para insertar la venta de un producto a la BDDS de ventas
-                string query = "INSERT INTO Ventas (Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total) " +
-                   "VALUES (@Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total)";
+                string query = "INSERT INTO Ventas (Nombre_Completo, Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total) " +
+                   "VALUES (@NombreCompleto, @Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total)";
 
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
                 {
@@ -888,6 +882,7 @@ namespace Proyecto_Final_Equipo_1
                         comando.Parameters.Clear();
 
                         // Parametros de consulta, los valores que se van a insertar a la base de datos
+                        comando.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
                         comando.Parameters.AddWithValue("@Usuario", Usuario);
                         comando.Parameters.AddWithValue("@TipoUsuario", TipoUsuario);
                         comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
@@ -928,6 +923,7 @@ namespace Proyecto_Final_Equipo_1
             //Mensaje de Venta Exitosa
             MessageBox.Show("La venta ha sido completada.", "VENTA EXITOSA DE PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            HayVentas = true; //Cabiamos el booleano a True, indicando que ya se realizó una Venta
             return true; //Devolvemos True si la venta fue un exito
         }
 
@@ -986,6 +982,154 @@ namespace Proyecto_Final_Equipo_1
                     Txt_Cantidad.Clear(); //Limpiamos la caja de Cantidad
                 }
             }
+        }
+
+
+
+
+        //FUNCIONES UTILIZADAS PARA EL CORTE DE CAJA
+        public static void CargarVentas(ListView LvVentas, Label LblCantidadRegistros, TextBox TxtDineroVentas)
+        {
+            //Si la no se han realizado ventas mensaje de error
+            if (HayVentas == false)
+            {
+                MessageBox.Show("Error. No se han realizado ventas.", "ERROR. NO HAY VENTAS POR MOSTRAR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (LvVentas.Items.Count > 0) // Si las ventas ya están cargadas indicamos advertencia
+            {
+                MessageBox.Show("Advertencia. Las ventas ya han sido cargadas.", "ADVERTENCIA. VENTAS YA CARGADAS",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //using para establecer conexion con la base de datos
+            using (OleDbConnection conexion = new OleDbConnection(FuncionesAplicacion.cadconexion))
+            {
+                conexion.Open(); //Abrimos conexion
+                ListViewItem Venta;
+
+                string ComandoVentas = "SELECT Nombre_Completo, Usuario, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total" +
+                    " FROM Ventas WHERE SeGuardo = False"; //Consulta para seleccionar las ventas hechas por el Usuario
+
+                //Using para liberar objeto cuando ya no se use
+                using (OleDbCommand comando = new OleDbCommand(ComandoVentas, conexion)) //pasamos consulta y conexion
+                {
+                    OleDbDataReader LeerVentas = comando.ExecuteReader(); //Objeto de lectura
+
+                    ContarVentas = 0; //Variable para contar los registros
+                    DineroVentas = 0; //Vairable para contar el dinero generado
+
+                    if (LeerVentas.HasRows) //Si se obtuvieron registros de la busqueda
+                    {
+                        LvVentas.Items.Clear(); //Limpiamos el contenido del ListView
+
+                        while (LeerVentas.Read()) //Para cada registro obtenido
+                        {
+                            //Aumentamos el contador de registros
+                            ContarVentas++;
+
+                            //Ingresamos a las columnas del ListView los valores de la base de datos 
+                            Venta = new ListViewItem(LeerVentas["Nombre_Completo"].ToString());
+                            Venta.SubItems.Add(LeerVentas["Usuario"].ToString());
+                            Venta.SubItems.Add(LeerVentas["Id_Producto"].ToString());
+                            Venta.SubItems.Add(LeerVentas["Nombre_Producto"].ToString());
+                            Venta.SubItems.Add(LeerVentas["Precio_Producto"].ToString());
+                            Venta.SubItems.Add(LeerVentas["Cantidad_Producto"].ToString());
+                            Venta.SubItems.Add(LeerVentas["Total"].ToString());
+
+                            //Cargamos el registro al ListView
+                            LvVentas.Items.Add(Venta);
+
+                            DineroVentas += float.Parse(LeerVentas["Total"].ToString()); //Sumamos el dinero generado de cada Venta
+
+                            //Actualizamos la etiqueta que cuenta los registros
+                            LblCantidadRegistros.Text = "Ventas Realizadas: " + ContarVentas.ToString();
+                        }
+                    }
+                }
+
+                TxtDineroVentas.Text = DineroVentas.ToString(); //Actualizamos la caja de texto de Dinero Ventas
+            }
+        }
+
+
+        //FUNCION PARA MOSTRAR LOS DETALLES DE UNA VENTA SELECCIOANADA
+        public static void MostrarVentaSeleccionada(ListView LvVentas)
+        {
+            //Si no hay registro seleccionado menssaje de Error
+            if (LvVentas.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Seleccione una venta para mostrar sus detalles",
+                    "ERROR. NO HAY VENTA SELECCIONADA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ListViewItem VentaSeleccionada = LvVentas.SelectedItems[0]; //Obtenemos el registro Seleccionado
+
+            //Mostramos en un Message Box la información obtenida de la venta seleccionada
+            MessageBox.Show("Datos de la Venta Seleccioada Seleccionada:" +
+                "\n\n\nNombre Completo: " + VentaSeleccionada.SubItems[0].Text +
+                "\n\nUsuario: " + VentaSeleccionada.SubItems[1].Text +
+                " \n\nId de Producto: " + VentaSeleccionada.SubItems[2].Text +
+                " \n\nNombre de Producto: " + VentaSeleccionada.SubItems[3].Text +
+                " \n\nPrecio: $ " + VentaSeleccionada.SubItems[4].Text +
+                " \n\nCantidad Vendida: " + VentaSeleccionada.SubItems[5].Text +
+                " \n\nTotal: $ " + VentaSeleccionada.SubItems[6].Text,
+                "INFORMACIÓN DE LA VENTA SELECCIONADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        //FUNCION PARA REGISTRAR LAS VENTAS Y CERRAR SESION
+        public static void GuardarVentasCerrarSesion(ListView LvVentas)
+        {
+            //Si no se han realizado ventas mensaje de error
+            if (HayVentas == false)
+            {
+                MessageBox.Show("Error. No se han realizado ventas.", "ERROR. NO HAY VENTAS POR REGISTRAR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (LvVentas.Items.Count == 0) // Si las ventas no han sido cargadas mensaje de error
+            {
+                MessageBox.Show("Cargue las ventas para poder guardarlas correctamente.", "ERROR. NO SE HAN CARGADO VENTAS",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //Confirmamos que el usuario desea realizar la venta de los productos seleccionados
+            DialogResult ConfirmarGuardarVentas;
+            ConfirmarGuardarVentas = MessageBox.Show("¿Esta seguro que desea guardar las ventas realizadas? Se cerrará sesión automáticamente.",
+                "CONFIRMACIÓN DE GUARDADO DE VENTAS Y CIERRE DE SESIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarGuardarVentas == DialogResult.No) return;
+
+            //using para establecer conexion con la base de datos
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            {
+                conexion.Open(); //Abrimos conexion
+
+                //Actualizamos la BDDS Ventas para Guardar las ventas hechas por el Usuario
+                string ComandoVentas = "UPDATE Ventas SET SeGuardo = True WHERE SeGuardo = False";
+
+                //Using para liberar objeto cuando ya no se use
+                using (OleDbCommand comando = new OleDbCommand(ComandoVentas, conexion)) //pasamos consulta y conexion
+                {
+                    comando.ExecuteNonQuery(); //Ejecutamos consulta
+                }
+            }
+
+            // Sumar las ventas del usuario al dinero que tenemos en la caja
+            Properties.Settings.Default.DineroEnCaja += DineroVentas;
+
+            //Mostramos un mensaje de éxito en el Guardado de Ventas
+            MessageBox.Show("Las ventas han sido guardadas con Éxito. Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
+                "VENTAS HAN SIDOO GUARDADAS CON EXITO. CERRANADO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Application.Exit(); //Cerramos Aplicacion
         }
     }
 }

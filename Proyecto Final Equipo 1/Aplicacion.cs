@@ -21,18 +21,19 @@ namespace Proyecto_Final_Equipo_1
         InventarioProductos inventarioProductos; 
         ModificarProducto modificarProducto;
         Ventas ventaProducto;
+        CorteCaja corteCaja;
 
-        //Aplicacion recibe parametro de instancia Inicio
-        public Aplicacion() //Indicamos que el formulario recibe parámetros
+        public Aplicacion() 
         {
             InitializeComponent();
-            //Todos los controles de usuario reciben como parametro un Inicio para tener acceso a cadconexion
-            agregarProducto = new AgregarProducto(); 
-            buscarProducto = new BuscarProducto(); 
-            eliminarProducto = new EliminarProducto(); 
+            //Inicializamos todos los controle de Usuario
+            agregarProducto = new AgregarProducto();
+            buscarProducto = new BuscarProducto();
+            eliminarProducto = new EliminarProducto();
             inventarioProductos = new InventarioProductos();
             modificarProducto = new ModificarProducto();
             ventaProducto = new Ventas();
+            corteCaja = new CorteCaja();
         }
 
         private void Aplicacion_Load(object sender, EventArgs e)
@@ -56,6 +57,7 @@ namespace Proyecto_Final_Equipo_1
             FuncionesAplicacion.LimpiarControles(agregarProducto);
             FuncionesAplicacion.LimpiarControles(inventarioProductos);
             FuncionesAplicacion.LimpiarControles(ventaProducto);
+            FuncionesAplicacion.LimpiarControles(corteCaja);
         }
 
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
@@ -127,20 +129,51 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnSalir_Click(object sender, EventArgs e)
         {
-            Dispose(); //Salimos de la Aplicacion
+            if (FuncionesAplicacion.HayVentas == true) //Si ya se realizaron ventas indicamos que debe ir a Corte de Caja
+            {
+                MessageBox.Show("Hay ventas realizadas sin guardar. Dirijase al apartado Corte de Caja para guardarlas y cerrar sesión.",
+                    "ADVERTENCIA. VENTAS REALIZADAS SIN GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //Confirmamos que el usuario desea salir de la Aplicación
+            DialogResult ConfirmarCierreSesion;
+            ConfirmarCierreSesion = MessageBox.Show("¿Esta seguro que desea realizar salir de la Aplicación? Se cerrará sesión automáticamente.",
+                "CONFIRMACIÓN DE CIERRE DE APLICACIÓN Y SESIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarCierreSesion == DialogResult.No) return;
+
+
+            //Mostramos un mensaje de Agradecimiento
+            MessageBox.Show("Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
+                "¡VUELVA PRONTO!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Application.Exit(); //Salimos de la Aplicacion
         }
 
         private void BtnVender_Click(object sender, EventArgs e)
         {
             LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
 
-            //Limpiamos panel y cargamos el Control de Usuario ModificarProducto
+            //Limpiamos panel y cargamos el Control de Usuario ventaProducto
             PanelAutoPartes.Controls.Clear();
             PanelAutoPartes.Controls.Add(ventaProducto);
             ventaProducto.Dock = DockStyle.Fill;
 
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+        }
 
+        private void BtnCorte_Click(object sender, EventArgs e)
+        {
+            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+
+            //Limpiamos panel y cargamos el Control de Usuario corteCaja
+            PanelAutoPartes.Controls.Clear();
+            PanelAutoPartes.Controls.Add(corteCaja);
+            corteCaja.Dock = DockStyle.Fill;
+
+            corteCaja.CargarDineroCaja(); //Cargamos el dinero en caja
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
     }
 }
