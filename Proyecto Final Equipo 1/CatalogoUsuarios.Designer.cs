@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CatalogoUsuarios));
             this.LblTitulo = new System.Windows.Forms.Label();
             this.LblOpciones = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -240,7 +241,7 @@
             // BtnSalir
             // 
             this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSalir.Location = new System.Drawing.Point(776, 13);
+            this.BtnSalir.Location = new System.Drawing.Point(815, 13);
             this.BtnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(148, 43);
@@ -259,10 +260,14 @@
             this.Controls.Add(this.PanelCatalogo);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CatalogoUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Catalogo de Usuarios Operativos (únicamente con acceso si se es Admin)";
+            this.Text = "Catalogo de Usuarios Operativos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CatalogoUsuarios_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.PanelCatalogo.ResumeLayout(false);

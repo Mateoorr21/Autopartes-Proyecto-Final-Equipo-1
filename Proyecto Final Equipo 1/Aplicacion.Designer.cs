@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aplicacion));
             this.LblTitulo = new System.Windows.Forms.Label();
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -53,9 +54,14 @@
             this.LblAgregar = new System.Windows.Forms.Label();
             this.LblInventario = new System.Windows.Forms.Label();
             this.LblTituloInstrucción = new System.Windows.Forms.Label();
+            this.PicUsuario = new System.Windows.Forms.PictureBox();
+            this.LblUsuario = new System.Windows.Forms.Label();
+            this.LblNombreCompleto = new System.Windows.Forms.Label();
+            this.LblPermiso = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.PanelAutoPartes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTitulo
@@ -184,6 +190,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MistyRose;
+            this.panel3.Controls.Add(this.LblPermiso);
+            this.panel3.Controls.Add(this.LblNombreCompleto);
+            this.panel3.Controls.Add(this.LblUsuario);
+            this.panel3.Controls.Add(this.PicUsuario);
             this.panel3.Controls.Add(this.BtnSalir);
             this.panel3.Controls.Add(this.PanelAplicacion);
             this.panel3.Controls.Add(this.LblTitulo);
@@ -215,6 +225,7 @@
             // PanelAutoPartes
             // 
             this.PanelAutoPartes.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.PanelAutoPartes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelAutoPartes.Controls.Add(this.LblNota);
             this.PanelAutoPartes.Controls.Add(this.LblCatalogo);
             this.PanelAutoPartes.Controls.Add(this.LblCorte);
@@ -337,6 +348,52 @@
             this.LblTituloInstrucción.TabIndex = 2;
             this.LblTituloInstrucción.Text = "Bienvenido a la Aplicación de la Tienda de Autopartes";
             // 
+            // PicUsuario
+            // 
+            this.PicUsuario.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.avatardefault_92824;
+            this.PicUsuario.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicUsuario.InitialImage")));
+            this.PicUsuario.Location = new System.Drawing.Point(24, 12);
+            this.PicUsuario.Name = "PicUsuario";
+            this.PicUsuario.Size = new System.Drawing.Size(48, 47);
+            this.PicUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicUsuario.TabIndex = 7;
+            this.PicUsuario.TabStop = false;
+            // 
+            // LblUsuario
+            // 
+            this.LblUsuario.AutoSize = true;
+            this.LblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblUsuario.Location = new System.Drawing.Point(81, 8);
+            this.LblUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblUsuario.Name = "LblUsuario";
+            this.LblUsuario.Size = new System.Drawing.Size(74, 20);
+            this.LblUsuario.TabIndex = 8;
+            this.LblUsuario.Text = "Usuario";
+            // 
+            // LblNombreCompleto
+            // 
+            this.LblNombreCompleto.AutoSize = true;
+            this.LblNombreCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNombreCompleto.Location = new System.Drawing.Point(82, 27);
+            this.LblNombreCompleto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblNombreCompleto.Name = "LblNombreCompleto";
+            this.LblNombreCompleto.Size = new System.Drawing.Size(117, 16);
+            this.LblNombreCompleto.TabIndex = 9;
+            this.LblNombreCompleto.Text = "Nombre Completo";
+            // 
+            // LblPermiso
+            // 
+            this.LblPermiso.AutoSize = true;
+            this.LblPermiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPermiso.Location = new System.Drawing.Point(82, 42);
+            this.LblPermiso.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblPermiso.Name = "LblPermiso";
+            this.LblPermiso.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LblPermiso.Size = new System.Drawing.Size(65, 16);
+            this.LblPermiso.TabIndex = 10;
+            this.LblPermiso.Text = "(Permiso)\r\n";
+            this.LblPermiso.UseMnemonic = false;
+            // 
             // Aplicacion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -346,15 +403,21 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Aplicacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Aplicación AutoPartes One";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Aplicacion_FormClosing);
             this.Load += new System.EventHandler(this.Aplicacion_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.PanelAutoPartes.ResumeLayout(false);
             this.PanelAutoPartes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicUsuario)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -386,5 +449,9 @@
         private System.Windows.Forms.Label LblCorte;
         private System.Windows.Forms.Label LblModificar;
         private System.Windows.Forms.Button BtnSalir;
+        private System.Windows.Forms.PictureBox PicUsuario;
+        private System.Windows.Forms.Label LblPermiso;
+        private System.Windows.Forms.Label LblNombreCompleto;
+        private System.Windows.Forms.Label LblUsuario;
     }
 }

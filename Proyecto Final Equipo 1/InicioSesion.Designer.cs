@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioSesion));
             this.Btn_Ingreso = new System.Windows.Forms.Button();
             this.LblPassword = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -151,11 +152,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Txt_Password);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InicioSesion";
+            this.Text = "Inicio de Sesión AutoPartes One";
             this.Load += new System.EventHandler(this.InicioSesion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

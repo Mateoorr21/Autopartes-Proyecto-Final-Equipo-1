@@ -65,5 +65,15 @@ namespace Proyecto_Final_Equipo_1
 
             Dispose(); //Salimos del Catalogo
         }
+
+
+        //Evitar que el usuario cierre la aplicacion cuando da click en X
+        private void CatalogoUsuarios_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

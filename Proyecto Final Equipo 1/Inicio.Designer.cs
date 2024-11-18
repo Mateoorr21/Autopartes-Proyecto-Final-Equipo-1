@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.label1 = new System.Windows.Forms.Label();
             this.BtnInicio = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -62,12 +63,13 @@
             this.Controls.Add(this.BtnInicio);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bienvenido";
+            this.Text = "Bienvenido al Sistema Tienda AutoPartes One";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -46,6 +46,11 @@ namespace Proyecto_Final_Equipo_1
                 BtnModificar.Enabled = false;
                 BtnCatalogoUsuarios.Enabled = false;
             }
+
+            //Cargamos la información del Usuario Operativo en las etqiuetas
+            LblUsuario.Text = FuncionesAplicacion.Usuario;
+            LblNombreCompleto.Text = FuncionesAplicacion.NombreCompleto;
+            LblPermiso.Text = "(" + FuncionesAplicacion.TipoUsuario + ")";
         }
 
         private void LimpiarTodosLosControles()
@@ -174,6 +179,16 @@ namespace Proyecto_Final_Equipo_1
 
             corteCaja.CargarDineroCaja(); //Cargamos el dinero en caja
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+        }
+
+
+        //Evitar que el usuario cierre la aplicacion cuando da click en X
+        private void Aplicacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
