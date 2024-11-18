@@ -389,8 +389,26 @@ namespace Proyecto_Final_Equipo_1
 
                     comando.ExecuteNonQuery(); //Ejecutamos consulta
                 }
-            }
 
+
+                //Consulta SQL para actualizar la tabla de Ventas
+                string ActualizarVentas = "UPDATE Ventas SET Nombre_Completo = @Nombre, Usuario = @Usuario, Tipo = @Permiso WHERE Usuario = @UsuarioViejo";
+
+                using (OleDbCommand comandoVentas = new OleDbCommand(ActualizarVentas, conexion))
+                {
+                    // Obtener el usuario anterior del registro seleccionado
+                    string UsuarioViejo = LvUsuarios.SelectedItems[0].SubItems[2].Text;
+
+                    //Asignar valores a los parámetros de la consulta
+                    comandoVentas.Parameters.AddWithValue("@Nombre", NombreModificado);
+                    comandoVentas.Parameters.AddWithValue("@Usuario", UsuarioModificado);
+                    comandoVentas.Parameters.AddWithValue("@Permiso", PermisoModificado);
+                    comandoVentas.Parameters.AddWithValue("@UsuarioViejo", UsuarioViejo);
+
+                    comandoVentas.ExecuteNonQuery(); //Ejecutamos consulta de Actualización
+                }
+            }
+        
             //Actualizamos el registro seleccionado
             ListViewItem Modificado = LvUsuarios.SelectedItems[0];
             Modificado.SubItems[1].Text = NombreModificado;

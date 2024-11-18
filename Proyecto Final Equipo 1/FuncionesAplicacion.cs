@@ -76,6 +76,48 @@ namespace Proyecto_Final_Equipo_1
 
 
 
+        //FUNCION PARA LIMPIAR LOS CONTROLES DE UN CONTENEDOR
+        public static void LimpiarControles(Control ControlUsuario)
+        {
+            foreach (Control control in ControlUsuario.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Text = string.Empty;
+                }
+                else if (control is RadioButton radioButton)
+                {
+                    //El radioButton de Aproximada y Nombre se seleccionan por Default
+                    if (radioButton.Name.Contains("Aproximada") || radioButton.Name.Contains("Nombre")) radioButton.Checked = true;
+
+                    else radioButton.Checked = false;
+                }
+                else if (control is PictureBox pictureBox)
+                {
+                    pictureBox.Image = null;
+                }
+                else if (control is Label Etiqueta && Etiqueta.Name.Contains("Error"))
+                {
+                    Etiqueta.Visible = false; // Ocultamos los labels que son de mensaje de Error
+                }
+                else if (control is Label Etiqueta2 && Etiqueta2.Name.Contains("CantidadRegistros"))
+                {
+                    Etiqueta2.Text = Etiqueta2.Tag.ToString(); //Si la etiqueta indica cantidad de Registros vuelve a su texto original
+                }
+                else if (control is ListView listView)
+                {
+                    listView.Items.Clear(); //Limpiamos el ListView
+                }
+                // Si el control es otro contenedor de controles, llamamos a la funcion de nuevo
+                else if (control.HasChildren)
+                {
+                    LimpiarControles(control);
+                }
+            }
+        }
+
+
+
         //FUNCION PARA REINICIAR VARIABLES (MENOS ContarProductos)
         public static void ReiniciarVariables()
         {
@@ -91,7 +133,7 @@ namespace Proyecto_Final_Equipo_1
             ProductoPaga = 0;
             ContarVentas = 0;
             DineroVentas = 0;
-    }
+        }
 
 
         //FUNCION PARA INICIAR SESION AL SISTEMA
@@ -156,47 +198,6 @@ namespace Proyecto_Final_Equipo_1
 
 
 
-        public static void LimpiarControles(Control ControlUsuario)
-        {
-            foreach (Control control in ControlUsuario.Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    textBox.Text = string.Empty;
-                }
-                else if (control is RadioButton radioButton)
-                {
-                    //El radioButton de Aproximada y Nombre se seleccionan por Default
-                    if (radioButton.Name.Contains("Aproximada") || radioButton.Name.Contains("Nombre")) radioButton.Checked = true;
-
-                    else radioButton.Checked = false;
-                }
-                else if (control is PictureBox pictureBox)
-                {
-                    pictureBox.Image = null;
-                }
-                else if (control is Label Etiqueta && Etiqueta.Name.Contains("Error"))
-                {
-                    Etiqueta.Visible = false; // Ocultamos los labels que son de mensaje de Error
-                }
-                else if (control is Label Etiqueta2 && Etiqueta2.Name.Contains("CantidadRegistros"))
-                {
-                    Etiqueta2.Text = Etiqueta2.Tag.ToString(); //Si la etiqueta indica cantidad de Registros vuelve a su texto original
-                }
-                else if (control is ListView listView)
-                {
-                    listView.Items.Clear(); //Limpiamos el ListView
-                }
-                // Si el control es otro contenedor de controles, llamamos a la funcion de nuevo
-                else if (control.HasChildren)
-                {
-                    FuncionesAplicacion.LimpiarControles(control);
-                }
-            }
-        }
-
-
-
         //FUNCION PARA CARGAR PRODUCTOS EN EL INVENTARIO
         public static void CargarProductos(ListView LvProductos, Label LblCantidadRegistros)
         {
@@ -237,6 +238,95 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
         }
+
+
+        //FUNCION PARA VALIDAR LA ENTRADA CANTIDAD DEL SUBAPARTADO AGREAGR INVENTARIO
+        public static void ValidarCantidadParaAgregar(TextBox Txt_Cantidad, Button BtnMenos, Button BtnMas, ListView LvProductos)
+        {
+            //Verificamos si la caja esta vacia. Si lo esta, solo deshabilitamos el boton de menos y cantidad ingresada es 0
+            if (string.IsNullOrEmpty(Txt_Cantidad.Text))
+            {
+                CantidadIngresada = 0;
+                BtnMenos.Enabled = false;
+                BtnMas.Enabled = true;
+                return;
+            }
+
+            //Si no se ha seleccionado producto mensaje de error
+            if (LvProductos.SelectedItems.Count == 0)
+            {
+                Txt_Cantidad.Clear(); //Limpiamos la caja
+                MessageBox.Show("Seleccione un registro antes de ingresar la cantidad de ejemplares a agregar al Inventario.",
+                    "ERROR. NO SE SELECCIONÓ PRODUCTO PARA AÑADIR EJEMPLARES", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (int.TryParse(Txt_Cantidad.Text, out CantidadIngresada)) //Si lo contenido en la Caja es un entero, validamos
+            {
+                BtnMenos.Enabled = CantidadIngresada > 0; //Si es mayor a 0 se habilita, de lo contrario se deshabilita.
+            }
+        }
+
+
+        //FUNCION PARA AGREGAR PRODUCTOS AL INVENTARIO
+        public static void AgregarInventario(ListView LvProductos, TextBox TxtProducto, TextBox Txt_Cantidad)
+        {
+            //Si no se selecciono producto mensaje de error
+            if (LvProductos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Seleccione un producto para agregar al Inventario.",
+                    "ERROR. NO SE SELECCIONO PRODUCTO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Si se quieren agregar 0 productos mensaje de error
+            if (CantidadIngresada == 0)
+            {
+                MessageBox.Show("No se pueden agregar 0 ejemplares al inventario.",
+                    "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Confirmamos que el usuario desea realizar agregar los ejemplares ingresados
+            DialogResult ConfirmarVenta;
+            ConfirmarVenta = MessageBox.Show("¿Esta seguro que desea agregar la cantidad de ejemplares del producto al Inventario?",
+                "CONFIRMACIÓN DE AGREGADO A INVENTARIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (ConfirmarVenta == DialogResult.No) return;
+
+            CantidadEnStockSeleccionado += CantidadIngresada; //Actualizamos la cantidad en Stock
+
+            ListViewItem ProductoSeleccioando = LvProductos.SelectedItems[0]; //Obtenemos el producto seleccionado;
+
+            ProductoSeleccioando.SubItems[5].Text = CantidadEnStockSeleccionado.ToString(); //Actualizamos ListView
+
+            //Actualizamos BDDS Producto
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            {
+                conexion.Open(); //Abrimos conexion
+
+                //Consulta SQL para actualizar los campos de un registro
+                string query = "UPDATE Productos SET Cantidad_en_Stock = @NuevaCantidad WHERE Id = @Id";
+
+                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //using para liberar objeto cuando se termine de usar
+                {
+                    //Asignamos a los parámetros de la consulta
+                    comando.Parameters.AddWithValue("@Cantidad", CantidadEnStockSeleccionado);
+                    comando.Parameters.AddWithValue("@Id", IdSeleccionado);
+
+                    comando.ExecuteNonQuery(); //Ejecutamos consulta
+                }
+            }
+
+            LvProductos.SelectedItems.Clear(); //Quitamos el seleccionado
+            TxtProducto.Clear(); //Limpiamos las cajas de texto
+            Txt_Cantidad.Clear();
+            ReiniciarVariables(); //Reiniciamos las Variables
+
+            //Mensaje de Agregado de Productos a Inventario exitoso
+            MessageBox.Show("Se han agregado los ejemplares al Inventario.", "AGREGADO DE INVENTARIO EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
 
 
 
@@ -611,7 +701,7 @@ namespace Proyecto_Final_Equipo_1
             //Si se selecciona RdId cambiar texto de las etiquetas
             if (RdId.Checked)
             {
-                //Reemplazar todos los que no sean letras (^ niega el patrón)
+                //Reemplazar todos los que no sean numeros (^ niega el patrón)
                 TxtBuscar.Text = Regex.Replace(TxtBuscar.Text, @"[^0-9]", "");
                 LblCampoBuscar.Text = "Id";
                 LblErrorBuscar.Visible = false;
@@ -988,6 +1078,9 @@ namespace Proyecto_Final_Equipo_1
             }
         }
 
+
+
+        
 
 
 

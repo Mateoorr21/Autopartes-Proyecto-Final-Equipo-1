@@ -118,6 +118,8 @@ namespace Proyecto_Final_Equipo_1
 
             //LLamamos a la función CargarProductos
             inventarioProductos.CargarProductos();
+
+            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las variables
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
