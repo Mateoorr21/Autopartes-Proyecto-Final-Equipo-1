@@ -21,8 +21,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         private void BtnRegistrarUsuario_Click(object sender, EventArgs e)
         {
             //Llamamos a la función Registrar Usuarios
-            FuncionesCatalogoUsuarios.AgregarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, RdAdmin, Txt_Nombre, Txt_Usuario,
-                Txt_Password, LblErrorNombre, LblErrorUsuario, LblErrorPassword);
+            FuncionesCatalogoUsuarios.AgregarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, RdAdmin, RdCajero, 
+                Txt_Nombre, Txt_Usuario, Txt_Password, LblErrorNombre, LblErrorUsuario, LblErrorPassword);
         }
 
         private void Txt_Nombre_KeyPress(object sender, KeyPressEventArgs e)

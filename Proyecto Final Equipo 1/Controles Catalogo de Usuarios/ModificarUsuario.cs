@@ -113,7 +113,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         {
             //Llamamos a la función actualizar y pasamos los parametros
             FuncionesCatalogoUsuarios.ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, FuncionesCatalogoUsuarios.IdSeleccionado, 
-                LvUsuarios,Txt_Nombre, Txt_Usuario, Txt_Password, RdAdmin, RdCajero);
+                LvUsuarios,Txt_Nombre, Txt_Usuario, Txt_Password, RdAdmin, RdCajero, LblErrorBuscar, TxtBuscar);
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

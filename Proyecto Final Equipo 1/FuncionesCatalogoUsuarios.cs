@@ -21,8 +21,8 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA AGREGAR UN USUARIO
-        public static void AgregarUsuario(string Nombre, string Username, string Password, RadioButton RdAdmin, TextBox Txt_Nombre, TextBox Txt_Usuario,
-            TextBox Txt_Password, Label LblErrorNombre, Label LblErrorUsuario, Label LblErrorPassword)
+        public static void AgregarUsuario(string Nombre, string Username, string Password, RadioButton RdAdmin, RadioButton RdCajero, TextBox Txt_Nombre, 
+            TextBox Txt_Usuario, TextBox Txt_Password, Label LblErrorNombre, Label LblErrorUsuario, Label LblErrorPassword)
         {
             //Ocultamos etiquetas
             LblErrorNombre.Visible = false;
@@ -32,7 +32,8 @@ namespace Proyecto_Final_Equipo_1
             //Si alguno de los campos a añadir esta vacío mensaje de Error
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Usuario.Text) ||
-                string.IsNullOrWhiteSpace(Txt_Password.Text))
+                string.IsNullOrWhiteSpace(Txt_Password.Text) ||
+                (RdAdmin.Checked == false && RdCajero.Checked == false))
             {
                 MessageBox.Show("Error. Ingrese información a añadir", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -93,10 +94,12 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            //Limpiamos las cajas de texto
+            //Limpiamos las cajas de texto y Radio Buttons
             Txt_Nombre.Clear();
             Txt_Usuario.Clear();
             Txt_Password.Clear();
+            RdAdmin.Checked = false;
+            RdCajero.Checked = false;
 
             //Mensaje de registro de usuario exitoso
             MessageBox.Show("Registro de " + Permiso + " " + Nombre + " Exitoso",
@@ -196,7 +199,7 @@ namespace Proyecto_Final_Equipo_1
         }
 
         //FUNCION ELIMINAR A UN USUARIO
-        public static void BorrarUsuario(int Id, ListView LvUsuarios, Label LblCantidadRegistros)
+        public static void BorrarUsuario(int Id, ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar, TextBox TxtBuscar)
         {
             //Si no hay registro seleccionado menssaje de Error
             if (LvUsuarios.SelectedItems.Count == 0)
@@ -229,18 +232,21 @@ namespace Proyecto_Final_Equipo_1
 
                     comando.ExecuteNonQuery(); //Ejecutamos consulta de acción
                 }
-
-                //Quitamos del ListView el ususario eliminado
-                ListViewItem Seleccionado = LvUsuarios.SelectedItems[0];
-                LvUsuarios.Items.Remove(Seleccionado);
-
-                //Actualizamos la etiqueta de Cantidad de Registros
-                if (ContarUsuarios > 0) LblCantidadRegistros.Text = "Productos Encontrados: " + (ContarUsuarios - 1).ToString();
-
-                //Mensaje de Eliminación de usuario exitosa
-                MessageBox.Show("Datos del Usuario Operativo eliminados correctamente.", "ELIMINACION DE USUARIO OPERATIVO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            //Quitamos del ListView el ususario eliminado
+            ListViewItem Seleccionado = LvUsuarios.SelectedItems[0];
+            LvUsuarios.Items.Remove(Seleccionado);
+
+            //Actualizamos la etiqueta de Cantidad de Registros
+            if (ContarUsuarios > 0) LblCantidadRegistros.Text = "Productos Encontrados: " + (ContarUsuarios - 1).ToString();
+
+            LblErrorBuscar.Visible = false; //Ocultamos la etiqueta de Error al Buscar
+            TxtBuscar.Clear(); //Limpiamos la caja de texto Buscar
+
+            //Mensaje de Eliminación de usuario exitosa
+            MessageBox.Show("Datos del Usuario Operativo eliminados correctamente.", "ELIMINACION DE USUARIO OPERATIVO",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -336,8 +342,8 @@ namespace Proyecto_Final_Equipo_1
         }
 
         //FUNCION PARA MODFICIAR A UN USUARIO
-        public static void ActualizarUsuario(string NombreModificado, string UsuarioModificado, string PasswordModificado, int Id,
-            ListView LvUsuarios, TextBox Txt_Nombre, TextBox Txt_Usuario, TextBox Txt_Password, RadioButton RdAdmin, RadioButton RdCajero)
+        public static void ActualizarUsuario(string NombreModificado, string UsuarioModificado, string PasswordModificado, int Id, ListView LvUsuarios, 
+            TextBox Txt_Nombre, TextBox Txt_Usuario, TextBox Txt_Password, RadioButton RdAdmin, RadioButton RdCajero, Label LblErrorBuscar, TextBox TxtBuscar)
         {
             //Si no hay registro seleccionado menssaje de Error
             if (LvUsuarios.SelectedItems.Count == 0)
@@ -408,7 +414,7 @@ namespace Proyecto_Final_Equipo_1
                     comandoVentas.ExecuteNonQuery(); //Ejecutamos consulta de Actualización
                 }
             }
-        
+
             //Actualizamos el registro seleccionado
             ListViewItem Modificado = LvUsuarios.SelectedItems[0];
             Modificado.SubItems[1].Text = NombreModificado;
@@ -423,6 +429,8 @@ namespace Proyecto_Final_Equipo_1
             Txt_Password.Clear();
             RdAdmin.Checked = false;
             RdCajero.Checked = false;
+            LblErrorBuscar.Visible = false;
+            TxtBuscar.Clear();
 
             //Mensaje de Actualización de datos exitosa
             MessageBox.Show("Datos del Usuario Operativo actualizados correctamente.", "ACTUALIZACION DE DATOS DE USUARIO",

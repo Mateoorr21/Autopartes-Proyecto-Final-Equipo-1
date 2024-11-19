@@ -1103,7 +1103,7 @@ namespace Proyecto_Final_Equipo_1
             }
 
             //using para establecer conexion con la base de datos
-            using (OleDbConnection conexion = new OleDbConnection(FuncionesAplicacion.cadconexion))
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
             {
                 conexion.Open(); //Abrimos conexion
                 ListViewItem Venta;
