@@ -143,6 +143,7 @@
             this.RdAdmin.Name = "RdAdmin";
             this.RdAdmin.Size = new System.Drawing.Size(66, 20);
             this.RdAdmin.TabIndex = 26;
+            this.RdAdmin.TabStop = true;
             this.RdAdmin.Text = "Admin";
             this.RdAdmin.UseVisualStyleBackColor = true;
             // 

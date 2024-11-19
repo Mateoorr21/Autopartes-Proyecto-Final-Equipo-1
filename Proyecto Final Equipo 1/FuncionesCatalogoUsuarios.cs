@@ -190,7 +190,7 @@ namespace Proyecto_Final_Equipo_1
 
                     else //Si no se obtuvieron registros, indicarlo con un MessageBox
                     {
-                        MessageBox.Show("No se encontraron Usuarios Operativos", "NO SE ENCONTRARON USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No se encontraron Usuarios Operativos", "NO SE ENCONTRARON USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
 
@@ -333,7 +333,7 @@ namespace Proyecto_Final_Equipo_1
 
                     else //Si no se obtuvieron registros, indicarlo con un MessageBox
                     {
-                        MessageBox.Show("No se encontraron Usuarios Operativos", "NO SE ENCONTRARON USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No se encontraron Usuarios Operativos", "NO SE ENCONTRARON USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
 
