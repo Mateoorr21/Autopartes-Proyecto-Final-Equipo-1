@@ -11,6 +11,7 @@ using System.Drawing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Security.Policy;
 using Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes;
+using System.Data.SqlClient;
 
 namespace Proyecto_Final_Equipo_1
 {
@@ -53,19 +54,19 @@ namespace Proyecto_Final_Equipo_1
             if (e.Column != ColumnaOrdenar)
             { //Si la columna elegida no esta ordenada
                 ColumnaOrdenar = e.Column;
-                LvTabla.Sorting = SortOrder.Ascending; //La ordenamos ascendente
+                LvTabla.Sorting = System.Windows.Forms.SortOrder.Ascending; //La ordenamos ascendente
             }
 
             else
             { //Si ya esta ordenada, cambiamos su ordenacion...
-                if (LvTabla.Sorting == SortOrder.Ascending)
+                if (LvTabla.Sorting == System.Windows.Forms.SortOrder.Ascending)
                 {
-                    LvTabla.Sorting = SortOrder.Descending;
+                    LvTabla.Sorting = System.Windows.Forms.SortOrder.Descending;
                 }
 
                 else
                 {
-                    LvTabla.Sorting = SortOrder.Ascending;
+                    LvTabla.Sorting = System.Windows.Forms.SortOrder.Ascending;
                 }
             }
 
@@ -331,13 +332,9 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA AGREGAR UN PRODUCTO A LA BASE DE DATOS
-        public static void RegistrarProducto(string Nombre, string Descripcion, string Marca, Label LblErrorPrecio, Label LblErrorCantidad,
-                TextBox Txt_Nombre, TextBox Txt_Descripcion, TextBox Txt_Marca, TextBox Txt_Precio, TextBox Txt_Cantidad, PictureBox PicImagenProducto)
+        public static void RegistrarProducto(string Nombre, string Descripcion, string Marca, TextBox Txt_Nombre, TextBox Txt_Descripcion, 
+            TextBox Txt_Marca, TextBox Txt_Precio, TextBox Txt_Cantidad, PictureBox PicImagenProducto)
         {
-            //Ocultamos las etiquetas
-            LblErrorPrecio.Visible = false;
-            LblErrorCantidad.Visible = false;
-
             //Si algun campo esta vacío (exceptuando la descripción)  mensaje de error
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Descripcion.Text) ||
@@ -694,6 +691,26 @@ namespace Proyecto_Final_Equipo_1
         }
 
 
+        //FUNCION PARA OCULTAR TODAS LAS ETIQUETAS DE ERROR DE UN FORMULARIO
+        public static void OcultarEtiquetasDeError(Control control)
+        {
+            // foreach para recorrer todos los controles del formulario
+            foreach (Control ControlenFormularrio in control.Controls)
+            {
+                // Si es un Label y si contiene "error" en su nombre
+                if (ControlenFormularrio is Label Etiqueta && Etiqueta.Name.Contains("Error"))
+                {
+                    Etiqueta.Visible = false; // Ocultar la etiqueta
+                }
+
+                // Si el control es un contenedor volvemos a llamar a la función
+                if (ControlenFormularrio.HasChildren)
+                {
+                    OcultarEtiquetasDeError(ControlenFormularrio);
+                }
+            }
+        }
+
 
         //FUNCIONES PARA CONTROLAR LA ENTRADA DE LO QUE SE QUIERE BUSCAR
         public static void SeleccionoId(RadioButton RdId, TextBox TxtBuscar, Label LblCampoBuscar, Label LblErrorBuscar)
@@ -705,12 +722,11 @@ namespace Proyecto_Final_Equipo_1
                 TxtBuscar.Text = Regex.Replace(TxtBuscar.Text, @"[^0-9]", "");
                 LblCampoBuscar.Text = "Id";
                 LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "Solo admite numeros";
             }
         }
         public static void SeleccionoNombre(RadioButton RdNombre, Label LblCampoBuscar, Label LblErrorBuscar)
         {
-            //Si se selecciona RdNombre cambiar texto de las etiquetas
+            //Si se selecciona RdNombre cambiar texto de las etiquetas y ocultar error
             if (RdNombre.Checked)
             {
                 LblCampoBuscar.Text = "Nombre";
@@ -718,24 +734,58 @@ namespace Proyecto_Final_Equipo_1
                 LblErrorBuscar.Text = "";
             }
         }
-        public static void ValidarEntradaTxtBuscar(KeyPressEventArgs e, RadioButton rdId, Label lblError)
+
+
+        //NO FUNCIONA LA ETIQUETA DE ERROR EN LOS CAMPOS DE BUSCAR POR ALGUNA RAZON :(
+        public static void ValidarEntradaTxtBuscar(KeyPressEventArgs e, RadioButton RdId, RadioButton RdNombre, Label LblErrorBuscar)
         {
-            if (rdId.Checked) // Si está seleccionado el RadioButton de Id hay restricciones
+            LblErrorBuscar.Visible = false; //Ocultamos siempre que se ingresa un caracter
+
+            if (RdId.Checked) // Si está seleccionado el RadioButton de Id hay restricciones
             {
                 // Validar que solo se ingresen números o backspace
                 if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-                {
-                    lblError.Visible = true;
+                {                  
+                    LblErrorBuscar.Visible = true;
                     e.Handled = true; // Cancelar la entrada
                 }
-                else // Si no hay errores, ocultar la etiqueta de error
+            }
+
+            else //Si está seleccionado el RadioButton de Nombre también hay restricciones 
+            {
+                // Validar que solo se ingresen letras, números, backspace, space, comillas dobles, guiones o barras diagonales
+                if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 32 && e.KeyChar != 34 && e.KeyChar != 45 && e.KeyChar != 47)
                 {
-                    lblError.Visible = false;
+                    LblErrorBuscar.Visible = true;
+                    e.Handled = true; // Cancelar la entrada
                 }
             }
         }
 
 
+        //FUNCIONES PARA VALIDAR LA ENTRADA DE  CAMPOS NOMBRE, DESCRIPCION Y MARCA
+        public static void ValidarEntradaTxtNombreDescripcionMarca(KeyPressEventArgs e, Label LblError, TextBox TxtCampo)
+        {
+            //Si la caja de texto es la de Marca no se pueden ingresar comillas dobles, guiones ni barras diagonales
+            if (TxtCampo.Name.Contains("Marca") && (e.KeyChar == 34 || e.KeyChar == 45 || e.KeyChar == 47))
+            {
+                LblError.Visible = true;
+                e.Handled = true; // Cancelar la entrada
+                return;
+            }
+
+            // Validar que solo se ingresen letras, números, backspace, space, comillas dobles, guiones o barras diagonales
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 32 && e.KeyChar != 34 && e.KeyChar != 45 && e.KeyChar != 47)
+            {
+                LblError.Visible = true;
+                e.Handled = true; // Cancelar la entrada
+            }
+
+            else //Si no hay errores, ocultar la etiqueta de error
+            {
+                LblError.Visible = false;
+            }
+        }
 
         //FUNCIONES PARA VALIDAR LA ENTRADA DE LOS CAMPOS CANTIDAD Y PRECIO 
         public static void ValidarEntradaTxtPrecio(KeyPressEventArgs e, TextBox Txt_Precio, Label LblErrorPrecio)
@@ -1229,6 +1279,16 @@ namespace Proyecto_Final_Equipo_1
                 "VENTAS GUARDADAS CON EXITO. CERRANDO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Application.Exit(); //Cerramos Aplicacion
+        }
+
+
+        //FUNCION PARA ACTUALIZAR LAS ETIQUETAS DE LOS DATOS DE INICIO DE SESION
+        public static void ActualizarDatos(Label LblNombreCompleto, Label LblUsuario, Label LblPermiso)
+        {
+            //Actualizamos la información del que inicia sesión 
+            LblUsuario.Text = Usuario;
+            LblNombreCompleto.Text = NombreCompleto;
+            LblPermiso.Text = "(" + TipoUsuario + ")";
         }
     }
 }

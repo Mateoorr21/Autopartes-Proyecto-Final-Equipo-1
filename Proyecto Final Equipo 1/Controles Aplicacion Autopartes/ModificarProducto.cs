@@ -55,7 +55,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void TxtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FuncionesAplicacion.ValidarEntradaTxtBuscar(e, RdId, LblErrorBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
+            FuncionesAplicacion.ValidarEntradaTxtBuscar(e, RdId, RdNombre, LblErrorBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
         }
 
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)
@@ -94,6 +94,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnActualizar_Click(object sender, EventArgs e)
         {
+            FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de Error del Formulario
+
             //LLamamos a la función ActualizarProducto de la clase FuncionesAplicacion
             FuncionesAplicacion.ActualizarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, LvProductos,
                 Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
@@ -132,6 +134,21 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void LvProductos_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             FuncionesAplicacion.OrdenamientoColumnas(e, LvProductos); //Llamamos a la funcion Ordenamiento de Columnas
+        }
+
+        private void Txt_Nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesAplicacion.ValidarEntradaTxtNombreDescripcionMarca(e, LblErrorNombre, Txt_Nombre); //Llamamos a la función de validar entrada
+        }
+
+        private void Txt_Descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesAplicacion.ValidarEntradaTxtNombreDescripcionMarca(e, LblErrorDescripcion, Txt_Descripcion); //Llamamos a la función de validar entrada
+        }
+
+        private void Txt_Marca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesAplicacion.ValidarEntradaTxtNombreDescripcionMarca(e, LblErrorMarca, Txt_Marca); //Llamamos a la función de validar entrada
         }
     }
 

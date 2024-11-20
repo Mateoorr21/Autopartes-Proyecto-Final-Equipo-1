@@ -14,8 +14,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 {
     public partial class ModificarUsuario : UserControl
     {
-        public ModificarUsuario()
+        Aplicacion Aplicacion_Recibida;
+        public ModificarUsuario(Aplicacion aplicacion)
         {
+            Aplicacion_Recibida = aplicacion;
             InitializeComponent();
         }
 
@@ -114,6 +116,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             //Llamamos a la función actualizar y pasamos los parametros
             FuncionesCatalogoUsuarios.ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, FuncionesCatalogoUsuarios.IdSeleccionado, 
                 LvUsuarios,Txt_Nombre, Txt_Usuario, Txt_Password, RdAdmin, RdCajero, LblErrorBuscar, TxtBuscar);
+
+            //Si el usuario se modifico a si mismo, actualizamos los datos de inicio de sesion
+            if (FuncionesCatalogoUsuarios.SeAutoModifico == true)
+            {
+                FuncionesAplicacion.ActualizarDatos(Aplicacion_Recibida.LblNombreCompleto, Aplicacion_Recibida.LblUsuario, Aplicacion_Recibida.LblPermiso);
+            }
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

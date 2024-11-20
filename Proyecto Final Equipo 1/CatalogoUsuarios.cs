@@ -18,12 +18,13 @@ namespace Proyecto_Final_Equipo_1
         RegistrarUsuario registroUsuario;
         ModificarUsuario modificarUsuario;
         EliminarUsuario eliminarUsuario;
-        public CatalogoUsuarios()
+
+        public CatalogoUsuarios(Aplicacion aplicacion)
         {
             InitializeComponent();
             //Incializamos los controles de Usuario
             registroUsuario = new RegistrarUsuario(); 
-            modificarUsuario = new ModificarUsuario(); 
+            modificarUsuario = new ModificarUsuario(aplicacion); 
             eliminarUsuario = new EliminarUsuario(); 
         }
 

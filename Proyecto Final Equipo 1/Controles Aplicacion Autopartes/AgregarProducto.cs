@@ -38,10 +38,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         }
 
         private void BtnRegistrarProducto_Click(object sender, EventArgs e)
-        {     
+        {
+            FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de Error del Formulario
+
             //LLamamos a la función RegistrarProducto
-            FuncionesAplicacion.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, LblErrorPrecio, 
-                LblErrorCantidad, Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
+            FuncionesAplicacion.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, 
+                Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
 
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
@@ -62,6 +64,19 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
+        private void Txt_Nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesAplicacion.ValidarEntradaTxtNombreDescripcionMarca(e, LblErrorNombre, Txt_Nombre); //Llamamos a la función de validar entrada
+        }
 
+        private void Txt_Descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesAplicacion.ValidarEntradaTxtNombreDescripcionMarca(e, LblErrorDescripcion, Txt_Descripcion); //Llamamos a la función de validar entrada
+        }
+
+        private void Txt_Marca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FuncionesAplicacion.ValidarEntradaTxtNombreDescripcionMarca(e, LblErrorMarca, Txt_Marca); //Llamamos a la función de validar entrada
+        }
     }
 }

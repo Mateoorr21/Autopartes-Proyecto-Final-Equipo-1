@@ -49,6 +49,9 @@
             this.LblErrorCantidad = new System.Windows.Forms.Label();
             this.BtnDeseleccionarImagen = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.LblErrorNombre = new System.Windows.Forms.Label();
+            this.LblErrorDescripcion = new System.Windows.Forms.Label();
+            this.LblErrorMarca = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +63,7 @@
             this.Txt_Descripcion.Name = "Txt_Descripcion";
             this.Txt_Descripcion.Size = new System.Drawing.Size(312, 47);
             this.Txt_Descripcion.TabIndex = 47;
+            this.Txt_Descripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Descripcion_KeyPress);
             // 
             // Txt_Nombre
             // 
@@ -68,6 +72,7 @@
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(312, 22);
             this.Txt_Nombre.TabIndex = 46;
+            this.Txt_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Nombre_KeyPress);
             // 
             // BtnRegistrarProducto
             // 
@@ -135,6 +140,7 @@
             this.Txt_Marca.Name = "Txt_Marca";
             this.Txt_Marca.Size = new System.Drawing.Size(312, 22);
             this.Txt_Marca.TabIndex = 51;
+            this.Txt_Marca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Marca_KeyPress);
             // 
             // LblMarca
             // 
@@ -260,9 +266,48 @@
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
+            // LblErrorNombre
+            // 
+            this.LblErrorNombre.AutoSize = true;
+            this.LblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorNombre.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorNombre.Location = new System.Drawing.Point(699, 116);
+            this.LblErrorNombre.Name = "LblErrorNombre";
+            this.LblErrorNombre.Size = new System.Drawing.Size(210, 16);
+            this.LblErrorNombre.TabIndex = 66;
+            this.LblErrorNombre.Text = "Solo admite letras, números   /   \"  -";
+            this.LblErrorNombre.Visible = false;
+            // 
+            // LblErrorDescripcion
+            // 
+            this.LblErrorDescripcion.AutoSize = true;
+            this.LblErrorDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorDescripcion.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorDescripcion.Location = new System.Drawing.Point(699, 154);
+            this.LblErrorDescripcion.Name = "LblErrorDescripcion";
+            this.LblErrorDescripcion.Size = new System.Drawing.Size(210, 16);
+            this.LblErrorDescripcion.TabIndex = 67;
+            this.LblErrorDescripcion.Text = "Solo admite letras, números   /   \"  -";
+            this.LblErrorDescripcion.Visible = false;
+            // 
+            // LblErrorMarca
+            // 
+            this.LblErrorMarca.AutoSize = true;
+            this.LblErrorMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorMarca.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorMarca.Location = new System.Drawing.Point(699, 215);
+            this.LblErrorMarca.Name = "LblErrorMarca";
+            this.LblErrorMarca.Size = new System.Drawing.Size(180, 16);
+            this.LblErrorMarca.TabIndex = 68;
+            this.LblErrorMarca.Text = "Solo admite letras y números";
+            this.LblErrorMarca.Visible = false;
+            // 
             // AgregarProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.LblErrorMarca);
+            this.Controls.Add(this.LblErrorDescripcion);
+            this.Controls.Add(this.LblErrorNombre);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnDeseleccionarImagen);
             this.Controls.Add(this.LblErrorCantidad);
@@ -315,5 +360,8 @@
         private System.Windows.Forms.Label LblErrorCantidad;
         private System.Windows.Forms.Button BtnDeseleccionarImagen;
         private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.Label LblErrorNombre;
+        private System.Windows.Forms.Label LblErrorDescripcion;
+        private System.Windows.Forms.Label LblErrorMarca;
     }
 }

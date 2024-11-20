@@ -101,7 +101,6 @@
             // 
             // LblErrorPassword
             // 
-            this.LblErrorPassword.AutoSize = true;
             this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
             this.LblErrorPassword.Location = new System.Drawing.Point(95, 234);
             this.LblErrorPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -139,7 +138,8 @@
             // 
             // InicioSesion
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(832, 453);
             this.Controls.Add(this.BtnVolverInicio);

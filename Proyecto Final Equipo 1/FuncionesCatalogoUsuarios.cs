@@ -17,6 +17,7 @@ namespace Proyecto_Final_Equipo_1
         //Variables Usadas en el Catalogo de Usuarios
         public static int IdSeleccionado = 0;
         public static int ContarUsuarios = 0;
+        public static bool SeAutoModifico = false;  
 
 
 
@@ -345,6 +346,9 @@ namespace Proyecto_Final_Equipo_1
         public static void ActualizarUsuario(string NombreModificado, string UsuarioModificado, string PasswordModificado, int Id, ListView LvUsuarios, 
             TextBox Txt_Nombre, TextBox Txt_Usuario, TextBox Txt_Password, RadioButton RdAdmin, RadioButton RdCajero, Label LblErrorBuscar, TextBox TxtBuscar)
         {
+            //El booleano empieza como false
+            SeAutoModifico = false;
+
             //Si no hay registro seleccionado menssaje de Error
             if (LvUsuarios.SelectedItems.Count == 0)
             {
@@ -374,6 +378,15 @@ namespace Proyecto_Final_Equipo_1
 
             //Si el usuario es Propietario y se selecciono a si mismo, el permiso continua siendo propietario
             if (FuncionesAplicacion.TipoUsuario == "Propietario" && RdAdmin.Enabled == false) PermisoModificado = "Propietario";
+
+            //Si el ItemSeleccionado coincide con el que inicio sesión se está actualizando a sí mismo
+            if (LvUsuarios.SelectedItems[0].SubItems[2].Text == FuncionesAplicacion.Usuario) {
+                //Actualizamos los datos con los que se inició sesión
+                FuncionesAplicacion.NombreCompleto = NombreModificado;
+                FuncionesAplicacion.Usuario = UsuarioModificado;
+                FuncionesAplicacion.TipoUsuario = PermisoModificado;
+                SeAutoModifico = true;
+            }
 
             //using para establecer conexion con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -436,7 +449,6 @@ namespace Proyecto_Final_Equipo_1
             MessageBox.Show("Datos del Usuario Operativo actualizados correctamente.", "ACTUALIZACION DE DATOS DE USUARIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
 
 
         //FUNCIONES DE VALIDAR CAMPOS DE ENTRADA DE USUARIO

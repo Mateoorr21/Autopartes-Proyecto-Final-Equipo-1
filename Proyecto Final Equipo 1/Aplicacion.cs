@@ -67,7 +67,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
         {
-            CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios(); //Abrimos formulario de Catalogo de Usuarios
+            CatalogoUsuarios catalogoUsuarios = new CatalogoUsuarios(this); //Abrimos formulario de Catalogo de Usuarios
             catalogoUsuarios.ShowDialog();
         }
 
@@ -85,7 +85,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+            //LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
 
             //Limpiamos panel y cargamos el Control de Usuario BuscarProducto
             PanelAutoPartes.Controls.Clear();

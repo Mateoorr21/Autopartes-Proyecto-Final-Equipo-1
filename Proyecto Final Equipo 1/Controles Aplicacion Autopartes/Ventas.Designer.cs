@@ -35,7 +35,6 @@
             this.RdAproximada = new System.Windows.Forms.RadioButton();
             this.LvProductos = new System.Windows.Forms.ListView();
             this.LblTitulo = new System.Windows.Forms.Label();
-            this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblCampoBuscar = new System.Windows.Forms.Label();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@
             this.VaciarCarrito = new System.Windows.Forms.Button();
             this.BtnCancelarVenta = new System.Windows.Forms.Button();
             this.LvCarrito = new System.Windows.Forms.ListView();
+            this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.GpBBusquedaTipo.SuspendLayout();
             this.GbBusquedaCampo.SuspendLayout();
             this.SuspendLayout();
@@ -147,18 +147,6 @@
             this.LblTitulo.Size = new System.Drawing.Size(209, 29);
             this.LblTitulo.TabIndex = 103;
             this.LblTitulo.Text = "Vender Producto";
-            // 
-            // LblErrorBuscar
-            // 
-            this.LblErrorBuscar.AutoSize = true;
-            this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(25, 252);
-            this.LblErrorBuscar.Name = "LblErrorBuscar";
-            this.LblErrorBuscar.Size = new System.Drawing.Size(105, 13);
-            this.LblErrorBuscar.TabIndex = 102;
-            this.LblErrorBuscar.Text = "Solo admite numeros";
-            this.LblErrorBuscar.Visible = false;
             // 
             // TxtBuscar
             // 
@@ -410,9 +398,23 @@
             this.LvCarrito.UseCompatibleStateImageBehavior = false;
             this.LvCarrito.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvCarrito_ColumnClick);
             // 
+            // LblErrorBuscar
+            // 
+            this.LblErrorBuscar.AutoSize = true;
+            this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorBuscar.Location = new System.Drawing.Point(25, 252);
+            this.LblErrorBuscar.Name = "LblErrorBuscar";
+            this.LblErrorBuscar.Size = new System.Drawing.Size(118, 16);
+            this.LblErrorBuscar.TabIndex = 126;
+            this.LblErrorBuscar.Tag = "Caracter no Valido";
+            this.LblErrorBuscar.Text = "Caracter no Valido\r\n";
+            this.LblErrorBuscar.Visible = false;
+            // 
             // Ventas
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.LvCarrito);
             this.Controls.Add(this.BtnCancelarVenta);
             this.Controls.Add(this.VaciarCarrito);
@@ -434,7 +436,6 @@
             this.Controls.Add(this.GpBBusquedaTipo);
             this.Controls.Add(this.LvProductos);
             this.Controls.Add(this.LblTitulo);
-            this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.LblCampoBuscar);
             this.Controls.Add(this.BtnBuscar);
@@ -460,7 +461,6 @@
         private System.Windows.Forms.RadioButton RdAproximada;
         private System.Windows.Forms.ListView LvProductos;
         private System.Windows.Forms.Label LblTitulo;
-        private System.Windows.Forms.Label LblErrorBuscar;
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label LblCampoBuscar;
         private System.Windows.Forms.Button BtnBuscar;
@@ -483,5 +483,6 @@
         private System.Windows.Forms.Button VaciarCarrito;
         private System.Windows.Forms.Button BtnCancelarVenta;
         private System.Windows.Forms.ListView LvCarrito;
+        private System.Windows.Forms.Label LblErrorBuscar;
     }
 }

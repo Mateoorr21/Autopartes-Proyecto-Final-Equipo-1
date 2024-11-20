@@ -34,7 +34,6 @@
             this.RdAproximada = new System.Windows.Forms.RadioButton();
             this.LvProductos = new System.Windows.Forms.ListView();
             this.LblTitulo = new System.Windows.Forms.Label();
-            this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblCampoBuscar = new System.Windows.Forms.Label();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -59,6 +58,10 @@
             this.LblErrorCantidad = new System.Windows.Forms.Label();
             this.BtnDeseleccionarImagen = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.LblErrorBuscar = new System.Windows.Forms.Label();
+            this.LblErrorNombre = new System.Windows.Forms.Label();
+            this.LblErrorDescripcion = new System.Windows.Forms.Label();
+            this.LblErrorMarca = new System.Windows.Forms.Label();
             this.GpBBusquedaTipo.SuspendLayout();
             this.GbBusquedaCampo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
@@ -134,18 +137,6 @@
             this.LblTitulo.Size = new System.Drawing.Size(233, 29);
             this.LblTitulo.TabIndex = 75;
             this.LblTitulo.Text = "Modificar Producto";
-            // 
-            // LblErrorBuscar
-            // 
-            this.LblErrorBuscar.AutoSize = true;
-            this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(24, 280);
-            this.LblErrorBuscar.Name = "LblErrorBuscar";
-            this.LblErrorBuscar.Size = new System.Drawing.Size(105, 13);
-            this.LblErrorBuscar.TabIndex = 74;
-            this.LblErrorBuscar.Text = "Solo admite numeros";
-            this.LblErrorBuscar.Visible = false;
             // 
             // TxtBuscar
             // 
@@ -240,9 +231,9 @@
             this.LblImagen.AutoSize = true;
             this.LblImagen.Location = new System.Drawing.Point(729, 338);
             this.LblImagen.Name = "LblImagen";
-            this.LblImagen.Size = new System.Drawing.Size(117, 16);
+            this.LblImagen.Size = new System.Drawing.Size(55, 16);
             this.LblImagen.TabIndex = 88;
-            this.LblImagen.Text = "Imagen (Opcional)";
+            this.LblImagen.Text = "Imagen:";
             // 
             // Txt_Cantidad
             // 
@@ -287,6 +278,7 @@
             this.Txt_Marca.Name = "Txt_Marca";
             this.Txt_Marca.Size = new System.Drawing.Size(203, 22);
             this.Txt_Marca.TabIndex = 83;
+            this.Txt_Marca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Marca_KeyPress);
             // 
             // LblMarca
             // 
@@ -305,6 +297,7 @@
             this.Txt_Descripcion.Name = "Txt_Descripcion";
             this.Txt_Descripcion.Size = new System.Drawing.Size(251, 38);
             this.Txt_Descripcion.TabIndex = 81;
+            this.Txt_Descripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Descripcion_KeyPress);
             // 
             // Txt_Nombre
             // 
@@ -313,6 +306,7 @@
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(251, 22);
             this.Txt_Nombre.TabIndex = 80;
+            this.Txt_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Nombre_KeyPress);
             // 
             // LblNombre
             // 
@@ -328,9 +322,9 @@
             this.LblDescripcion.AutoSize = true;
             this.LblDescripcion.Location = new System.Drawing.Point(731, 135);
             this.LblDescripcion.Name = "LblDescripcion";
-            this.LblDescripcion.Size = new System.Drawing.Size(147, 16);
+            this.LblDescripcion.Size = new System.Drawing.Size(82, 16);
             this.LblDescripcion.TabIndex = 78;
-            this.LblDescripcion.Text = "Descripción (Opcional):";
+            this.LblDescripcion.Text = "Descripción:";
             // 
             // BtnActualizar
             // 
@@ -395,9 +389,62 @@
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
+            // LblErrorBuscar
+            // 
+            this.LblErrorBuscar.AutoSize = true;
+            this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorBuscar.Location = new System.Drawing.Point(24, 276);
+            this.LblErrorBuscar.Name = "LblErrorBuscar";
+            this.LblErrorBuscar.Size = new System.Drawing.Size(118, 16);
+            this.LblErrorBuscar.TabIndex = 98;
+            this.LblErrorBuscar.Tag = "Caracter no Valido";
+            this.LblErrorBuscar.Text = "Caracter no Valido\r\n";
+            this.LblErrorBuscar.Visible = false;
+            // 
+            // LblErrorNombre
+            // 
+            this.LblErrorNombre.AutoSize = true;
+            this.LblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorNombre.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorNombre.Location = new System.Drawing.Point(811, 77);
+            this.LblErrorNombre.Name = "LblErrorNombre";
+            this.LblErrorNombre.Size = new System.Drawing.Size(171, 13);
+            this.LblErrorNombre.TabIndex = 99;
+            this.LblErrorNombre.Text = "Solo admite letras, números   /   \"  -";
+            this.LblErrorNombre.Visible = false;
+            // 
+            // LblErrorDescripcion
+            // 
+            this.LblErrorDescripcion.AutoSize = true;
+            this.LblErrorDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorDescripcion.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorDescripcion.Location = new System.Drawing.Point(813, 137);
+            this.LblErrorDescripcion.Name = "LblErrorDescripcion";
+            this.LblErrorDescripcion.Size = new System.Drawing.Size(171, 13);
+            this.LblErrorDescripcion.TabIndex = 100;
+            this.LblErrorDescripcion.Text = "Solo admite letras, números   /   \"  -";
+            this.LblErrorDescripcion.Visible = false;
+            // 
+            // LblErrorMarca
+            // 
+            this.LblErrorMarca.AutoSize = true;
+            this.LblErrorMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorMarca.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorMarca.Location = new System.Drawing.Point(799, 200);
+            this.LblErrorMarca.Name = "LblErrorMarca";
+            this.LblErrorMarca.Size = new System.Drawing.Size(141, 13);
+            this.LblErrorMarca.TabIndex = 101;
+            this.LblErrorMarca.Text = "Solo admite letras y números";
+            this.LblErrorMarca.Visible = false;
+            // 
             // ModificarProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.LblErrorMarca);
+            this.Controls.Add(this.LblErrorDescripcion);
+            this.Controls.Add(this.LblErrorNombre);
+            this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnDeseleccionarImagen);
             this.Controls.Add(this.LblErrorCantidad);
@@ -420,7 +467,6 @@
             this.Controls.Add(this.GpBBusquedaTipo);
             this.Controls.Add(this.LvProductos);
             this.Controls.Add(this.LblTitulo);
-            this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.LblCampoBuscar);
             this.Controls.Add(this.BtnBuscar);
@@ -446,7 +492,6 @@
         private System.Windows.Forms.RadioButton RdAproximada;
         private System.Windows.Forms.ListView LvProductos;
         private System.Windows.Forms.Label LblTitulo;
-        private System.Windows.Forms.Label LblErrorBuscar;
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label LblCampoBuscar;
         private System.Windows.Forms.Button BtnBuscar;
@@ -471,5 +516,9 @@
         private System.Windows.Forms.Label LblErrorCantidad;
         private System.Windows.Forms.Button BtnDeseleccionarImagen;
         private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.Label LblErrorBuscar;
+        private System.Windows.Forms.Label LblErrorNombre;
+        private System.Windows.Forms.Label LblErrorDescripcion;
+        private System.Windows.Forms.Label LblErrorMarca;
     }
 }

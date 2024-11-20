@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblCampoBuscar = new System.Windows.Forms.Label();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -44,22 +43,11 @@
             this.RdAproximada = new System.Windows.Forms.RadioButton();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.BtnRestaurarBusqueda = new System.Windows.Forms.Button();
+            this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.GbBusquedaCampo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
             this.GpBBusquedaTipo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // LblErrorBuscar
-            // 
-            this.LblErrorBuscar.AutoSize = true;
-            this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(26, 283);
-            this.LblErrorBuscar.Name = "LblErrorBuscar";
-            this.LblErrorBuscar.Size = new System.Drawing.Size(105, 13);
-            this.LblErrorBuscar.TabIndex = 57;
-            this.LblErrorBuscar.Text = "Solo admite numeros";
-            this.LblErrorBuscar.Visible = false;
             // 
             // TxtBuscar
             // 
@@ -236,9 +224,23 @@
             this.BtnRestaurarBusqueda.UseVisualStyleBackColor = false;
             this.BtnRestaurarBusqueda.Click += new System.EventHandler(this.BtnRestaurarBusqueda_Click);
             // 
+            // LblErrorBuscar
+            // 
+            this.LblErrorBuscar.AutoSize = true;
+            this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorBuscar.Location = new System.Drawing.Point(26, 277);
+            this.LblErrorBuscar.Name = "LblErrorBuscar";
+            this.LblErrorBuscar.Size = new System.Drawing.Size(118, 16);
+            this.LblErrorBuscar.TabIndex = 97;
+            this.LblErrorBuscar.Tag = "Caracter no Valido";
+            this.LblErrorBuscar.Text = "Caracter no Valido\r\n";
+            this.LblErrorBuscar.Visible = false;
+            // 
             // BuscarProducto
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.BtnRestaurarBusqueda);
             this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.GpBBusquedaTipo);
@@ -246,7 +248,6 @@
             this.Controls.Add(this.BtnMostrarProducto);
             this.Controls.Add(this.LvProductos);
             this.Controls.Add(this.LblTitulo);
-            this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.LblCampoBuscar);
             this.Controls.Add(this.BtnBuscar);
@@ -265,8 +266,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label LblErrorBuscar;
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.Label LblCampoBuscar;
         private System.Windows.Forms.Button BtnBuscar;
@@ -282,5 +281,6 @@
         private System.Windows.Forms.RadioButton RdAproximada;
         private System.Windows.Forms.Label LblCantidadRegistros;
         private System.Windows.Forms.Button BtnRestaurarBusqueda;
+        private System.Windows.Forms.Label LblErrorBuscar;
     }
 }
