@@ -135,6 +135,7 @@ namespace Proyecto_Final_Equipo_1
             ContarVentas = 0;
             DineroVentas = 0;
         }
+ 
 
 
         //FUNCION PARA INICIAR SESION AL SISTEMA

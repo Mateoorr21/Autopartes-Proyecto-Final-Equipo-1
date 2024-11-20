@@ -42,5 +42,12 @@ namespace Proyecto_Final_Equipo_1
         {
             Dispose(); //Volvemos a la Ventana de Inicio con el Logo de la Aplicacion
         }
+
+        private void ChkPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChkPassword.Checked) Txt_Password.PasswordChar = '\0'; //No se oculta
+
+            else Txt_Password.PasswordChar = '*'; //Se oculta con asteriscos
+        }
     }
 }

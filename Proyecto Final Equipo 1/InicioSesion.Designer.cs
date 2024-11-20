@@ -38,6 +38,7 @@
             this.LblErrorPassword = new System.Windows.Forms.Label();
             this.LblErrorUsuario = new System.Windows.Forms.Label();
             this.BtnVolverInicio = new System.Windows.Forms.Button();
+            this.ChkPassword = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // Btn_Ingreso
@@ -54,7 +55,7 @@
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(280, 218);
+            this.LblPassword.Location = new System.Drawing.Point(280, 207);
             this.LblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblPassword.Name = "LblPassword";
             this.LblPassword.Size = new System.Drawing.Size(76, 16);
@@ -76,6 +77,7 @@
             this.Txt_Password.Location = new System.Drawing.Point(283, 256);
             this.Txt_Password.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Password.Name = "Txt_Password";
+            this.Txt_Password.PasswordChar = '*';
             this.Txt_Password.Size = new System.Drawing.Size(237, 22);
             this.Txt_Password.TabIndex = 3;
             this.Txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Password_KeyPress);
@@ -102,7 +104,7 @@
             // LblErrorPassword
             // 
             this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPassword.Location = new System.Drawing.Point(95, 234);
+            this.LblErrorPassword.Location = new System.Drawing.Point(95, 223);
             this.LblErrorPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblErrorPassword.Name = "LblErrorPassword";
             this.LblErrorPassword.Size = new System.Drawing.Size(676, 16);
@@ -136,12 +138,24 @@
             this.BtnVolverInicio.UseVisualStyleBackColor = true;
             this.BtnVolverInicio.Click += new System.EventHandler(this.BtnVolverInicio_Click);
             // 
+            // ChkPassword
+            // 
+            this.ChkPassword.AutoSize = true;
+            this.ChkPassword.Location = new System.Drawing.Point(537, 259);
+            this.ChkPassword.Name = "ChkPassword";
+            this.ChkPassword.Size = new System.Drawing.Size(146, 20);
+            this.ChkPassword.TabIndex = 20;
+            this.ChkPassword.Text = "Mostrar Contraseña";
+            this.ChkPassword.UseVisualStyleBackColor = true;
+            this.ChkPassword.CheckedChanged += new System.EventHandler(this.ChkPassword_CheckedChanged);
+            // 
             // InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(832, 453);
+            this.Controls.Add(this.ChkPassword);
             this.Controls.Add(this.BtnVolverInicio);
             this.Controls.Add(this.LblErrorUsuario);
             this.Controls.Add(this.LblErrorPassword);
@@ -174,5 +188,6 @@
         private System.Windows.Forms.Label LblErrorPassword;
         private System.Windows.Forms.Label LblErrorUsuario;
         private System.Windows.Forms.Button BtnVolverInicio;
+        private System.Windows.Forms.CheckBox ChkPassword;
     }
 }
