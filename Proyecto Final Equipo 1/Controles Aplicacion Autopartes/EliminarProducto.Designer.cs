@@ -229,8 +229,8 @@
             // 
             // EliminarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.LblCantidadRegistros);
@@ -243,7 +243,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GbBusquedaCampo);
             this.Name = "EliminarProducto";
-            this.Size = new System.Drawing.Size(1515, 825);
+            this.Size = new System.Drawing.Size(1513, 823);
             this.Load += new System.EventHandler(this.EliminarProducto_Load);
             this.GpBBusquedaTipo.ResumeLayout(false);
             this.GpBBusquedaTipo.PerformLayout();

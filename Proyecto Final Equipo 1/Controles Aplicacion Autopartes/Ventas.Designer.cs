@@ -413,8 +413,9 @@
             // 
             // Ventas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.LvCarrito);
             this.Controls.Add(this.BtnCancelarVenta);
@@ -442,7 +443,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GbBusquedaCampo);
             this.Name = "Ventas";
-            this.Size = new System.Drawing.Size(1517, 824);
+            this.Size = new System.Drawing.Size(1513, 823);
             this.Load += new System.EventHandler(this.Ventas_Load);
             this.GpBBusquedaTipo.ResumeLayout(false);
             this.GpBBusquedaTipo.PerformLayout();

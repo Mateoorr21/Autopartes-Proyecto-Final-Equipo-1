@@ -167,8 +167,8 @@
             // 
             // CorteCaja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.LvVentas);
             this.Controls.Add(this.BtnMostrarVenta);
             this.Controls.Add(this.TxtDineroVentas);
@@ -181,7 +181,7 @@
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.BtnCargarVentas);
             this.Name = "CorteCaja";
-            this.Size = new System.Drawing.Size(1516, 825);
+            this.Size = new System.Drawing.Size(1513, 823);
             this.Load += new System.EventHandler(this.CorteCaja_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -163,6 +163,26 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoAgregarProductoDes {
+            get {
+                object obj = ResourceManager.GetObject("IconoAgregarProductoDes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoAgregarProductoDes2 {
+            get {
+                object obj = ResourceManager.GetObject("IconoAgregarProductoDes2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoBuscarProducto {
             get {
                 object obj = ResourceManager.GetObject("IconoBuscarProducto", resourceCulture);
@@ -193,6 +213,26 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoCatalogoUsuariosDes {
+            get {
+                object obj = ResourceManager.GetObject("IconoCatalogoUsuariosDes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoCatalogoUsuariosDes2 {
+            get {
+                object obj = ResourceManager.GetObject("IconoCatalogoUsuariosDes2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoCorteCaja {
             get {
                 object obj = ResourceManager.GetObject("IconoCorteCaja", resourceCulture);
@@ -213,6 +253,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoEliminarProductoDes {
+            get {
+                object obj = ResourceManager.GetObject("IconoEliminarProductoDes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoInventario {
             get {
                 object obj = ResourceManager.GetObject("IconoInventario", resourceCulture);
@@ -226,6 +276,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         internal static System.Drawing.Bitmap IconoModificarProducto {
             get {
                 object obj = ResourceManager.GetObject("IconoModificarProducto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoModificarProductoDes {
+            get {
+                object obj = ResourceManager.GetObject("IconoModificarProductoDes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

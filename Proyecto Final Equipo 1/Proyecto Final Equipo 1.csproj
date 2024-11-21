@@ -311,5 +311,23 @@
   <ItemGroup>
     <None Include="Resources\PatronLlanta1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoCatalogoUsuariosDes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoCatalogoUsuariosDes2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoAgregarProductoDes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoAgregarProductoDes2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoModificarProductoDes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoEliminarProductoDes.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

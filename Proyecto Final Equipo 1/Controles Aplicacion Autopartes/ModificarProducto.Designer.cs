@@ -440,7 +440,8 @@
             // 
             // ModificarProducto
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.LblErrorMarca);
             this.Controls.Add(this.LblErrorDescripcion);
             this.Controls.Add(this.LblErrorNombre);
@@ -472,7 +473,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GbBusquedaCampo);
             this.Name = "ModificarProducto";
-            this.Size = new System.Drawing.Size(1511, 821);
+            this.Size = new System.Drawing.Size(1513, 823);
             this.Load += new System.EventHandler(this.ModificarProducto_Load);
             this.GpBBusquedaTipo.ResumeLayout(false);
             this.GpBBusquedaTipo.PerformLayout();

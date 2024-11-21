@@ -239,8 +239,8 @@
             // 
             // BuscarProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.BtnRestaurarBusqueda);
             this.Controls.Add(this.LblCantidadRegistros);
@@ -254,7 +254,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GbBusquedaCampo);
             this.Name = "BuscarProducto";
-            this.Size = new System.Drawing.Size(1511, 825);
+            this.Size = new System.Drawing.Size(1513, 823);
             this.Load += new System.EventHandler(this.BuscarProducto_Load);
             this.GbBusquedaCampo.ResumeLayout(false);
             this.GbBusquedaCampo.PerformLayout();

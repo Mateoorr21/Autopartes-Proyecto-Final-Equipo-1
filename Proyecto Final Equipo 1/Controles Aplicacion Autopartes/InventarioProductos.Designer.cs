@@ -200,8 +200,8 @@
             // 
             // InventarioProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.GpBAgregrarInventario);
             this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.LvProductos);

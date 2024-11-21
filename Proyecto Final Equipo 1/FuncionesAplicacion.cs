@@ -183,6 +183,10 @@ namespace Proyecto_Final_Equipo_1
 
                                 // Abrir el formulario
                                 Aplicacion aplicacion = new Aplicacion();
+                                /*aplicacion.StartPosition = FormStartPosition.Manual;
+                                aplicacion.Location = new Point(
+                                    (Screen.PrimaryScreen.WorkingArea.Width - aplicacion.Width) / 2,
+                                    (Screen.PrimaryScreen.WorkingArea.Height - aplicacion.Height) / 2);*/
                                 aplicacion.ShowDialog();
 
                                 ReiniciarVariables(); //Reinciamos las variables a usar.
@@ -371,6 +375,13 @@ namespace Proyecto_Final_Equipo_1
             //Convertimos el valor de las cajas en tipo float y entero
             float Precio = float.Parse(Txt_Precio.Text);
             int Cantidad = int.Parse(Txt_Cantidad.Text);
+
+            if(Precio == 0 || Cantidad == 0) //Validamos que precio y cantidad no sean iguales a 0
+            {
+                MessageBox.Show("Error. No se puede ingresar 0 como valor de Precio o Cantidad en Existencia", "ERROR. 0 NO ES VALIDO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             //Establecemos el obejto OledbConnection para conectar con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))

@@ -45,6 +45,12 @@ namespace Proyecto_Final_Equipo_1
                 BtnEliminar.Enabled = false;
                 BtnModificar.Enabled = false;
                 BtnCatalogoUsuarios.Enabled = false;
+
+                //Mostramos como imagenes de los botones las versiones deshabilitadas
+                BtnAgregar.BackgroundImage = Properties.Resources.IconoAgregarProductoDes2;
+                BtnEliminar.BackgroundImage = Properties.Resources.IconoEliminarProductoDes;
+                BtnModificar.BackgroundImage = Properties.Resources.IconoModificarProductoDes;
+                BtnCatalogoUsuarios.BackgroundImage = Properties.Resources.IconoCatalogoUsuariosDes2;
             }
 
             //Cargamos la información del Usuario Operativo en las etqiuetas
@@ -191,6 +197,15 @@ namespace Proyecto_Final_Equipo_1
             {
                 e.Cancel = true;
             }
+        }
+
+        private void Aplicacion_Shown(object sender, EventArgs e)
+        {
+            // Recalculamos la posicion del formulario para que aparezca centrado despues de que AutoSize lo ajusto
+            this.Location = new Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+                (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
+            );
         }
     }
 }
