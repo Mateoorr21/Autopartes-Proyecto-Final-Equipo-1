@@ -203,5 +203,29 @@
   <ItemGroup>
     <None Include="Resources\avatardefault_92824.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\management.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locked %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Esconder Password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mostrar Password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MensajeBienvenida.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MensajeBienvenida2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

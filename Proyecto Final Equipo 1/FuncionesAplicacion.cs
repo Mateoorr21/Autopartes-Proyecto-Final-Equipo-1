@@ -24,6 +24,7 @@ namespace Proyecto_Final_Equipo_1
         public static string NombreCompleto = null;
         public static string Usuario = null;
         public static string TipoUsuario = null;
+        public static string PasswordBD = null;
         public static bool TienePermiso = false;
         public static int ErroresInicioSesion = 0;
 
@@ -146,13 +147,12 @@ namespace Proyecto_Final_Equipo_1
             {
                 conexion.Open(); //Abrimos la conexión
 
-                string consulta = "SELECT Nombre_Completo, Usuario, Tipo FROM Usuarios_Operativos WHERE Usuario = @usuario AND Password = @password"; //Consulta
+                string consulta = "SELECT Nombre_Completo, Usuario, [Password], Tipo FROM Usuarios_Operativos WHERE Usuario = @usuario"; //Consulta
 
                 // Usamos 'using' también para el comando, asegurando que se libere correctamente después de su uso
                 using (OleDbCommand comando = new OleDbCommand(consulta, conexion))
                 {
                     comando.Parameters.AddWithValue("@usuario", Username); //Parametro de busqueda Username
-                    comando.Parameters.AddWithValue("@password", Password); //Parametro de búsqueda Password
 
                     // Usamos 'using' para el lector de datos
                     using (OleDbDataReader lector = comando.ExecuteReader()) //Ejecutar lectura
@@ -160,26 +160,43 @@ namespace Proyecto_Final_Equipo_1
                         if (lector.HasRows) //Si hay un resultado, es decir, si existe la cuenta
                         {
                             lector.Read(); //Leemos el registro obtenido
+
                             NombreCompleto = lector["Nombre_Completo"].ToString(); //Nombre a cadena String
                             Usuario = lector["Usuario"].ToString(); //Usuario a cadena String
+                            PasswordBD = lector["Password"].ToString(); //Contraseña en base de datos
                             TipoUsuario = lector["Tipo"].ToString(); //Tipo de Permiso a cadena String
 
-                            //Limpiamos las cajas de Texto
-                            TxtUsuario.Clear();
-                            TxtPassword.Clear();
+                            if (Username == Usuario && Password == PasswordBD) //Si coinciden Inicio Sesión
+                            {
+                                //Limpiamos las cajas de Texto
+                                TxtUsuario.Clear();
+                                TxtPassword.Clear();
 
-                            //Mensaje de inicio de sesión exitoso
-                            MessageBox.Show("Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",
-                                "INICIO DE SESIÓN EXITOSO. Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //Mensaje de inicio de sesión exitoso
+                                MessageBox.Show("Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",
+                                    "INICIO DE SESIÓN EXITOSO. Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Variable booleana (Es un Admin o no)
-                            TienePermiso = TipoUsuario == "Admin" || TipoUsuario == "Propietario";
+                                // Variable booleana (Es un Admin o no)
+                                TienePermiso = TipoUsuario == "Admin" || TipoUsuario == "Propietario";
 
-                            // Abrir el formulario
-                            Aplicacion aplicacion = new Aplicacion();                                                 
-                            aplicacion.ShowDialog();
+                                // Abrir el formulario
+                                Aplicacion aplicacion = new Aplicacion();
+                                aplicacion.ShowDialog();
 
-                            ReiniciarVariables(); //Reinciamos las variables a usar.
+                                ReiniciarVariables(); //Reinciamos las variables a usar.
+                            }
+                                
+                            else //Mensaje de error
+                            {
+                                MessageBox.Show("Usuario y/o Contraseña incorrectos.", "Error. No existe la cuenta.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                ErroresInicioSesion++; //Sumamos un "Strike"
+
+                                if (ErroresInicioSesion == 3)
+                                {
+                                    System.Windows.Forms.Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
+                                }
+                            }
                         }
                         else
                         {

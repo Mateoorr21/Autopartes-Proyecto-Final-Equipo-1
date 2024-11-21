@@ -14,6 +14,8 @@ namespace Proyecto_Final_Equipo_1
 {
     public partial class InicioSesion : Form
     {
+        bool MostrarPassword = true;
+
         public InicioSesion() 
         {
             InitializeComponent();
@@ -36,6 +38,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void InicioSesion_Load(object sender, EventArgs e)
         {
+            LblTitulo.Focus(); //Focus en etiqueta
         }
 
         private void BtnVolverInicio_Click(object sender, EventArgs e)
@@ -43,11 +46,21 @@ namespace Proyecto_Final_Equipo_1
             Dispose(); //Volvemos a la Ventana de Inicio con el Logo de la Aplicacion
         }
 
-        private void ChkPassword_CheckedChanged(object sender, EventArgs e)
+        private void BtnPassword_Click(object sender, EventArgs e)
         {
-            if (ChkPassword.Checked) Txt_Password.PasswordChar = '\0'; //No se oculta
+            MostrarPassword = !MostrarPassword; //Cambiamos el valor de MostrarPassword
 
-            else Txt_Password.PasswordChar = '*'; //Se oculta con asteriscos
+            // Cambiar la imagen de fondo del botón según el estado
+            if (MostrarPassword)
+            {
+                BtnPassword.BackgroundImage = Properties.Resources.Mostrar_Password; // Imagen de mostrar contraseña
+                Txt_Password.PasswordChar = '\0'; //Se muestra
+            }
+            else
+            {
+                BtnPassword.BackgroundImage = Properties.Resources.Esconder_Password; // Imagen de ocultar contraseña
+                Txt_Password.PasswordChar = '*'; //Se oculta
+            }
         }
     }
 }
