@@ -32,15 +32,15 @@
             this.LvProductos = new System.Windows.Forms.ListView();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.GpBAgregrarInventario = new System.Windows.Forms.GroupBox();
+            this.BtnCancelar = new System.Windows.Forms.Button();
+            this.BtnAgregarInventario = new System.Windows.Forms.Button();
+            this.TxtProducto = new System.Windows.Forms.TextBox();
             this.LblCantidad = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnMenos = new System.Windows.Forms.Button();
             this.BtnMas = new System.Windows.Forms.Button();
             this.LblErrorCantidad = new System.Windows.Forms.Label();
             this.Txt_Cantidad = new System.Windows.Forms.TextBox();
-            this.TxtProducto = new System.Windows.Forms.TextBox();
-            this.BtnAgregarInventario = new System.Windows.Forms.Button();
-            this.BtnCancelar = new System.Windows.Forms.Button();
             this.GpBAgregrarInventario.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@
             // 
             this.LblCantidadRegistros.AutoSize = true;
             this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCantidadRegistros.Location = new System.Drawing.Point(590, 446);
+            this.LblCantidadRegistros.Location = new System.Drawing.Point(839, 586);
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
             this.LblCantidadRegistros.Size = new System.Drawing.Size(167, 18);
             this.LblCantidadRegistros.TabIndex = 83;
@@ -58,7 +58,7 @@
             // LvProductos
             // 
             this.LvProductos.HideSelection = false;
-            this.LvProductos.Location = new System.Drawing.Point(26, 63);
+            this.LvProductos.Location = new System.Drawing.Point(275, 203);
             this.LvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
@@ -72,7 +72,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(291, 19);
+            this.LblTitulo.Location = new System.Drawing.Point(540, 159);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(385, 29);
             this.LblTitulo.TabIndex = 75;
@@ -89,12 +89,48 @@
             this.GpBAgregrarInventario.Controls.Add(this.BtnMas);
             this.GpBAgregrarInventario.Controls.Add(this.LblErrorCantidad);
             this.GpBAgregrarInventario.Controls.Add(this.Txt_Cantidad);
-            this.GpBAgregrarInventario.Location = new System.Drawing.Point(764, 63);
+            this.GpBAgregrarInventario.Location = new System.Drawing.Point(1013, 203);
             this.GpBAgregrarInventario.Name = "GpBAgregrarInventario";
             this.GpBAgregrarInventario.Size = new System.Drawing.Size(238, 379);
             this.GpBAgregrarInventario.TabIndex = 123;
             this.GpBAgregrarInventario.TabStop = false;
             this.GpBAgregrarInventario.Text = "Agregar Inventario";
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.Beige;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelar.ForeColor = System.Drawing.Color.DarkRed;
+            this.BtnCancelar.Location = new System.Drawing.Point(13, 299);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(213, 74);
+            this.BtnCancelar.TabIndex = 125;
+            this.BtnCancelar.Text = "Cancelar ";
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
+            // BtnAgregarInventario
+            // 
+            this.BtnAgregarInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAgregarInventario.Location = new System.Drawing.Point(13, 226);
+            this.BtnAgregarInventario.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAgregarInventario.Name = "BtnAgregarInventario";
+            this.BtnAgregarInventario.Size = new System.Drawing.Size(213, 67);
+            this.BtnAgregarInventario.TabIndex = 124;
+            this.BtnAgregarInventario.Text = "Agregar Inventario";
+            this.BtnAgregarInventario.UseVisualStyleBackColor = true;
+            this.BtnAgregarInventario.Click += new System.EventHandler(this.BtnAgregarInventario_Click);
+            // 
+            // TxtProducto
+            // 
+            this.TxtProducto.Enabled = false;
+            this.TxtProducto.Location = new System.Drawing.Point(13, 49);
+            this.TxtProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtProducto.Name = "TxtProducto";
+            this.TxtProducto.Size = new System.Drawing.Size(213, 22);
+            this.TxtProducto.TabIndex = 123;
             // 
             // LblCantidad
             // 
@@ -162,51 +198,16 @@
             this.Txt_Cantidad.TextChanged += new System.EventHandler(this.Txt_Cantidad_TextChanged);
             this.Txt_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Cantidad_KeyPress);
             // 
-            // TxtProducto
-            // 
-            this.TxtProducto.Enabled = false;
-            this.TxtProducto.Location = new System.Drawing.Point(13, 49);
-            this.TxtProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TxtProducto.Name = "TxtProducto";
-            this.TxtProducto.Size = new System.Drawing.Size(213, 22);
-            this.TxtProducto.TabIndex = 123;
-            // 
-            // BtnAgregarInventario
-            // 
-            this.BtnAgregarInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAgregarInventario.Location = new System.Drawing.Point(13, 226);
-            this.BtnAgregarInventario.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnAgregarInventario.Name = "BtnAgregarInventario";
-            this.BtnAgregarInventario.Size = new System.Drawing.Size(213, 67);
-            this.BtnAgregarInventario.TabIndex = 124;
-            this.BtnAgregarInventario.Text = "Agregar Inventario";
-            this.BtnAgregarInventario.UseVisualStyleBackColor = true;
-            this.BtnAgregarInventario.Click += new System.EventHandler(this.BtnAgregarInventario_Click);
-            // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.BackColor = System.Drawing.Color.Beige;
-            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnCancelar.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.ForeColor = System.Drawing.Color.DarkRed;
-            this.BtnCancelar.Location = new System.Drawing.Point(13, 299);
-            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(213, 74);
-            this.BtnCancelar.TabIndex = 125;
-            this.BtnCancelar.Text = "Cancelar ";
-            this.BtnCancelar.UseVisualStyleBackColor = false;
-            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
-            // 
             // InventarioProductos
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.GpBAgregrarInventario);
             this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.LvProductos);
             this.Controls.Add(this.LblTitulo);
             this.Name = "InventarioProductos";
-            this.Size = new System.Drawing.Size(1021, 490);
+            this.Size = new System.Drawing.Size(1513, 823);
             this.Load += new System.EventHandler(this.InventarioProductos_Load);
             this.GpBAgregrarInventario.ResumeLayout(false);
             this.GpBAgregrarInventario.PerformLayout();

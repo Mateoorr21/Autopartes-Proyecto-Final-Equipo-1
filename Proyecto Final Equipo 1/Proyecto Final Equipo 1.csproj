@@ -239,5 +239,41 @@
   <ItemGroup>
     <None Include="Resources\Usuario.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoVender.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoAgregarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBuscarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoModificarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoEliminarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CajaDatos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoCorteCaja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoCatalogoUsuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoCatalogoUsuarios2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Usuario2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

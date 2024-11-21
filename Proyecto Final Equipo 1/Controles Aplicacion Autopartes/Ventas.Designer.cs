@@ -68,7 +68,7 @@
             this.BtnRestaurarBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnRestaurarBusqueda.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRestaurarBusqueda.ForeColor = System.Drawing.Color.DarkRed;
-            this.BtnRestaurarBusqueda.Location = new System.Drawing.Point(28, 407);
+            this.BtnRestaurarBusqueda.Location = new System.Drawing.Point(269, 551);
             this.BtnRestaurarBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRestaurarBusqueda.Name = "BtnRestaurarBusqueda";
             this.BtnRestaurarBusqueda.Size = new System.Drawing.Size(124, 65);
@@ -81,7 +81,7 @@
             // 
             this.LblCantidadRegistrosBuscar.AutoSize = true;
             this.LblCantidadRegistrosBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCantidadRegistrosBuscar.Location = new System.Drawing.Point(442, 30);
+            this.LblCantidadRegistrosBuscar.Location = new System.Drawing.Point(683, 174);
             this.LblCantidadRegistrosBuscar.Name = "LblCantidadRegistrosBuscar";
             this.LblCantidadRegistrosBuscar.Size = new System.Drawing.Size(174, 18);
             this.LblCantidadRegistrosBuscar.TabIndex = 107;
@@ -92,7 +92,7 @@
             // 
             this.GpBBusquedaTipo.Controls.Add(this.RdExacta);
             this.GpBBusquedaTipo.Controls.Add(this.RdAproximada);
-            this.GpBBusquedaTipo.Location = new System.Drawing.Point(22, 51);
+            this.GpBBusquedaTipo.Location = new System.Drawing.Point(263, 195);
             this.GpBBusquedaTipo.Margin = new System.Windows.Forms.Padding(4);
             this.GpBBusquedaTipo.Name = "GpBBusquedaTipo";
             this.GpBBusquedaTipo.Padding = new System.Windows.Forms.Padding(4);
@@ -128,7 +128,7 @@
             // LvProductos
             // 
             this.LvProductos.HideSelection = false;
-            this.LvProductos.Location = new System.Drawing.Point(166, 52);
+            this.LvProductos.Location = new System.Drawing.Point(407, 196);
             this.LvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
@@ -142,7 +142,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(169, 13);
+            this.LblTitulo.Location = new System.Drawing.Point(410, 157);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(209, 29);
             this.LblTitulo.TabIndex = 103;
@@ -150,7 +150,7 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(28, 297);
+            this.TxtBuscar.Location = new System.Drawing.Point(269, 441);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(124, 22);
@@ -160,7 +160,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
-            this.LblCampoBuscar.Location = new System.Drawing.Point(25, 274);
+            this.LblCampoBuscar.Location = new System.Drawing.Point(266, 418);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
             this.LblCampoBuscar.Size = new System.Drawing.Size(59, 16);
             this.LblCampoBuscar.TabIndex = 100;
@@ -169,7 +169,7 @@
             // BtnBuscar
             // 
             this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscar.Location = new System.Drawing.Point(28, 327);
+            this.BtnBuscar.Location = new System.Drawing.Point(269, 471);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(124, 74);
@@ -182,7 +182,7 @@
             // 
             this.GbBusquedaCampo.Controls.Add(this.RdId);
             this.GbBusquedaCampo.Controls.Add(this.RdNombre);
-            this.GbBusquedaCampo.Location = new System.Drawing.Point(22, 158);
+            this.GbBusquedaCampo.Location = new System.Drawing.Point(263, 302);
             this.GbBusquedaCampo.Margin = new System.Windows.Forms.Padding(4);
             this.GbBusquedaCampo.Name = "GbBusquedaCampo";
             this.GbBusquedaCampo.Padding = new System.Windows.Forms.Padding(4);
@@ -220,7 +220,7 @@
             // AgregarCarrito
             // 
             this.AgregarCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AgregarCarrito.Location = new System.Drawing.Point(445, 373);
+            this.AgregarCarrito.Location = new System.Drawing.Point(686, 517);
             this.AgregarCarrito.Margin = new System.Windows.Forms.Padding(4);
             this.AgregarCarrito.Name = "AgregarCarrito";
             this.AgregarCarrito.Size = new System.Drawing.Size(171, 99);
@@ -234,7 +234,7 @@
             this.LblErrorCantidad.AutoSize = true;
             this.LblErrorCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorCantidad.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorCantidad.Location = new System.Drawing.Point(301, 360);
+            this.LblErrorCantidad.Location = new System.Drawing.Point(542, 504);
             this.LblErrorCantidad.Name = "LblErrorCantidad";
             this.LblErrorCantidad.Size = new System.Drawing.Size(100, 13);
             this.LblErrorCantidad.TabIndex = 113;
@@ -243,7 +243,7 @@
             // 
             // Txt_Cantidad
             // 
-            this.Txt_Cantidad.Location = new System.Drawing.Point(303, 374);
+            this.Txt_Cantidad.Location = new System.Drawing.Point(544, 518);
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(135, 22);
@@ -254,7 +254,7 @@
             // LblCantidad
             // 
             this.LblCantidad.AutoSize = true;
-            this.LblCantidad.Location = new System.Drawing.Point(172, 374);
+            this.LblCantidad.Location = new System.Drawing.Point(413, 518);
             this.LblCantidad.Name = "LblCantidad";
             this.LblCantidad.Size = new System.Drawing.Size(122, 16);
             this.LblCantidad.TabIndex = 111;
@@ -264,7 +264,7 @@
             // 
             this.BtnMas.Enabled = false;
             this.BtnMas.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMas.Location = new System.Drawing.Point(374, 402);
+            this.BtnMas.Location = new System.Drawing.Point(615, 546);
             this.BtnMas.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMas.Name = "BtnMas";
             this.BtnMas.Size = new System.Drawing.Size(64, 70);
@@ -277,7 +277,7 @@
             // 
             this.BtnMenos.Enabled = false;
             this.BtnMenos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMenos.Location = new System.Drawing.Point(304, 402);
+            this.BtnMenos.Location = new System.Drawing.Point(545, 546);
             this.BtnMenos.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMenos.Name = "BtnMenos";
             this.BtnMenos.Size = new System.Drawing.Size(62, 70);
@@ -289,7 +289,7 @@
             // LblProductoVender
             // 
             this.LblProductoVender.AutoSize = true;
-            this.LblProductoVender.Location = new System.Drawing.Point(173, 343);
+            this.LblProductoVender.Location = new System.Drawing.Point(414, 487);
             this.LblProductoVender.Name = "LblProductoVender";
             this.LblProductoVender.Size = new System.Drawing.Size(122, 16);
             this.LblProductoVender.TabIndex = 116;
@@ -298,7 +298,7 @@
             // LblProducto
             // 
             this.LblProducto.AutoSize = true;
-            this.LblProducto.Location = new System.Drawing.Point(301, 343);
+            this.LblProducto.Location = new System.Drawing.Point(542, 487);
             this.LblProducto.Name = "LblProducto";
             this.LblProducto.Size = new System.Drawing.Size(208, 16);
             this.LblProducto.TabIndex = 117;
@@ -308,7 +308,7 @@
             // BtnVender
             // 
             this.BtnVender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnVender.Location = new System.Drawing.Point(811, 345);
+            this.BtnVender.Location = new System.Drawing.Point(1052, 489);
             this.BtnVender.Margin = new System.Windows.Forms.Padding(4);
             this.BtnVender.Name = "BtnVender";
             this.BtnVender.Size = new System.Drawing.Size(181, 77);
@@ -321,7 +321,7 @@
             // 
             this.LblCantidadRegistrosCarrito.AutoSize = true;
             this.LblCantidadRegistrosCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCantidadRegistrosCarrito.Location = new System.Drawing.Point(825, 30);
+            this.LblCantidadRegistrosCarrito.Location = new System.Drawing.Point(1066, 174);
             this.LblCantidadRegistrosCarrito.Name = "LblCantidadRegistrosCarrito";
             this.LblCantidadRegistrosCarrito.Size = new System.Drawing.Size(150, 18);
             this.LblCantidadRegistrosCarrito.TabIndex = 119;
@@ -331,7 +331,7 @@
             // Lbl
             // 
             this.Lbl.AutoSize = true;
-            this.Lbl.Location = new System.Drawing.Point(630, 345);
+            this.Lbl.Location = new System.Drawing.Point(871, 489);
             this.Lbl.Name = "Lbl";
             this.Lbl.Size = new System.Drawing.Size(173, 16);
             this.Lbl.TabIndex = 120;
@@ -340,7 +340,7 @@
             // TxtPorPagar
             // 
             this.TxtPorPagar.Enabled = false;
-            this.TxtPorPagar.Location = new System.Drawing.Point(632, 367);
+            this.TxtPorPagar.Location = new System.Drawing.Point(873, 511);
             this.TxtPorPagar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtPorPagar.Name = "TxtPorPagar";
             this.TxtPorPagar.ReadOnly = true;
@@ -350,7 +350,7 @@
             // BtnEliminarRegistroCarrito
             // 
             this.BtnEliminarRegistroCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarRegistroCarrito.Location = new System.Drawing.Point(631, 395);
+            this.BtnEliminarRegistroCarrito.Location = new System.Drawing.Point(872, 539);
             this.BtnEliminarRegistroCarrito.Margin = new System.Windows.Forms.Padding(4);
             this.BtnEliminarRegistroCarrito.Name = "BtnEliminarRegistroCarrito";
             this.BtnEliminarRegistroCarrito.Size = new System.Drawing.Size(171, 77);
@@ -362,7 +362,7 @@
             // VaciarCarrito
             // 
             this.VaciarCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VaciarCarrito.Location = new System.Drawing.Point(811, 424);
+            this.VaciarCarrito.Location = new System.Drawing.Point(1052, 568);
             this.VaciarCarrito.Margin = new System.Windows.Forms.Padding(4);
             this.VaciarCarrito.Name = "VaciarCarrito";
             this.VaciarCarrito.Size = new System.Drawing.Size(181, 48);
@@ -377,7 +377,7 @@
             this.BtnCancelarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnCancelarVenta.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelarVenta.ForeColor = System.Drawing.Color.DarkRed;
-            this.BtnCancelarVenta.Location = new System.Drawing.Point(169, 398);
+            this.BtnCancelarVenta.Location = new System.Drawing.Point(410, 542);
             this.BtnCancelarVenta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnCancelarVenta.Name = "BtnCancelarVenta";
             this.BtnCancelarVenta.Size = new System.Drawing.Size(128, 74);
@@ -389,7 +389,7 @@
             // LvCarrito
             // 
             this.LvCarrito.HideSelection = false;
-            this.LvCarrito.Location = new System.Drawing.Point(633, 52);
+            this.LvCarrito.Location = new System.Drawing.Point(874, 196);
             this.LvCarrito.Margin = new System.Windows.Forms.Padding(4);
             this.LvCarrito.MultiSelect = false;
             this.LvCarrito.Name = "LvCarrito";
@@ -403,7 +403,7 @@
             this.LblErrorBuscar.AutoSize = true;
             this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(25, 252);
+            this.LblErrorBuscar.Location = new System.Drawing.Point(266, 396);
             this.LblErrorBuscar.Name = "LblErrorBuscar";
             this.LblErrorBuscar.Size = new System.Drawing.Size(118, 16);
             this.LblErrorBuscar.TabIndex = 126;
@@ -413,7 +413,8 @@
             // 
             // Ventas
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.LvCarrito);
             this.Controls.Add(this.BtnCancelarVenta);
@@ -441,7 +442,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GbBusquedaCampo);
             this.Name = "Ventas";
-            this.Size = new System.Drawing.Size(1021, 490);
+            this.Size = new System.Drawing.Size(1517, 824);
             this.Load += new System.EventHandler(this.Ventas_Load);
             this.GpBBusquedaTipo.ResumeLayout(false);
             this.GpBBusquedaTipo.PerformLayout();

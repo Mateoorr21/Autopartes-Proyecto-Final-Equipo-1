@@ -51,7 +51,7 @@
             // 
             // TxtBuscar
             // 
-            this.TxtBuscar.Location = new System.Drawing.Point(29, 328);
+            this.TxtBuscar.Location = new System.Drawing.Point(267, 474);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(124, 22);
@@ -61,7 +61,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
-            this.LblCampoBuscar.Location = new System.Drawing.Point(26, 305);
+            this.LblCampoBuscar.Location = new System.Drawing.Point(264, 451);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
             this.LblCampoBuscar.Size = new System.Drawing.Size(59, 16);
             this.LblCampoBuscar.TabIndex = 55;
@@ -69,7 +69,7 @@
             // 
             // BtnBuscar
             // 
-            this.BtnBuscar.Location = new System.Drawing.Point(29, 383);
+            this.BtnBuscar.Location = new System.Drawing.Point(267, 529);
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(124, 64);
@@ -82,7 +82,7 @@
             // 
             this.GbBusquedaCampo.Controls.Add(this.RdId);
             this.GbBusquedaCampo.Controls.Add(this.RdNombre);
-            this.GbBusquedaCampo.Location = new System.Drawing.Point(23, 173);
+            this.GbBusquedaCampo.Location = new System.Drawing.Point(261, 319);
             this.GbBusquedaCampo.Margin = new System.Windows.Forms.Padding(4);
             this.GbBusquedaCampo.Name = "GbBusquedaCampo";
             this.GbBusquedaCampo.Padding = new System.Windows.Forms.Padding(4);
@@ -121,7 +121,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(372, 23);
+            this.LblTitulo.Location = new System.Drawing.Point(610, 169);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(315, 29);
             this.LblTitulo.TabIndex = 58;
@@ -130,7 +130,7 @@
             // LvProductos
             // 
             this.LvProductos.HideSelection = false;
-            this.LvProductos.Location = new System.Drawing.Point(167, 66);
+            this.LvProductos.Location = new System.Drawing.Point(405, 212);
             this.LvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
@@ -143,7 +143,7 @@
             // BtnMostrarProducto
             // 
             this.BtnMostrarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMostrarProducto.Location = new System.Drawing.Point(827, 66);
+            this.BtnMostrarProducto.Location = new System.Drawing.Point(1065, 212);
             this.BtnMostrarProducto.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMostrarProducto.Name = "BtnMostrarProducto";
             this.BtnMostrarProducto.Size = new System.Drawing.Size(173, 83);
@@ -154,7 +154,7 @@
             // 
             // PicImagenProducto
             // 
-            this.PicImagenProducto.Location = new System.Drawing.Point(827, 156);
+            this.PicImagenProducto.Location = new System.Drawing.Point(1065, 302);
             this.PicImagenProducto.Name = "PicImagenProducto";
             this.PicImagenProducto.Size = new System.Drawing.Size(173, 152);
             this.PicImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -165,7 +165,7 @@
             // 
             this.GpBBusquedaTipo.Controls.Add(this.RdExacta);
             this.GpBBusquedaTipo.Controls.Add(this.RdAproximada);
-            this.GpBBusquedaTipo.Location = new System.Drawing.Point(23, 66);
+            this.GpBBusquedaTipo.Location = new System.Drawing.Point(261, 212);
             this.GpBBusquedaTipo.Margin = new System.Windows.Forms.Padding(4);
             this.GpBBusquedaTipo.Name = "GpBBusquedaTipo";
             this.GpBBusquedaTipo.Padding = new System.Windows.Forms.Padding(4);
@@ -202,7 +202,7 @@
             // 
             this.LblCantidadRegistros.AutoSize = true;
             this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCantidadRegistros.Location = new System.Drawing.Point(615, 451);
+            this.LblCantidadRegistros.Location = new System.Drawing.Point(853, 597);
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
             this.LblCantidadRegistros.Size = new System.Drawing.Size(174, 18);
             this.LblCantidadRegistros.TabIndex = 68;
@@ -215,7 +215,7 @@
             this.BtnRestaurarBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnRestaurarBusqueda.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRestaurarBusqueda.ForeColor = System.Drawing.Color.DarkRed;
-            this.BtnRestaurarBusqueda.Location = new System.Drawing.Point(827, 356);
+            this.BtnRestaurarBusqueda.Location = new System.Drawing.Point(1065, 502);
             this.BtnRestaurarBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRestaurarBusqueda.Name = "BtnRestaurarBusqueda";
             this.BtnRestaurarBusqueda.Size = new System.Drawing.Size(173, 91);
@@ -229,7 +229,7 @@
             this.LblErrorBuscar.AutoSize = true;
             this.LblErrorBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorBuscar.Location = new System.Drawing.Point(26, 277);
+            this.LblErrorBuscar.Location = new System.Drawing.Point(264, 423);
             this.LblErrorBuscar.Name = "LblErrorBuscar";
             this.LblErrorBuscar.Size = new System.Drawing.Size(118, 16);
             this.LblErrorBuscar.TabIndex = 97;
@@ -239,7 +239,8 @@
             // 
             // BuscarProducto
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.LblErrorBuscar);
             this.Controls.Add(this.BtnRestaurarBusqueda);
             this.Controls.Add(this.LblCantidadRegistros);
@@ -253,7 +254,7 @@
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.GbBusquedaCampo);
             this.Name = "BuscarProducto";
-            this.Size = new System.Drawing.Size(1021, 490);
+            this.Size = new System.Drawing.Size(1511, 825);
             this.Load += new System.EventHandler(this.BuscarProducto_Load);
             this.GbBusquedaCampo.ResumeLayout(false);
             this.GbBusquedaCampo.PerformLayout();

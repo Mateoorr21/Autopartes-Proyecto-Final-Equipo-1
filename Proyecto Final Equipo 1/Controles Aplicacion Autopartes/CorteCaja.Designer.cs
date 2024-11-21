@@ -47,7 +47,7 @@
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelar.ForeColor = System.Drawing.Color.DarkRed;
-            this.BtnCancelar.Location = new System.Drawing.Point(862, 342);
+            this.BtnCancelar.Location = new System.Drawing.Point(1088, 486);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(128, 103);
@@ -61,7 +61,7 @@
             this.BtnRegistrarVentas.BackColor = System.Drawing.Color.LightBlue;
             this.BtnRegistrarVentas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnRegistrarVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnRegistrarVentas.Location = new System.Drawing.Point(738, 342);
+            this.BtnRegistrarVentas.Location = new System.Drawing.Point(964, 486);
             this.BtnRegistrarVentas.Margin = new System.Windows.Forms.Padding(4);
             this.BtnRegistrarVentas.Name = "BtnRegistrarVentas";
             this.BtnRegistrarVentas.Size = new System.Drawing.Size(117, 103);
@@ -74,7 +74,7 @@
             // 
             this.LblCantidadRegistros.AutoSize = true;
             this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCantidadRegistros.Location = new System.Drawing.Point(536, 450);
+            this.LblCantidadRegistros.Location = new System.Drawing.Point(762, 594);
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
             this.LblCantidadRegistros.Size = new System.Drawing.Size(134, 18);
             this.LblCantidadRegistros.TabIndex = 104;
@@ -85,7 +85,7 @@
             // 
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitulo.Location = new System.Drawing.Point(234, 18);
+            this.LblTitulo.Location = new System.Drawing.Point(460, 162);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(621, 29);
             this.LblTitulo.TabIndex = 102;
@@ -94,7 +94,7 @@
             // BtnCargarVentas
             // 
             this.BtnCargarVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCargarVentas.Location = new System.Drawing.Point(738, 62);
+            this.BtnCargarVentas.Location = new System.Drawing.Point(964, 206);
             this.BtnCargarVentas.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCargarVentas.Name = "BtnCargarVentas";
             this.BtnCargarVentas.Size = new System.Drawing.Size(252, 71);
@@ -106,7 +106,7 @@
             // TxtDineroCaja
             // 
             this.TxtDineroCaja.Enabled = false;
-            this.TxtDineroCaja.Location = new System.Drawing.Point(737, 170);
+            this.TxtDineroCaja.Location = new System.Drawing.Point(963, 314);
             this.TxtDineroCaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtDineroCaja.Name = "TxtDineroCaja";
             this.TxtDineroCaja.ReadOnly = true;
@@ -116,7 +116,7 @@
             // LblDineroCaja
             // 
             this.LblDineroCaja.AutoSize = true;
-            this.LblDineroCaja.Location = new System.Drawing.Point(735, 148);
+            this.LblDineroCaja.Location = new System.Drawing.Point(961, 292);
             this.LblDineroCaja.Name = "LblDineroCaja";
             this.LblDineroCaja.Size = new System.Drawing.Size(196, 16);
             this.LblDineroCaja.TabIndex = 125;
@@ -125,7 +125,7 @@
             // TxtDineroVentas
             // 
             this.TxtDineroVentas.Enabled = false;
-            this.TxtDineroVentas.Location = new System.Drawing.Point(737, 237);
+            this.TxtDineroVentas.Location = new System.Drawing.Point(963, 381);
             this.TxtDineroVentas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TxtDineroVentas.Name = "TxtDineroVentas";
             this.TxtDineroVentas.ReadOnly = true;
@@ -135,7 +135,7 @@
             // LblDineroVentas
             // 
             this.LblDineroVentas.AutoSize = true;
-            this.LblDineroVentas.Location = new System.Drawing.Point(735, 215);
+            this.LblDineroVentas.Location = new System.Drawing.Point(961, 359);
             this.LblDineroVentas.Name = "LblDineroVentas";
             this.LblDineroVentas.Size = new System.Drawing.Size(253, 16);
             this.LblDineroVentas.TabIndex = 127;
@@ -144,7 +144,7 @@
             // BtnMostrarVenta
             // 
             this.BtnMostrarVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnMostrarVenta.Location = new System.Drawing.Point(738, 275);
+            this.BtnMostrarVenta.Location = new System.Drawing.Point(964, 419);
             this.BtnMostrarVenta.Margin = new System.Windows.Forms.Padding(4);
             this.BtnMostrarVenta.Name = "BtnMostrarVenta";
             this.BtnMostrarVenta.Size = new System.Drawing.Size(252, 59);
@@ -156,7 +156,7 @@
             // LvVentas
             // 
             this.LvVentas.HideSelection = false;
-            this.LvVentas.Location = new System.Drawing.Point(32, 62);
+            this.LvVentas.Location = new System.Drawing.Point(258, 206);
             this.LvVentas.Margin = new System.Windows.Forms.Padding(4);
             this.LvVentas.MultiSelect = false;
             this.LvVentas.Name = "LvVentas";
@@ -167,7 +167,8 @@
             // 
             // CorteCaja
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.LvVentas);
             this.Controls.Add(this.BtnMostrarVenta);
             this.Controls.Add(this.TxtDineroVentas);
@@ -180,7 +181,7 @@
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.BtnCargarVentas);
             this.Name = "CorteCaja";
-            this.Size = new System.Drawing.Size(1021, 490);
+            this.Size = new System.Drawing.Size(1516, 825);
             this.Load += new System.EventHandler(this.CorteCaja_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

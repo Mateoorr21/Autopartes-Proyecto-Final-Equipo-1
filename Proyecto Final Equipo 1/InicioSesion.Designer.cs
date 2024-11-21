@@ -193,7 +193,7 @@
             // 
             // PicCaja
             // 
-            this.PicCaja.Image = ((System.Drawing.Image)(resources.GetObject("PicCaja.Image")));
+            this.PicCaja.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.CajaDatos;
             this.PicCaja.Location = new System.Drawing.Point(138, 259);
             this.PicCaja.Name = "PicCaja";
             this.PicCaja.Size = new System.Drawing.Size(246, 35);
@@ -203,7 +203,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.CajaDatos;
             this.pictureBox1.Location = new System.Drawing.Point(138, 329);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(246, 35);
