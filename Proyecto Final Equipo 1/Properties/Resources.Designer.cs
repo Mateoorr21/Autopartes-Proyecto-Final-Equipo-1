@@ -63,16 +63,6 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap avatardefault_92824 {
-            get {
-                object obj = ResourceManager.GetObject("avatardefault_92824", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Esconder_Password {
             get {
                 object obj = ResourceManager.GetObject("Esconder Password", resourceCulture);
@@ -83,39 +73,9 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap locked {
-            get {
-                object obj = ResourceManager.GetObject("locked", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap locked__1_ {
-            get {
-                object obj = ResourceManager.GetObject("locked (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap management {
-            get {
-                object obj = ResourceManager.GetObject("management", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +106,36 @@ namespace Proyecto_Final_Equipo_1.Properties {
         internal static System.Drawing.Bitmap Mostrar_Password {
             get {
                 object obj = ResourceManager.GetObject("Mostrar Password", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Password1 {
+            get {
+                object obj = ResourceManager.GetObject("Password1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Usuario {
+            get {
+                object obj = ResourceManager.GetObject("Usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UsuariosInicioSesion {
+            get {
+                object obj = ResourceManager.GetObject("UsuariosInicioSesion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

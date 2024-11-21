@@ -36,8 +36,8 @@
             this.Btn_Ingreso = new System.Windows.Forms.Button();
             this.Txt_Usuario = new System.Windows.Forms.TextBox();
             this.BtnVolverInicio = new System.Windows.Forms.Button();
-            this.BtnPassword = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.BtnPassword = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.PicCaja = new System.Windows.Forms.PictureBox();
@@ -89,7 +89,7 @@
             // 
             this.LblErrorUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorUsuario.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorUsuario.Location = new System.Drawing.Point(153, 297);
+            this.LblErrorUsuario.Location = new System.Drawing.Point(141, 297);
             this.LblErrorUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblErrorUsuario.Name = "LblErrorUsuario";
             this.LblErrorUsuario.Size = new System.Drawing.Size(199, 22);
@@ -144,6 +144,17 @@
             this.BtnVolverInicio.UseVisualStyleBackColor = false;
             this.BtnVolverInicio.Click += new System.EventHandler(this.BtnVolverInicio_Click);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.Password1;
+            this.pictureBox4.Location = new System.Drawing.Point(144, 331);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 25;
+            this.pictureBox4.TabStop = false;
+            // 
             // BtnPassword
             // 
             this.BtnPassword.BackColor = System.Drawing.Color.White;
@@ -159,20 +170,9 @@
             this.BtnPassword.UseVisualStyleBackColor = false;
             this.BtnPassword.Click += new System.EventHandler(this.BtnPassword_Click);
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
-            this.pictureBox4.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.locked__1_;
-            this.pictureBox4.Location = new System.Drawing.Point(147, 331);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(28, 28);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 26;
-            this.pictureBox4.TabStop = false;
-            // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.management;
+            this.pictureBox3.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.UsuariosInicioSesion;
             this.pictureBox3.Location = new System.Drawing.Point(192, 46);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(133, 128);
@@ -183,7 +183,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.avatardefault_92824;
+            this.pictureBox2.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.Usuario;
             this.pictureBox2.Location = new System.Drawing.Point(145, 261);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
@@ -219,9 +219,9 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(522, 603);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.BtnVolverInicio);
             this.Controls.Add(this.BtnPassword);
-            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.Txt_Usuario);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -261,8 +261,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TextBox Txt_Usuario;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button BtnPassword;
         private System.Windows.Forms.Button BtnVolverInicio;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }

@@ -44,7 +44,6 @@
             this.LblPermiso = new System.Windows.Forms.Label();
             this.LblNombreCompleto = new System.Windows.Forms.Label();
             this.LblUsuario = new System.Windows.Forms.Label();
-            this.PicUsuario = new System.Windows.Forms.PictureBox();
             this.BtnSalir = new System.Windows.Forms.Button();
             this.PanelAplicacion = new System.Windows.Forms.Panel();
             this.PanelAutoPartes = new System.Windows.Forms.Panel();
@@ -58,10 +57,11 @@
             this.LblAgregar = new System.Windows.Forms.Label();
             this.LblInventario = new System.Windows.Forms.Label();
             this.LblTituloInstrucción = new System.Windows.Forms.Label();
+            this.PicUsuario = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicUsuario)).BeginInit();
             this.PanelAutoPartes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // LblTitulo
@@ -144,7 +144,7 @@
             this.panel1.Controls.Add(this.BtnAgregar);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(161, 553);
+            this.panel1.Size = new System.Drawing.Size(161, 952);
             this.panel1.TabIndex = 6;
             // 
             // BtnCorte
@@ -199,7 +199,7 @@
             this.panel3.Controls.Add(this.LblTitulo);
             this.panel3.Location = new System.Drawing.Point(160, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1023, 71);
+            this.panel3.Size = new System.Drawing.Size(1621, 71);
             this.panel3.TabIndex = 7;
             // 
             // LblPermiso
@@ -236,17 +236,6 @@
             this.LblUsuario.Size = new System.Drawing.Size(74, 20);
             this.LblUsuario.TabIndex = 8;
             this.LblUsuario.Text = "Usuario";
-            // 
-            // PicUsuario
-            // 
-            this.PicUsuario.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.avatardefault_92824;
-            this.PicUsuario.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicUsuario.InitialImage")));
-            this.PicUsuario.Location = new System.Drawing.Point(24, 12);
-            this.PicUsuario.Name = "PicUsuario";
-            this.PicUsuario.Size = new System.Drawing.Size(48, 47);
-            this.PicUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicUsuario.TabIndex = 7;
-            this.PicUsuario.TabStop = false;
             // 
             // BtnSalir
             // 
@@ -285,7 +274,7 @@
             this.PanelAutoPartes.Location = new System.Drawing.Point(160, 63);
             this.PanelAutoPartes.Margin = new System.Windows.Forms.Padding(2);
             this.PanelAutoPartes.Name = "PanelAutoPartes";
-            this.PanelAutoPartes.Size = new System.Drawing.Size(1023, 490);
+            this.PanelAutoPartes.Size = new System.Drawing.Size(1624, 889);
             this.PanelAutoPartes.TabIndex = 7;
             // 
             // LblNota
@@ -394,11 +383,23 @@
             this.LblTituloInstrucción.TabIndex = 2;
             this.LblTituloInstrucción.Text = "Bienvenido a la Aplicación de la Tienda de Autopartes";
             // 
+            // PicUsuario
+            // 
+            this.PicUsuario.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.Usuario;
+            this.PicUsuario.InitialImage = ((System.Drawing.Image)(resources.GetObject("PicUsuario.InitialImage")));
+            this.PicUsuario.Location = new System.Drawing.Point(24, 12);
+            this.PicUsuario.Name = "PicUsuario";
+            this.PicUsuario.Size = new System.Drawing.Size(48, 47);
+            this.PicUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicUsuario.TabIndex = 7;
+            this.PicUsuario.TabStop = false;
+            // 
             // Aplicacion
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1183, 552);
+            this.ClientSize = new System.Drawing.Size(1782, 953);
             this.Controls.Add(this.PanelAutoPartes);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -415,9 +416,9 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicUsuario)).EndInit();
             this.PanelAutoPartes.ResumeLayout(false);
             this.PanelAutoPartes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicUsuario)).EndInit();
             this.ResumeLayout(false);
 
         }
