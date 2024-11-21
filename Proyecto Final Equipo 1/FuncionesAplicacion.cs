@@ -85,7 +85,9 @@ namespace Proyecto_Final_Equipo_1
             {
                 if (control is TextBox textBox)
                 {
-                    textBox.Text = string.Empty;
+                    if (textBox.Tag != null) textBox.Text = textBox.Tag.ToString(); //Si tiene tag 
+                    
+                    else textBox.Text = string.Empty;
                 }
                 else if (control is RadioButton radioButton)
                 {
@@ -94,7 +96,7 @@ namespace Proyecto_Final_Equipo_1
 
                     else radioButton.Checked = false;
                 }
-                else if (control is PictureBox pictureBox)
+                else if (control is PictureBox pictureBox && pictureBox.Name.Contains("PicImagenProducto"))
                 {
                     pictureBox.Image = null;
                 }

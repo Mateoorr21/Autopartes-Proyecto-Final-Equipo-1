@@ -275,5 +275,41 @@
   <ItemGroup>
     <None Include="Resources\Usuario2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloAgregarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cajagris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cajaaa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AgregarImagen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoAgregarImagen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoAgregarImagen2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoQuitarImagen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonAgregarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoReset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Recortado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Titulo2AgregarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PatronLlanta1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
