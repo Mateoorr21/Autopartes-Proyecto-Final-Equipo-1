@@ -24,13 +24,14 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvVentas.View = View.Details;
             LvVentas.GridLines = true;
             LvVentas.FullRowSelect = true;
-            LvVentas.Columns.Add("Nombre Completo", 100);
             LvVentas.Columns.Add("Usuario", 100);
-            LvVentas.Columns.Add("Id Producto", 100);
-            LvVentas.Columns.Add("Nombre", 150);
-            LvVentas.Columns.Add("Precio", 80);
+            LvVentas.Columns.Add("Id Producto", 80);
+            LvVentas.Columns.Add("Nombre Producto", 200);
+            LvVentas.Columns.Add("Precio", 70);
             LvVentas.Columns.Add("Cantidad", 80);
-            LvVentas.Columns.Add("Total", 80);
+            LvVentas.Columns.Add("Total", 70);
+            LvVentas.Columns.Add("Total IVA", 80);
+            LvVentas.Columns.Add("Fecha/Hora", 180);
         }
 
         public void CargarDineroCaja()

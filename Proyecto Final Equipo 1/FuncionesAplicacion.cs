@@ -253,6 +253,7 @@ namespace Proyecto_Final_Equipo_1
                         Producto.SubItems.Add(LeerProductos["Marca"].ToString());
                         Producto.SubItems.Add(LeerProductos["Precio"].ToString());
                         Producto.SubItems.Add(LeerProductos["Cantidad_en_Stock"].ToString());
+                        Producto.SubItems.Add(LeerProductos["Imagen"].ToString());
 
                         // Cargamos el registro al ListView
                         LvProductos.Items.Add(Producto);
@@ -268,19 +269,21 @@ namespace Proyecto_Final_Equipo_1
         //FUNCION PARA VALIDAR LA ENTRADA CANTIDAD DEL SUBAPARTADO AGREAGR INVENTARIO
         public static void ValidarCantidadParaAgregar(TextBox Txt_Cantidad, Button BtnMenos, Button BtnMas, ListView LvProductos)
         {
-            //Verificamos si la caja esta vacia. Si lo esta, solo deshabilitamos el boton de menos y cantidad ingresada es 0
-            if (string.IsNullOrEmpty(Txt_Cantidad.Text))
+            //Verificamos si la caja esta en su estado original. Si lo esta, solo deshabilitamos el boton de menos y cantidad ingresada es 0. Cambiamos imagenes
+            if (Txt_Cantidad.Text == "0")
             {
                 CantidadIngresada = 0;
                 BtnMenos.Enabled = false;
                 BtnMas.Enabled = true;
+                BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes;
+                BtnMas.BackgroundImage = Properties.Resources.BotonMas;
                 return;
             }
 
             //Si no se ha seleccionado producto mensaje de error
             if (LvProductos.SelectedItems.Count == 0)
             {
-                Txt_Cantidad.Clear(); //Limpiamos la caja
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Restablecemos la Caja de Cantidad
                 MessageBox.Show("Seleccione un registro antes de ingresar la cantidad de ejemplares a agregar al Inventario.",
                     "ERROR. NO SE SELECCIONÓ PRODUCTO PARA AÑADIR EJEMPLARES", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -288,7 +291,17 @@ namespace Proyecto_Final_Equipo_1
 
             if (int.TryParse(Txt_Cantidad.Text, out CantidadIngresada)) //Si lo contenido en la Caja es un entero, validamos
             {
-                BtnMenos.Enabled = CantidadIngresada > 0; //Si es mayor a 0 se habilita, de lo contrario se deshabilita.
+                if (CantidadIngresada > 0) //Si es mayor a 0 boton menos habilitado
+                {
+                    BtnMenos.Enabled = true;
+                    BtnMenos.BackgroundImage = Properties.Resources.BotonMenos;
+                }
+
+                else //Si es el boton menos se deshabilita
+                {
+                    BtnMenos.Enabled = false;
+                    BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes;
+                }
             }
         }
 
@@ -535,7 +548,7 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            TxtBuscar.Clear(); //Limpiamos el TextBox Buscar
+            TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos el TextBox Buscar
         }
 
 
@@ -563,7 +576,7 @@ namespace Proyecto_Final_Equipo_1
                 " \n\nCantidad en Stock: " + ProductoSeleccionado.SubItems[5].Text,
                 "INFORMACIÓN DEL PRODUCTO SELECCIONADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            string RutaImagen = ProductoSeleccionado.SubItems[6].Text; //Obtenemos la ruta 
+            string RutaImagen = ProductoSeleccionado.SubItems[6].Text.Trim('#'); //Obtenemos la ruta 
 
             string RutaImagenAbrir = "..\\..\\" + RutaImagen; //Creamos la nueva ruta (saliendo varias carpetas mas)
 
@@ -607,6 +620,13 @@ namespace Proyecto_Final_Equipo_1
             //Convertimos el valor de las cajas en tipo float y entero
             float Precio = float.Parse(Txt_Precio.Text);
             float Cantidad = int.Parse(Txt_Cantidad.Text);
+
+            if (Precio == 0 || Cantidad == 0) //Validamos que precio y cantidad no sean iguales a 0
+            {
+                MessageBox.Show("Error. No se puede ingresar 0 como valor de Precio o Cantidad en Existencia", "ERROR. 0 NO ES VALIDO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             //using para establecer conexion con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -751,7 +771,7 @@ namespace Proyecto_Final_Equipo_1
             {
                 //Reemplazar todos los que no sean numeros (^ niega el patrón)
                 TxtBuscar.Text = Regex.Replace(TxtBuscar.Text, @"[^0-9]", "");
-                LblCampoBuscar.Text = "Id";
+                LblCampoBuscar.Text = "Id_Producto";
                 LblErrorBuscar.Visible = false;
             }
         }
@@ -762,7 +782,6 @@ namespace Proyecto_Final_Equipo_1
             {
                 LblCampoBuscar.Text = "Nombre";
                 LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "";
             }
         }
 
@@ -929,7 +948,7 @@ namespace Proyecto_Final_Equipo_1
                 if (ProductoEnCarrito.SubItems[0].Text == ProductoId)
                 {
                     //Limpiamos la caja cantidad y desceleccionamos el producto
-                    Txt_Cantidad.Clear();
+                    Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
                     LvProductos.SelectedItems.Clear();
 
                     //Si ya se encuentra en Carrito mensaje de advertencia
@@ -940,9 +959,9 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            ProductoPaga = CantidadIngresada * float.Parse(ProductoPrecio); //Obtenemos lo que se pagara por ese producto.
+            ProductoPaga = CantidadIngresada * float.Parse(ProductoPrecio) * 1.16F; //Obtenemos lo que se pagara por ese producto con IVA.
 
-            PorPagar += ProductoPaga; //Lo agregamos al total de la venta
+            PorPagar += ProductoPaga; //Lo agregamos al total de la venta         
 
             TxtPorPagar.Text = PorPagar.ToString("C"); //Actualizamos la caja de texto
 
@@ -951,7 +970,8 @@ namespace Proyecto_Final_Equipo_1
             ProductoCarrito.SubItems.Add(ProductoNombre);
             ProductoCarrito.SubItems.Add(ProductoPrecio);
             ProductoCarrito.SubItems.Add(ProductoCantidad);
-            ProductoCarrito.SubItems.Add(ProductoPaga.ToString());
+            ProductoCarrito.SubItems.Add((CantidadIngresada * float.Parse(ProductoPrecio)).ToString()); //Total del producto sin IVA
+            ProductoCarrito.SubItems.Add(ProductoPaga.ToString()); //Total del producto con IVA
 
             LvCarrito.Items.Add(ProductoCarrito); //Cargamos el producto
             CantidadEnCarrito++; //Agregamos uno a la cantidad de productos en carrito
@@ -982,6 +1002,7 @@ namespace Proyecto_Final_Equipo_1
 
             LvCarrito.Items.Clear(); //Limpiamos ListView de Carrito
             TxtPorPagar.Clear(); //Limpiamos caja de texto PorPagar
+            PorPagar = 0; //Reiniciamos PorPagar
             LblCantidadRegistrosCarrito.Text = LblCantidadRegistrosCarrito.Tag.ToString(); //Etiqueta cantidad a su original
             CantidadEnCarrito = 0;
         }
@@ -1008,7 +1029,7 @@ namespace Proyecto_Final_Equipo_1
 
             ListViewItem ItemSeleccionado = LvCarrito.SelectedItems[0]; //Obtenemos el producto seleccionado del carrito
 
-            ProductoPaga = float.Parse(ItemSeleccionado.SubItems[4].Text); //Obtenemos lo que se paga por los ejemplares de ese producto
+            ProductoPaga = float.Parse(ItemSeleccionado.SubItems[5].Text); //Obtenemos lo que se paga por los ejemplares de ese producto
 
             PorPagar -= ProductoPaga; //Lo restamos del total de la venta
 
@@ -1045,8 +1066,8 @@ namespace Proyecto_Final_Equipo_1
                 conexion.Open(); //Abrimos conexion
 
                 //Primer Comando SQL para insertar la venta de un producto a la BDDS de ventas
-                string query = "INSERT INTO Ventas (Nombre_Completo, Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total) " +
-                   "VALUES (@NombreCompleto, @Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total)";
+                string query = "INSERT INTO Ventas (Nombre_Completo, Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total, Total_IVA, Fecha_Hora) " +
+                   "VALUES (@NombreCompleto, @Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total, @TotalIVA, @FechaHora)";
 
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
                 {
@@ -1065,6 +1086,8 @@ namespace Proyecto_Final_Equipo_1
                         comando.Parameters.AddWithValue("@Precio", float.Parse(ProductoEnCarrito.SubItems[2].Text));
                         comando.Parameters.AddWithValue("@Cantidad", int.Parse(ProductoEnCarrito.SubItems[3].Text));
                         comando.Parameters.AddWithValue("@Total", float.Parse(ProductoEnCarrito.SubItems[4].Text));
+                        comando.Parameters.AddWithValue("@TotalIVA", float.Parse(ProductoEnCarrito.SubItems[4].Text) * 1.16);
+                        comando.Parameters.AddWithValue("@FechaHora", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")); //Fecha y Hora Actuales
 
                         comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
                     }
@@ -1103,17 +1126,17 @@ namespace Proyecto_Final_Equipo_1
         }
 
         //FUNCION PARA LIMPIAR EL SUBAPARTADO DE BUSQUEDA DE VENTAS
-        public static void RestaurarBusquedaVentas(ListView LvProductos, TextBox TxtBuscar, TextBox Txt_Cantidad, 
-            Label LblErrorBuscar, Label LblErrorCantidad, Label LblProducto, RadioButton RdAproximada, 
+        public static void RestaurarBusquedaVentas(ListView LvProductos, TextBox TxtBuscar, TextBox TxtProducto, TextBox Txt_Cantidad, 
+            Label LblErrorBuscar, Label LblErrorCantidad, RadioButton RdAproximada, 
             RadioButton RdExacta, RadioButton RdNombre, RadioButton RdId, Label LblCantidadRegistrosBuscar)
         {
             //Limpiamos los controles relacionados a buscar y agregar un producto al carrito
             LvProductos.Items.Clear();
-            TxtBuscar.Clear();
-            Txt_Cantidad.Clear();
+            TxtBuscar.Text = TxtBuscar.Tag.ToString(); // Reestablecemos caja Buscar
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Reestablecemos caja Cantidad
+            TxtProducto.Text = TxtProducto.Tag.ToString(); //Reestablecemos caja Producto
             LblErrorBuscar.Visible = false;
             LblErrorCantidad.Visible = false;
-            LblProducto.Visible = false;
             RdAproximada.Checked = true;
             RdExacta.Checked = false;
             RdNombre.Checked = true;
@@ -1125,19 +1148,21 @@ namespace Proyecto_Final_Equipo_1
         //FUNCION PARA VALIDAR LA ENTRADA DE CANTIDAD, QUE LA CANTIDAD INGRESADA NO PASE DE STOCK
         public static void ValidarCantidadConStock(TextBox Txt_Cantidad, Button BtnMenos, Button BtnMas, ListView LvProductos)
         {
-            //Verificamos si la caja esta vacia. Si lo esta, solo deshabilitamos el boton de menos y cantidad ingresada es 0
-            if (string.IsNullOrEmpty(Txt_Cantidad.Text))
+            //Verificamos si la caja esta en su original. Si lo esta, solo deshabilitamos el boton de menos y cantidad ingresada es 0
+            if (Txt_Cantidad.Text == Txt_Cantidad.Tag.ToString()) 
             {
                 CantidadIngresada = 0;
                 BtnMenos.Enabled = false;
                 BtnMas.Enabled = true;
+                BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes;
+                BtnMas.BackgroundImage = Properties.Resources.BotonMas;
                 return;
             }
 
             //Si no se ha seleccionado producto mensaje de error
             if (LvProductos.SelectedItems.Count == 0)
             {
-                Txt_Cantidad.Clear(); //Limpiamos la caja
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Restablecemos caja Cantidad
                 MessageBox.Show("Seleccione un registro antes de ingresar la cantidad de productos a vender.",
                     "ERROR. NO SE HA SELECCIONADO PRODUCTO PARA VENDER", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -1145,16 +1170,40 @@ namespace Proyecto_Final_Equipo_1
 
             if (int.TryParse(Txt_Cantidad.Text, out CantidadIngresada)) //Si lo contenido en la Caja es un entero, validamos
             {
-                BtnMenos.Enabled = CantidadIngresada > 0; //Si es mayor a 0 se habilita, de lo contrario se deshabilita.
-                BtnMas.Enabled = CantidadIngresada < CantidadEnStockSeleccionado; //Solo se habilita si cantidad es menor a la de Stock se habilita.
-
-                if (CantidadIngresada > CantidadEnStockSeleccionado) //Si sobrepasa la cantidad en Stock mensaje de Error
+                if(CantidadIngresada > 0) //Si es mayor a 0 se habilita boton menos
                 {
+                    BtnMenos.Enabled = true;
+                    BtnMenos.BackgroundImage = Properties.Resources.BotonMenos;
+                }
+
+                else //De lo contrario se deshabilita
+                {
+                    BtnMenos.Enabled = false;
+                    BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes;
+                }
+
+                if (CantidadIngresada < CantidadEnStockSeleccionado) //Si la cantidad ingresada es menor a la de stock se habilita boton mas
+                {
+                    BtnMas.Enabled = true;
+                    BtnMas.BackgroundImage = Properties.Resources.BotonMas;
+                }
+
+                else if (CantidadIngresada == CantidadEnStockSeleccionado) //Si son iguales se deshabilita
+                {
+                    BtnMas.Enabled = false;
+                    BtnMas.BackgroundImage = Properties.Resources.BotonMasDes;
+                }
+
+                else //Si sobrepasa la cantidad en Stock se deshabilita y mensaje de Error
+                {
+                    BtnMas.Enabled = false;
+                    BtnMas.BackgroundImage = Properties.Resources.BotonMasDes;
+
                     MessageBox.Show("La Cantidad a Vender no debe ser mayor que la cantidad de ejemplares en stock: " +
                         CantidadEnStockSeleccionado + ".", "ERROR. CANTIDAD A VENDER SOBREPASA CANTIDAD EN STOCK",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    Txt_Cantidad.Clear(); //Limpiamos la caja de Cantidad
+                    Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Restablecemos caja Cantidad
                 }
             }
         }
@@ -1189,7 +1238,7 @@ namespace Proyecto_Final_Equipo_1
                 conexion.Open(); //Abrimos conexion
                 ListViewItem Venta;
 
-                string ComandoVentas = "SELECT Nombre_Completo, Usuario, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total" +
+                string ComandoVentas = "SELECT Usuario, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total, Total_IVA, Fecha_Hora" +
                     " FROM Ventas WHERE SeGuardo = False"; //Consulta para seleccionar las ventas hechas por el Usuario
 
                 //Using para liberar objeto cuando ya no se use
@@ -1198,7 +1247,7 @@ namespace Proyecto_Final_Equipo_1
                     OleDbDataReader LeerVentas = comando.ExecuteReader(); //Objeto de lectura
 
                     ContarVentas = 0; //Variable para contar los registros
-                    DineroVentas = 0; //Vairable para contar el dinero generado
+                    DineroVentas = 0; //Variable para contar el dinero generado
 
                     if (LeerVentas.HasRows) //Si se obtuvieron registros de la busqueda
                     {
@@ -1210,18 +1259,19 @@ namespace Proyecto_Final_Equipo_1
                             ContarVentas++;
 
                             //Ingresamos a las columnas del ListView los valores de la base de datos 
-                            Venta = new ListViewItem(LeerVentas["Nombre_Completo"].ToString());
-                            Venta.SubItems.Add(LeerVentas["Usuario"].ToString());
+                            Venta = new ListViewItem(LeerVentas["Usuario"].ToString());
                             Venta.SubItems.Add(LeerVentas["Id_Producto"].ToString());
                             Venta.SubItems.Add(LeerVentas["Nombre_Producto"].ToString());
                             Venta.SubItems.Add(LeerVentas["Precio_Producto"].ToString());
                             Venta.SubItems.Add(LeerVentas["Cantidad_Producto"].ToString());
                             Venta.SubItems.Add(LeerVentas["Total"].ToString());
+                            Venta.SubItems.Add(LeerVentas["Total_IVA"].ToString());
+                            Venta.SubItems.Add(LeerVentas["Fecha_Hora"].ToString());
 
                             //Cargamos el registro al ListView
                             LvVentas.Items.Add(Venta);
 
-                            DineroVentas += float.Parse(LeerVentas["Total"].ToString()); //Sumamos el dinero generado de cada Venta
+                            DineroVentas += float.Parse(LeerVentas["Total_IVA"].ToString()); //Sumamos el dinero generado de cada Venta
 
                             //Actualizamos la etiqueta que cuenta los registros
                             LblCantidadRegistros.Text = "Ventas Realizadas: " + ContarVentas.ToString();
@@ -1249,13 +1299,14 @@ namespace Proyecto_Final_Equipo_1
 
             //Mostramos en un Message Box la información obtenida de la venta seleccionada
             MessageBox.Show("Datos de la Venta Seleccioada Seleccionada:" +
-                "\n\n\nNombre Completo: " + VentaSeleccionada.SubItems[0].Text +
-                "\n\nUsuario: " + VentaSeleccionada.SubItems[1].Text +
-                " \n\nId de Producto: " + VentaSeleccionada.SubItems[2].Text +
-                " \n\nNombre de Producto: " + VentaSeleccionada.SubItems[3].Text +
-                " \n\nPrecio: $ " + VentaSeleccionada.SubItems[4].Text +
-                " \n\nCantidad Vendida: " + VentaSeleccionada.SubItems[5].Text +
-                " \n\nTotal: $ " + VentaSeleccionada.SubItems[6].Text,
+                "\n\n\nUsuario: " + VentaSeleccionada.SubItems[0].Text +
+                " \n\nId de Producto: " + VentaSeleccionada.SubItems[1].Text +
+                " \n\nNombre de Producto: " + VentaSeleccionada.SubItems[2].Text +
+                " \n\nPrecio: $ " + VentaSeleccionada.SubItems[3].Text +
+                " \n\nCantidad Vendida: " + VentaSeleccionada.SubItems[4].Text +
+                " \n\nTotal sin IVA: $ " + VentaSeleccionada.SubItems[5].Text +
+                " \n\nTotal sin IVA: $ " + VentaSeleccionada.SubItems[6].Text +
+                " \n\nFecha y Hora: " + VentaSeleccionada.SubItems[7].Text,
                 "INFORMACIÓN DE LA VENTA SELECCIONADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -1290,7 +1341,7 @@ namespace Proyecto_Final_Equipo_1
             {
                 conexion.Open(); //Abrimos conexion
 
-                //Actualizamos la BDDS Ventas para Guardar las ventas hechas por el Usuario
+                //Primera Consulta Actualizamos la BDDS Ventas para Guardar las ventas hechas por el Usuario
                 string ComandoVentas = "UPDATE Ventas SET SeGuardo = True WHERE SeGuardo = False";
 
                 //Using para liberar objeto cuando ya no se use
@@ -1298,8 +1349,25 @@ namespace Proyecto_Final_Equipo_1
                 {
                     comando.ExecuteNonQuery(); //Ejecutamos consulta
                 }
+
+
+                //Segunda Consulta Insertamos un nuevo registro en la tabla cortes
+                string ComandoCorte = "INSERT INTO Cortes (Usuario, Dinero_Inicial, Ventas_Totales, Dinero_Final, Fecha_Hora) " +
+                    "VALUES (@Usuario, @DineroInicial, @VentasTotales, @DineroFinal, @FechaHora)";
+
+                //Using para liberar objeto cuando ya no se use
+                using (OleDbCommand comando = new OleDbCommand(ComandoCorte, conexion)) //pasamos consulta y conexion
+                {
+                    comando.Parameters.AddWithValue("@Usuario", Usuario);
+                    comando.Parameters.AddWithValue("@DineroInicial", Properties.Settings.Default.DineroEnCaja);
+                    comando.Parameters.AddWithValue("@DineroInicial", DineroVentas);
+                    comando.Parameters.AddWithValue("@DineroFinal", Properties.Settings.Default.DineroEnCaja + DineroVentas);
+                    comando.Parameters.AddWithValue("@FechaHora", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")); //Fecha y Hora Actuales
+                    comando.ExecuteNonQuery(); //Ejecutamos consulta
+                }
             }
 
+            
             // Sumar las ventas del usuario al dinero que tenemos en la caja
             Properties.Settings.Default.DineroEnCaja += DineroVentas;
 

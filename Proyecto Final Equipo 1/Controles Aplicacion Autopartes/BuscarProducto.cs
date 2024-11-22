@@ -27,12 +27,18 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;
             LvProductos.Columns.Add("Id", 40);
-            LvProductos.Columns.Add("Nombre", 120);
-            LvProductos.Columns.Add("Descripcion", 200);
-            LvProductos.Columns.Add("Marca", 100);
-            LvProductos.Columns.Add("Precio", 70);
-            LvProductos.Columns.Add("Cantidad en Stock", 120);
+            LvProductos.Columns.Add("Nombre", 160);
+            LvProductos.Columns.Add("Descripcion", 250);
+            LvProductos.Columns.Add("Marca", 92);
+            LvProductos.Columns.Add("Precio", 60);
+            LvProductos.Columns.Add("Cantidad en Stock", 75);
             LvProductos.Columns.Add("Imagen", 0);
+        }
+
+        //Funcion Cargar Productos que se llama cada vez que se da click en el Boton Buscar
+        public void CargarProductos()
+        {
+            FuncionesAplicacion.CargarProductos(LvProductos, LblCantidadRegistros);
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -43,13 +49,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void RdId_CheckedChanged(object sender, EventArgs e)
         {
-            
             FuncionesAplicacion.SeleccionoId(RdId, TxtBuscar, LblCampoBuscar, LblErrorBuscar); //Llamamos a la Funcion SeleccionoId
         }
 
         private void RdNombre_CheckedChanged(object sender, EventArgs e)
         {
-            FuncionesAplicacion.SeleccionoId(RdId, TxtBuscar, LblCampoBuscar, LblErrorBuscar); //Llamamos a la Funcion SeleccionoId
+            FuncionesAplicacion.SeleccionoNombre(RdNombre, LblCampoBuscar, LblErrorBuscar); //Llamamos a la Funcion SeleccionoId
         }
 
         private void TxtBuscar_KeyPress(object sender, KeyPressEventArgs e)
@@ -77,6 +82,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void BtnRestaurarBusqueda_Click(object sender, EventArgs e)
         {
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            CargarProductos();
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 

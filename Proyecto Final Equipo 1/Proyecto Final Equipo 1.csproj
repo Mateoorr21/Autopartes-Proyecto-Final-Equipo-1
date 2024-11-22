@@ -329,5 +329,140 @@
   <ItemGroup>
     <None Include="Resources\IconoEliminarProductoDes.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloAgregarInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonMas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonMasDes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonMenosDes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonMenos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonMas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BotonMenos1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloBuscarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoBusqueda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoPorCampo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonBuscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonBuscar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonMostrarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoInventario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloEliminarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoPorCampoBlanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoBusquedaBlanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonEliminarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloModificarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloModificarProducto2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonModificarProducto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoEditarCamposBlanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoImagenBlanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloCorteCaja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoSobreVentasBlanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoVentasBlanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonRegistrarVentas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonCargarVentas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonMostrarVenta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonBuscarRecortado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloVenderProductos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonAgregarCarrito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonVaciarCarrito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonEliminarDeCarrito2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonVaciarCarrito3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonEliminarDeCarrito3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonAgregarCarrito3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonEliminarDeCarrito31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonVaciarCarrito31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonVenta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonCancelarVenta2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonVentaRecortada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagenIndicacionesAplicacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagenIndicacionesAplicacionConLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

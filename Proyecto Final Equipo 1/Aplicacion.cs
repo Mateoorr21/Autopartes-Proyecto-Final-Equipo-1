@@ -70,6 +70,25 @@ namespace Proyecto_Final_Equipo_1
             FuncionesAplicacion.LimpiarControles(ventaProducto);
             FuncionesAplicacion.LimpiarControles(corteCaja);
         }
+        
+        //Funcion para ver si tenemos que abrir un nuevo control de usuario o no
+        private void MostrarControlUsuario(Control control)
+        {
+            // Si el control ya está cargado en el panel no hacemos nada
+            if (PanelAutoPartes.Controls.Count > 0 && PanelAutoPartes.Controls[0] == control)
+            {
+                return;
+            }
+
+            // Limpiar todos los controles del panel
+            PanelAutoPartes.Controls.Clear();
+
+            // Agregar el nuevo control
+            PanelAutoPartes.Controls.Add(control);
+            control.Dock = DockStyle.Fill;
+
+            FuncionesAplicacion.ReiniciarVariables(); // Reiniciamos las variables
+        }
 
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
         {
@@ -80,64 +99,43 @@ namespace Proyecto_Final_Equipo_1
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
-
-            //Limpiamos panel y cargamos el Control de Usuario AgregarProducto
-            PanelAutoPartes.Controls.Clear();
-            PanelAutoPartes.Controls.Add(agregarProducto);
-            agregarProducto.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            MostrarControlUsuario(agregarProducto); 
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            //LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+            LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+            MostrarControlUsuario(buscarProducto);
 
-            //Limpiamos panel y cargamos el Control de Usuario BuscarProducto
-            PanelAutoPartes.Controls.Clear();
-            PanelAutoPartes.Controls.Add(buscarProducto);
-            buscarProducto.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            //LLamamos a la función CargarProductos
+            buscarProducto.CargarProductos();
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+            MostrarControlUsuario(eliminarProducto);
 
-            //Limpiamos panel y cargamos el Control de Usuario BuscarProducto
-            PanelAutoPartes.Controls.Clear();
-            PanelAutoPartes.Controls.Add(eliminarProducto);
-            eliminarProducto.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            //LLamamos a la función CargarProductos
+            eliminarProducto.CargarProductos();
         }
 
         private void BtnInventario_Click(object sender, EventArgs e)
         {
             LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
-
-            //Limpiamos panel y cargamos el Control de Usuario InventarioProductos
-            PanelAutoPartes.Controls.Clear();
-            PanelAutoPartes.Controls.Add(inventarioProductos);
-            inventarioProductos.Dock = DockStyle.Fill;
+            MostrarControlUsuario(inventarioProductos);
 
             //LLamamos a la función CargarProductos
             inventarioProductos.CargarProductos();
-
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las variables
         }
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
             LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+            MostrarControlUsuario(modificarProducto);
 
-            //Limpiamos panel y cargamos el Control de Usuario ModificarProducto
-            PanelAutoPartes.Controls.Clear();
-            PanelAutoPartes.Controls.Add(modificarProducto);
-            modificarProducto.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            //LLamamos a la función CargarProductos
+            modificarProducto.CargarProductos();
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -167,26 +165,18 @@ namespace Proyecto_Final_Equipo_1
         private void BtnVender_Click(object sender, EventArgs e)
         {
             LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
+            MostrarControlUsuario(ventaProducto);
 
-            //Limpiamos panel y cargamos el Control de Usuario ventaProducto
-            PanelAutoPartes.Controls.Clear();
-            PanelAutoPartes.Controls.Add(ventaProducto);
-            ventaProducto.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            //LLamamos a la función CargarProductos
+            ventaProducto.CargarProductos();
         }
 
         private void BtnCorte_Click(object sender, EventArgs e)
         {
             LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
-
-            //Limpiamos panel y cargamos el Control de Usuario corteCaja
-            PanelAutoPartes.Controls.Clear();
-            PanelAutoPartes.Controls.Add(corteCaja);
-            corteCaja.Dock = DockStyle.Fill;
+            MostrarControlUsuario(corteCaja);
 
             corteCaja.CargarDineroCaja(); //Cargamos el dinero en caja
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
 

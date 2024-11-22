@@ -24,19 +24,24 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         {
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
 
-            //Declaramos el ListView, sus propiedades y columnas
+            //Establecemos el ListView, sus propiedades y columnas
             LvProductos.View = View.Details;
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;
             LvProductos.Columns.Add("Id", 40);
-            LvProductos.Columns.Add("Nombre", 150);
-            LvProductos.Columns.Add("Descripcion", 210);
-            LvProductos.Columns.Add("Marca", 150);
-            LvProductos.Columns.Add("Precio", 100);
-            LvProductos.Columns.Add("Cantidad en Stock", 120);
+            LvProductos.Columns.Add("Nombre", 160);
+            LvProductos.Columns.Add("Descripcion", 250);
+            LvProductos.Columns.Add("Marca", 92);
+            LvProductos.Columns.Add("Precio", 60);
+            LvProductos.Columns.Add("Cantidad en Stock", 75);
             LvProductos.Columns.Add("Imagen", 0);
         }
 
+        //Funcion Cargar Productos que se llama cada vez que se da click en el Boton Eliminar
+        public void CargarProductos()
+        {
+            FuncionesAplicacion.CargarProductos(LvProductos, LblCantidadRegistros);
+        }
         private void BtnBuscar_Click_1(object sender, EventArgs e)
         {
             //Llamamos a la función EncontrarProductos de Inicio
@@ -81,6 +86,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            CargarProductos();
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 

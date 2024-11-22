@@ -29,24 +29,30 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;
             LvProductos.Columns.Add("Id", 40);
-            LvProductos.Columns.Add("Nombre", 100);
-            LvProductos.Columns.Add("Descripcion", 100);
+            LvProductos.Columns.Add("Nombre", 160);
+            LvProductos.Columns.Add("Descripcion", 0);
             LvProductos.Columns.Add("Marca", 80);
             LvProductos.Columns.Add("Precio", 70);
-            LvProductos.Columns.Add("Cantidad en Stock", 70);
+            LvProductos.Columns.Add("Cantidad en Stock", 75);
             LvProductos.Columns.Add("Imagen", 0);
 
             //Establecemos el ListView de Productos en Carrito, sus propiedades y columnas
             LvCarrito.View = View.Details;
             LvCarrito.GridLines = true;
             LvCarrito.FullRowSelect= true;
-            LvCarrito.Columns.Add("Id", 40);
-            LvCarrito.Columns.Add("Nombre", 150);
+            LvCarrito.Columns.Add("Id", 25);
+            LvCarrito.Columns.Add("Nombre", 180);
             LvCarrito.Columns.Add("Precio", 50);
-            LvCarrito.Columns.Add("Cantidad", 60);
-            LvCarrito.Columns.Add("Total", 60);
+            LvCarrito.Columns.Add("Cantidad", 65);
+            LvCarrito.Columns.Add("Total", 50);
+            LvCarrito.Columns.Add("Total IVA", 70);
         }
 
+        //Funcion Cargar Productos que se llama cada vez que se da click en el Boton Ventas
+        public void CargarProductos()
+        {
+            FuncionesAplicacion.CargarProductos(LvProductos, LblCantidadRegistrosBuscar);
+        }
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             //Llamamos a la función EncontrarProductos
@@ -71,8 +77,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void BtnRestaurarBusqueda_Click(object sender, EventArgs e)
         {
             //Llamamos a la función para limpiar el Subapartado de Busqueda del control de Usuario Ventas
-            FuncionesAplicacion.RestaurarBusquedaVentas(LvProductos, TxtBuscar, Txt_Cantidad, LblErrorBuscar, 
-                LblErrorCantidad, LblProducto, RdAproximada, RdExacta, RdNombre, RdId, LblCantidadRegistrosBuscar);
+            FuncionesAplicacion.RestaurarBusquedaVentas(LvProductos, TxtBuscar, TxtProducto, Txt_Cantidad, LblErrorBuscar,
+                LblErrorCantidad, RdAproximada, RdExacta, RdNombre, RdId, LblCantidadRegistrosBuscar);
+            CargarProductos();
         }
 
         private void LvProductos_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -93,14 +100,16 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Limpiamos la Caja de Cantidad
-            Txt_Cantidad.Clear();
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
 
             //Si se selecciona un registro
             if (LvProductos.SelectedItems.Count > 0)
             {
-                //Habilitamos Botones de (+) y (-)
+                //Habilitamos Botones de (+)
                 BtnMas.Enabled = true;
-                BtnMenos.Enabled = false; 
+                BtnMenos.Enabled = false;
+                BtnMas.BackgroundImage = Properties.Resources.BotonMas;
+                BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes;
 
                 ListViewItem ItemSeleccionado = LvProductos.SelectedItems[0]; //Obtenemos registro seleccionado
 
@@ -113,15 +122,17 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 FuncionesAplicacion.CantidadEnStockSeleccionado = int.Parse(ItemSeleccionado.SubItems[5].Text);
 
                 //Mostramos la etiqueta producto con el nombre del producto seleccionado
-                LblProducto.Visible = true;
-                LblProducto.Text = ItemSeleccionado.SubItems[1].Text;
+                TxtProducto.Text = ItemSeleccionado.SubItems[1].Text;
             }
 
             else
             {
-                LblProducto.Visible = false; //Si no se selecciona algo Ocultamos la etiqueta
+                TxtProducto.Text = TxtProducto.Tag.ToString(); //Restablecemos la caja de texto
                 BtnMas.Enabled = false; //Inhabilitamos Botones de (+) y (-)
                 BtnMenos.Enabled = false;
+                BtnMas.BackgroundImage = Properties.Resources.BotonMasDes; //Cambiamos a imagen Deshabilitada
+                BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes;
+
             }          
         }
 
@@ -176,6 +187,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             if (VentaExito) //Solo si la venta fue Exitosa limpiamos y reiniciamos
             {
                 FuncionesAplicacion.LimpiarControles(this); //Limpiamos todos los controles una vez hecha la venta
+                CargarProductos();
                 FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
             }
         }

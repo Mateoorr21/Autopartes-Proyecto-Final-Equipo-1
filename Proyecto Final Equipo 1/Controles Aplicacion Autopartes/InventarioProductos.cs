@@ -28,18 +28,19 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void InventarioProductos_Load(object sender, EventArgs e)
         {
             //El apartado de Agregar Inventario está habilitado si el Usuario es Admin o Propietario
-            GpBAgregrarInventario.Enabled = FuncionesAplicacion.TipoUsuario == "Admin" || FuncionesAplicacion.TipoUsuario == "Propietario";
+            PanelAddInventario.Enabled = FuncionesAplicacion.TipoUsuario == "Admin" || FuncionesAplicacion.TipoUsuario == "Propietario";
 
             //Declaramos el ListView, sus propiedades y columnas
             LvProductos.View = View.Details;
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;
             LvProductos.Columns.Add("Id", 40);
-            LvProductos.Columns.Add("Nombre", 120);
-            LvProductos.Columns.Add("Descripcion", 200);
+            LvProductos.Columns.Add("Nombre", 160);
+            LvProductos.Columns.Add("Descripcion", 250);
             LvProductos.Columns.Add("Marca", 100);
             LvProductos.Columns.Add("Precio", 70);
-            LvProductos.Columns.Add("Cantidad en Stock", 120);
+            LvProductos.Columns.Add("Cantidad en Stock", 75);
+            LvProductos.Columns.Add("Imagen", 0);
         }
 
         private void LvProductos_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -49,15 +50,17 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Limpiamos la Caja de Cantidad
-            Txt_Cantidad.Clear();
+            //Restablecemos la Caja de Cantidad
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
 
             //Si se selecciona un registro
             if (LvProductos.SelectedItems.Count > 0)
             {
                 //Habilitamos Botones de (+)
-                BtnMenos.Enabled = false;
+                BtnMenos.Enabled = false; 
                 BtnMas.Enabled = true;
+                BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes; //Imagen de Menos Deshabilitado
+                BtnMas.BackgroundImage = Properties.Resources.BotonMas; //Imagen de Mas Deshabilitado
 
                 ListViewItem ItemSeleccionado = LvProductos.SelectedItems[0]; //Obtenemos registro seleccionado
 
@@ -77,6 +80,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 TxtProducto.Clear(); //Si no se selecciona algo limpiamos la caja Producto
                 BtnMenos.Enabled = false; //Inhabilitamos Botones de (+) y (-)
                 BtnMas.Enabled = false;
+                BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes; //Imagenes de botones Deshabilitados
+                BtnMas.BackgroundImage = Properties.Resources.BotonMasDes;
             }
         }
 
@@ -111,13 +116,19 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
             LvProductos.SelectedItems.Clear(); //Quitamos el seleccionado
             TxtProducto.Clear(); //Limpiamos las cajas de texto
-            Txt_Cantidad.Clear();
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Restablecemos la Caja de Cantidad
+            LblErrorCantidad.Visible = false;
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
         private void BtnAgregarInventario_Click(object sender, EventArgs e)
         {
             FuncionesAplicacion.AgregarInventario(LvProductos, TxtProducto, Txt_Cantidad); //Llamamos a la función de Agregar Inventario
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
