@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LvProductos = new System.Windows.Forms.ListView();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -62,6 +63,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.PicImagenProducto = new System.Windows.Forms.PictureBox();
+            this.ToolTipBuscarProducto = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -352,6 +354,7 @@
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
             this.BtnBuscar.TabIndex = 157;
+            this.ToolTipBuscarProducto.SetToolTip(this.BtnBuscar, "Buscar producto");
             this.BtnBuscar.UseVisualStyleBackColor = true;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
@@ -366,6 +369,7 @@
             this.BtnRestaurarBusqueda.Name = "BtnRestaurarBusqueda";
             this.BtnRestaurarBusqueda.Size = new System.Drawing.Size(166, 152);
             this.BtnRestaurarBusqueda.TabIndex = 8;
+            this.ToolTipBuscarProducto.SetToolTip(this.BtnRestaurarBusqueda, "Resetear acción");
             this.BtnRestaurarBusqueda.UseVisualStyleBackColor = true;
             this.BtnRestaurarBusqueda.Click += new System.EventHandler(this.BtnRestaurarBusqueda_Click);
             // 
@@ -380,6 +384,7 @@
             this.BtnMostrarProducto.Name = "BtnMostrarProducto";
             this.BtnMostrarProducto.Size = new System.Drawing.Size(155, 69);
             this.BtnMostrarProducto.TabIndex = 7;
+            this.ToolTipBuscarProducto.SetToolTip(this.BtnMostrarProducto, "Mostrar detalles de producto");
             this.BtnMostrarProducto.UseVisualStyleBackColor = true;
             this.BtnMostrarProducto.Click += new System.EventHandler(this.BtnMostrarProducto_Click);
             // 
@@ -544,5 +549,6 @@
         private System.Windows.Forms.Button BtnMostrarProducto;
         private System.Windows.Forms.Button BtnRestaurarBusqueda;
         private System.Windows.Forms.Button BtnBuscar;
+        private System.Windows.Forms.ToolTip ToolTipBuscarProducto;
     }
 }

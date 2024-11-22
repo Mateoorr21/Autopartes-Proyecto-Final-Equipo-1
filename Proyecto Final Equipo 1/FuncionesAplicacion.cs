@@ -92,7 +92,7 @@ namespace Proyecto_Final_Equipo_1
                 else if (control is RadioButton radioButton)
                 {
                     //El radioButton de Aproximada y Nombre se seleccionan por Default
-                    if (radioButton.Name.Contains("Aproximada") || radioButton.Name.Contains("Nombre")) radioButton.Checked = true;
+                    if (radioButton.Name.Contains("Aproximada") || radioButton.Name.Contains("Nombre") || radioButton.Name.Contains("CajeroAgregar")) radioButton.Checked = true;
 
                     else radioButton.Checked = false;
                 }
@@ -121,7 +121,6 @@ namespace Proyecto_Final_Equipo_1
         }
 
 
-
         //FUNCION PARA REINICIAR VARIABLES (MENOS ContarProductos)
         public static void ReiniciarVariables()
         {
@@ -138,7 +137,7 @@ namespace Proyecto_Final_Equipo_1
             ContarVentas = 0;
             DineroVentas = 0;
         }
- 
+
 
 
         //FUNCION PARA INICIAR SESION AL SISTEMA
@@ -183,10 +182,6 @@ namespace Proyecto_Final_Equipo_1
 
                                 // Abrir el formulario
                                 Aplicacion aplicacion = new Aplicacion();
-                                /*aplicacion.StartPosition = FormStartPosition.Manual;
-                                aplicacion.Location = new Point(
-                                    (Screen.PrimaryScreen.WorkingArea.Width - aplicacion.Width) / 2,
-                                    (Screen.PrimaryScreen.WorkingArea.Height - aplicacion.Height) / 2);*/
                                 aplicacion.ShowDialog();
 
                                 ReiniciarVariables(); //Reinciamos las variables a usar.
@@ -358,7 +353,7 @@ namespace Proyecto_Final_Equipo_1
 
             LvProductos.SelectedItems.Clear(); //Quitamos el seleccionado
             TxtProducto.Clear(); //Limpiamos las cajas de texto
-            Txt_Cantidad.Clear();
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Reestablecemos la caja Cantidad
             ReiniciarVariables(); //Reiniciamos las Variables
 
             //Mensaje de Agregado de Productos a Inventario exitoso
@@ -673,12 +668,12 @@ namespace Proyecto_Final_Equipo_1
             Modificado.SubItems[4].Text = Precio.ToString();
             Modificado.SubItems[5].Text = Cantidad.ToString();
 
-            //Limpiamos los controles de Actualización de Datos (Cajas de Texto ) y deseleccionamos ListView
-            Txt_Nombre.Clear();
-            Txt_Descripcion.Clear();
-            Txt_Marca.Clear();
-            Txt_Precio.Clear();
-            Txt_Cantidad.Clear();
+            //Restablecemos los controles de Actualización de Datos (Cajas de Texto ) y deseleccionamos ListView
+            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
+            Txt_Descripcion.Text = Txt_Descripcion.Tag.ToString();
+            Txt_Marca.Text = Txt_Marca.Tag.ToString();
+            Txt_Precio.Text = Txt_Precio.Tag.ToString();
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
             LvProductos.SelectedItems.Clear();
 
             //Mensaje de Actualización de datos exitosa

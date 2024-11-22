@@ -65,7 +65,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(43)))), ((int)(((byte)(165)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(39)))), ((int)(((byte)(154)))));
             this.panel2.Controls.Add(this.BtnSalir);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(202, -2);
@@ -268,7 +268,6 @@
             this.Name = "CatalogoUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catalogo de Usuarios Operativos";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CatalogoUsuarios_FormClosing);
             this.Load += new System.EventHandler(this.CatalogoUsuarios_Load);
             this.Shown += new System.EventHandler(this.CatalogoUsuarios_Shown);
             this.PanelCatalogo.ResumeLayout(false);

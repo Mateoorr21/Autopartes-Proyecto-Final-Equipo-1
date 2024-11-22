@@ -45,11 +45,18 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             LvUsuarios.View = View.Details;
             LvUsuarios.GridLines = true;
             LvUsuarios.FullRowSelect = true;
-            LvUsuarios.Columns.Add("Id", 0);
-            LvUsuarios.Columns.Add("Nombre", 120);
-            LvUsuarios.Columns.Add("Usuario", 110);
-            LvUsuarios.Columns.Add("Contraseña", 100);
-            LvUsuarios.Columns.Add("Permiso", 100);
+            LvUsuarios.Columns.Add("Id", 50);
+            LvUsuarios.Columns.Add("Nombre", 200);
+            LvUsuarios.Columns.Add("Usuario", 150);
+            LvUsuarios.Columns.Add("Contraseña", 150);
+            LvUsuarios.Columns.Add("Permiso", 150);
+        }
+
+        public void CargarUsuariosEliminar()
+        {
+            RdAproximada.Checked = true; //Ponemos en True el Aproximado
+            FuncionesCatalogoUsuarios.BuscarUsuarioEliminar("%", FuncionesAplicacion.Usuario, FuncionesAplicacion.TipoUsuario,
+                TxtBuscar, RdAproximada, RdNombre, LvUsuarios, LblCantidadRegistros, LblErrorBuscar); //Llamamos a la función buscar usando % para mostrar todo
         }
 
         private void RdNombre_CheckedChanged(object sender, EventArgs e)
@@ -76,6 +83,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            CargarUsuariosEliminar();
         }
 
         private void LvUsuarios_ColumnClick(object sender, ColumnClickEventArgs e)

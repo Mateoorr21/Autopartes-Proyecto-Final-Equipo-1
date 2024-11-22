@@ -25,7 +25,7 @@ namespace Proyecto_Final_Equipo_1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("25000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("20000")]
         public float DineroEnCaja {
             get {
                 return ((float)(this["DineroEnCaja"]));

@@ -37,17 +37,26 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             LvUsuarios.View = View.Details;
             LvUsuarios.GridLines = true;
             LvUsuarios.FullRowSelect = true;
-            LvUsuarios.Columns.Add("Id", 0);
-            LvUsuarios.Columns.Add("Nombre", 80);
-            LvUsuarios.Columns.Add("Usuario", 80);
-            LvUsuarios.Columns.Add("Contraseña", 80);
-            LvUsuarios.Columns.Add("Permiso", 80);
+            LvUsuarios.Columns.Add("Id", 50);
+            LvUsuarios.Columns.Add("Nombre", 200);
+            LvUsuarios.Columns.Add("Usuario", 150);
+            LvUsuarios.Columns.Add("Contraseña", 150);
+            LvUsuarios.Columns.Add("Permiso", 150);
 
-            if(FuncionesAplicacion.TipoUsuario == "Admin") //Si el usuario que entra es un Admin, no puede cambiar permisos
+            if (FuncionesAplicacion.TipoUsuario == "Admin") //Si el usuario que entra es un Admin, no puede cambiar permisos
             {
                 RdAdmin.Enabled = false;
                 RdCajero.Enabled = false;
+                PanelPermiso.Enabled = false;
+                PicPermiso.Image = Properties.Resources.TextoPermisoDes; //Imagen Deshabilitada
             }
+        }
+
+        public void CargarUsuariosModificar()
+        {
+            RdAproximada.Checked = true; //Ponemos en True el Aproximado
+            FuncionesCatalogoUsuarios.BuscarUsuarioModificar("%", FuncionesAplicacion.Usuario, FuncionesAplicacion.TipoUsuario,
+                TxtBuscar, RdAproximada, RdNombre, LvUsuarios, LblCantidadRegistros, LblErrorBuscar); //Llamamos a la función buscar usando % para mostrar todo
         }
 
         private void LvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,6 +143,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             if (ConfirmarCancelarModificar == DialogResult.No) return;
 
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            CargarUsuariosModificar();
         }
 
         private void LvUsuarios_ColumnClick(object sender, ColumnClickEventArgs e)

@@ -28,31 +28,40 @@ namespace Proyecto_Final_Equipo_1
             eliminarUsuario = new EliminarUsuario(); 
         }
 
+        //Funcion para ver si tenemos que abrir un nuevo control de usuario o no
+        private void MostrarControlCatalogo(Control control)
+        {
+            // Si el control ya está cargado en el panel no hacemos nada
+            if (PanelCatalogo.Controls.Count > 0 && PanelCatalogo.Controls[0] == control)
+            {
+                return;
+            }
+
+            // Limpiar todos los controles del panel
+            PanelCatalogo.Controls.Clear();
+
+            // Agregar el nuevo control
+            PanelCatalogo.Controls.Add(control);
+            control.Dock = DockStyle.Fill;
+
+            FuncionesAplicacion.ReiniciarVariables(); // Reiniciamos las variables
+        }
+
         private void BtnRegistrarUsuario_Click(object sender, EventArgs e)
         {
-            PanelCatalogo.Controls.Clear();
-            PanelCatalogo.Controls.Add(registroUsuario);
-            registroUsuario.Dock = DockStyle.Fill;
-            
-            FuncionesAplicacion.LimpiarControles(registroUsuario); //Limpiamos los controles del Control de Usuario
+            MostrarControlCatalogo(registroUsuario); //Llamamos a la función mostrrar el control
         }
 
         private void BtnModificarUsuario_Click(object sender, EventArgs e)
         {
-            PanelCatalogo.Controls.Clear();
-            PanelCatalogo.Controls.Add(modificarUsuario);
-            modificarUsuario.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.LimpiarControles(modificarUsuario); //Limpiamos los controles del Control de Usuario
+            MostrarControlCatalogo(modificarUsuario); //Llamamos a la función mostrar el control
+            modificarUsuario.CargarUsuariosModificar();
         }
 
         private void BtnEliminarUsuario_Click(object sender, EventArgs e)
         {
-            PanelCatalogo.Controls.Clear();
-            PanelCatalogo.Controls.Add(eliminarUsuario);
-            eliminarUsuario.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.LimpiarControles(modificarUsuario); //Limpiamos los controles del Control de Usuario
+            MostrarControlCatalogo(eliminarUsuario); //Llamamos a la función mostrar el control
+            eliminarUsuario.CargarUsuariosEliminar();
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -65,17 +74,6 @@ namespace Proyecto_Final_Equipo_1
             if (ConfirmarCierreCatalogo == DialogResult.No) return;
 
             Dispose(); //Salimos del Catalogo
-        }
-
-
-
-        //Evitar que el usuario cierre la aplicacion cuando da click en X
-        private void CatalogoUsuarios_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-            }
         }
 
         private void CatalogoUsuarios_Shown(object sender, EventArgs e)

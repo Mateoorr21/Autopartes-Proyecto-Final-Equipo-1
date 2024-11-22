@@ -27,8 +27,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
        
         private void InventarioProductos_Load(object sender, EventArgs e)
         {
-            //El apartado de Agregar Inventario está habilitado si el Usuario es Admin o Propietario
-            PanelAddInventario.Enabled = FuncionesAplicacion.TipoUsuario == "Admin" || FuncionesAplicacion.TipoUsuario == "Propietario";
+            //El apartado de Agregar Inventario está deshabilitado si el Usuario es Cajero
+            if (FuncionesAplicacion.TipoUsuario != "Admin" && FuncionesAplicacion.TipoUsuario != "Propietario")
+            {
+                PanelAddInventario.Enabled = false;
+                PicInventario.Image = Properties.Resources.TextoInventarioDes; //Imagen Deshabilitada
+            }
 
             //Declaramos el ListView, sus propiedades y columnas
             LvProductos.View = View.Details;

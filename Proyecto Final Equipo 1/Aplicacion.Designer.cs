@@ -329,7 +329,6 @@
             this.Name = "Aplicacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aplicación AutoPartes One";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Aplicacion_FormClosing);
             this.Load += new System.EventHandler(this.Aplicacion_Load);
             this.Shown += new System.EventHandler(this.Aplicacion_Shown);
             this.panel1.ResumeLayout(false);

@@ -148,9 +148,9 @@ namespace Proyecto_Final_Equipo_1
                     else query = "SELECT * FROM Usuarios_Operativos WHERE Usuario = @PorBuscar";
                 }
 
-                if (Permiso == "Admin") query += " AND Tipo = @Cajero ORDER BY Nombre_Completo"; //Si es Admin solo puede eliminar cajeros
+                if (Permiso == "Admin") query += " AND Tipo = @Cajero ORDER BY Id, Nombre_Completo"; //Si es Admin solo puede eliminar cajeros
 
-                else query += " AND Tipo <> @Propietario ORDER BY Tipo, Nombre_Completo"; //Si es Propietario no puede eliminarse a sí mismo
+                else query += " AND Tipo <> @Propietario ORDER BY Id, Tipo"; //Si es Propietario no puede eliminarse a sí mismo
 
                 //Using para liberar objeto cuando ya no se use
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //pasamos consulta y conexion
@@ -195,7 +195,7 @@ namespace Proyecto_Final_Equipo_1
                     }
                 }
 
-                TxtBuscar.Clear(); //Limpiamos la caja de texto Buscar
+                TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja de texto Buscar
             }
         }
 
@@ -243,7 +243,7 @@ namespace Proyecto_Final_Equipo_1
             if (ContarUsuarios > 0) LblCantidadRegistros.Text = "Productos Encontrados: " + (ContarUsuarios - 1).ToString();
 
             LblErrorBuscar.Visible = false; //Ocultamos la etiqueta de Error al Buscar
-            TxtBuscar.Clear(); //Limpiamos la caja de texto Buscar
+            TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja de texto Buscar
 
             //Mensaje de Eliminación de usuario exitosa
             MessageBox.Show("Datos del Usuario Operativo eliminados correctamente.", "ELIMINACION DE USUARIO OPERATIVO",
@@ -291,7 +291,8 @@ namespace Proyecto_Final_Equipo_1
                     else query = "SELECT * FROM Usuarios_Operativos WHERE Usuario = @PorBuscar";
                 }
 
-                if (Permiso == "Admin") query += " AND (Tipo = @Cajero OR  Usuario = @PropioUsuario) ORDER BY Tipo, Nombre_Completo"; //Si es Admin solo modifica cajeros y el mismo
+                if (Permiso == "Admin") query += " AND (Tipo = @Cajero OR  Usuario = @PropioUsuario) ORDER BY Id, Nombre_Completo"; //Si es Admin solo modifica cajeros y el mismo
+                else query += " ORDER BY Id"; //Si es Propietario solo añadimos el OrderBy Id
 
                 //Using para liberar objeto cuando ya no se use
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //pasamos consulta y conexion
@@ -338,7 +339,7 @@ namespace Proyecto_Final_Equipo_1
                     }
                 }
 
-                TxtBuscar.Clear(); //Limpiamos la caja de texto Buscar
+                TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja Buscar
             }
         }
 
@@ -435,15 +436,15 @@ namespace Proyecto_Final_Equipo_1
             Modificado.SubItems[3].Text = PasswordModificado;
             Modificado.SubItems[4].Text = PermisoModificado;
 
-            //Limpiamos los controles de Actualización de Datos (Cajas de Texto y Radios) y se Deselecciona el ListView
+            //Restablecemos los controles de Actualización de Datos (Cajas de Texto y Radios) y se Deselecciona el ListView
             LvUsuarios.SelectedItems.Clear();
-            Txt_Nombre.Clear();
-            Txt_Usuario.Clear();
-            Txt_Password.Clear();
+            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
+            Txt_Usuario.Text = Txt_Usuario.Tag.ToString();
+            Txt_Password.Text = Txt_Password.Tag.ToString();
             RdAdmin.Checked = false;
             RdCajero.Checked = false;
             LblErrorBuscar.Visible = false;
-            TxtBuscar.Clear();
+            TxtBuscar.Text = TxtBuscar.Tag.ToString();
 
             //Mensaje de Actualización de datos exitosa
             MessageBox.Show("Datos del Usuario Operativo actualizados correctamente.", "ACTUALIZACION DE DATOS DE USUARIO",

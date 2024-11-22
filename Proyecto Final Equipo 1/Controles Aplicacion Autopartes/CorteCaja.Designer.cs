@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LvVentas = new System.Windows.Forms.ListView();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -49,6 +50,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.ToolTipCorte = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -205,6 +207,7 @@
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(86, 80);
             this.BtnCancelar.TabIndex = 214;
+            this.ToolTipCorte.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
@@ -219,6 +222,7 @@
             this.BtnMostrarVenta.Name = "BtnMostrarVenta";
             this.BtnMostrarVenta.Size = new System.Drawing.Size(176, 91);
             this.BtnMostrarVenta.TabIndex = 213;
+            this.ToolTipCorte.SetToolTip(this.BtnMostrarVenta, "Mostrar detalles de venta");
             this.BtnMostrarVenta.UseVisualStyleBackColor = true;
             this.BtnMostrarVenta.Click += new System.EventHandler(this.BtnMostrarVenta_Click);
             // 
@@ -233,6 +237,7 @@
             this.BtnRegistrarVentas.Name = "BtnRegistrarVentas";
             this.BtnRegistrarVentas.Size = new System.Drawing.Size(87, 78);
             this.BtnRegistrarVentas.TabIndex = 212;
+            this.ToolTipCorte.SetToolTip(this.BtnRegistrarVentas, "Registrar ventas\r\ny cerrar sesión");
             this.BtnRegistrarVentas.UseVisualStyleBackColor = true;
             this.BtnRegistrarVentas.Click += new System.EventHandler(this.BtnRegistrarVentas_Click);
             // 
@@ -271,6 +276,7 @@
             this.BtnCargarVentas.Name = "BtnCargarVentas";
             this.BtnCargarVentas.Size = new System.Drawing.Size(121, 105);
             this.BtnCargarVentas.TabIndex = 203;
+            this.ToolTipCorte.SetToolTip(this.BtnCargarVentas, "Cargar ventas");
             this.BtnCargarVentas.UseVisualStyleBackColor = true;
             this.BtnCargarVentas.Click += new System.EventHandler(this.BtnCargarVentas_Click);
             // 
@@ -373,5 +379,6 @@
         private System.Windows.Forms.Button BtnMostrarVenta;
         private System.Windows.Forms.Button BtnRegistrarVentas;
         private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.ToolTip ToolTipCorte;
     }
 }

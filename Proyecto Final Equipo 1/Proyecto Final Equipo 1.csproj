@@ -482,5 +482,44 @@
   <ItemGroup>
     <None Include="Resources\ImagenIndicacionesCatalogoConLogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PatronLLanta2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloRegistrarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloRegistrarUsuario2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonAgregarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoInformacionGeneral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloEliminarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonBorrarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonBuscarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TituloModificarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoPermiso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonEditarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoInventarioDes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoPermisoDes.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

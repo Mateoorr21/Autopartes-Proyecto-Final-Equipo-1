@@ -179,16 +179,6 @@ namespace Proyecto_Final_Equipo_1
             corteCaja.CargarDineroCaja(); //Cargamos el dinero en caja
         }
 
-
-        //Evitar que el usuario cierre la aplicacion cuando da click en X
-        private void Aplicacion_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-            }
-        }
-
         private void Aplicacion_Shown(object sender, EventArgs e)
         {
             // Recalculamos la posicion del formulario para que aparezca centrado despues de que AutoSize lo ajusto

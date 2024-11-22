@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.LblCampoBuscar = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -62,6 +63,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.ToolTopEliminarProducto = new System.Windows.Forms.ToolTip(this.components);
             this.panel11.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -352,6 +354,7 @@
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
             this.BtnBuscar.TabIndex = 158;
+            this.ToolTopEliminarProducto.SetToolTip(this.BtnBuscar, "Buscar producto");
             this.BtnBuscar.UseVisualStyleBackColor = true;
             // 
             // PicLogo
@@ -377,6 +380,7 @@
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(166, 152);
             this.BtnCancelar.TabIndex = 8;
+            this.ToolTopEliminarProducto.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
@@ -391,6 +395,7 @@
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(150, 137);
             this.BtnEliminar.TabIndex = 7;
+            this.ToolTopEliminarProducto.SetToolTip(this.BtnEliminar, "Eliminar producto");
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
@@ -546,5 +551,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox PicLogo;
         private System.Windows.Forms.Button BtnBuscar;
+        private System.Windows.Forms.ToolTip ToolTopEliminarProducto;
     }
 }

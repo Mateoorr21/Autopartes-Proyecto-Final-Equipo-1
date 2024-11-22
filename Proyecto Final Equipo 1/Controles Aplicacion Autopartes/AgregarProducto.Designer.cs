@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarProducto));
             this.Txt_Descripcion = new System.Windows.Forms.TextBox();
             this.Txt_Nombre = new System.Windows.Forms.TextBox();
@@ -65,6 +66,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.ToolTipAgregar = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
@@ -406,6 +408,7 @@
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(187, 170);
             this.BtnCancelar.TabIndex = 77;
+            this.ToolTipAgregar.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
@@ -420,6 +423,7 @@
             this.BtnRegistrarProducto.Name = "BtnRegistrarProducto";
             this.BtnRegistrarProducto.Size = new System.Drawing.Size(186, 162);
             this.BtnRegistrarProducto.TabIndex = 76;
+            this.ToolTipAgregar.SetToolTip(this.BtnRegistrarProducto, "Agregar producto");
             this.BtnRegistrarProducto.UseVisualStyleBackColor = true;
             this.BtnRegistrarProducto.Click += new System.EventHandler(this.BtnRegistrarProducto_Click);
             // 
@@ -470,6 +474,7 @@
             this.BtnDeseleccionarImagen.Name = "BtnDeseleccionarImagen";
             this.BtnDeseleccionarImagen.Size = new System.Drawing.Size(76, 58);
             this.BtnDeseleccionarImagen.TabIndex = 74;
+            this.ToolTipAgregar.SetToolTip(this.BtnDeseleccionarImagen, "Quitar imagen");
             this.BtnDeseleccionarImagen.UseVisualStyleBackColor = true;
             this.BtnDeseleccionarImagen.Click += new System.EventHandler(this.BtnDeseleccionarImagen_Click);
             // 
@@ -508,6 +513,7 @@
             this.BtnCargarImagen.Name = "BtnCargarImagen";
             this.BtnCargarImagen.Size = new System.Drawing.Size(76, 61);
             this.BtnCargarImagen.TabIndex = 60;
+            this.ToolTipAgregar.SetToolTip(this.BtnCargarImagen, "Cargar imagen");
             this.BtnCargarImagen.UseVisualStyleBackColor = true;
             this.BtnCargarImagen.Click += new System.EventHandler(this.BtnCargarImagen_Click);
             // 
@@ -631,5 +637,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.ToolTip ToolTipAgregar;
     }
 }

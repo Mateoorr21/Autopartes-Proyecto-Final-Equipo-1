@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarProducto));
             this.LblErrorBuscar = new System.Windows.Forms.Label();
             this.LblCampoBuscar = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -44,6 +46,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.RdNombre = new System.Windows.Forms.RadioButton();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.RdExacta = new System.Windows.Forms.RadioButton();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -51,15 +54,14 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.LvProductos = new System.Windows.Forms.ListView();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
             this.Txt_Cantidad = new System.Windows.Forms.TextBox();
             this.Txt_Precio = new System.Windows.Forms.TextBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.LblErrorCantidad = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.LblErrorPrecio = new System.Windows.Forms.Label();
@@ -67,56 +69,56 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Txt_Marca = new System.Windows.Forms.TextBox();
             this.LblErrorMarca = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.Txt_Descripcion = new System.Windows.Forms.TextBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.LblErrorDescripcion = new System.Windows.Forms.Label();
             this.LblDescripcion = new System.Windows.Forms.Label();
             this.Txt_Nombre = new System.Windows.Forms.TextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.LblErrorNombre = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.panel21 = new System.Windows.Forms.Panel();
+            this.BtnDeseleccionarImagen = new System.Windows.Forms.Button();
+            this.BtnCargarImagen = new System.Windows.Forms.Button();
+            this.PicImagenProducto = new System.Windows.Forms.PictureBox();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel24 = new System.Windows.Forms.Panel();
             this.panel25 = new System.Windows.Forms.Panel();
-            this.BtnDeseleccionarImagen = new System.Windows.Forms.Button();
-            this.BtnCargarImagen = new System.Windows.Forms.Button();
-            this.PicImagenProducto = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.BtnModificar = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnBuscar = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.ToolTipEditarProducto = new System.Windows.Forms.ToolTip(this.components);
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel16.SuspendLayout();
-            this.panel20.SuspendLayout();
-            this.panel21.SuspendLayout();
-            this.panel25.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).BeginInit();
+            this.panel25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -174,6 +176,18 @@
             this.TxtBuscar.Tag = "Buscar...";
             this.TxtBuscar.Text = "Buscar...";
             this.TxtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBuscar_KeyPress);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
+            this.pictureBox3.InitialImage = null;
+            this.pictureBox3.Location = new System.Drawing.Point(9, 17);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(163, 37);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 130;
+            this.pictureBox3.TabStop = false;
             // 
             // panel12
             // 
@@ -287,6 +301,19 @@
             this.panel10.Size = new System.Drawing.Size(180, 37);
             this.panel10.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TextoPorCampoBlanco;
+            this.pictureBox1.Location = new System.Drawing.Point(7, -3);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(169, 41);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 135;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
@@ -362,6 +389,19 @@
             this.panel2.Size = new System.Drawing.Size(180, 37);
             this.panel2.TabIndex = 0;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TextoBusquedaBlanco;
+            this.pictureBox4.Location = new System.Drawing.Point(8, -5);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(169, 47);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 136;
+            this.pictureBox4.TabStop = false;
+            // 
             // LblCantidadRegistros
             // 
             this.LblCantidadRegistros.AutoSize = true;
@@ -420,43 +460,6 @@
             this.panel16.Size = new System.Drawing.Size(885, 158);
             this.panel16.TabIndex = 165;
             // 
-            // panel17
-            // 
-            this.panel17.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel17.Location = new System.Drawing.Point(1, 157);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(883, 1);
-            this.panel17.TabIndex = 3;
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel18.Location = new System.Drawing.Point(884, 31);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(1, 127);
-            this.panel18.TabIndex = 2;
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel19.Location = new System.Drawing.Point(0, 31);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(1, 127);
-            this.panel19.TabIndex = 1;
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel20.Controls.Add(this.pictureBox12);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel20.Location = new System.Drawing.Point(0, 0);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(885, 31);
-            this.panel20.TabIndex = 0;
-            // 
             // Txt_Cantidad
             // 
             this.Txt_Cantidad.BackColor = System.Drawing.SystemColors.Control;
@@ -486,6 +489,30 @@
             this.Txt_Precio.Tag = "0";
             this.Txt_Precio.Text = "0";
             this.Txt_Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Precio_KeyPress);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
+            this.pictureBox10.InitialImage = null;
+            this.pictureBox10.Location = new System.Drawing.Point(720, 61);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(152, 37);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 216;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
+            this.pictureBox11.InitialImage = null;
+            this.pictureBox11.Location = new System.Drawing.Point(560, 61);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(140, 37);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 215;
+            this.pictureBox11.TabStop = false;
             // 
             // LblErrorCantidad
             // 
@@ -577,6 +604,18 @@
             this.LblErrorMarca.Text = "Solo letras y números";
             this.LblErrorMarca.Visible = false;
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
+            this.pictureBox9.InitialImage = null;
+            this.pictureBox9.Location = new System.Drawing.Point(395, 61);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(148, 37);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 206;
+            this.pictureBox9.TabStop = false;
+            // 
             // Txt_Descripcion
             // 
             this.Txt_Descripcion.BackColor = System.Drawing.SystemColors.Control;
@@ -592,6 +631,18 @@
             this.Txt_Descripcion.Tag = "Descripción del Producto...";
             this.Txt_Descripcion.Text = "Descripción del Producto...";
             this.Txt_Descripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Descripcion_KeyPress);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.InitialImage = null;
+            this.pictureBox6.Location = new System.Drawing.Point(193, 60);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(185, 72);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 205;
+            this.pictureBox6.TabStop = false;
             // 
             // LblErrorDescripcion
             // 
@@ -633,6 +684,18 @@
             this.Txt_Nombre.Text = "Nombre del Producto";
             this.Txt_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Nombre_KeyPress);
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
+            this.pictureBox5.InitialImage = null;
+            this.pictureBox5.Location = new System.Drawing.Point(12, 61);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(161, 37);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 201;
+            this.pictureBox5.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -658,6 +721,56 @@
             this.LblErrorNombre.Text = "Solo  letras, números   /   \"  -";
             this.LblErrorNombre.Visible = false;
             // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.DarkGreen;
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel17.Location = new System.Drawing.Point(1, 157);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(883, 1);
+            this.panel17.TabIndex = 3;
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.DarkGreen;
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel18.Location = new System.Drawing.Point(884, 31);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(1, 127);
+            this.panel18.TabIndex = 2;
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.DarkGreen;
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel19.Location = new System.Drawing.Point(0, 31);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(1, 127);
+            this.panel19.TabIndex = 1;
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.DarkGreen;
+            this.panel20.Controls.Add(this.pictureBox12);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel20.Location = new System.Drawing.Point(0, 0);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(885, 31);
+            this.panel20.TabIndex = 0;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox12.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TextoEditarCamposBlanco;
+            this.pictureBox12.Location = new System.Drawing.Point(320, -1);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(237, 34);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 136;
+            this.pictureBox12.TabStop = false;
+            // 
             // panel21
             // 
             this.panel21.Controls.Add(this.BtnDeseleccionarImagen);
@@ -671,6 +784,46 @@
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(180, 150);
             this.panel21.TabIndex = 166;
+            // 
+            // BtnDeseleccionarImagen
+            // 
+            this.BtnDeseleccionarImagen.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoQuitarImagen;
+            this.BtnDeseleccionarImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnDeseleccionarImagen.FlatAppearance.BorderSize = 0;
+            this.BtnDeseleccionarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDeseleccionarImagen.Location = new System.Drawing.Point(102, 93);
+            this.BtnDeseleccionarImagen.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnDeseleccionarImagen.Name = "BtnDeseleccionarImagen";
+            this.BtnDeseleccionarImagen.Size = new System.Drawing.Size(71, 54);
+            this.BtnDeseleccionarImagen.TabIndex = 203;
+            this.ToolTipEditarProducto.SetToolTip(this.BtnDeseleccionarImagen, "Quitar imagen");
+            this.BtnDeseleccionarImagen.UseVisualStyleBackColor = true;
+            this.BtnDeseleccionarImagen.Click += new System.EventHandler(this.BtnDeseleccionarImagen_Click);
+            // 
+            // BtnCargarImagen
+            // 
+            this.BtnCargarImagen.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoAgregarImagen2;
+            this.BtnCargarImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnCargarImagen.FlatAppearance.BorderSize = 0;
+            this.BtnCargarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCargarImagen.Location = new System.Drawing.Point(103, 36);
+            this.BtnCargarImagen.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnCargarImagen.Name = "BtnCargarImagen";
+            this.BtnCargarImagen.Size = new System.Drawing.Size(71, 57);
+            this.BtnCargarImagen.TabIndex = 202;
+            this.ToolTipEditarProducto.SetToolTip(this.BtnCargarImagen, "Cargar imagen");
+            this.BtnCargarImagen.UseVisualStyleBackColor = true;
+            this.BtnCargarImagen.Click += new System.EventHandler(this.BtnCargarImagen_Click);
+            // 
+            // PicImagenProducto
+            // 
+            this.PicImagenProducto.Location = new System.Drawing.Point(1, 34);
+            this.PicImagenProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.PicImagenProducto.Name = "PicImagenProducto";
+            this.PicImagenProducto.Size = new System.Drawing.Size(98, 114);
+            this.PicImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicImagenProducto.TabIndex = 201;
+            this.PicImagenProducto.TabStop = false;
             // 
             // panel22
             // 
@@ -709,44 +862,6 @@
             this.panel25.Size = new System.Drawing.Size(180, 34);
             this.panel25.TabIndex = 0;
             // 
-            // BtnDeseleccionarImagen
-            // 
-            this.BtnDeseleccionarImagen.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoQuitarImagen;
-            this.BtnDeseleccionarImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnDeseleccionarImagen.FlatAppearance.BorderSize = 0;
-            this.BtnDeseleccionarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnDeseleccionarImagen.Location = new System.Drawing.Point(102, 93);
-            this.BtnDeseleccionarImagen.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnDeseleccionarImagen.Name = "BtnDeseleccionarImagen";
-            this.BtnDeseleccionarImagen.Size = new System.Drawing.Size(71, 54);
-            this.BtnDeseleccionarImagen.TabIndex = 203;
-            this.BtnDeseleccionarImagen.UseVisualStyleBackColor = true;
-            this.BtnDeseleccionarImagen.Click += new System.EventHandler(this.BtnDeseleccionarImagen_Click);
-            // 
-            // BtnCargarImagen
-            // 
-            this.BtnCargarImagen.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoAgregarImagen2;
-            this.BtnCargarImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnCargarImagen.FlatAppearance.BorderSize = 0;
-            this.BtnCargarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCargarImagen.Location = new System.Drawing.Point(103, 36);
-            this.BtnCargarImagen.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnCargarImagen.Name = "BtnCargarImagen";
-            this.BtnCargarImagen.Size = new System.Drawing.Size(71, 57);
-            this.BtnCargarImagen.TabIndex = 202;
-            this.BtnCargarImagen.UseVisualStyleBackColor = true;
-            this.BtnCargarImagen.Click += new System.EventHandler(this.BtnCargarImagen_Click);
-            // 
-            // PicImagenProducto
-            // 
-            this.PicImagenProducto.Location = new System.Drawing.Point(1, 34);
-            this.PicImagenProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.PicImagenProducto.Name = "PicImagenProducto";
-            this.PicImagenProducto.Size = new System.Drawing.Size(98, 114);
-            this.PicImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicImagenProducto.TabIndex = 201;
-            this.PicImagenProducto.TabStop = false;
-            // 
             // pictureBox13
             // 
             this.pictureBox13.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -760,79 +875,6 @@
             this.pictureBox13.TabIndex = 135;
             this.pictureBox13.TabStop = false;
             // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
-            this.pictureBox10.InitialImage = null;
-            this.pictureBox10.Location = new System.Drawing.Point(720, 61);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(152, 37);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 216;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
-            this.pictureBox11.InitialImage = null;
-            this.pictureBox11.Location = new System.Drawing.Point(560, 61);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(140, 37);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox11.TabIndex = 215;
-            this.pictureBox11.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
-            this.pictureBox9.InitialImage = null;
-            this.pictureBox9.Location = new System.Drawing.Point(395, 61);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(148, 37);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 206;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.InitialImage = null;
-            this.pictureBox6.Location = new System.Drawing.Point(193, 60);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(185, 72);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 205;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
-            this.pictureBox5.InitialImage = null;
-            this.pictureBox5.Location = new System.Drawing.Point(12, 61);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(161, 37);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 201;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox12.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TextoEditarCamposBlanco;
-            this.pictureBox12.Location = new System.Drawing.Point(320, -1);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(237, 34);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox12.TabIndex = 136;
-            this.pictureBox12.TabStop = false;
-            // 
             // BtnModificar
             // 
             this.BtnModificar.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonModificarProducto;
@@ -844,6 +886,7 @@
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(121, 105);
             this.BtnModificar.TabIndex = 202;
+            this.ToolTipEditarProducto.SetToolTip(this.BtnModificar, "Editar producto");
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
@@ -858,6 +901,7 @@
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(113, 104);
             this.BtnCancelar.TabIndex = 201;
+            this.ToolTipEditarProducto.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
@@ -872,46 +916,9 @@
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
             this.BtnBuscar.TabIndex = 156;
+            this.ToolTipEditarProducto.SetToolTip(this.BtnBuscar, "Buscar producto");
             this.BtnBuscar.UseVisualStyleBackColor = true;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
-            this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(9, 17);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(163, 37);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 130;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TextoPorCampoBlanco;
-            this.pictureBox1.Location = new System.Drawing.Point(7, -3);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(169, 41);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 135;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TextoBusquedaBlanco;
-            this.pictureBox4.Location = new System.Drawing.Point(8, -5);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(169, 47);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 136;
-            this.pictureBox4.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -968,34 +975,34 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox8);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ModificarProducto";
             this.Size = new System.Drawing.Size(1135, 669);
             this.Load += new System.EventHandler(this.ModificarProducto_Load);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel21.ResumeLayout(false);
-            this.panel25.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel21.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PicImagenProducto)).EndInit();
+            this.panel25.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -1073,5 +1080,6 @@
         private System.Windows.Forms.Button BtnDeseleccionarImagen;
         private System.Windows.Forms.Button BtnCargarImagen;
         private System.Windows.Forms.PictureBox PicImagenProducto;
+        private System.Windows.Forms.ToolTip ToolTipEditarProducto;
     }
 }
