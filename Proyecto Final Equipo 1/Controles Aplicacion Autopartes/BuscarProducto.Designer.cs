@@ -52,6 +52,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.LblErrorBuscar = new System.Windows.Forms.Label();
+            this.BtnBuscar = new System.Windows.Forms.Button();
             this.BtnRestaurarBusqueda = new System.Windows.Forms.Button();
             this.BtnMostrarProducto = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -61,7 +62,6 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.PicImagenProducto = new System.Windows.Forms.PictureBox();
-            this.BtnBuscar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -256,7 +256,7 @@
             // 
             this.LblCampoBuscar.AutoSize = true;
             this.LblCampoBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCampoBuscar.ForeColor = System.Drawing.Color.Maroon;
+            this.LblCampoBuscar.ForeColor = System.Drawing.Color.SaddleBrown;
             this.LblCampoBuscar.Location = new System.Drawing.Point(41, 418);
             this.LblCampoBuscar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
@@ -340,6 +340,20 @@
             this.LblErrorBuscar.TabIndex = 137;
             this.LblErrorBuscar.Text = "Caracter no Valido";
             this.LblErrorBuscar.Visible = false;
+            // 
+            // BtnBuscar
+            // 
+            this.BtnBuscar.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonBuscarRecortado;
+            this.BtnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnBuscar.FlatAppearance.BorderSize = 0;
+            this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBuscar.Location = new System.Drawing.Point(54, 511);
+            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnBuscar.Name = "BtnBuscar";
+            this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
+            this.BtnBuscar.TabIndex = 157;
+            this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // BtnRestaurarBusqueda
             // 
@@ -452,20 +466,6 @@
             this.PicImagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicImagenProducto.TabIndex = 62;
             this.PicImagenProducto.TabStop = false;
-            // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonBuscarRecortado;
-            this.BtnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnBuscar.FlatAppearance.BorderSize = 0;
-            this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscar.Location = new System.Drawing.Point(54, 511);
-            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
-            this.BtnBuscar.TabIndex = 157;
-            this.BtnBuscar.UseVisualStyleBackColor = true;
-            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // BuscarProducto
             // 

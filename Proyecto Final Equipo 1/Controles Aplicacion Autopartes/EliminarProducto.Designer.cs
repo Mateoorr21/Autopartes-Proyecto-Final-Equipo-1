@@ -52,6 +52,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.LvProductos = new System.Windows.Forms.ListView();
+            this.BtnBuscar = new System.Windows.Forms.Button();
             this.PicLogo = new System.Windows.Forms.PictureBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.BtnBuscar = new System.Windows.Forms.Button();
             this.panel11.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -341,6 +341,19 @@
             this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
             this.LvProductos.SelectedIndexChanged += new System.EventHandler(this.LvProductos_SelectedIndexChanged);
             // 
+            // BtnBuscar
+            // 
+            this.BtnBuscar.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonBuscarRecortado;
+            this.BtnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnBuscar.FlatAppearance.BorderSize = 0;
+            this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBuscar.Location = new System.Drawing.Point(54, 511);
+            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnBuscar.Name = "BtnBuscar";
+            this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
+            this.BtnBuscar.TabIndex = 158;
+            this.BtnBuscar.UseVisualStyleBackColor = true;
+            // 
             // PicLogo
             // 
             this.PicLogo.BackColor = System.Drawing.Color.Transparent;
@@ -423,7 +436,7 @@
             // 
             this.pictureBox2.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TituloEliminarProducto;
             this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(226, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(226, -8);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(704, 142);
@@ -435,7 +448,7 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.PatronLlanta1;
-            this.pictureBox7.Location = new System.Drawing.Point(-7, 41);
+            this.pictureBox7.Location = new System.Drawing.Point(-7, 31);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(408, 72);
@@ -447,26 +460,13 @@
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.PatronLlanta1;
-            this.pictureBox8.Location = new System.Drawing.Point(736, 41);
+            this.pictureBox8.Location = new System.Drawing.Point(736, 31);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(412, 72);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 144;
             this.pictureBox8.TabStop = false;
-            // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonBuscarRecortado;
-            this.BtnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnBuscar.FlatAppearance.BorderSize = 0;
-            this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscar.Location = new System.Drawing.Point(54, 511);
-            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
-            this.BtnBuscar.TabIndex = 158;
-            this.BtnBuscar.UseVisualStyleBackColor = true;
             // 
             // EliminarProducto
             // 

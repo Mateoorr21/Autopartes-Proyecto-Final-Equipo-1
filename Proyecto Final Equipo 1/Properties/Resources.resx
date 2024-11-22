@@ -145,8 +145,8 @@
   <data name="TituloCorteCaja" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TituloCorteCaja.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconoBotonAgregarCarrito" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconoBotonAgregarCarrito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconoBotonVaciarCarrito31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoBotonVaciarCarrito31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconoBotonEliminarDeCarrito3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoBotonEliminarDeCarrito3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,17 +163,14 @@
   <data name="IconoVender" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoVender.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AgregarImagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AgregarImagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconoModificarUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoModificarUsuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MensajeBienvenida" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MensajeBienvenida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconoCatalogoUsuarios2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoCatalogoUsuarios2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconoBotonVenta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoBotonVenta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BotonMenos1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BotonMenos1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconoBotonCargarVentas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoBotonCargarVentas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,6 +199,9 @@
   <data name="BotonMenos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonMenos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IconoRegistrarUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoRegistrarUsuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IconoCatalogoUsuariosDes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoCatalogoUsuariosDes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -223,6 +223,12 @@
   <data name="IconoBotonEliminarDeCarrito31" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoBotonEliminarDeCarrito31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AgregarImagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AgregarImagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconoBotonBuscar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoBotonBuscar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TituloEliminarProducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TituloEliminarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -238,20 +244,26 @@
   <data name="BotonMas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonMas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IconoEliminarUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoEliminarUsuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IconoBotonRegistrarVentas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoBotonRegistrarVentas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconoInventario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoInventario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconoCatalogoUsuarios2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconoCatalogoUsuarios2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconoBotonAgregarCarrito" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoBotonAgregarCarrito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TextoBusquedaBlanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TextoBusquedaBlanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TituloAgregarProducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TituloAgregarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MensajeBienvenida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MensajeBienvenida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BotonMenos1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BotonMenos1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Esconder Password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Esconder Password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,8 +310,8 @@
   <data name="IconoAgregarProducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoAgregarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconoQuitarImagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconoQuitarImagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TituloAgregarProducto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TituloAgregarProducto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconoBotonAgregarCarrito3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoBotonAgregarCarrito3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -322,8 +334,11 @@
   <data name="TextoInventario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TextoInventario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconoBotonVaciarCarrito31" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconoBotonVaciarCarrito31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconoQuitarImagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoQuitarImagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ImagenIndicacionesAplicacionConLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ImagenIndicacionesAplicacionConLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TituloModificarProducto2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TituloModificarProducto2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -334,8 +349,8 @@
   <data name="BotonMasDes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BotonMasDes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconoBotonBuscar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconoBotonBuscar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconoAgregarUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoAgregarUsuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconoAgregarImagen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoAgregarImagen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -348,6 +363,9 @@
   </data>
   <data name="IconoBotonEliminarDeCarrito2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoBotonEliminarDeCarrito2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Boton X Blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Boton X Blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TituloVenderProductos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TituloVenderProductos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -364,7 +382,7 @@
   <data name="IconoModificarProductoDes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconoModificarProductoDes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ImagenIndicacionesAplicacionConLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImagenIndicacionesAplicacionConLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ImagenIndicacionesCatalogoConLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ImagenIndicacionesCatalogoConLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

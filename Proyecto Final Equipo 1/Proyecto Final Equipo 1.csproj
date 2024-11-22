@@ -464,5 +464,23 @@
   <ItemGroup>
     <None Include="Resources\ImagenIndicacionesAplicacionConLogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoEliminarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoAgregarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoModificarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoRegistrarUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Boton X Blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagenIndicacionesCatalogoConLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

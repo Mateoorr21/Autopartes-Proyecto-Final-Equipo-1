@@ -184,7 +184,7 @@
             // 
             // BtnSalir
             // 
-            this.BtnSalir.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.Boton_X;
+            this.BtnSalir.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.Boton_X_Blanco;
             this.BtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BtnSalir.FlatAppearance.BorderSize = 0;
             this.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

@@ -83,6 +83,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Boton_X_Blanco {
+            get {
+                object obj = ResourceManager.GetObject("Boton X Blanco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BotonAgregarProducto {
             get {
                 object obj = ResourceManager.GetObject("BotonAgregarProducto", resourceCulture);
@@ -236,6 +246,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         internal static System.Drawing.Bitmap IconoAgregarProductoDes2 {
             get {
                 object obj = ResourceManager.GetObject("IconoAgregarProductoDes2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoAgregarUsuario {
+            get {
+                object obj = ResourceManager.GetObject("IconoAgregarUsuario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,6 +553,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoEliminarUsuario {
+            get {
+                object obj = ResourceManager.GetObject("IconoEliminarUsuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoInventario {
             get {
                 object obj = ResourceManager.GetObject("IconoInventario", resourceCulture);
@@ -563,9 +593,29 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoModificarUsuario {
+            get {
+                object obj = ResourceManager.GetObject("IconoModificarUsuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoQuitarImagen {
             get {
                 object obj = ResourceManager.GetObject("IconoQuitarImagen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoRegistrarUsuario {
+            get {
+                object obj = ResourceManager.GetObject("IconoRegistrarUsuario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -606,6 +656,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         internal static System.Drawing.Bitmap ImagenIndicacionesAplicacionConLogo {
             get {
                 object obj = ResourceManager.GetObject("ImagenIndicacionesAplicacionConLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ImagenIndicacionesCatalogoConLogo {
+            get {
+                object obj = ResourceManager.GetObject("ImagenIndicacionesCatalogoConLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

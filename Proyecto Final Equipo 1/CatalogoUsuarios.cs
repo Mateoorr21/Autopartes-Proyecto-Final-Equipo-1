@@ -68,6 +68,7 @@ namespace Proyecto_Final_Equipo_1
         }
 
 
+
         //Evitar que el usuario cierre la aplicacion cuando da click en X
         private void CatalogoUsuarios_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -75,6 +76,23 @@ namespace Proyecto_Final_Equipo_1
             {
                 e.Cancel = true;
             }
+        }
+
+        private void CatalogoUsuarios_Shown(object sender, EventArgs e)
+        {
+            // Recalculamos la posicion del formulario para que aparezca centrado despues de que AutoSize lo ajusto
+            this.Location = new Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+                (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2
+            );
+        }
+
+        private void CatalogoUsuarios_Load(object sender, EventArgs e)
+        {
+            //Cargamos la información del Usuario Operativo en las etqiuetas
+            LblUsuario.Text = FuncionesAplicacion.Usuario;
+            LblNombreCompleto.Text = FuncionesAplicacion.NombreCompleto;
+            LblPermiso.Text = "(" + FuncionesAplicacion.TipoUsuario + ")";
         }
     }
 }
