@@ -182,9 +182,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnVender_Click(object sender, EventArgs e)
         { 
-            bool VentaExito = FuncionesAplicacion.VenderProductos(LvCarrito, TxtPorPagar, LblCantidadRegistrosCarrito); //Llamamos a la función de Vender Productos
+            FuncionesAplicacion.SeCompletoOperacion = FuncionesAplicacion.VenderProductos(LvCarrito, TxtPorPagar, LblCantidadRegistrosCarrito); //Llamamos a la función de Vender Productos
 
-            if (VentaExito) //Solo si la venta fue Exitosa limpiamos y reiniciamos
+            if (FuncionesAplicacion.SeCompletoOperacion) //Solo si la venta fue Exitosa limpiamos y reiniciamos
             {
                 FuncionesAplicacion.LimpiarControles(this); //Limpiamos todos los controles una vez hecha la venta
                 CargarProductos();

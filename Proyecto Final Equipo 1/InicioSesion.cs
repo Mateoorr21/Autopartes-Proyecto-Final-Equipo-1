@@ -21,7 +21,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void Btn_Ingreso_Click(object sender, EventArgs e)
         {
-            FuncionesAplicacion.IniciarSesion(Txt_Usuario.Text, Txt_Password.Text, Txt_Usuario, Txt_Password);
+            FuncionesAplicacion.IniciarSesion(Txt_Usuario.Text, Txt_Password.Text, Txt_Usuario, Txt_Password, this); //llamda a función de Inicio de Sesion
         }
 
         private void Txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)

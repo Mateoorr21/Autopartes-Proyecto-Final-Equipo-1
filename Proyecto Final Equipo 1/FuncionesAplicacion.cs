@@ -34,6 +34,8 @@ namespace Proyecto_Final_Equipo_1
         public static string RutaImagenTemporal = null;
         public static int IdSeleccionado = 0;
         public static int ContarProductos = 0;
+        public static bool SeCompletoOperacion = false;
+        public static int ColumnaOrdenar = -1; //Variable para OrdenarColumnas
 
         //Declaramos e Inicializamos variables que se utilizan en Ventas y Corte de Caja
         public static int CantidadEnStockSeleccionado = 0;
@@ -42,12 +44,9 @@ namespace Proyecto_Final_Equipo_1
         public static float PorPagar = 0;
         public static float ProductoPaga = 0;
         public static float ReciboDinero = 0;
-        public static bool SeHizoCobro = false;
         public static bool HayVentas = false;
         public static int ContarVentas = 0;
         public static float DineroVentas = 0;
-
-        public static int ColumnaOrdenar = -1; //Variable para OrdenarColumnas
 
 
 
@@ -137,7 +136,7 @@ namespace Proyecto_Final_Equipo_1
             PorPagar = 0;
             ProductoPaga = 0;
             ReciboDinero = 0;
-            SeHizoCobro = false;
+            SeCompletoOperacion = false;
             ContarVentas = 0;
             DineroVentas = 0;
         }
@@ -145,7 +144,7 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA INICIAR SESION AL SISTEMA
-        public static void IniciarSesion(string Username, string Password, TextBox TxtUsuario, TextBox TxtPassword)
+        public static void IniciarSesion(string Username, string Password, TextBox TxtUsuario, TextBox TxtPassword, Control VentanaInicioSesion)
         {
             // Usamos 'using' para gestionar la conexión y asegurar que se liberen los recursos automáticamente
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -184,8 +183,8 @@ namespace Proyecto_Final_Equipo_1
                                 // Variable booleana (Es un Admin o no)
                                 TienePermiso = TipoUsuario == "Admin" || TipoUsuario == "Propietario";
 
-                                // Abrir el formulario
-                                Aplicacion aplicacion = new Aplicacion();
+                                VentanaInicioSesion.Hide(); //Ocultamos la ventana de Inicio de Sesion
+                                Aplicacion aplicacion = new Aplicacion(); // Abrir el formulario
                                 aplicacion.ShowDialog();
 
                                 ReiniciarVariables(); //Reinciamos las variables a usar.
@@ -368,9 +367,11 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA AGREGAR UN PRODUCTO A LA BASE DE DATOS
-        public static void RegistrarProducto(string Nombre, string Descripcion, string Marca, TextBox Txt_Nombre, TextBox Txt_Descripcion, 
+        public static bool RegistrarProducto(string Nombre, string Descripcion, string Marca, TextBox Txt_Nombre, TextBox Txt_Descripcion, 
             TextBox Txt_Marca, TextBox Txt_Precio, TextBox Txt_Cantidad, PictureBox PicImagenProducto)
         {
+            SeCompletoOperacion = false; //Booleano empieza en falso
+
             //Si algun campo esta vacío (exceptuando la descripción)  mensaje de error
             if (string.IsNullOrWhiteSpace(Txt_Nombre.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Descripcion.Text) ||
@@ -381,7 +382,7 @@ namespace Proyecto_Final_Equipo_1
             {
                 MessageBox.Show("Error. Ingrese la información del producto a ingresar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             //Convertimos el valor de las cajas en tipo float y entero
@@ -392,7 +393,7 @@ namespace Proyecto_Final_Equipo_1
             {
                 MessageBox.Show("Error. No se puede ingresar 0 como valor de Precio o Cantidad en Existencia", "ERROR. 0 NO ES VALIDO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             //Establecemos el obejto OledbConnection para conectar con la base de datos
@@ -400,7 +401,25 @@ namespace Proyecto_Final_Equipo_1
             {
                 conexion.Open(); //Abrimos conexion
 
-                //Primer comando SQL para insertar el registro
+                //Primer comando SQL para validar que el nombre del producto y marca no se encuentren en la BDDS
+                string BuscarIngresado = "SELECT Nombre, Marca FROM Productos WHERE Nombre = @Nombre AND Marca = @Marca";
+
+                using(OleDbCommand ComandoBuscar = new OleDbCommand(BuscarIngresado, conexion))
+                {
+                    ComandoBuscar.Parameters.AddWithValue("@Nombre", Nombre);
+                    ComandoBuscar.Parameters.AddWithValue("@Marca", Marca);
+
+                    OleDbDataReader LeerBuscar = ComandoBuscar.ExecuteReader();
+
+                    if(LeerBuscar.HasRows) //Si hay un registro con el mismo nombre y marca mensaje de advertencia
+                    {
+                        MessageBox.Show("El producto " + Nombre + " de la marca " + Marca + " ya se encuentra en la Tienda Auto-One",
+                            "ADVERTENCIA. PRODUCTO DE " + Marca + " YA ESTÁ EN TIENDA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return false;
+                    }
+                }
+
+                //Segundo comando SQL para insertar el registro
                 string query = "INSERT INTO Productos (Nombre, Descripcion, Marca, Precio, Cantidad_en_Stock, Imagen) " +
                    "VALUES (@Nombre, @Descripcion, @Marca, @Precio, @CantidadEnStock, @Imagen)";
 
@@ -431,6 +450,7 @@ namespace Proyecto_Final_Equipo_1
             //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes, el nombre de la imagen y .jpg
             string RutaDestino = "..\\..\\..\\Imagenes\\" + IdGenerado.ToString() + ".jpg";
 
+            //ERORR RUTA VACIA
             // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
             File.Copy(RutaImagenTemporal, RutaDestino, true);
 
@@ -464,6 +484,8 @@ namespace Proyecto_Final_Equipo_1
             //Mensaje de registro de producto exitoso
             MessageBox.Show("Registro de Producto " + Nombre + " Exitoso",
                 "Registro exitoso de Producto a Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            return true; //Devuelve true una vez se inserto registro para que se haga el reinicio de variables
         }
 
 
@@ -585,15 +607,17 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA MODIFICAR LA INFORMACION DE UN PRODUCTO
-        public static void ActualizarProducto(string Nombre, string Descripcion, string Marca, ListView LvProductos,
+        public static bool ActualizarProducto(string Nombre, string Descripcion, string Marca, ListView LvProductos,
             TextBox Txt_Nombre, TextBox Txt_Descripcion, TextBox Txt_Marca, TextBox Txt_Precio, TextBox Txt_Cantidad, PictureBox PicImagenProducto)
         {
+            SeCompletoOperacion = false; //Booleano empieza en falso
+
             //Si no hay registro seleccionado menssaje de Error
             if (LvProductos.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Error. Seleccione un producto a modificar", "ERROR. NO SE SELECCIONÓ PRODUCTO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             //Si alguno de los campos a actualizar esta vacío mensaje de Error
@@ -606,15 +630,8 @@ namespace Proyecto_Final_Equipo_1
             {
                 MessageBox.Show("Error. Ingrese información a modificar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
-
-            //Confirmamos que el usuario desea modificar el registro seleccioando
-            DialogResult ConfirmarModificar;
-            ConfirmarModificar = MessageBox.Show("¿Esta seguro que desea modificar la información del producto seleccionado?",
-                "CONFIRMACIÓN DE ACTUALIZACIÓN DE PRODUCTO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (ConfirmarModificar == DialogResult.No) return;
 
             //Convertimos el valor de las cajas en tipo float y entero
             float Precio = float.Parse(Txt_Precio.Text);
@@ -624,7 +641,7 @@ namespace Proyecto_Final_Equipo_1
             {
                 MessageBox.Show("Error. No se puede ingresar 0 como valor de Precio o Cantidad en Existencia", "ERROR. 0 NO ES VALIDO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             //using para establecer conexion con la base de datos
@@ -632,7 +649,33 @@ namespace Proyecto_Final_Equipo_1
             {
                 conexion.Open(); //Abrimos conexion
 
-                //Consulta SQL para actualizar los campos de un registro
+                //Primer comando SQL para validar que el nombre del producto y marca no se encuentren en la BDDS, no debe devolver el registro seleccionado
+                string BuscarIngresado = "SELECT Nombre, Marca FROM Productos WHERE Nombre = @Nombre AND Marca = @Marca AND Id <> @Id";
+
+                using (OleDbCommand ComandoBuscar = new OleDbCommand(BuscarIngresado, conexion))
+                {
+                    ComandoBuscar.Parameters.AddWithValue("@Nombre", Nombre);
+                    ComandoBuscar.Parameters.AddWithValue("@Marca", Marca);
+                    ComandoBuscar.Parameters.AddWithValue("@Id", IdSeleccionado);
+
+                    OleDbDataReader LeerBuscar = ComandoBuscar.ExecuteReader();
+
+                    if (LeerBuscar.HasRows) //Si hay un registro con el mismo nombre y marca mensaje de advertencia
+                    {
+                        MessageBox.Show("El producto " + Nombre + " de la marca " + Marca + " ya se encuentra en la Tienda Auto-One",
+                            "ADVERTENCIA. PRODUCTO DE " + Marca + " YA ESTÁ EN TIENDA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return false;
+                    }
+                }
+
+                //Confirmamos que el usuario desea modificar el registro seleccioando
+                DialogResult ConfirmarModificar;
+                ConfirmarModificar = MessageBox.Show("¿Esta seguro que desea modificar la información del producto seleccionado?",
+                    "CONFIRMACIÓN DE ACTUALIZACIÓN DE PRODUCTO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (ConfirmarModificar == DialogResult.No) return false;
+
+                //Segunda Consulta SQL para actualizar los campos de un registro
                 string query = "UPDATE Productos SET Nombre = @Nombre, Descripcion = @Descripcion, " +
                                 "Marca = @Marca, Precio = @Precio, Cantidad_en_Stock = @Cantidad WHERE Id = @Id";
 
@@ -683,6 +726,8 @@ namespace Proyecto_Final_Equipo_1
             //Mensaje de Actualización de datos exitosa
             MessageBox.Show("Datos del Producto actualizados correctamente.", "ACTUALIZACION DE DATOS DE PRODUCTO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            return true; //Devolvemos true si se actualizo el producto para hacer el reinicio de variables
         }
 
 
@@ -1044,6 +1089,8 @@ namespace Proyecto_Final_Equipo_1
         //FUNCION PARA HACER LA VENTA DE LOS PRODUCTOS DEL CARRITO
         public static bool VenderProductos(ListView LvCarrito, TextBox TxtPorPagar, Label LblCantidadRegistrosCarrito)
         {
+            SeCompletoOperacion = false; //Booleano empieza en falso
+
             //Si el Carrito esta vacío mensaje de error
             if (LvCarrito.Items.Count == 0)
             {
@@ -1056,7 +1103,7 @@ namespace Proyecto_Final_Equipo_1
             HacerPago Cobro = new HacerPago();
             Cobro.ShowDialog();
 
-            if (SeHizoCobro) //Solo si se hizo el cobro continuamos
+            if (SeCompletoOperacion) //Solo si se hizo el cobro continuamos
             {
                 //Establecemos el obejto OledbConnection para conectar con la base de datos
                 using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -1233,8 +1280,9 @@ namespace Proyecto_Final_Equipo_1
 
         public static bool HacerCobro(TextBox TxtDineroRecibo, Label LblErrorDineroRecibo)
         {
+            SeCompletoOperacion = false; //Booleano empieza en falso
+
             LblErrorDineroRecibo.Visible = false; //Ocultamos etiqueta de error
-            SeHizoCobro = false; //Booleano cobro inicia en falso
              
             //Si la caja de Dinero Recibo esta vacía mensaje de error
             if (string.IsNullOrEmpty(TxtDineroRecibo.Text)) {

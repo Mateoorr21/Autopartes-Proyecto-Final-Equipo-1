@@ -19,7 +19,6 @@ namespace Proyecto_Final_Equipo_1
 
         private void HacerPago_Load(object sender, EventArgs e)
         {
-            FuncionesAplicacion.SeHizoCobro = false; //Reiniciamos el booleano
             TxtPorPagar.Text = FuncionesAplicacion.PorPagar.ToString("C"); //Cargamos la cantidad a pagar
         }
 
@@ -31,9 +30,9 @@ namespace Proyecto_Final_Equipo_1
         private void BtnCobrar_Click(object sender, EventArgs e)
         {
             //Le asinamos al booleano se hizo cobro lo que retorne la función
-            FuncionesAplicacion.SeHizoCobro = FuncionesAplicacion.HacerCobro(TxtDineroRecibo, LblErrorDineroRecibo);
+            FuncionesAplicacion.SeCompletoOperacion = FuncionesAplicacion.HacerCobro(TxtDineroRecibo, LblErrorDineroRecibo);
 
-            if(FuncionesAplicacion.SeHizoCobro) Dispose(); //Si se hizo el cobro cerramos el formulario
+            if(FuncionesAplicacion.SeCompletoOperacion) Dispose(); //Si se hizo el cobro cerramos el formulario
         }
 
         private void TxtDineroRecibo_KeyPress(object sender, KeyPressEventArgs e)

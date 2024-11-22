@@ -14,10 +14,13 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 {
     public partial class ModificarUsuario : UserControl
     {
+        //Declaramos las instancias de tipo formulario que recibe ModificarUsuario
         Aplicacion Aplicacion_Recibida;
-        public ModificarUsuario(Aplicacion aplicacion)
+        CatalogoUsuarios Catalogo_Recibido;
+        public ModificarUsuario(Aplicacion aplicacion, CatalogoUsuarios catalogo) //ModificarUsuario recibe Aplicación y Catalogo
         {
             Aplicacion_Recibida = aplicacion;
+            Catalogo_Recibido = catalogo;
             InitializeComponent();
         }
 
@@ -126,10 +129,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             FuncionesCatalogoUsuarios.ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, FuncionesCatalogoUsuarios.IdSeleccionado, 
                 LvUsuarios,Txt_Nombre, Txt_Usuario, Txt_Password, RdAdmin, RdCajero, LblErrorBuscar, TxtBuscar);
 
-            //Si el usuario se modifico a si mismo, actualizamos los datos de inicio de sesion
+            //Si el usuario se modifico a si mismo, actualizamos los datos de inicio de sesion en Aplicacion y Catalogo
             if (FuncionesCatalogoUsuarios.SeAutoModifico == true)
             {
                 FuncionesAplicacion.ActualizarDatos(Aplicacion_Recibida.LblNombreCompleto, Aplicacion_Recibida.LblUsuario, Aplicacion_Recibida.LblPermiso);
+                FuncionesAplicacion.ActualizarDatos(Catalogo_Recibido.LblNombreCompleto, Catalogo_Recibido.LblUsuario, Catalogo_Recibido.LblPermiso);
             }
         }
 

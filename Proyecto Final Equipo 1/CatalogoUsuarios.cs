@@ -24,7 +24,7 @@ namespace Proyecto_Final_Equipo_1
             InitializeComponent();
             //Incializamos los controles de Usuario
             registroUsuario = new RegistrarUsuario(); 
-            modificarUsuario = new ModificarUsuario(aplicacion); 
+            modificarUsuario = new ModificarUsuario(aplicacion, this); 
             eliminarUsuario = new EliminarUsuario(); 
         }
 

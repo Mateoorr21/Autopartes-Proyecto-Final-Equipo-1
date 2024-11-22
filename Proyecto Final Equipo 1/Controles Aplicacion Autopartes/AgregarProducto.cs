@@ -42,10 +42,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de Error del Formulario
 
             //LLamamos a la función RegistrarProducto
-            FuncionesAplicacion.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, 
+            FuncionesAplicacion.SeCompletoOperacion = FuncionesAplicacion.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, 
                 Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
 
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            if(FuncionesAplicacion.SeCompletoOperacion) FuncionesAplicacion.ReiniciarVariables(); //Si se registro reiniciamos las Variables
         }
 
         private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)

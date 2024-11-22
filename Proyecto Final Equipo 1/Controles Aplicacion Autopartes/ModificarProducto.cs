@@ -15,6 +15,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 {
     public partial class ModificarProducto : UserControl
     {
+        
         public ModificarProducto() 
         {
             InitializeComponent();
@@ -102,10 +103,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de Error del Formulario
 
             //LLamamos a la función ActualizarProducto de la clase FuncionesAplicacion
-            FuncionesAplicacion.ActualizarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, LvProductos,
+            FuncionesAplicacion.SeCompletoOperacion = FuncionesAplicacion.ActualizarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, LvProductos,
                 Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
 
-            FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            if(FuncionesAplicacion.SeCompletoOperacion) FuncionesAplicacion.ReiniciarVariables(); //Si se modifico reiniciamos las Variables
         }
 
         private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)
