@@ -53,6 +53,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.LvProductos = new System.Windows.Forms.ListView();
+            this.ToolTopEliminarProducto = new System.Windows.Forms.ToolTip(this.components);
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.PicLogo = new System.Windows.Forms.PictureBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -63,7 +64,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.ToolTopEliminarProducto = new System.Windows.Forms.ToolTip(this.components);
             this.panel11.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -94,6 +94,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
+            this.LblCampoBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.LblCampoBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCampoBuscar.ForeColor = System.Drawing.Color.DarkRed;
             this.LblCampoBuscar.Location = new System.Drawing.Point(41, 418);
@@ -105,6 +106,7 @@
             // 
             // panel11
             // 
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.panel11.Controls.Add(this.TxtBuscar);
             this.panel11.Controls.Add(this.pictureBox3);
             this.panel11.Controls.Add(this.panel12);
@@ -114,7 +116,8 @@
             this.panel11.Location = new System.Drawing.Point(33, 427);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(178, 67);
-            this.panel11.TabIndex = 149;
+            this.panel11.TabIndex = 5;
+            this.panel11.TabStop = true;
             // 
             // TxtBuscar
             // 
@@ -169,6 +172,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel6.Controls.Add(this.RdId);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.panel8);
@@ -178,7 +182,8 @@
             this.panel6.Location = new System.Drawing.Point(32, 287);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(180, 120);
-            this.panel6.TabIndex = 148;
+            this.panel6.TabIndex = 3;
+            this.panel6.TabStop = true;
             // 
             // RdId
             // 
@@ -245,6 +250,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.RdExacta);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.RdAproximada);
@@ -254,7 +260,8 @@
             this.panel1.Location = new System.Drawing.Point(33, 155);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 122);
-            this.panel1.TabIndex = 147;
+            this.panel1.TabIndex = 1;
+            this.panel1.TabStop = true;
             // 
             // RdExacta
             // 
@@ -284,7 +291,7 @@
             this.RdAproximada.Location = new System.Drawing.Point(27, 49);
             this.RdAproximada.Name = "RdAproximada";
             this.RdAproximada.Size = new System.Drawing.Size(120, 25);
-            this.RdAproximada.TabIndex = 0;
+            this.RdAproximada.TabIndex = 1;
             this.RdAproximada.TabStop = true;
             this.RdAproximada.Text = "Aproximada";
             this.RdAproximada.UseVisualStyleBackColor = true;
@@ -338,7 +345,7 @@
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
             this.LvProductos.Size = new System.Drawing.Size(699, 453);
-            this.LvProductos.TabIndex = 145;
+            this.LvProductos.TabIndex = 7;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
             this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
             this.LvProductos.SelectedIndexChanged += new System.EventHandler(this.LvProductos_SelectedIndexChanged);
@@ -353,7 +360,7 @@
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
-            this.BtnBuscar.TabIndex = 158;
+            this.BtnBuscar.TabIndex = 6;
             this.ToolTopEliminarProducto.SetToolTip(this.BtnBuscar, "Buscar producto");
             this.BtnBuscar.UseVisualStyleBackColor = true;
             // 
@@ -379,7 +386,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(166, 152);
-            this.BtnCancelar.TabIndex = 8;
+            this.BtnCancelar.TabIndex = 9;
             this.ToolTopEliminarProducto.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -394,7 +401,7 @@
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(150, 137);
-            this.BtnEliminar.TabIndex = 7;
+            this.BtnEliminar.TabIndex = 8;
             this.ToolTopEliminarProducto.SetToolTip(this.BtnEliminar, "Eliminar producto");
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);

@@ -53,6 +53,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.LvUsuarios = new System.Windows.Forms.ListView();
+            this.ToolTipBorrarUsuario = new System.Windows.Forms.ToolTip(this.components);
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.PicLogo = new System.Windows.Forms.PictureBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -63,7 +64,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.ToolTipBorrarUsuario = new System.Windows.Forms.ToolTip(this.components);
             this.panel11.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -114,7 +114,8 @@
             this.panel11.Location = new System.Drawing.Point(33, 427);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(178, 67);
-            this.panel11.TabIndex = 168;
+            this.panel11.TabIndex = 5;
+            this.panel11.TabStop = true;
             // 
             // TxtBuscar
             // 
@@ -169,6 +170,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel6.Controls.Add(this.RdUsuario);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.panel8);
@@ -178,7 +180,8 @@
             this.panel6.Location = new System.Drawing.Point(32, 287);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(180, 120);
-            this.panel6.TabIndex = 167;
+            this.panel6.TabIndex = 3;
+            this.panel6.TabStop = true;
             // 
             // RdUsuario
             // 
@@ -245,6 +248,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.RdExacta);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.RdAproximada);
@@ -254,7 +258,8 @@
             this.panel1.Location = new System.Drawing.Point(33, 155);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 122);
-            this.panel1.TabIndex = 166;
+            this.panel1.TabIndex = 1;
+            this.panel1.TabStop = true;
             // 
             // RdExacta
             // 
@@ -284,7 +289,7 @@
             this.RdAproximada.Location = new System.Drawing.Point(27, 49);
             this.RdAproximada.Name = "RdAproximada";
             this.RdAproximada.Size = new System.Drawing.Size(120, 25);
-            this.RdAproximada.TabIndex = 0;
+            this.RdAproximada.TabIndex = 1;
             this.RdAproximada.TabStop = true;
             this.RdAproximada.Text = "Aproximada";
             this.RdAproximada.UseVisualStyleBackColor = true;
@@ -338,7 +343,7 @@
             this.LvUsuarios.MultiSelect = false;
             this.LvUsuarios.Name = "LvUsuarios";
             this.LvUsuarios.Size = new System.Drawing.Size(699, 453);
-            this.LvUsuarios.TabIndex = 164;
+            this.LvUsuarios.TabIndex = 7;
             this.LvUsuarios.UseCompatibleStateImageBehavior = false;
             this.LvUsuarios.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvUsuarios_ColumnClick);
             this.LvUsuarios.SelectedIndexChanged += new System.EventHandler(this.LvUsuarios_SelectedIndexChanged);
@@ -353,7 +358,7 @@
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
-            this.BtnBuscar.TabIndex = 172;
+            this.BtnBuscar.TabIndex = 6;
             this.ToolTipBorrarUsuario.SetToolTip(this.BtnBuscar, "Buscar usuario");
             this.BtnBuscar.UseVisualStyleBackColor = true;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
@@ -380,7 +385,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(166, 152);
-            this.BtnCancelar.TabIndex = 160;
+            this.BtnCancelar.TabIndex = 9;
             this.ToolTipBorrarUsuario.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -395,7 +400,7 @@
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(150, 137);
-            this.BtnEliminar.TabIndex = 159;
+            this.BtnEliminar.TabIndex = 8;
             this.ToolTipBorrarUsuario.SetToolTip(this.BtnEliminar, "Borrar usuario");
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);

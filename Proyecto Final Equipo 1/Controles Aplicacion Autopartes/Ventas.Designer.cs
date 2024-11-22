@@ -67,6 +67,7 @@
             this.LblCantidad = new System.Windows.Forms.Label();
             this.TxtProducto = new System.Windows.Forms.TextBox();
             this.LblProducto = new System.Windows.Forms.Label();
+            this.ToolTipVentas = new System.Windows.Forms.ToolTip(this.components);
             this.BtnVender = new System.Windows.Forms.Button();
             this.BtnCancelarVenta = new System.Windows.Forms.Button();
             this.BtnEliminarRegistroCarrito = new System.Windows.Forms.Button();
@@ -86,7 +87,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.ToolTipVentas = new System.Windows.Forms.ToolTip(this.components);
             this.panel11.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -116,7 +116,7 @@
             this.LvCarrito.MultiSelect = false;
             this.LvCarrito.Name = "LvCarrito";
             this.LvCarrito.Size = new System.Drawing.Size(429, 315);
-            this.LvCarrito.TabIndex = 125;
+            this.LvCarrito.TabIndex = 18;
             this.LvCarrito.UseCompatibleStateImageBehavior = false;
             this.LvCarrito.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvCarrito_ColumnClick);
             // 
@@ -136,6 +136,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
+            this.LblCampoBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.LblCampoBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCampoBuscar.ForeColor = System.Drawing.Color.Indigo;
             this.LblCampoBuscar.Location = new System.Drawing.Point(41, 392);
@@ -147,6 +148,7 @@
             // 
             // panel11
             // 
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
             this.panel11.Controls.Add(this.TxtBuscar);
             this.panel11.Controls.Add(this.pictureBox3);
             this.panel11.Controls.Add(this.panel12);
@@ -156,7 +158,8 @@
             this.panel11.Location = new System.Drawing.Point(33, 401);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(178, 67);
-            this.panel11.TabIndex = 168;
+            this.panel11.TabIndex = 7;
+            this.panel11.TabStop = true;
             // 
             // TxtBuscar
             // 
@@ -168,7 +171,7 @@
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(143, 15);
-            this.TxtBuscar.TabIndex = 5;
+            this.TxtBuscar.TabIndex = 7;
             this.TxtBuscar.Tag = "Buscar...";
             this.TxtBuscar.Text = "Buscar...";
             this.TxtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBuscar_KeyPress);
@@ -211,6 +214,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel6.Controls.Add(this.RdId);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.panel8);
@@ -220,7 +224,8 @@
             this.panel6.Location = new System.Drawing.Point(32, 277);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(180, 108);
-            this.panel6.TabIndex = 167;
+            this.panel6.TabIndex = 5;
+            this.panel6.TabStop = true;
             // 
             // RdId
             // 
@@ -229,7 +234,7 @@
             this.RdId.Location = new System.Drawing.Point(28, 73);
             this.RdId.Name = "RdId";
             this.RdId.Size = new System.Drawing.Size(120, 25);
-            this.RdId.TabIndex = 4;
+            this.RdId.TabIndex = 6;
             this.RdId.Text = "Id_Producto";
             this.RdId.UseVisualStyleBackColor = true;
             this.RdId.CheckedChanged += new System.EventHandler(this.RdId_CheckedChanged);
@@ -269,7 +274,7 @@
             this.RdNombre.Location = new System.Drawing.Point(28, 43);
             this.RdNombre.Name = "RdNombre";
             this.RdNombre.Size = new System.Drawing.Size(91, 25);
-            this.RdNombre.TabIndex = 3;
+            this.RdNombre.TabIndex = 5;
             this.RdNombre.TabStop = true;
             this.RdNombre.Text = "Nombre";
             this.RdNombre.UseVisualStyleBackColor = true;
@@ -287,6 +292,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.RdExacta);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.RdAproximada);
@@ -296,7 +302,8 @@
             this.panel1.Location = new System.Drawing.Point(33, 155);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 114);
-            this.panel1.TabIndex = 166;
+            this.panel1.TabIndex = 2;
+            this.panel1.TabStop = true;
             // 
             // RdExacta
             // 
@@ -305,7 +312,7 @@
             this.RdExacta.Location = new System.Drawing.Point(27, 79);
             this.RdExacta.Name = "RdExacta";
             this.RdExacta.Size = new System.Drawing.Size(77, 25);
-            this.RdExacta.TabIndex = 2;
+            this.RdExacta.TabIndex = 4;
             this.RdExacta.Text = "Exacta";
             this.RdExacta.UseVisualStyleBackColor = true;
             // 
@@ -326,7 +333,7 @@
             this.RdAproximada.Location = new System.Drawing.Point(27, 49);
             this.RdAproximada.Name = "RdAproximada";
             this.RdAproximada.Size = new System.Drawing.Size(120, 25);
-            this.RdAproximada.TabIndex = 1;
+            this.RdAproximada.TabIndex = 2;
             this.RdAproximada.TabStop = true;
             this.RdAproximada.Text = "Aproximada";
             this.RdAproximada.UseVisualStyleBackColor = true;
@@ -380,7 +387,7 @@
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
             this.LvProductos.Size = new System.Drawing.Size(445, 315);
-            this.LvProductos.TabIndex = 164;
+            this.LvProductos.TabIndex = 1;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
             this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
             this.LvProductos.SelectedIndexChanged += new System.EventHandler(this.LvProductos_SelectedIndexChanged);
@@ -399,6 +406,7 @@
             // 
             // panel16
             // 
+            this.panel16.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel16.Controls.Add(this.BtnVender);
             this.panel16.Controls.Add(this.BtnCancelarVenta);
             this.panel16.Controls.Add(this.BtnEliminarRegistroCarrito);
@@ -423,7 +431,8 @@
             this.panel16.Location = new System.Drawing.Point(366, 476);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(739, 183);
-            this.panel16.TabIndex = 168;
+            this.panel16.TabIndex = 10;
+            this.panel16.TabStop = true;
             // 
             // panel17
             // 
@@ -474,6 +483,7 @@
             this.TxtPorPagar.Name = "TxtPorPagar";
             this.TxtPorPagar.Size = new System.Drawing.Size(210, 15);
             this.TxtPorPagar.TabIndex = 221;
+            this.TxtPorPagar.TabStop = false;
             this.TxtPorPagar.Tag = "0";
             this.TxtPorPagar.Text = "0";
             // 
@@ -512,7 +522,7 @@
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(186, 15);
-            this.Txt_Cantidad.TabIndex = 213;
+            this.Txt_Cantidad.TabIndex = 10;
             this.Txt_Cantidad.Tag = "0";
             this.Txt_Cantidad.Text = "0";
             this.Txt_Cantidad.TextChanged += new System.EventHandler(this.Txt_Cantidad_TextChanged);
@@ -541,7 +551,8 @@
             this.TxtProducto.Margin = new System.Windows.Forms.Padding(2);
             this.TxtProducto.Name = "TxtProducto";
             this.TxtProducto.Size = new System.Drawing.Size(233, 15);
-            this.TxtProducto.TabIndex = 210;
+            this.TxtProducto.TabIndex = 0;
+            this.TxtProducto.TabStop = false;
             this.TxtProducto.Tag = "Nombre del Producto";
             this.TxtProducto.Text = "Nombre del Producto";
             // 
@@ -567,7 +578,7 @@
             this.BtnVender.Margin = new System.Windows.Forms.Padding(2);
             this.BtnVender.Name = "BtnVender";
             this.BtnVender.Size = new System.Drawing.Size(89, 70);
-            this.BtnVender.TabIndex = 226;
+            this.BtnVender.TabIndex = 17;
             this.ToolTipVentas.SetToolTip(this.BtnVender, "Venta de productos");
             this.BtnVender.UseVisualStyleBackColor = true;
             this.BtnVender.Click += new System.EventHandler(this.BtnVender_Click);
@@ -582,7 +593,7 @@
             this.BtnCancelarVenta.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelarVenta.Name = "BtnCancelarVenta";
             this.BtnCancelarVenta.Size = new System.Drawing.Size(134, 72);
-            this.BtnCancelarVenta.TabIndex = 225;
+            this.BtnCancelarVenta.TabIndex = 16;
             this.ToolTipVentas.SetToolTip(this.BtnCancelarVenta, "Cancelar venta");
             this.BtnCancelarVenta.UseVisualStyleBackColor = true;
             this.BtnCancelarVenta.Click += new System.EventHandler(this.BtnCancelarVenta_Click);
@@ -597,7 +608,7 @@
             this.BtnEliminarRegistroCarrito.Margin = new System.Windows.Forms.Padding(2);
             this.BtnEliminarRegistroCarrito.Name = "BtnEliminarRegistroCarrito";
             this.BtnEliminarRegistroCarrito.Size = new System.Drawing.Size(90, 90);
-            this.BtnEliminarRegistroCarrito.TabIndex = 224;
+            this.BtnEliminarRegistroCarrito.TabIndex = 14;
             this.ToolTipVentas.SetToolTip(this.BtnEliminarRegistroCarrito, "Eliminar de carrito");
             this.BtnEliminarRegistroCarrito.UseVisualStyleBackColor = true;
             this.BtnEliminarRegistroCarrito.Click += new System.EventHandler(this.BtnEliminarRegistroCarrito_Click);
@@ -624,7 +635,7 @@
             this.BtnVaciarCarrito.Margin = new System.Windows.Forms.Padding(2);
             this.BtnVaciarCarrito.Name = "BtnVaciarCarrito";
             this.BtnVaciarCarrito.Size = new System.Drawing.Size(90, 90);
-            this.BtnVaciarCarrito.TabIndex = 220;
+            this.BtnVaciarCarrito.TabIndex = 15;
             this.ToolTipVentas.SetToolTip(this.BtnVaciarCarrito, "Vaciar carrito");
             this.BtnVaciarCarrito.UseVisualStyleBackColor = true;
             this.BtnVaciarCarrito.Click += new System.EventHandler(this.VaciarCarrito_Click);
@@ -640,7 +651,7 @@
             this.BtnMenos.Margin = new System.Windows.Forms.Padding(2);
             this.BtnMenos.Name = "BtnMenos";
             this.BtnMenos.Size = new System.Drawing.Size(51, 47);
-            this.BtnMenos.TabIndex = 218;
+            this.BtnMenos.TabIndex = 12;
             this.BtnMenos.UseVisualStyleBackColor = true;
             this.BtnMenos.Click += new System.EventHandler(this.BtnMenos_Click);
             // 
@@ -655,7 +666,7 @@
             this.BtnMas.Margin = new System.Windows.Forms.Padding(2);
             this.BtnMas.Name = "BtnMas";
             this.BtnMas.Size = new System.Drawing.Size(51, 47);
-            this.BtnMas.TabIndex = 217;
+            this.BtnMas.TabIndex = 11;
             this.BtnMas.UseVisualStyleBackColor = true;
             this.BtnMas.Click += new System.EventHandler(this.BtnMas_Click);
             // 
@@ -693,7 +704,7 @@
             this.BtnAgregarCarrito.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAgregarCarrito.Name = "BtnAgregarCarrito";
             this.BtnAgregarCarrito.Size = new System.Drawing.Size(86, 86);
-            this.BtnAgregarCarrito.TabIndex = 219;
+            this.BtnAgregarCarrito.TabIndex = 13;
             this.ToolTipVentas.SetToolTip(this.BtnAgregarCarrito, "Añadir a carrito");
             this.BtnAgregarCarrito.UseVisualStyleBackColor = true;
             this.BtnAgregarCarrito.Click += new System.EventHandler(this.AgregarCarrito_Click);
@@ -721,7 +732,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(136, 128);
-            this.BtnCancelar.TabIndex = 202;
+            this.BtnCancelar.TabIndex = 9;
             this.ToolTipVentas.SetToolTip(this.BtnCancelar, "Resetear búsqueda");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnRestaurarBusqueda_Click);
@@ -736,7 +747,7 @@
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(151, 132);
-            this.BtnBuscar.TabIndex = 171;
+            this.BtnBuscar.TabIndex = 8;
             this.ToolTipVentas.SetToolTip(this.BtnBuscar, "Buscar producto");
             this.BtnBuscar.UseVisualStyleBackColor = true;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);

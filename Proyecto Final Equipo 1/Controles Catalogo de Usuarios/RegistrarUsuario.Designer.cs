@@ -53,13 +53,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.ToolTipRegistrar = new System.Windows.Forms.ToolTip(this.components);
             this.BtnRegistrar = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.ToolTipRegistrar = new System.Windows.Forms.ToolTip(this.components);
             this.PanelAddInventario.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -108,7 +108,7 @@
             this.RdAdminAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RdAdminAgregar.Name = "RdAdminAgregar";
             this.RdAdminAgregar.Size = new System.Drawing.Size(72, 24);
-            this.RdAdminAgregar.TabIndex = 26;
+            this.RdAdminAgregar.TabIndex = 4;
             this.RdAdminAgregar.TabStop = true;
             this.RdAdminAgregar.Text = "Admin";
             this.RdAdminAgregar.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             this.RdCajeroAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RdCajeroAgregar.Name = "RdCajeroAgregar";
             this.RdCajeroAgregar.Size = new System.Drawing.Size(73, 24);
-            this.RdCajeroAgregar.TabIndex = 27;
+            this.RdCajeroAgregar.TabIndex = 5;
             this.RdCajeroAgregar.TabStop = true;
             this.RdCajeroAgregar.Text = "Cajero";
             this.RdCajeroAgregar.UseVisualStyleBackColor = true;
@@ -200,7 +200,8 @@
             this.PanelAddInventario.Location = new System.Drawing.Point(235, 187);
             this.PanelAddInventario.Name = "PanelAddInventario";
             this.PanelAddInventario.Size = new System.Drawing.Size(657, 418);
-            this.PanelAddInventario.TabIndex = 134;
+            this.PanelAddInventario.TabIndex = 1;
+            this.PanelAddInventario.TabStop = true;
             // 
             // panel5
             // 
@@ -370,7 +371,7 @@
             this.BtnRegistrar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnRegistrar.Name = "BtnRegistrar";
             this.BtnRegistrar.Size = new System.Drawing.Size(184, 170);
-            this.BtnRegistrar.TabIndex = 118;
+            this.BtnRegistrar.TabIndex = 6;
             this.ToolTipRegistrar.SetToolTip(this.BtnRegistrar, "Registrar usuario");
             this.BtnRegistrar.UseVisualStyleBackColor = true;
             this.BtnRegistrar.Click += new System.EventHandler(this.BtnRegistrarUsuario_Click);
@@ -385,7 +386,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(184, 176);
-            this.BtnCancelar.TabIndex = 6;
+            this.BtnCancelar.TabIndex = 7;
             this.ToolTipRegistrar.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);

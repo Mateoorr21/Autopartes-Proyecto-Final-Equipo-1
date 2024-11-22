@@ -77,6 +77,7 @@
             this.LblErrorNombre = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
             this.Txt_Nombre = new System.Windows.Forms.TextBox();
+            this.ToolTipEditarUsuario = new System.Windows.Forms.ToolTip(this.components);
             this.BtnModificar = new System.Windows.Forms.Button();
             this.PicEditar = new System.Windows.Forms.PictureBox();
             this.PicPermiso = new System.Windows.Forms.PictureBox();
@@ -88,7 +89,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.ToolTipEditarUsuario = new System.Windows.Forms.ToolTip(this.components);
             this.panel11.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -144,7 +144,8 @@
             this.panel11.Location = new System.Drawing.Point(33, 427);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(178, 67);
-            this.panel11.TabIndex = 182;
+            this.panel11.TabIndex = 5;
+            this.panel11.TabStop = true;
             // 
             // TxtBuscar
             // 
@@ -199,6 +200,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel6.Controls.Add(this.RdUsuario);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.panel8);
@@ -208,7 +210,8 @@
             this.panel6.Location = new System.Drawing.Point(32, 287);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(180, 120);
-            this.panel6.TabIndex = 181;
+            this.panel6.TabIndex = 3;
+            this.panel6.TabStop = true;
             // 
             // RdUsuario
             // 
@@ -275,6 +278,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.RdExacta);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.RdAproximada);
@@ -284,7 +288,8 @@
             this.panel1.Location = new System.Drawing.Point(33, 155);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 122);
-            this.panel1.TabIndex = 180;
+            this.panel1.TabIndex = 1;
+            this.panel1.TabStop = true;
             // 
             // RdExacta
             // 
@@ -316,7 +321,7 @@
             this.RdAproximada.Location = new System.Drawing.Point(27, 49);
             this.RdAproximada.Name = "RdAproximada";
             this.RdAproximada.Size = new System.Drawing.Size(120, 25);
-            this.RdAproximada.TabIndex = 0;
+            this.RdAproximada.TabIndex = 1;
             this.RdAproximada.TabStop = true;
             this.RdAproximada.Text = "Aproximada";
             this.RdAproximada.UseVisualStyleBackColor = true;
@@ -370,13 +375,14 @@
             this.LvUsuarios.MultiSelect = false;
             this.LvUsuarios.Name = "LvUsuarios";
             this.LvUsuarios.Size = new System.Drawing.Size(699, 344);
-            this.LvUsuarios.TabIndex = 178;
+            this.LvUsuarios.TabIndex = 7;
             this.LvUsuarios.UseCompatibleStateImageBehavior = false;
             this.LvUsuarios.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvUsuarios_ColumnClick);
             this.LvUsuarios.SelectedIndexChanged += new System.EventHandler(this.LvUsuarios_SelectedIndexChanged);
             // 
             // PanelPermiso
             // 
+            this.PanelPermiso.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.PanelPermiso.Controls.Add(this.RdCajero);
             this.PanelPermiso.Controls.Add(this.RdAdmin);
             this.PanelPermiso.Controls.Add(this.panel20);
@@ -386,7 +392,8 @@
             this.PanelPermiso.Location = new System.Drawing.Point(939, 395);
             this.PanelPermiso.Name = "PanelPermiso";
             this.PanelPermiso.Size = new System.Drawing.Size(166, 104);
-            this.PanelPermiso.TabIndex = 181;
+            this.PanelPermiso.TabIndex = 11;
+            this.PanelPermiso.TabStop = true;
             // 
             // panel20
             // 
@@ -434,7 +441,7 @@
             this.RdCajero.Margin = new System.Windows.Forms.Padding(2);
             this.RdCajero.Name = "RdCajero";
             this.RdCajero.Size = new System.Drawing.Size(73, 24);
-            this.RdCajero.TabIndex = 10;
+            this.RdCajero.TabIndex = 12;
             this.RdCajero.TabStop = true;
             this.RdCajero.Text = "Cajero";
             this.RdCajero.UseVisualStyleBackColor = true;
@@ -454,6 +461,7 @@
             // 
             // panel24
             // 
+            this.panel24.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel24.Controls.Add(this.label6);
             this.panel24.Controls.Add(this.label5);
             this.panel24.Controls.Add(this.label4);
@@ -473,7 +481,8 @@
             this.panel24.Location = new System.Drawing.Point(229, 505);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(876, 122);
-            this.panel24.TabIndex = 197;
+            this.panel24.TabIndex = 8;
+            this.panel24.TabStop = true;
             // 
             // panel25
             // 
@@ -579,7 +588,7 @@
             this.Txt_Password.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Password.Name = "Txt_Password";
             this.Txt_Password.Size = new System.Drawing.Size(276, 17);
-            this.Txt_Password.TabIndex = 9;
+            this.Txt_Password.TabIndex = 10;
             this.Txt_Password.Tag = " Contraseña...";
             this.Txt_Password.Text = " Contraseña...";
             this.Txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Password_KeyPress);
@@ -615,7 +624,7 @@
             this.Txt_Usuario.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Usuario.Name = "Txt_Usuario";
             this.Txt_Usuario.Size = new System.Drawing.Size(276, 17);
-            this.Txt_Usuario.TabIndex = 8;
+            this.Txt_Usuario.TabIndex = 9;
             this.Txt_Usuario.Tag = "Usuario...";
             this.Txt_Usuario.Text = "Usuario...";
             this.Txt_Usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Usuario_KeyPress);
@@ -652,7 +661,7 @@
             this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(240, 17);
-            this.Txt_Nombre.TabIndex = 7;
+            this.Txt_Nombre.TabIndex = 8;
             this.Txt_Nombre.Tag = "Ingrese Nombre Completo";
             this.Txt_Nombre.Text = "Ingrese Nombre Completo";
             this.Txt_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Nombre_KeyPress);
@@ -667,7 +676,7 @@
             this.BtnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(118, 114);
-            this.BtnModificar.TabIndex = 13;
+            this.BtnModificar.TabIndex = 14;
             this.ToolTipEditarUsuario.SetToolTip(this.BtnModificar, "Editar usuario");
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -723,7 +732,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(130, 125);
-            this.BtnCancelar.TabIndex = 12;
+            this.BtnCancelar.TabIndex = 13;
             this.ToolTipEditarUsuario.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -806,6 +815,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.Controls.Add(this.BtnModificar);
             this.Controls.Add(this.panel24);
             this.Controls.Add(this.PanelPermiso);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Aplicacion));
             this.LblTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,6 +49,7 @@
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.BtnVender = new System.Windows.Forms.Button();
             this.BtnInventario = new System.Windows.Forms.Button();
+            this.ToolTipAplicacion = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.PanelAutoPartes.SuspendLayout();
@@ -83,7 +85,8 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(203, 670);
-            this.panel1.TabIndex = 6;
+            this.panel1.TabIndex = 3;
+            this.panel1.TabStop = true;
             // 
             // panel3
             // 
@@ -94,7 +97,8 @@
             this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1132, 109);
-            this.panel3.TabIndex = 7;
+            this.panel3.TabIndex = 1;
+            this.panel3.TabStop = true;
             // 
             // LblPermiso
             // 
@@ -143,7 +147,7 @@
             this.PanelAutoPartes.Margin = new System.Windows.Forms.Padding(2);
             this.PanelAutoPartes.Name = "PanelAutoPartes";
             this.PanelAutoPartes.Size = new System.Drawing.Size(1135, 669);
-            this.PanelAutoPartes.TabIndex = 7;
+            this.PanelAutoPartes.TabIndex = 11;
             // 
             // panel2
             // 
@@ -162,10 +166,10 @@
             // 
             this.PicIndicaciones.BackColor = System.Drawing.Color.Transparent;
             this.PicIndicaciones.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.ImagenIndicacionesAplicacionConLogo;
-            this.PicIndicaciones.Location = new System.Drawing.Point(4, 2);
+            this.PicIndicaciones.Location = new System.Drawing.Point(4, 0);
             this.PicIndicaciones.Margin = new System.Windows.Forms.Padding(2);
             this.PicIndicaciones.Name = "PicIndicaciones";
-            this.PicIndicaciones.Size = new System.Drawing.Size(1126, 665);
+            this.PicIndicaciones.Size = new System.Drawing.Size(1126, 667);
             this.PicIndicaciones.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicIndicaciones.TabIndex = 12;
             this.PicIndicaciones.TabStop = false;
@@ -193,7 +197,8 @@
             this.BtnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(56, 61);
-            this.BtnSalir.TabIndex = 9;
+            this.BtnSalir.TabIndex = 2;
+            this.ToolTipAplicacion.SetToolTip(this.BtnSalir, "Cerrar aplicación");
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
@@ -207,7 +212,7 @@
             this.BtnCatalogoUsuarios.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCatalogoUsuarios.Name = "BtnCatalogoUsuarios";
             this.BtnCatalogoUsuarios.Size = new System.Drawing.Size(204, 91);
-            this.BtnCatalogoUsuarios.TabIndex = 8;
+            this.BtnCatalogoUsuarios.TabIndex = 10;
             this.BtnCatalogoUsuarios.UseVisualStyleBackColor = true;
             this.BtnCatalogoUsuarios.Click += new System.EventHandler(this.BtnCatalogoUsuarios_Click);
             // 
@@ -221,7 +226,7 @@
             this.BtnCorte.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCorte.Name = "BtnCorte";
             this.BtnCorte.Size = new System.Drawing.Size(204, 89);
-            this.BtnCorte.TabIndex = 7;
+            this.BtnCorte.TabIndex = 9;
             this.BtnCorte.UseVisualStyleBackColor = true;
             this.BtnCorte.Click += new System.EventHandler(this.BtnCorte_Click);
             // 
@@ -235,7 +240,7 @@
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(204, 89);
-            this.BtnEliminar.TabIndex = 6;
+            this.BtnEliminar.TabIndex = 8;
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
@@ -249,7 +254,7 @@
             this.BtnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnModificar.Name = "BtnModificar";
             this.BtnModificar.Size = new System.Drawing.Size(204, 77);
-            this.BtnModificar.TabIndex = 5;
+            this.BtnModificar.TabIndex = 7;
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
@@ -263,7 +268,7 @@
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(204, 95);
-            this.BtnBuscar.TabIndex = 4;
+            this.BtnBuscar.TabIndex = 6;
             this.BtnBuscar.UseVisualStyleBackColor = true;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
@@ -277,7 +282,7 @@
             this.BtnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(204, 95);
-            this.BtnAgregar.TabIndex = 3;
+            this.BtnAgregar.TabIndex = 5;
             this.BtnAgregar.UseVisualStyleBackColor = true;
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
@@ -291,7 +296,7 @@
             this.BtnVender.Margin = new System.Windows.Forms.Padding(2);
             this.BtnVender.Name = "BtnVender";
             this.BtnVender.Size = new System.Drawing.Size(204, 91);
-            this.BtnVender.TabIndex = 2;
+            this.BtnVender.TabIndex = 4;
             this.BtnVender.UseVisualStyleBackColor = true;
             this.BtnVender.Click += new System.EventHandler(this.BtnVender_Click);
             // 
@@ -305,7 +310,7 @@
             this.BtnInventario.Margin = new System.Windows.Forms.Padding(2);
             this.BtnInventario.Name = "BtnInventario";
             this.BtnInventario.Size = new System.Drawing.Size(204, 89);
-            this.BtnInventario.TabIndex = 1;
+            this.BtnInventario.TabIndex = 3;
             this.BtnInventario.UseVisualStyleBackColor = true;
             this.BtnInventario.Click += new System.EventHandler(this.BtnInventario_Click);
             // 
@@ -364,5 +369,6 @@
         private System.Windows.Forms.Button BtnCorte;
         private System.Windows.Forms.Button BtnCatalogoUsuarios;
         private System.Windows.Forms.PictureBox PicIndicaciones;
+        private System.Windows.Forms.ToolTip ToolTipAplicacion;
     }
 }

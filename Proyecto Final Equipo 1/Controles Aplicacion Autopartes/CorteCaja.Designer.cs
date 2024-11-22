@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtDineroVentas = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.ToolTipCorte = new System.Windows.Forms.ToolTip(this.components);
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnMostrarVenta = new System.Windows.Forms.Button();
             this.BtnRegistrarVentas = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.ToolTipCorte = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -70,7 +70,7 @@
             this.LvVentas.MultiSelect = false;
             this.LvVentas.Name = "LvVentas";
             this.LvVentas.Size = new System.Drawing.Size(863, 453);
-            this.LvVentas.TabIndex = 145;
+            this.LvVentas.TabIndex = 1;
             this.LvVentas.UseCompatibleStateImageBehavior = false;
             this.LvVentas.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvVentas_ColumnClick);
             // 
@@ -125,6 +125,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.BtnCancelar);
             this.panel1.Controls.Add(this.BtnMostrarVenta);
             this.panel1.Controls.Add(this.BtnRegistrarVentas);
@@ -142,7 +143,8 @@
             this.panel1.Location = new System.Drawing.Point(913, 155);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(194, 453);
-            this.panel1.TabIndex = 147;
+            this.panel1.TabIndex = 2;
+            this.panel1.TabStop = true;
             // 
             // TxtDineroCaja
             // 
@@ -156,6 +158,7 @@
             this.TxtDineroCaja.Name = "TxtDineroCaja";
             this.TxtDineroCaja.Size = new System.Drawing.Size(154, 15);
             this.TxtDineroCaja.TabIndex = 205;
+            this.TxtDineroCaja.TabStop = false;
             this.TxtDineroCaja.Tag = "";
             // 
             // label1
@@ -181,7 +184,7 @@
             this.TxtDineroVentas.Margin = new System.Windows.Forms.Padding(2);
             this.TxtDineroVentas.Name = "TxtDineroVentas";
             this.TxtDineroVentas.Size = new System.Drawing.Size(154, 15);
-            this.TxtDineroVentas.TabIndex = 208;
+            this.TxtDineroVentas.TabIndex = 3;
             this.TxtDineroVentas.Tag = "";
             // 
             // label2
@@ -206,7 +209,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(86, 80);
-            this.BtnCancelar.TabIndex = 214;
+            this.BtnCancelar.TabIndex = 6;
             this.ToolTipCorte.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -221,7 +224,7 @@
             this.BtnMostrarVenta.Margin = new System.Windows.Forms.Padding(2);
             this.BtnMostrarVenta.Name = "BtnMostrarVenta";
             this.BtnMostrarVenta.Size = new System.Drawing.Size(176, 91);
-            this.BtnMostrarVenta.TabIndex = 213;
+            this.BtnMostrarVenta.TabIndex = 4;
             this.ToolTipCorte.SetToolTip(this.BtnMostrarVenta, "Mostrar detalles de venta");
             this.BtnMostrarVenta.UseVisualStyleBackColor = true;
             this.BtnMostrarVenta.Click += new System.EventHandler(this.BtnMostrarVenta_Click);
@@ -236,7 +239,7 @@
             this.BtnRegistrarVentas.Margin = new System.Windows.Forms.Padding(2);
             this.BtnRegistrarVentas.Name = "BtnRegistrarVentas";
             this.BtnRegistrarVentas.Size = new System.Drawing.Size(87, 78);
-            this.BtnRegistrarVentas.TabIndex = 212;
+            this.BtnRegistrarVentas.TabIndex = 5;
             this.ToolTipCorte.SetToolTip(this.BtnRegistrarVentas, "Registrar ventas\r\ny cerrar sesión");
             this.BtnRegistrarVentas.UseVisualStyleBackColor = true;
             this.BtnRegistrarVentas.Click += new System.EventHandler(this.BtnRegistrarVentas_Click);
@@ -275,7 +278,7 @@
             this.BtnCargarVentas.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCargarVentas.Name = "BtnCargarVentas";
             this.BtnCargarVentas.Size = new System.Drawing.Size(121, 105);
-            this.BtnCargarVentas.TabIndex = 203;
+            this.BtnCargarVentas.TabIndex = 2;
             this.ToolTipCorte.SetToolTip(this.BtnCargarVentas, "Cargar ventas");
             this.BtnCargarVentas.UseVisualStyleBackColor = true;
             this.BtnCargarVentas.Click += new System.EventHandler(this.BtnCargarVentas_Click);

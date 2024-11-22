@@ -53,6 +53,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.LblErrorBuscar = new System.Windows.Forms.Label();
+            this.ToolTipBuscarProducto = new System.Windows.Forms.ToolTip(this.components);
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.BtnRestaurarBusqueda = new System.Windows.Forms.Button();
             this.BtnMostrarProducto = new System.Windows.Forms.Button();
@@ -63,7 +64,6 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.PicImagenProducto = new System.Windows.Forms.PictureBox();
-            this.ToolTipBuscarProducto = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -87,7 +87,7 @@
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
             this.LvProductos.Size = new System.Drawing.Size(699, 453);
-            this.LvProductos.TabIndex = 130;
+            this.LvProductos.TabIndex = 8;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
             this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
             this.LvProductos.SelectedIndexChanged += new System.EventHandler(this.LvProductos_SelectedIndexChanged);
@@ -106,6 +106,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.RdExacta);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.RdAproximada);
@@ -115,7 +116,8 @@
             this.panel1.Location = new System.Drawing.Point(33, 155);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 122);
-            this.panel1.TabIndex = 132;
+            this.panel1.TabIndex = 1;
+            this.panel1.TabStop = true;
             // 
             // RdExacta
             // 
@@ -124,7 +126,7 @@
             this.RdExacta.Location = new System.Drawing.Point(27, 79);
             this.RdExacta.Name = "RdExacta";
             this.RdExacta.Size = new System.Drawing.Size(77, 25);
-            this.RdExacta.TabIndex = 2;
+            this.RdExacta.TabIndex = 3;
             this.RdExacta.Text = "Exacta";
             this.RdExacta.UseVisualStyleBackColor = true;
             // 
@@ -180,6 +182,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel6.Controls.Add(this.RdId);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.panel8);
@@ -189,7 +192,8 @@
             this.panel6.Location = new System.Drawing.Point(32, 287);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(180, 120);
-            this.panel6.TabIndex = 133;
+            this.panel6.TabIndex = 4;
+            this.panel6.TabStop = true;
             // 
             // RdId
             // 
@@ -198,7 +202,7 @@
             this.RdId.Location = new System.Drawing.Point(28, 79);
             this.RdId.Name = "RdId";
             this.RdId.Size = new System.Drawing.Size(120, 25);
-            this.RdId.TabIndex = 4;
+            this.RdId.TabIndex = 5;
             this.RdId.Text = "Id_Producto";
             this.RdId.UseVisualStyleBackColor = true;
             this.RdId.CheckedChanged += new System.EventHandler(this.RdId_CheckedChanged);
@@ -238,7 +242,7 @@
             this.RdNombre.Location = new System.Drawing.Point(28, 49);
             this.RdNombre.Name = "RdNombre";
             this.RdNombre.Size = new System.Drawing.Size(91, 25);
-            this.RdNombre.TabIndex = 3;
+            this.RdNombre.TabIndex = 4;
             this.RdNombre.TabStop = true;
             this.RdNombre.Text = "Nombre";
             this.RdNombre.UseVisualStyleBackColor = true;
@@ -257,6 +261,7 @@
             // LblCampoBuscar
             // 
             this.LblCampoBuscar.AutoSize = true;
+            this.LblCampoBuscar.BackColor = System.Drawing.Color.Transparent;
             this.LblCampoBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCampoBuscar.ForeColor = System.Drawing.Color.SaddleBrown;
             this.LblCampoBuscar.Location = new System.Drawing.Point(41, 418);
@@ -268,6 +273,7 @@
             // 
             // panel11
             // 
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.panel11.Controls.Add(this.TxtBuscar);
             this.panel11.Controls.Add(this.pictureBox3);
             this.panel11.Controls.Add(this.panel12);
@@ -277,7 +283,8 @@
             this.panel11.Location = new System.Drawing.Point(33, 427);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(178, 67);
-            this.panel11.TabIndex = 134;
+            this.panel11.TabIndex = 6;
+            this.panel11.TabStop = true;
             // 
             // TxtBuscar
             // 
@@ -289,7 +296,7 @@
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(143, 15);
-            this.TxtBuscar.TabIndex = 5;
+            this.TxtBuscar.TabIndex = 6;
             this.TxtBuscar.Tag = "Buscar...";
             this.TxtBuscar.Text = "Buscar...";
             this.TxtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBuscar_KeyPress);
@@ -353,7 +360,7 @@
             this.BtnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(129, 117);
-            this.BtnBuscar.TabIndex = 157;
+            this.BtnBuscar.TabIndex = 7;
             this.ToolTipBuscarProducto.SetToolTip(this.BtnBuscar, "Buscar producto");
             this.BtnBuscar.UseVisualStyleBackColor = true;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
@@ -368,7 +375,7 @@
             this.BtnRestaurarBusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.BtnRestaurarBusqueda.Name = "BtnRestaurarBusqueda";
             this.BtnRestaurarBusqueda.Size = new System.Drawing.Size(166, 152);
-            this.BtnRestaurarBusqueda.TabIndex = 8;
+            this.BtnRestaurarBusqueda.TabIndex = 10;
             this.ToolTipBuscarProducto.SetToolTip(this.BtnRestaurarBusqueda, "Resetear acción");
             this.BtnRestaurarBusqueda.UseVisualStyleBackColor = true;
             this.BtnRestaurarBusqueda.Click += new System.EventHandler(this.BtnRestaurarBusqueda_Click);
@@ -383,7 +390,7 @@
             this.BtnMostrarProducto.Margin = new System.Windows.Forms.Padding(2);
             this.BtnMostrarProducto.Name = "BtnMostrarProducto";
             this.BtnMostrarProducto.Size = new System.Drawing.Size(155, 69);
-            this.BtnMostrarProducto.TabIndex = 7;
+            this.BtnMostrarProducto.TabIndex = 9;
             this.ToolTipBuscarProducto.SetToolTip(this.BtnMostrarProducto, "Mostrar detalles de producto");
             this.BtnMostrarProducto.UseVisualStyleBackColor = true;
             this.BtnMostrarProducto.Click += new System.EventHandler(this.BtnMostrarProducto_Click);
@@ -476,6 +483,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.BtnRestaurarBusqueda);
             this.Controls.Add(this.BtnMostrarProducto);

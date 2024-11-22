@@ -41,6 +41,7 @@
             this.TxtProducto = new System.Windows.Forms.TextBox();
             this.LblCantidad = new System.Windows.Forms.Label();
             this.LblProducto = new System.Windows.Forms.Label();
+            this.ToolTipInventario = new System.Windows.Forms.ToolTip(this.components);
             this.BtnAgregarInventario = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnMenos = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.ToolTipInventario = new System.Windows.Forms.ToolTip(this.components);
             this.PanelAddInventario.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -83,13 +83,14 @@
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
             this.LvProductos.Size = new System.Drawing.Size(716, 464);
-            this.LvProductos.TabIndex = 76;
+            this.LvProductos.TabIndex = 1;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
             this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
             this.LvProductos.SelectedIndexChanged += new System.EventHandler(this.LvProductos_SelectedIndexChanged);
             // 
             // PanelAddInventario
             // 
+            this.PanelAddInventario.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.PanelAddInventario.Controls.Add(this.BtnAgregarInventario);
             this.PanelAddInventario.Controls.Add(this.BtnCancelar);
             this.PanelAddInventario.Controls.Add(this.BtnMenos);
@@ -108,7 +109,8 @@
             this.PanelAddInventario.Location = new System.Drawing.Point(782, 155);
             this.PanelAddInventario.Name = "PanelAddInventario";
             this.PanelAddInventario.Size = new System.Drawing.Size(303, 464);
-            this.PanelAddInventario.TabIndex = 133;
+            this.PanelAddInventario.TabIndex = 2;
+            this.PanelAddInventario.TabStop = true;
             // 
             // panel5
             // 
@@ -170,7 +172,7 @@
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(248, 15);
-            this.Txt_Cantidad.TabIndex = 2;
+            this.Txt_Cantidad.TabIndex = 3;
             this.Txt_Cantidad.Tag = "0";
             this.Txt_Cantidad.Text = "0";
             this.Txt_Cantidad.TextChanged += new System.EventHandler(this.Txt_Cantidad_TextChanged);
@@ -187,7 +189,8 @@
             this.TxtProducto.Margin = new System.Windows.Forms.Padding(2);
             this.TxtProducto.Name = "TxtProducto";
             this.TxtProducto.Size = new System.Drawing.Size(248, 15);
-            this.TxtProducto.TabIndex = 1;
+            this.TxtProducto.TabIndex = 0;
+            this.TxtProducto.TabStop = false;
             this.TxtProducto.Tag = "Nombre del Producto";
             this.TxtProducto.Text = "Nombre del Producto";
             // 
@@ -225,7 +228,7 @@
             this.BtnAgregarInventario.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAgregarInventario.Name = "BtnAgregarInventario";
             this.BtnAgregarInventario.Size = new System.Drawing.Size(144, 137);
-            this.BtnAgregarInventario.TabIndex = 5;
+            this.BtnAgregarInventario.TabIndex = 6;
             this.ToolTipInventario.SetToolTip(this.BtnAgregarInventario, "Agregar inventario");
             this.BtnAgregarInventario.UseVisualStyleBackColor = true;
             this.BtnAgregarInventario.Click += new System.EventHandler(this.BtnAgregarInventario_Click);
@@ -240,7 +243,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(133, 128);
-            this.BtnCancelar.TabIndex = 6;
+            this.BtnCancelar.TabIndex = 7;
             this.ToolTipInventario.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -256,7 +259,7 @@
             this.BtnMenos.Margin = new System.Windows.Forms.Padding(2);
             this.BtnMenos.Name = "BtnMenos";
             this.BtnMenos.Size = new System.Drawing.Size(86, 80);
-            this.BtnMenos.TabIndex = 4;
+            this.BtnMenos.TabIndex = 5;
             this.BtnMenos.UseVisualStyleBackColor = true;
             this.BtnMenos.Click += new System.EventHandler(this.BtnMenos_Click);
             // 
@@ -271,7 +274,7 @@
             this.BtnMas.Margin = new System.Windows.Forms.Padding(2);
             this.BtnMas.Name = "BtnMas";
             this.BtnMas.Size = new System.Drawing.Size(86, 80);
-            this.BtnMas.TabIndex = 3;
+            this.BtnMas.TabIndex = 4;
             this.BtnMas.UseVisualStyleBackColor = true;
             this.BtnMas.Click += new System.EventHandler(this.BtnMas_Click);
             // 

@@ -52,6 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.LblErrorPrecio = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.ToolTipAgregar = new System.Windows.Forms.ToolTip(this.components);
             this.PicLogo = new System.Windows.Forms.PictureBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnRegistrarProducto = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.ToolTipAgregar = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
@@ -92,7 +92,7 @@
             this.Txt_Descripcion.Multiline = true;
             this.Txt_Descripcion.Name = "Txt_Descripcion";
             this.Txt_Descripcion.Size = new System.Drawing.Size(312, 48);
-            this.Txt_Descripcion.TabIndex = 47;
+            this.Txt_Descripcion.TabIndex = 3;
             this.Txt_Descripcion.Tag = "Descripción del Producto...";
             this.Txt_Descripcion.Text = "Descripción del Producto...";
             this.Txt_Descripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Descripcion_KeyPress);
@@ -107,7 +107,7 @@
             this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Nombre.Name = "Txt_Nombre";
             this.Txt_Nombre.Size = new System.Drawing.Size(312, 15);
-            this.Txt_Nombre.TabIndex = 46;
+            this.Txt_Nombre.TabIndex = 2;
             this.Txt_Nombre.Tag = "Nombre del Producto";
             this.Txt_Nombre.Text = "Nombre del Producto";
             this.Txt_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Nombre_KeyPress);
@@ -217,7 +217,8 @@
             this.panel1.Location = new System.Drawing.Point(78, 206);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(360, 416);
-            this.panel1.TabIndex = 70;
+            this.panel1.TabIndex = 1;
+            this.panel1.TabStop = true;
             // 
             // label5
             // 
@@ -251,7 +252,8 @@
             this.panel2.Location = new System.Drawing.Point(473, 206);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(590, 230);
-            this.panel2.TabIndex = 75;
+            this.panel2.TabIndex = 6;
+            this.panel2.TabStop = true;
             // 
             // label6
             // 
@@ -287,7 +289,7 @@
             this.Txt_Marca.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Marca.Name = "Txt_Marca";
             this.Txt_Marca.Size = new System.Drawing.Size(251, 15);
-            this.Txt_Marca.TabIndex = 77;
+            this.Txt_Marca.TabIndex = 8;
             this.Txt_Marca.Tag = "Marca del Producto";
             this.Txt_Marca.Text = "Marca del Producto";
             this.Txt_Marca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Marca_KeyPress);
@@ -315,7 +317,7 @@
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
             this.Txt_Cantidad.Size = new System.Drawing.Size(233, 15);
-            this.Txt_Cantidad.TabIndex = 74;
+            this.Txt_Cantidad.TabIndex = 7;
             this.Txt_Cantidad.Tag = "0";
             this.Txt_Cantidad.Text = "0";
             this.Txt_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Cantidad_KeyPress);
@@ -330,7 +332,7 @@
             this.Txt_Precio.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_Precio.Name = "Txt_Precio";
             this.Txt_Precio.Size = new System.Drawing.Size(251, 15);
-            this.Txt_Precio.TabIndex = 46;
+            this.Txt_Precio.TabIndex = 6;
             this.Txt_Precio.Tag = "0";
             this.Txt_Precio.Text = "0";
             this.Txt_Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Precio_KeyPress);
@@ -407,7 +409,7 @@
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(187, 170);
-            this.BtnCancelar.TabIndex = 77;
+            this.BtnCancelar.TabIndex = 10;
             this.ToolTipAgregar.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -422,7 +424,7 @@
             this.BtnRegistrarProducto.Margin = new System.Windows.Forms.Padding(2);
             this.BtnRegistrarProducto.Name = "BtnRegistrarProducto";
             this.BtnRegistrarProducto.Size = new System.Drawing.Size(186, 162);
-            this.BtnRegistrarProducto.TabIndex = 76;
+            this.BtnRegistrarProducto.TabIndex = 9;
             this.ToolTipAgregar.SetToolTip(this.BtnRegistrarProducto, "Agregar producto");
             this.BtnRegistrarProducto.UseVisualStyleBackColor = true;
             this.BtnRegistrarProducto.Click += new System.EventHandler(this.BtnRegistrarProducto_Click);
@@ -473,7 +475,7 @@
             this.BtnDeseleccionarImagen.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDeseleccionarImagen.Name = "BtnDeseleccionarImagen";
             this.BtnDeseleccionarImagen.Size = new System.Drawing.Size(76, 58);
-            this.BtnDeseleccionarImagen.TabIndex = 74;
+            this.BtnDeseleccionarImagen.TabIndex = 5;
             this.ToolTipAgregar.SetToolTip(this.BtnDeseleccionarImagen, "Quitar imagen");
             this.BtnDeseleccionarImagen.UseVisualStyleBackColor = true;
             this.BtnDeseleccionarImagen.Click += new System.EventHandler(this.BtnDeseleccionarImagen_Click);
@@ -512,7 +514,7 @@
             this.BtnCargarImagen.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCargarImagen.Name = "BtnCargarImagen";
             this.BtnCargarImagen.Size = new System.Drawing.Size(76, 61);
-            this.BtnCargarImagen.TabIndex = 60;
+            this.BtnCargarImagen.TabIndex = 4;
             this.ToolTipAgregar.SetToolTip(this.BtnCargarImagen, "Cargar imagen");
             this.BtnCargarImagen.UseVisualStyleBackColor = true;
             this.BtnCargarImagen.Click += new System.EventHandler(this.BtnCargarImagen_Click);

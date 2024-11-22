@@ -120,6 +120,12 @@
     </Compile>
     <Compile Include="FuncionesAplicacion.cs" />
     <Compile Include="FuncionesCatalogoUsuarios.cs" />
+    <Compile Include="HacerPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HacerPago.Designer.cs">
+      <DependentUpon>HacerPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controles Catalogo de Usuarios\RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HacerPago.resx">
+      <DependentUpon>HacerPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
@@ -520,6 +529,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TextoPermisoDes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TexttoVentanaCobro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoVentanaCobro2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonCobrar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CatalogoUsuarios));
             this.PanelCatalogo = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,6 +46,7 @@
             this.BtnRegistrarUsuario = new System.Windows.Forms.Button();
             this.BtnModificarUsuario = new System.Windows.Forms.Button();
             this.BtnEliminarUsuario = new System.Windows.Forms.Button();
+            this.ToolTipCatalogo = new System.Windows.Forms.ToolTip(this.components);
             this.PanelCatalogo.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -72,7 +74,8 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1134, 109);
-            this.panel2.TabIndex = 8;
+            this.panel2.TabIndex = 0;
+            this.panel2.TabStop = true;
             // 
             // label1
             // 
@@ -149,7 +152,8 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(208, 669);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 1;
+            this.panel1.TabStop = true;
             // 
             // panel4
             // 
@@ -190,7 +194,8 @@
             this.BtnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSalir.Name = "BtnSalir";
             this.BtnSalir.Size = new System.Drawing.Size(53, 61);
-            this.BtnSalir.TabIndex = 9;
+            this.BtnSalir.TabIndex = 8;
+            this.ToolTipCatalogo.SetToolTip(this.BtnSalir, "Cerrar catálogo");
             this.BtnSalir.UseVisualStyleBackColor = true;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
@@ -299,5 +304,6 @@
         private System.Windows.Forms.Button BtnRegistrarUsuario;
         private System.Windows.Forms.Button BtnModificarUsuario;
         private System.Windows.Forms.PictureBox PicIndicaciones;
+        private System.Windows.Forms.ToolTip ToolTipCatalogo;
     }
 }

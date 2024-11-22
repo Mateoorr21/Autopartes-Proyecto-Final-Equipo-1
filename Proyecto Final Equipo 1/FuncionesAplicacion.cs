@@ -41,6 +41,8 @@ namespace Proyecto_Final_Equipo_1
         public static int CantidadEnCarrito = 0;
         public static float PorPagar = 0;
         public static float ProductoPaga = 0;
+        public static float ReciboDinero = 0;
+        public static bool SeHizoCobro = false;
         public static bool HayVentas = false;
         public static int ContarVentas = 0;
         public static float DineroVentas = 0;
@@ -134,6 +136,8 @@ namespace Proyecto_Final_Equipo_1
             CantidadEnCarrito = 0;
             PorPagar = 0;
             ProductoPaga = 0;
+            ReciboDinero = 0;
+            SeHizoCobro = false;
             ContarVentas = 0;
             DineroVentas = 0;
         }
@@ -1048,76 +1052,79 @@ namespace Proyecto_Final_Equipo_1
                 return false;
             }
 
-            //Confirmamos que el usuario desea realizar la venta de los productos seleccionados
-            DialogResult ConfirmarVenta;
-            ConfirmarVenta = MessageBox.Show("¿Esta seguro que desea realizar la venta de los productos en el carrito?",
-                "CONFIRMACIÓN DE VENTA DE PRODUCTOS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //Abrimos el formulario de cobro
+            HacerPago Cobro = new HacerPago();
+            Cobro.ShowDialog();
 
-            if (ConfirmarVenta == DialogResult.No) return false;
-
-            //Establecemos el obejto OledbConnection para conectar con la base de datos
-            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            if (SeHizoCobro) //Solo si se hizo el cobro continuamos
             {
-                conexion.Open(); //Abrimos conexion
-
-                //Primer Comando SQL para insertar la venta de un producto a la BDDS de ventas
-                string query = "INSERT INTO Ventas (Nombre_Completo, Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total, Total_IVA, Fecha_Hora) " +
-                   "VALUES (@NombreCompleto, @Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total, @TotalIVA, @FechaHora)";
-
-                using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
+                //Establecemos el obejto OledbConnection para conectar con la base de datos
+                using (OleDbConnection conexion = new OleDbConnection(cadconexion))
                 {
-                    //Para cada registro del Carrito
-                    foreach (ListViewItem ProductoEnCarrito in LvCarrito.Items)
+                    conexion.Open(); //Abrimos conexion
+
+                    //Primer Comando SQL para insertar la venta de un producto a la BDDS de ventas
+                    string query = "INSERT INTO Ventas (Nombre_Completo, Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total, Total_IVA, Fecha_Hora) " +
+                       "VALUES (@NombreCompleto, @Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total, @TotalIVA, @FechaHora)";
+
+                    using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
                     {
-                        // Limpiar los parámetros para cada registro
-                        comando.Parameters.Clear();
+                        //Para cada registro del Carrito
+                        foreach (ListViewItem ProductoEnCarrito in LvCarrito.Items)
+                        {
+                            // Limpiar los parámetros para cada registro
+                            comando.Parameters.Clear();
 
-                        // Parametros de consulta, los valores que se van a insertar a la base de datos
-                        comando.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
-                        comando.Parameters.AddWithValue("@Usuario", Usuario);
-                        comando.Parameters.AddWithValue("@TipoUsuario", TipoUsuario);
-                        comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
-                        comando.Parameters.AddWithValue("@NombreProducto", ProductoEnCarrito.SubItems[1].Text);
-                        comando.Parameters.AddWithValue("@Precio", float.Parse(ProductoEnCarrito.SubItems[2].Text));
-                        comando.Parameters.AddWithValue("@Cantidad", int.Parse(ProductoEnCarrito.SubItems[3].Text));
-                        comando.Parameters.AddWithValue("@Total", float.Parse(ProductoEnCarrito.SubItems[4].Text));
-                        comando.Parameters.AddWithValue("@TotalIVA", float.Parse(ProductoEnCarrito.SubItems[4].Text) * 1.16);
-                        comando.Parameters.AddWithValue("@FechaHora", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")); //Fecha y Hora Actuales
+                            // Parametros de consulta, los valores que se van a insertar a la base de datos
+                            comando.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
+                            comando.Parameters.AddWithValue("@Usuario", Usuario);
+                            comando.Parameters.AddWithValue("@TipoUsuario", TipoUsuario);
+                            comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
+                            comando.Parameters.AddWithValue("@NombreProducto", ProductoEnCarrito.SubItems[1].Text);
+                            comando.Parameters.AddWithValue("@Precio", float.Parse(ProductoEnCarrito.SubItems[2].Text));
+                            comando.Parameters.AddWithValue("@Cantidad", int.Parse(ProductoEnCarrito.SubItems[3].Text));
+                            comando.Parameters.AddWithValue("@Total", float.Parse(ProductoEnCarrito.SubItems[4].Text));
+                            comando.Parameters.AddWithValue("@TotalIVA", float.Parse(ProductoEnCarrito.SubItems[4].Text) * 1.16);
+                            comando.Parameters.AddWithValue("@FechaHora", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")); //Fecha y Hora Actuales
 
-                        comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
+                            comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
+                        }
+                    }
+
+                    //Segundo Comando SQL para actualizar la cantidad de productos en Stock en la tabla Productos
+                    string ActualizarStock = "UPDATE Productos SET Cantidad_en_Stock = Cantidad_en_Stock - @Cantidad WHERE Id = @IdProducto";
+
+                    using (OleDbCommand comando = new OleDbCommand(ActualizarStock, conexion)) //Comando SQL
+                    {
+                        //Para cada registro del Carrito
+                        foreach (ListViewItem ProductoEnCarrito in LvCarrito.Items)
+                        {
+                            // Limpiar los parámetros para cada registro
+                            comando.Parameters.Clear();
+
+                            // Parametros de consulta, los valores que se van a insertar a la base de datos
+                            comando.Parameters.AddWithValue("@Cantidad", int.Parse(ProductoEnCarrito.SubItems[3].Text));
+                            comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
+
+                            comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
+                        }
                     }
                 }
 
-                //Segundo Comando SQL para actualizar la cantidad de productos en Stock en la tabla Productos
-                string ActualizarStock = "UPDATE Productos SET Cantidad_en_Stock = Cantidad_en_Stock - @Cantidad WHERE Id = @IdProducto";
+                LblCantidadRegistrosCarrito.Text = "Productos en Carrito: "; //AActualizamos la etiqueta de Cantidad de Registros de Carrito
 
-                using (OleDbCommand comando = new OleDbCommand(ActualizarStock, conexion)) //Comando SQL
-                {
-                    //Para cada registro del Carrito
-                    foreach (ListViewItem ProductoEnCarrito in LvCarrito.Items)
-                    {
-                        // Limpiar los parámetros para cada registro
-                        comando.Parameters.Clear();
+                LvCarrito.Items.Clear(); //Limpiamos el Carrito
+                TxtPorPagar.Clear(); //Limpiamos la caja con el total de la venta
 
-                        // Parametros de consulta, los valores que se van a insertar a la base de datos
-                        comando.Parameters.AddWithValue("@Cantidad", int.Parse(ProductoEnCarrito.SubItems[3].Text));
-                        comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
+                //Mensaje de Venta Exitosa
+                MessageBox.Show("La venta ha sido completada.", "VENTA EXITOSA DE PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
-                    }
-                }
+                HayVentas = true; //Cabiamos el booleano a True, indicando que ya se realizó una Venta
+                return true; //Devolvemos True si la venta fue un exito
             }
 
-            LblCantidadRegistrosCarrito.Text = "Productos en Carrito: "; //AActualizamos la etiqueta de Cantidad de Registros de Carrito
-
-            LvCarrito.Items.Clear(); //Limpiamos el Carrito
-            TxtPorPagar.Clear(); //Limpiamos la caja con el total de la venta
-
-            //Mensaje de Venta Exitosa
-            MessageBox.Show("La venta ha sido completada.", "VENTA EXITOSA DE PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            HayVentas = true; //Cabiamos el booleano a True, indicando que ya se realizó una Venta
-            return true; //Devolvemos True si la venta fue un exito
+            else return false; //Si no se hizo el cobro regresamos falso
+            
         }
 
         //FUNCION PARA LIMPIAR EL SUBAPARTADO DE BUSQUEDA DE VENTAS
@@ -1205,8 +1212,54 @@ namespace Proyecto_Final_Equipo_1
 
 
 
-        
 
+
+
+        //FUNCIONES UTILIZADAS PARA LA VENTANA DE HACER COBRO
+        public static void ValidarEntradaTxtRecibo(KeyPressEventArgs e, Label LblErrorDineroRecibo)
+        {
+            //Validar que solo se ingresen numeros o backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                LblErrorDineroRecibo.Visible = true;
+                e.Handled = true;
+            }
+
+            else //Si no hay errores, ocultar la etiqueta de error
+            {
+                LblErrorDineroRecibo.Visible = false;
+            }
+        }
+
+        public static bool HacerCobro(TextBox TxtDineroRecibo, Label LblErrorDineroRecibo)
+        {
+            LblErrorDineroRecibo.Visible = false; //Ocultamos etiqueta de error
+            SeHizoCobro = false; //Booleano cobro inicia en falso
+             
+            //Si la caja de Dinero Recibo esta vacía mensaje de error
+            if (string.IsNullOrEmpty(TxtDineroRecibo.Text)) {
+                MessageBox.Show("Error. Ingrese dinero que se recibe.", "ERROR. CAMPO RECIBO DINERO VACIO",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            ReciboDinero = 0; //Reinciamos el dinero que se recibe
+            ReciboDinero = float.Parse(TxtDineroRecibo.Text); //Obtenemos el dinero ingresado
+
+            //Si el dinero es menor a la cantidad que se tiene que pagar mensaje de error
+            if (ReciboDinero < PorPagar)
+            {
+                MessageBox.Show("Error. Dinero recibido no es suficiente.", "ERROR. DINERO INSUFICIENTE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            //MessageBoxShow con el cambio a entregar
+            MessageBox.Show("Cambio: $ " + (ReciboDinero - PorPagar).ToString() , "CAMBIO A ENTREGAR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
+
+        }
 
 
         //FUNCIONES UTILIZADAS PARA EL CORTE DE CAJA
