@@ -79,7 +79,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             //Llamamos a la función Eliminar de la clase FuncionesAplicacion y pasamos paramatros solicitados
-            FuncionesAplicacion.BorrarProducto(LvProductos, LblCantidadRegistros);
+            FuncionesAplicacion.BorrarProducto(LvProductos, LblCantidadRegistros, LblErrorBuscar, TxtBuscar);
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 

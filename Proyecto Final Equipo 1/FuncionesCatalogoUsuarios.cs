@@ -201,6 +201,9 @@ namespace Proyecto_Final_Equipo_1
         //FUNCION ELIMINAR A UN USUARIO
         public static void BorrarUsuario(ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar, TextBox TxtBuscar)
         {
+            LblErrorBuscar.Visible = false; //Ocultamos la etiqueta de Error al Buscar
+            TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja de texto Buscar
+
             //Si no hay registro seleccionado menssaje de Error
             if (LvUsuarios.SelectedItems.Count == 0)
             {
@@ -239,13 +242,10 @@ namespace Proyecto_Final_Equipo_1
             LvUsuarios.Items.Remove(Seleccionado);
 
             //Actualizamos la etiqueta de Cantidad de Registros
-            if (ContarUsuarios > 0) LblCantidadRegistros.Text = "Productos Encontrados: " + (ContarUsuarios - 1).ToString();
-
-            LblErrorBuscar.Visible = false; //Ocultamos la etiqueta de Error al Buscar
-            TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja de texto Buscar
+            if (ContarUsuarios > 0) LblCantidadRegistros.Text = "Usuarios Encontrados: " + (ContarUsuarios - 1).ToString();
 
             //Mensaje de Eliminación de usuario exitosa
-            MessageBox.Show("Datos del Usuario Operativo eliminados correctamente.", "ELIMINACION DE USUARIO OPERATIVO",
+            MessageBox.Show("Usuario Operativo eliminado correctamente.", "ELIMINACION DE USUARIO OPERATIVO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

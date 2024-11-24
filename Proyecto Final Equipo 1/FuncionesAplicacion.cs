@@ -20,7 +20,7 @@ namespace Proyecto_Final_Equipo_1
         //Declaramos la cadena de conexion que usaremos en el codigo
         public static string cadconexion = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\Base\BDDS_AutoOne.accdb;Persist Security Info=False;";
 
-        //Declaramos el Nombre Completo, Usuario y Permiso del usuario que inicia sesión
+        //Declaramos el Id, Nombre Completo, Usuario y Permiso del usuario que inicia sesión
         public static int IdUsuario = 0;
         public static string NombreCompleto = null;
         public static string Usuario = null;
@@ -774,8 +774,12 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA BORRAR UN PRODUCTO
-        public static void BorrarProducto(ListView LvProductos, Label LblCantidadRegistros)
+        public static void BorrarProducto(ListView LvProductos, Label LblCantidadRegistros, Label LblErrorBuscar, TextBox TxtBuscar)
         {
+            //Ocultamos la etiqueta de error al buscar y reestablecemos la caja con el texto a buscar
+            LblErrorBuscar.Visible = false;
+            TxtBuscar.Text = TxtBuscar.Tag.ToString(); 
+
             //Si no hay registro seleccionado menssaje de Error
             if (LvProductos.SelectedItems.Count == 0)
             {
