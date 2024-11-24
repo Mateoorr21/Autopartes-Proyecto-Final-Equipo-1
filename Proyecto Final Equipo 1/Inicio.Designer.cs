@@ -40,14 +40,15 @@
             // 
             this.BtnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.BtnInicio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnInicio.FlatAppearance.BorderSize = 0;
             this.BtnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnInicio.Font = new System.Drawing.Font("Bahnschrift", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnInicio.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnInicio.Location = new System.Drawing.Point(-14, 434);
-            this.BtnInicio.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnInicio.Location = new System.Drawing.Point(-19, 534);
+            this.BtnInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnInicio.Name = "BtnInicio";
-            this.BtnInicio.Size = new System.Drawing.Size(403, 38);
+            this.BtnInicio.Size = new System.Drawing.Size(537, 47);
             this.BtnInicio.TabIndex = 6;
             this.BtnInicio.Text = "I N G R E S A R";
             this.BtnInicio.UseVisualStyleBackColor = false;
@@ -57,10 +58,10 @@
             // 
             this.PicBienvenido.BackColor = System.Drawing.Color.Transparent;
             this.PicBienvenido.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.MensajeBienvenida2;
-            this.PicBienvenido.Location = new System.Drawing.Point(94, 10);
-            this.PicBienvenido.Margin = new System.Windows.Forms.Padding(2);
+            this.PicBienvenido.Location = new System.Drawing.Point(125, 12);
+            this.PicBienvenido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PicBienvenido.Name = "PicBienvenido";
-            this.PicBienvenido.Size = new System.Drawing.Size(210, 78);
+            this.PicBienvenido.Size = new System.Drawing.Size(280, 96);
             this.PicBienvenido.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicBienvenido.TabIndex = 2;
             this.PicBienvenido.TabStop = false;
@@ -69,27 +70,27 @@
             // 
             this.PicLogo.BackColor = System.Drawing.Color.Transparent;
             this.PicLogo.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.Logo;
-            this.PicLogo.Location = new System.Drawing.Point(2, -28);
-            this.PicLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.PicLogo.Location = new System.Drawing.Point(3, -34);
+            this.PicLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PicLogo.Name = "PicLogo";
-            this.PicLogo.Size = new System.Drawing.Size(378, 560);
+            this.PicLogo.Size = new System.Drawing.Size(504, 689);
             this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicLogo.TabIndex = 3;
             this.PicLogo.TabStop = false;
             // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(239)))), ((int)(((byte)(210)))));
-            this.ClientSize = new System.Drawing.Size(382, 471);
+            this.ClientSize = new System.Drawing.Size(509, 580);
             this.Controls.Add(this.BtnInicio);
             this.Controls.Add(this.PicBienvenido);
             this.Controls.Add(this.PicLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Inicio";
