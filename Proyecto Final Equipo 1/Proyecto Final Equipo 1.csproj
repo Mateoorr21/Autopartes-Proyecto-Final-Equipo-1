@@ -118,6 +118,12 @@
     <Compile Include="Controles Catalogo de Usuarios\RegistrarUsuario.Designer.cs">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="DineroInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DineroInicial.Designer.cs">
+      <DependentUpon>DineroInicial.cs</DependentUpon>
+    </Compile>
     <Compile Include="FuncionesAplicacion.cs" />
     <Compile Include="FuncionesCatalogoUsuarios.cs" />
     <Compile Include="HacerPago.cs">
@@ -176,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controles Catalogo de Usuarios\RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DineroInicial.resx">
+      <DependentUpon>DineroInicial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HacerPago.resx">
       <DependentUpon>HacerPago.cs</DependentUpon>
@@ -538,6 +547,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IconoBotonCobrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonMostrarVentarRecortado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoCorte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoDineroEnCaja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonCorteCaja2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconoBotonDineroEnCaja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextoCorteDes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,9 +14,11 @@ namespace Proyecto_Final_Equipo_1
 {
     public partial class InicioSesion : Form
     {
-        public InicioSesion() 
+        Inicio Inicio_Recibido;
+        public InicioSesion(Inicio inicio) 
         {
             InitializeComponent();
+            Inicio_Recibido = inicio;
         }
 
         private void Btn_Ingreso_Click(object sender, EventArgs e)
@@ -41,6 +43,7 @@ namespace Proyecto_Final_Equipo_1
         private void BtnVolverInicio_Click(object sender, EventArgs e)
         {
             Dispose(); //Volvemos a la Ventana de Inicio con el Logo de la Aplicacion
+            Inicio_Recibido.Show();
         }
 
         private void BtnPassword_MouseDown(object sender, MouseEventArgs e)

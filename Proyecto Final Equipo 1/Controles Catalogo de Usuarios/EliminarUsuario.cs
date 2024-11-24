@@ -49,7 +49,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             LvUsuarios.Columns.Add("Nombre", 200);
             LvUsuarios.Columns.Add("Usuario", 150);
             LvUsuarios.Columns.Add("Contraseña", 150);
-            LvUsuarios.Columns.Add("Permiso", 150);
+            LvUsuarios.Columns.Add("Permiso", 144);
         }
 
         public void CargarUsuariosEliminar()
@@ -77,7 +77,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             //Llamamos a la función Eliminar que está en Inicio y pasamos el parametro del Id del Registro Seleccionado
-            FuncionesCatalogoUsuarios.BorrarUsuario(FuncionesCatalogoUsuarios.IdSeleccionado, LvUsuarios, LblCantidadRegistros, LblErrorBuscar, TxtBuscar);
+            FuncionesCatalogoUsuarios.BorrarUsuario(LvUsuarios, LblCantidadRegistros, LblErrorBuscar, TxtBuscar);
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

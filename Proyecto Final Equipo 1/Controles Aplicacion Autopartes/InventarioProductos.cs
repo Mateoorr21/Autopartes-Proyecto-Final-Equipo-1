@@ -130,9 +130,6 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.AgregarInventario(LvProductos, TxtProducto, Txt_Cantidad); //Llamamos a la función de Agregar Inventario
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }

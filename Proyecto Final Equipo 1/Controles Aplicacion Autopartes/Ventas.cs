@@ -28,12 +28,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvProductos.View = View.Details;
             LvProductos.GridLines = true;
             LvProductos.FullRowSelect = true;
-            LvProductos.Columns.Add("Id", 40);
+            LvProductos.Columns.Add("Id", 30);
             LvProductos.Columns.Add("Nombre", 160);
             LvProductos.Columns.Add("Descripcion", 0);
-            LvProductos.Columns.Add("Marca", 80);
-            LvProductos.Columns.Add("Precio", 70);
-            LvProductos.Columns.Add("Cantidad en Stock", 75);
+            LvProductos.Columns.Add("Marca", 60);
+            LvProductos.Columns.Add("Precio", 60);
+            LvProductos.Columns.Add("Cantidad en Stock", 72);
             LvProductos.Columns.Add("Imagen", 0);
 
             //Establecemos el ListView de Productos en Carrito, sus propiedades y columnas
@@ -41,11 +41,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvCarrito.GridLines = true;
             LvCarrito.FullRowSelect= true;
             LvCarrito.Columns.Add("Id", 25);
-            LvCarrito.Columns.Add("Nombre", 180);
+            LvCarrito.Columns.Add("Nombre", 190);
             LvCarrito.Columns.Add("Precio", 50);
             LvCarrito.Columns.Add("Cantidad", 65);
-            LvCarrito.Columns.Add("Total", 50);
-            LvCarrito.Columns.Add("Total IVA", 70);
+            LvCarrito.Columns.Add("Total", 65);
+            LvCarrito.Columns.Add("Total IVA", 65);
         }
 
         //Funcion Cargar Productos que se llama cada vez que se da click en el Boton Ventas
@@ -71,7 +71,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void TxtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FuncionesAplicacion.ValidarEntradaTxtBuscar(e, RdId, RdNombre, LblErrorBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
+            FuncionesAplicacion.ValidarEntradaTxtBuscar(e, RdId, RdNombre, LblErrorBuscar, TxtBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
         }
 
         private void BtnRestaurarBusqueda_Click(object sender, EventArgs e)

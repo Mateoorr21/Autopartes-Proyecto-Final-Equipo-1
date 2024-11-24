@@ -65,10 +65,10 @@
             // 
             this.LblErrorPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPassword.Location = new System.Drawing.Point(100, 299);
+            this.LblErrorPassword.Location = new System.Drawing.Point(104, 299);
             this.LblErrorPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblErrorPassword.Name = "LblErrorPassword";
-            this.LblErrorPassword.Size = new System.Drawing.Size(116, 15);
+            this.LblErrorPassword.Size = new System.Drawing.Size(143, 20);
             this.LblErrorPassword.TabIndex = 15;
             this.LblErrorPassword.Text = "Entrada no valida";
             this.LblErrorPassword.Visible = false;

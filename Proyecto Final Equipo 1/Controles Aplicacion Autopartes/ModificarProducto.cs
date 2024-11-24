@@ -45,6 +45,17 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         }
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
+            FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
+            
+            //Reestablecemos el valor de las cajas de texto
+            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
+            Txt_Descripcion.Text = Txt_Descripcion.Tag.ToString();
+            Txt_Marca.Text = Txt_Marca.Tag.ToString();
+            Txt_Precio.Text = Txt_Precio.Tag.ToString();
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
+            PicImagenProducto.Image = null;
+            FuncionesAplicacion.RutaImagenTemporal = null;
+
             //Llamamos a la función EncontrarProductos de Inicio
             FuncionesAplicacion.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros, LblErrorBuscar);
         }
@@ -61,11 +72,22 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void TxtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FuncionesAplicacion.ValidarEntradaTxtBuscar(e, RdId, RdNombre, LblErrorBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
+            FuncionesAplicacion.ValidarEntradaTxtBuscar(e, RdId, RdNombre, LblErrorBuscar, TxtBuscar); //LLamamos a la función de validar entrada del TextBox Buscar
         }
 
         private void LvProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
+
+            //Reestablecemos el valor de las cajas de texto
+            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
+            Txt_Descripcion.Text = Txt_Descripcion.Tag.ToString();
+            Txt_Marca.Text = Txt_Marca.Tag.ToString();
+            Txt_Precio.Text = Txt_Precio.Tag.ToString();
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
+            PicImagenProducto.Image = null;
+            FuncionesAplicacion.RutaImagenTemporal = null;
+
             //Si se selecciona un registro
             if (LvProductos.SelectedItems.Count > 0)
             {

@@ -56,10 +56,6 @@
             this.LvProductos = new System.Windows.Forms.ListView();
             this.LblCantidadRegistrosCarrito = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
             this.TxtPorPagar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.LblErrorCantidad = new System.Windows.Forms.Label();
@@ -67,6 +63,10 @@
             this.LblCantidad = new System.Windows.Forms.Label();
             this.TxtProducto = new System.Windows.Forms.TextBox();
             this.LblProducto = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
             this.ToolTipVentas = new System.Windows.Forms.ToolTip(this.components);
             this.BtnVender = new System.Windows.Forms.Button();
             this.BtnCancelarVenta = new System.Windows.Forms.Button();
@@ -112,10 +112,10 @@
             this.LvCarrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LvCarrito.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.LvCarrito.HideSelection = false;
-            this.LvCarrito.Location = new System.Drawing.Point(676, 155);
+            this.LvCarrito.Location = new System.Drawing.Point(639, 155);
             this.LvCarrito.MultiSelect = false;
             this.LvCarrito.Name = "LvCarrito";
-            this.LvCarrito.Size = new System.Drawing.Size(429, 315);
+            this.LvCarrito.Size = new System.Drawing.Size(465, 315);
             this.LvCarrito.TabIndex = 18;
             this.LvCarrito.UseCompatibleStateImageBehavior = false;
             this.LvCarrito.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvCarrito_ColumnClick);
@@ -370,7 +370,7 @@
             // 
             this.LblCantidadRegistrosBuscar.AutoSize = true;
             this.LblCantidadRegistrosBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCantidadRegistrosBuscar.Location = new System.Drawing.Point(486, 136);
+            this.LblCantidadRegistrosBuscar.Location = new System.Drawing.Point(443, 136);
             this.LblCantidadRegistrosBuscar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblCantidadRegistrosBuscar.Name = "LblCantidadRegistrosBuscar";
             this.LblCantidadRegistrosBuscar.Size = new System.Drawing.Size(172, 16);
@@ -381,12 +381,12 @@
             // LvProductos
             // 
             this.LvProductos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
-            this.LvProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LvProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LvProductos.HideSelection = false;
-            this.LvProductos.Location = new System.Drawing.Point(225, 155);
+            this.LvProductos.Location = new System.Drawing.Point(223, 155);
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
-            this.LvProductos.Size = new System.Drawing.Size(445, 315);
+            this.LvProductos.Size = new System.Drawing.Size(407, 315);
             this.LvProductos.TabIndex = 1;
             this.LvProductos.UseCompatibleStateImageBehavior = false;
             this.LvProductos.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvProductos_ColumnClick);
@@ -433,43 +433,6 @@
             this.panel16.Size = new System.Drawing.Size(739, 183);
             this.panel16.TabIndex = 10;
             this.panel16.TabStop = true;
-            // 
-            // panel17
-            // 
-            this.panel17.BackColor = System.Drawing.Color.Indigo;
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel17.Location = new System.Drawing.Point(1, 182);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(737, 1);
-            this.panel17.TabIndex = 3;
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.Indigo;
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel18.Location = new System.Drawing.Point(738, 25);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(1, 158);
-            this.panel18.TabIndex = 2;
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.Indigo;
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel19.Location = new System.Drawing.Point(0, 25);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(1, 158);
-            this.panel19.TabIndex = 1;
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.Color.Indigo;
-            this.panel20.Controls.Add(this.pictureBox9);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel20.Location = new System.Drawing.Point(0, 0);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(739, 25);
-            this.panel20.TabIndex = 0;
             // 
             // TxtPorPagar
             // 
@@ -568,6 +531,43 @@
             this.LblProducto.TabIndex = 211;
             this.LblProducto.Text = "Producto a Vender:";
             // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.Indigo;
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel17.Location = new System.Drawing.Point(1, 182);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(737, 1);
+            this.panel17.TabIndex = 3;
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.Indigo;
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel18.Location = new System.Drawing.Point(738, 25);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(1, 158);
+            this.panel18.TabIndex = 2;
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.Indigo;
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel19.Location = new System.Drawing.Point(0, 25);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(1, 158);
+            this.panel19.TabIndex = 1;
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.Indigo;
+            this.panel20.Controls.Add(this.pictureBox9);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel20.Location = new System.Drawing.Point(0, 0);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(739, 25);
+            this.panel20.TabIndex = 0;
+            // 
             // BtnVender
             // 
             this.BtnVender.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonVentaRecortada;
@@ -644,6 +644,7 @@
             // 
             this.BtnMenos.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.BotonMenosDes;
             this.BtnMenos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnMenos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnMenos.Enabled = false;
             this.BtnMenos.FlatAppearance.BorderSize = 0;
             this.BtnMenos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -659,6 +660,7 @@
             // 
             this.BtnMas.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.BotonMasDes;
             this.BtnMas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnMas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnMas.Enabled = false;
             this.BtnMas.FlatAppearance.BorderSize = 0;
             this.BtnMas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -846,7 +848,7 @@
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.LvCarrito);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Ventas";
             this.Size = new System.Drawing.Size(1135, 669);
             this.Load += new System.EventHandler(this.Ventas_Load);

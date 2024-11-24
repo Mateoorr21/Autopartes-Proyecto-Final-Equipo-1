@@ -26,9 +26,18 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
+            FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
+
+            //Reestablecemos los campos de edicion
+            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
+            Txt_Usuario.Text = Txt_Usuario.Tag.ToString();
+            Txt_Password.Text = Txt_Password.Tag.ToString();
+            RdAdmin.Checked = false;
+            RdCajero.Checked = false;
+
             //Llamamos a la función BuscarUsuarioModificar de Inicio
-            FuncionesCatalogoUsuarios.BuscarUsuarioModificar(TxtBuscar.Text, FuncionesAplicacion.Usuario, FuncionesAplicacion.TipoUsuario, 
-                TxtBuscar, RdAproximada, RdNombre, LvUsuarios,LblCantidadRegistros, LblErrorBuscar);
+            FuncionesCatalogoUsuarios.BuscarUsuarioModificar(TxtBuscar.Text, TxtBuscar, RdAproximada, 
+                RdNombre, LvUsuarios,LblCantidadRegistros, LblErrorBuscar);
         }
 
         private void ModificarUsuario_Load(object sender, EventArgs e)
@@ -44,7 +53,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             LvUsuarios.Columns.Add("Nombre", 200);
             LvUsuarios.Columns.Add("Usuario", 150);
             LvUsuarios.Columns.Add("Contraseña", 150);
-            LvUsuarios.Columns.Add("Permiso", 150);
+            LvUsuarios.Columns.Add("Permiso", 144);
 
             if (FuncionesAplicacion.TipoUsuario == "Admin") //Si el usuario que entra es un Admin, no puede cambiar permisos
             {
@@ -58,12 +67,21 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         public void CargarUsuariosModificar()
         {
             RdAproximada.Checked = true; //Ponemos en True el Aproximado
-            FuncionesCatalogoUsuarios.BuscarUsuarioModificar("%", FuncionesAplicacion.Usuario, FuncionesAplicacion.TipoUsuario,
-                TxtBuscar, RdAproximada, RdNombre, LvUsuarios, LblCantidadRegistros, LblErrorBuscar); //Llamamos a la función buscar usando % para mostrar todo
+            FuncionesCatalogoUsuarios.BuscarUsuarioModificar("%", TxtBuscar, RdAproximada, RdNombre, LvUsuarios, 
+                LblCantidadRegistros, LblErrorBuscar); //Llamamos a la función buscar usando % para mostrar todo
         }
 
         private void LvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
+
+            //Reestablecemos los campos de edicion
+            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
+            Txt_Usuario.Text = Txt_Usuario.Tag.ToString();
+            Txt_Password.Text = Txt_Password.Tag.ToString();
+            RdAdmin.Checked = false;
+            RdCajero.Checked = false;
+
             //Si se selecciona un registro
             if (LvUsuarios.SelectedItems.Count > 0) {
 
@@ -71,7 +89,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
                 //Obtenemos el Valor del Id del Registro Seleccionado
                 FuncionesCatalogoUsuarios.IdSeleccionado = int.Parse(ItemSeleccionado.SubItems[0].Text);
-
+                
                 if(FuncionesCatalogoUsuarios.IdSeleccionado == 1 && FuncionesAplicacion.TipoUsuario == "Propietario") //Si el propietario se selecciona inhabilitamos el cambio de permiso
                 {
                     RdAdmin.Enabled = false;
@@ -125,8 +143,10 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
+            FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
+
             //Llamamos a la función actualizar y pasamos los parametros
-            FuncionesCatalogoUsuarios.ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, FuncionesCatalogoUsuarios.IdSeleccionado, 
+            FuncionesCatalogoUsuarios.ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, 
                 LvUsuarios,Txt_Nombre, Txt_Usuario, Txt_Password, RdAdmin, RdCajero, LblErrorBuscar, TxtBuscar);
 
             //Si el usuario se modifico a si mismo, actualizamos los datos de inicio de sesion en Aplicacion y Catalogo

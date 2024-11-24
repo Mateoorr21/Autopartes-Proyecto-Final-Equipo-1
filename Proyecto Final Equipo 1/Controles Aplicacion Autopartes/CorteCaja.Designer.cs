@@ -35,27 +35,31 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.TxtDineroCaja = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.PanelCorteCaja = new System.Windows.Forms.Panel();
             this.TxtDineroVentas = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.TxtDineroInicial = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.ToolTipCorte = new System.Windows.Forms.ToolTip(this.components);
+            this.TxtDineroFinal = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.LblErrorDineroFinal = new System.Windows.Forms.Label();
+            this.TxtDineroFisico = new System.Windows.Forms.PictureBox();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnMostrarVenta = new System.Windows.Forms.Button();
-            this.BtnRegistrarVentas = new System.Windows.Forms.Button();
+            this.BtnCorteCaja = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.BtnCargarVentas = new System.Windows.Forms.Button();
-            this.PicLogo = new System.Windows.Forms.PictureBox();
+            this.PicTextoCorte = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.PanelCorteCaja.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtDineroFisico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTextoCorte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -66,10 +70,10 @@
             this.LvVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(238)))));
             this.LvVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LvVentas.HideSelection = false;
-            this.LvVentas.Location = new System.Drawing.Point(27, 155);
+            this.LvVentas.Location = new System.Drawing.Point(27, 145);
             this.LvVentas.MultiSelect = false;
             this.LvVentas.Name = "LvVentas";
-            this.LvVentas.Size = new System.Drawing.Size(863, 453);
+            this.LvVentas.Size = new System.Drawing.Size(863, 463);
             this.LvVentas.TabIndex = 1;
             this.LvVentas.UseCompatibleStateImageBehavior = false;
             this.LvVentas.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.LvVentas_ColumnClick);
@@ -89,89 +93,65 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(92)))), ((int)(((byte)(34)))));
-            this.panel2.Controls.Add(this.PicLogo);
+            this.panel2.Controls.Add(this.PicTextoCorte);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(194, 41);
+            this.panel2.Size = new System.Drawing.Size(194, 35);
             this.panel2.TabIndex = 0;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(92)))), ((int)(((byte)(34)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 41);
+            this.panel3.Location = new System.Drawing.Point(0, 35);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1, 412);
+            this.panel3.Size = new System.Drawing.Size(1, 428);
             this.panel3.TabIndex = 1;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(92)))), ((int)(((byte)(34)))));
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(193, 41);
+            this.panel4.Location = new System.Drawing.Point(193, 35);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1, 412);
+            this.panel4.Size = new System.Drawing.Size(1, 428);
             this.panel4.TabIndex = 2;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(92)))), ((int)(((byte)(34)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(1, 452);
+            this.panel5.Location = new System.Drawing.Point(1, 462);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(192, 1);
             this.panel5.TabIndex = 3;
             // 
-            // panel1
+            // PanelCorteCaja
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.Controls.Add(this.BtnCancelar);
-            this.panel1.Controls.Add(this.BtnMostrarVenta);
-            this.panel1.Controls.Add(this.BtnRegistrarVentas);
-            this.panel1.Controls.Add(this.TxtDineroVentas);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.TxtDineroCaja);
-            this.panel1.Controls.Add(this.pictureBox5);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.BtnCargarVentas);
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(913, 155);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(194, 453);
-            this.panel1.TabIndex = 2;
-            this.panel1.TabStop = true;
-            // 
-            // TxtDineroCaja
-            // 
-            this.TxtDineroCaja.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtDineroCaja.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtDineroCaja.Enabled = false;
-            this.TxtDineroCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtDineroCaja.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.TxtDineroCaja.Location = new System.Drawing.Point(18, 179);
-            this.TxtDineroCaja.Margin = new System.Windows.Forms.Padding(2);
-            this.TxtDineroCaja.Name = "TxtDineroCaja";
-            this.TxtDineroCaja.Size = new System.Drawing.Size(154, 15);
-            this.TxtDineroCaja.TabIndex = 205;
-            this.TxtDineroCaja.TabStop = false;
-            this.TxtDineroCaja.Tag = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(9, 154);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 16);
-            this.label1.TabIndex = 204;
-            this.label1.Text = "Dinero en Caja (MXN):";
+            this.PanelCorteCaja.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.PanelCorteCaja.Controls.Add(this.LblErrorDineroFinal);
+            this.PanelCorteCaja.Controls.Add(this.TxtDineroFinal);
+            this.PanelCorteCaja.Controls.Add(this.TxtDineroFisico);
+            this.PanelCorteCaja.Controls.Add(this.label3);
+            this.PanelCorteCaja.Controls.Add(this.BtnCancelar);
+            this.PanelCorteCaja.Controls.Add(this.BtnMostrarVenta);
+            this.PanelCorteCaja.Controls.Add(this.BtnCorteCaja);
+            this.PanelCorteCaja.Controls.Add(this.TxtDineroVentas);
+            this.PanelCorteCaja.Controls.Add(this.pictureBox1);
+            this.PanelCorteCaja.Controls.Add(this.label2);
+            this.PanelCorteCaja.Controls.Add(this.TxtDineroInicial);
+            this.PanelCorteCaja.Controls.Add(this.pictureBox5);
+            this.PanelCorteCaja.Controls.Add(this.label1);
+            this.PanelCorteCaja.Controls.Add(this.panel5);
+            this.PanelCorteCaja.Controls.Add(this.panel4);
+            this.PanelCorteCaja.Controls.Add(this.panel3);
+            this.PanelCorteCaja.Controls.Add(this.panel2);
+            this.PanelCorteCaja.Location = new System.Drawing.Point(913, 145);
+            this.PanelCorteCaja.Name = "PanelCorteCaja";
+            this.PanelCorteCaja.Size = new System.Drawing.Size(194, 463);
+            this.PanelCorteCaja.TabIndex = 2;
+            this.PanelCorteCaja.TabStop = true;
             // 
             // TxtDineroVentas
             // 
@@ -180,11 +160,11 @@
             this.TxtDineroVentas.Enabled = false;
             this.TxtDineroVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtDineroVentas.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.TxtDineroVentas.Location = new System.Drawing.Point(18, 238);
+            this.TxtDineroVentas.Location = new System.Drawing.Point(23, 315);
             this.TxtDineroVentas.Margin = new System.Windows.Forms.Padding(2);
             this.TxtDineroVentas.Name = "TxtDineroVentas";
             this.TxtDineroVentas.Size = new System.Drawing.Size(154, 15);
-            this.TxtDineroVentas.TabIndex = 3;
+            this.TxtDineroVentas.TabIndex = 5;
             this.TxtDineroVentas.Tag = "";
             // 
             // label2
@@ -192,12 +172,90 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(9, 213);
+            this.label2.Location = new System.Drawing.Point(13, 289);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(177, 16);
+            this.label2.Size = new System.Drawing.Size(167, 16);
             this.label2.TabIndex = 207;
-            this.label2.Text = "Dinero de Ventas (MXN):";
+            this.label2.Text = "Total de Ventas (MXN):";
+            // 
+            // TxtDineroInicial
+            // 
+            this.TxtDineroInicial.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtDineroInicial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtDineroInicial.Enabled = false;
+            this.TxtDineroInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDineroInicial.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.TxtDineroInicial.Location = new System.Drawing.Point(22, 163);
+            this.TxtDineroInicial.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtDineroInicial.Name = "TxtDineroInicial";
+            this.TxtDineroInicial.Size = new System.Drawing.Size(143, 15);
+            this.TxtDineroInicial.TabIndex = 4;
+            this.TxtDineroInicial.Tag = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(13, 139);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 16);
+            this.label1.TabIndex = 204;
+            this.label1.Text = "Dinero Inicial (MXN):";
+            // 
+            // TxtDineroFinal
+            // 
+            this.TxtDineroFinal.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtDineroFinal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtDineroFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDineroFinal.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.TxtDineroFinal.Location = new System.Drawing.Point(20, 226);
+            this.TxtDineroFinal.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtDineroFinal.Name = "TxtDineroFinal";
+            this.TxtDineroFinal.Size = new System.Drawing.Size(144, 15);
+            this.TxtDineroFinal.TabIndex = 5;
+            this.TxtDineroFinal.Tag = "0";
+            this.TxtDineroFinal.Text = "0";
+            this.TxtDineroFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDineroFinal_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(10, 201);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(141, 16);
+            this.label3.TabIndex = 210;
+            this.label3.Text = "Dinero Final (MXN):";
+            // 
+            // LblErrorDineroFinal
+            // 
+            this.LblErrorDineroFinal.AutoSize = true;
+            this.LblErrorDineroFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorDineroFinal.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorDineroFinal.Location = new System.Drawing.Point(13, 248);
+            this.LblErrorDineroFinal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblErrorDineroFinal.Name = "LblErrorDineroFinal";
+            this.LblErrorDineroFinal.Size = new System.Drawing.Size(153, 16);
+            this.LblErrorDineroFinal.TabIndex = 215;
+            this.LblErrorDineroFinal.Text = "Solo números y un punto\r\n";
+            this.LblErrorDineroFinal.Visible = false;
+            // 
+            // TxtDineroFisico
+            // 
+            this.TxtDineroFisico.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
+            this.TxtDineroFisico.InitialImage = null;
+            this.TxtDineroFisico.Location = new System.Drawing.Point(13, 220);
+            this.TxtDineroFisico.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtDineroFisico.Name = "TxtDineroFisico";
+            this.TxtDineroFisico.Size = new System.Drawing.Size(168, 26);
+            this.TxtDineroFisico.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.TxtDineroFisico.TabIndex = 212;
+            this.TxtDineroFisico.TabStop = false;
             // 
             // BtnCancelar
             // 
@@ -205,53 +263,53 @@
             this.BtnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BtnCancelar.FlatAppearance.BorderSize = 0;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancelar.Location = new System.Drawing.Point(100, 367);
+            this.BtnCancelar.Location = new System.Drawing.Point(102, 46);
             this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(86, 80);
-            this.BtnCancelar.TabIndex = 6;
+            this.BtnCancelar.Size = new System.Drawing.Size(86, 83);
+            this.BtnCancelar.TabIndex = 3;
             this.ToolTipCorte.SetToolTip(this.BtnCancelar, "Resetear acción");
             this.BtnCancelar.UseVisualStyleBackColor = true;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnMostrarVenta
             // 
-            this.BtnMostrarVenta.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonMostrarVenta;
+            this.BtnMostrarVenta.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonMostrarVentarRecortado;
             this.BtnMostrarVenta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BtnMostrarVenta.FlatAppearance.BorderSize = 0;
             this.BtnMostrarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMostrarVenta.Location = new System.Drawing.Point(12, 263);
+            this.BtnMostrarVenta.Location = new System.Drawing.Point(9, 46);
             this.BtnMostrarVenta.Margin = new System.Windows.Forms.Padding(2);
             this.BtnMostrarVenta.Name = "BtnMostrarVenta";
-            this.BtnMostrarVenta.Size = new System.Drawing.Size(176, 91);
-            this.BtnMostrarVenta.TabIndex = 4;
+            this.BtnMostrarVenta.Size = new System.Drawing.Size(86, 82);
+            this.BtnMostrarVenta.TabIndex = 2;
             this.ToolTipCorte.SetToolTip(this.BtnMostrarVenta, "Mostrar detalles de venta");
             this.BtnMostrarVenta.UseVisualStyleBackColor = true;
             this.BtnMostrarVenta.Click += new System.EventHandler(this.BtnMostrarVenta_Click);
             // 
-            // BtnRegistrarVentas
+            // BtnCorteCaja
             // 
-            this.BtnRegistrarVentas.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonRegistrarVentas;
-            this.BtnRegistrarVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnRegistrarVentas.FlatAppearance.BorderSize = 0;
-            this.BtnRegistrarVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnRegistrarVentas.Location = new System.Drawing.Point(10, 368);
-            this.BtnRegistrarVentas.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnRegistrarVentas.Name = "BtnRegistrarVentas";
-            this.BtnRegistrarVentas.Size = new System.Drawing.Size(87, 78);
-            this.BtnRegistrarVentas.TabIndex = 5;
-            this.ToolTipCorte.SetToolTip(this.BtnRegistrarVentas, "Registrar ventas\r\ny cerrar sesión");
-            this.BtnRegistrarVentas.UseVisualStyleBackColor = true;
-            this.BtnRegistrarVentas.Click += new System.EventHandler(this.BtnRegistrarVentas_Click);
+            this.BtnCorteCaja.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonCorteCaja2;
+            this.BtnCorteCaja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnCorteCaja.FlatAppearance.BorderSize = 0;
+            this.BtnCorteCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCorteCaja.Location = new System.Drawing.Point(42, 347);
+            this.BtnCorteCaja.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnCorteCaja.Name = "BtnCorteCaja";
+            this.BtnCorteCaja.Size = new System.Drawing.Size(116, 100);
+            this.BtnCorteCaja.TabIndex = 6;
+            this.ToolTipCorte.SetToolTip(this.BtnCorteCaja, "Corte de caja y cierre de sesión");
+            this.BtnCorteCaja.UseVisualStyleBackColor = true;
+            this.BtnCorteCaja.Click += new System.EventHandler(this.BtnCorteCaja_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 232);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 309);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(179, 27);
+            this.pictureBox1.Size = new System.Drawing.Size(168, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 209;
             this.pictureBox1.TabStop = false;
@@ -260,41 +318,26 @@
             // 
             this.pictureBox5.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
             this.pictureBox5.InitialImage = null;
-            this.pictureBox5.Location = new System.Drawing.Point(9, 173);
+            this.pictureBox5.Location = new System.Drawing.Point(13, 158);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(179, 27);
+            this.pictureBox5.Size = new System.Drawing.Size(168, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 206;
             this.pictureBox5.TabStop = false;
             // 
-            // BtnCargarVentas
+            // PicTextoCorte
             // 
-            this.BtnCargarVentas.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonCargarVentas;
-            this.BtnCargarVentas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnCargarVentas.FlatAppearance.BorderSize = 0;
-            this.BtnCargarVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCargarVentas.Location = new System.Drawing.Point(34, 44);
-            this.BtnCargarVentas.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnCargarVentas.Name = "BtnCargarVentas";
-            this.BtnCargarVentas.Size = new System.Drawing.Size(121, 105);
-            this.BtnCargarVentas.TabIndex = 2;
-            this.ToolTipCorte.SetToolTip(this.BtnCargarVentas, "Cargar ventas");
-            this.BtnCargarVentas.UseVisualStyleBackColor = true;
-            this.BtnCargarVentas.Click += new System.EventHandler(this.BtnCargarVentas_Click);
-            // 
-            // PicLogo
-            // 
-            this.PicLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PicLogo.BackColor = System.Drawing.Color.Transparent;
-            this.PicLogo.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TextoVentasBlanco;
-            this.PicLogo.Location = new System.Drawing.Point(23, -1);
-            this.PicLogo.Margin = new System.Windows.Forms.Padding(2);
-            this.PicLogo.Name = "PicLogo";
-            this.PicLogo.Size = new System.Drawing.Size(149, 41);
-            this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicLogo.TabIndex = 134;
-            this.PicLogo.TabStop = false;
+            this.PicTextoCorte.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PicTextoCorte.BackColor = System.Drawing.Color.Transparent;
+            this.PicTextoCorte.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.TextoCorte;
+            this.PicTextoCorte.Location = new System.Drawing.Point(37, -2);
+            this.PicTextoCorte.Margin = new System.Windows.Forms.Padding(2);
+            this.PicTextoCorte.Name = "PicTextoCorte";
+            this.PicTextoCorte.Size = new System.Drawing.Size(116, 40);
+            this.PicTextoCorte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicTextoCorte.TabIndex = 134;
+            this.PicTextoCorte.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -336,22 +379,23 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PanelCorteCaja);
             this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.LvVentas);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox8);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CorteCaja";
             this.Size = new System.Drawing.Size(1135, 669);
             this.Load += new System.EventHandler(this.CorteCaja_Load);
             this.panel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.PanelCorteCaja.ResumeLayout(false);
+            this.PanelCorteCaja.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtDineroFisico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTextoCorte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -367,21 +411,24 @@
         private System.Windows.Forms.ListView LvVentas;
         private System.Windows.Forms.Label LblCantidadRegistros;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox PicLogo;
+        private System.Windows.Forms.PictureBox PicTextoCorte;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button BtnCargarVentas;
+        private System.Windows.Forms.Panel PanelCorteCaja;
         private System.Windows.Forms.TextBox TxtDineroVentas;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TxtDineroCaja;
+        private System.Windows.Forms.TextBox TxtDineroInicial;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnMostrarVenta;
-        private System.Windows.Forms.Button BtnRegistrarVentas;
+        private System.Windows.Forms.Button BtnCorteCaja;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.ToolTip ToolTipCorte;
+        private System.Windows.Forms.TextBox TxtDineroFinal;
+        private System.Windows.Forms.PictureBox TxtDineroFisico;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblErrorDineroFinal;
     }
 }

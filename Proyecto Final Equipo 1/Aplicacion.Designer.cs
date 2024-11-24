@@ -38,6 +38,7 @@
             this.LblUsuario = new System.Windows.Forms.Label();
             this.PanelAutoPartes = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ToolTipAplicacion = new System.Windows.Forms.ToolTip(this.components);
             this.PicIndicaciones = new System.Windows.Forms.PictureBox();
             this.PicUsuario = new System.Windows.Forms.PictureBox();
             this.BtnSalir = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.BtnVender = new System.Windows.Forms.Button();
             this.BtnInventario = new System.Windows.Forms.Button();
-            this.ToolTipAplicacion = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.PanelAutoPartes.SuspendLayout();
@@ -82,7 +82,7 @@
             this.panel1.Controls.Add(this.BtnVender);
             this.panel1.Controls.Add(this.BtnInventario);
             this.panel1.Location = new System.Drawing.Point(1, 108);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(203, 670);
             this.panel1.TabIndex = 3;
@@ -94,7 +94,7 @@
             this.panel3.Controls.Add(this.BtnSalir);
             this.panel3.Controls.Add(this.LblTitulo);
             this.panel3.Location = new System.Drawing.Point(204, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1132, 109);
             this.panel3.TabIndex = 1;
@@ -157,7 +157,7 @@
             this.panel2.Controls.Add(this.LblNombreCompleto);
             this.panel2.Controls.Add(this.PicUsuario);
             this.panel2.Location = new System.Drawing.Point(1, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(203, 109);
             this.panel2.TabIndex = 10;

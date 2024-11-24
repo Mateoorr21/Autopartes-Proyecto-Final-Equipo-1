@@ -373,6 +373,26 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoBotonCorteCaja2 {
+            get {
+                object obj = ResourceManager.GetObject("IconoBotonCorteCaja2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoBotonDineroEnCaja {
+            get {
+                object obj = ResourceManager.GetObject("IconoBotonDineroEnCaja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoBotonEditarUsuario {
             get {
                 object obj = ResourceManager.GetObject("IconoBotonEditarUsuario", resourceCulture);
@@ -456,6 +476,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         internal static System.Drawing.Bitmap IconoBotonMostrarVenta {
             get {
                 object obj = ResourceManager.GetObject("IconoBotonMostrarVenta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoBotonMostrarVentarRecortado {
+            get {
+                object obj = ResourceManager.GetObject("IconoBotonMostrarVentarRecortado", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -816,6 +846,36 @@ namespace Proyecto_Final_Equipo_1.Properties {
         internal static System.Drawing.Bitmap TextoBusquedaBlanco {
             get {
                 object obj = ResourceManager.GetObject("TextoBusquedaBlanco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TextoCorte {
+            get {
+                object obj = ResourceManager.GetObject("TextoCorte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TextoCorteDes {
+            get {
+                object obj = ResourceManager.GetObject("TextoCorteDes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TextoDineroEnCaja {
+            get {
+                object obj = ResourceManager.GetObject("TextoDineroEnCaja", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

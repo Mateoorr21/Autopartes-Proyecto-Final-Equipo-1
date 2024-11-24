@@ -87,7 +87,7 @@ namespace Proyecto_Final_Equipo_1
             PanelAutoPartes.Controls.Add(control);
             control.Dock = DockStyle.Fill;
 
-            FuncionesAplicacion.ReiniciarVariables(); // Reiniciamos las variables
+            if(!control.Name.Contains("Usuario")) FuncionesAplicacion.ReiniciarVariables(); // Reiniciamos si el control no es el de catalogo de usuarios
         }
 
         private void BtnCatalogoUsuarios_Click(object sender, EventArgs e)
@@ -142,8 +142,8 @@ namespace Proyecto_Final_Equipo_1
         {
             if (FuncionesAplicacion.HayVentas == true) //Si ya se realizaron ventas indicamos que debe ir a Corte de Caja
             {
-                MessageBox.Show("Hay ventas realizadas sin guardar. Dirijase al apartado Corte de Caja para guardarlas y cerrar sesión.",
-                    "ADVERTENCIA. VENTAS REALIZADAS SIN GUARDAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hay ventas realizadas. Dirijase al apartado Corte de Caja para poder cerrar sesión.",
+                    "ADVERTENCIA. VENTAS REALIZADAS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -176,7 +176,8 @@ namespace Proyecto_Final_Equipo_1
             LimpiarTodosLosControles(); //Limpiamos todos los controles de Usuario
             MostrarControlUsuario(corteCaja);
 
-            corteCaja.CargarDineroCaja(); //Cargamos el dinero en caja
+            //Llamamoss a la función CargarVentas
+            corteCaja.CargarVentas();
         }
 
         private void Aplicacion_Shown(object sender, EventArgs e)

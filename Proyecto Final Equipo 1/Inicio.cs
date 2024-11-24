@@ -23,8 +23,8 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnInicio_Click(object sender, EventArgs e)
         {
+            InicioSesion inicioSesion = new InicioSesion(this); //Pasamos al siguiente formulario una instancia de Inicio
             this.Hide(); //Ocultamos formulario con Logo
-            InicioSesion inicioSesion = new InicioSesion(); //Pasamos al siguiente formulario una instancia de Inicio
             inicioSesion.ShowDialog();
 
         }

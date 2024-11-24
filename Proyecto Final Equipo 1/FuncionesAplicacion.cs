@@ -18,9 +18,10 @@ namespace Proyecto_Final_Equipo_1
     public class FuncionesAplicacion
     {
         //Declaramos la cadena de conexion que usaremos en el codigo
-        public static string cadconexion = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\Base\Mi_prueva_personal.accdb;Persist Security Info=False;";
+        public static string cadconexion = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\Base\BDDS_AutoOne.accdb;Persist Security Info=False;";
 
         //Declaramos el Nombre Completo, Usuario y Permiso del usuario que inicia sesión
+        public static int IdUsuario = 0;
         public static string NombreCompleto = null;
         public static string Usuario = null;
         public static string TipoUsuario = null;
@@ -47,7 +48,11 @@ namespace Proyecto_Final_Equipo_1
         public static bool HayVentas = false;
         public static int ContarVentas = 0;
         public static float DineroVentas = 0;
-
+        public static float DineroEnCaja = 0;
+        public static float DineroInicial = 0;
+        public static float DineroFinal = 0;
+        public static float DineroGenerado = 0;
+        public static float Diferencia = 0;
 
 
         //FUNCION PARA ORDENAR LAS COLUMANS DE UN LISTVIEW, RECIBE UN LISTVIEW COMO PARAMETRO
@@ -138,7 +143,9 @@ namespace Proyecto_Final_Equipo_1
             ReciboDinero = 0;
             SeCompletoOperacion = false;
             ContarVentas = 0;
-            DineroVentas = 0;
+            DineroFinal = 0;
+            DineroGenerado = 0;
+            Diferencia = 0;
         }
 
 
@@ -151,7 +158,7 @@ namespace Proyecto_Final_Equipo_1
             {
                 conexion.Open(); //Abrimos la conexión
 
-                string consulta = "SELECT Nombre_Completo, Usuario, [Password], Tipo FROM Usuarios_Operativos WHERE Usuario = @usuario"; //Consulta
+                string consulta = "SELECT Id, Nombre_Completo, Usuario, [Password], Tipo FROM Usuarios_Operativos WHERE Usuario = @usuario"; //Consulta
 
                 // Usamos 'using' también para el comando, asegurando que se libere correctamente después de su uso
                 using (OleDbCommand comando = new OleDbCommand(consulta, conexion))
@@ -165,6 +172,7 @@ namespace Proyecto_Final_Equipo_1
                         {
                             lector.Read(); //Leemos el registro obtenido
 
+                            IdUsuario = (int)lector["Id"]; //Guardamos id del usuario
                             NombreCompleto = lector["Nombre_Completo"].ToString(); //Nombre a cadena String
                             Usuario = lector["Usuario"].ToString(); //Usuario a cadena String
                             PasswordBD = lector["Password"].ToString(); //Contraseña en base de datos
@@ -176,16 +184,17 @@ namespace Proyecto_Final_Equipo_1
                                 TxtUsuario.Clear();
                                 TxtPassword.Clear();
 
-                                //Mensaje de inicio de sesión exitoso
-                                MessageBox.Show("Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",
-                                    "INICIO DE SESIÓN EXITOSO. Bienvenido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                                 // Variable booleana (Es un Admin o no)
                                 TienePermiso = TipoUsuario == "Admin" || TipoUsuario == "Propietario";
 
+                                //Mensaje de inicio de sesión exitoso
+                                DialogResult MostrarDineroInicio = MessageBox.Show("Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",
+                                    "INICIO DE SESIÓN EXITOSO. BIENVENIDO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                                 VentanaInicioSesion.Hide(); //Ocultamos la ventana de Inicio de Sesion
-                                Aplicacion aplicacion = new Aplicacion(); // Abrir el formulario
-                                aplicacion.ShowDialog();
+                                DineroInicial dineroInicial = new DineroInicial(); //Abrimos ventana de Dinero Inicial
+
+                                if (MostrarDineroInicio == DialogResult.OK) dineroInicial.ShowDialog(); //Cuando se de OK mostramos el siguiente formulario
 
                                 ReiniciarVariables(); //Reinciamos las variables a usar.
                             }
@@ -198,7 +207,7 @@ namespace Proyecto_Final_Equipo_1
 
                                 if (ErroresInicioSesion == 3)
                                 {
-                                    System.Windows.Forms.Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
+                                    Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
                                 }
                             }
                         }
@@ -211,12 +220,45 @@ namespace Proyecto_Final_Equipo_1
 
                             if (ErroresInicioSesion == 3)
                             {
-                                System.Windows.Forms.Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
+                                Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
                             }
                         }
                     }
                 }
             }
+        }
+
+
+
+        //FUNCION PARA GUARDAR EL DINERO INICIAL EN CAJA Y CONTINUAR A SISTEMA
+        public static void GuardarDineroInicialYContinuar(TextBox Txt_DineroInicial, Label LblErrorDineroInicial, Control dineroInicial)
+        {
+            LblErrorDineroInicial.Visible = false; //Ocultamos la etiqetua de error
+
+            //Error si no se ingresó nada
+            if (string.IsNullOrEmpty(Txt_DineroInicial.Text))
+            {
+                MessageBox.Show("No se ingresó dinero en caja. Verifique lo ingresado.",
+                    "ERROR. DINERO EN CAJA VACÍO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                Txt_DineroInicial.Text = Txt_DineroInicial.Tag.ToString(); //Reestablecemos la caja de DineroInicial a su valor original
+                return;
+            }
+
+            DineroInicial = (float)Math.Round(float.Parse(Txt_DineroInicial.Text), 2); //Redondeamos el dinero ingresado a dos decimales
+            
+            if (DineroInicial == 0)
+            {
+                DialogResult Confirmar0 = MessageBox.Show("El dinero en caja ingresado $0. ¿Desea continuar e ingresar al sistema?",
+                    "CONFIRMACIÓN DE INGRESO AL SISTEMA (INGRESO $0)", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Confirmar0 == DialogResult.No) return;
+            }
+
+            DineroEnCaja = DineroInicial; //El dinero en caja comienza igual al inicial ingresado por el usuario operativo
+
+            dineroInicial.Hide(); //Ocultamos ventana de dinero en caja
+            Aplicacion aplicacion = new Aplicacion(); // Abrir el formulario de aplicación
+            aplicacion.ShowDialog();
         }
 
 
@@ -249,18 +291,18 @@ namespace Proyecto_Final_Equipo_1
                         Producto.SubItems.Add(LeerProductos["Nombre"].ToString());
                         Producto.SubItems.Add(LeerProductos["Descripcion"].ToString());
                         Producto.SubItems.Add(LeerProductos["Marca"].ToString());
-                        Producto.SubItems.Add(LeerProductos["Precio"].ToString());
+                        Producto.SubItems.Add(LeerProductos["Precio"].ToString()); 
                         Producto.SubItems.Add(LeerProductos["Cantidad_en_Stock"].ToString());
                         Producto.SubItems.Add(LeerProductos["Imagen"].ToString());
 
                         // Cargamos el registro al ListView
                         LvProductos.Items.Add(Producto);
                     }
-
-                    // Actualizamos la etiqueta que cuenta los registros
-                    LblCantidadRegistros.Text = "Cantidad de Productos: " + ContarProductos.ToString();
                 }
             }
+
+            // Actualizamos la etiqueta que cuenta los registros
+            LblCantidadRegistros.Text = "Cantidad de Productos: " + ContarProductos.ToString();
         }
 
 
@@ -324,11 +366,11 @@ namespace Proyecto_Final_Equipo_1
             }
 
             //Confirmamos que el usuario desea realizar agregar los ejemplares ingresados
-            DialogResult ConfirmarVenta;
-            ConfirmarVenta = MessageBox.Show("¿Esta seguro que desea agregar la cantidad de ejemplares del producto al Inventario?",
+            DialogResult ConfirmarInventario;
+            ConfirmarInventario = MessageBox.Show("¿Esta seguro que desea agregar " + CantidadIngresada.ToString() + " del producto " + TxtProducto.Text + " al Inventario?",
                 "CONFIRMACIÓN DE AGREGADO A INVENTARIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (ConfirmarVenta == DialogResult.No) return;
+            if (ConfirmarInventario == DialogResult.No) return;
 
             CantidadEnStockSeleccionado += CantidadIngresada; //Actualizamos la cantidad en Stock
 
@@ -355,7 +397,7 @@ namespace Proyecto_Final_Equipo_1
             }
 
             LvProductos.SelectedItems.Clear(); //Quitamos el seleccionado
-            TxtProducto.Clear(); //Limpiamos las cajas de texto
+            TxtProducto.Text = TxtProducto.Tag.ToString(); //Restablecemos la caja de producto
             Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Reestablecemos la caja Cantidad
             ReiniciarVariables(); //Reiniciamos las Variables
 
@@ -386,7 +428,7 @@ namespace Proyecto_Final_Equipo_1
             }
 
             //Convertimos el valor de las cajas en tipo float y entero
-            float Precio = float.Parse(Txt_Precio.Text);
+            float Precio = (float)Math.Round(float.Parse(Txt_Precio.Text), 2); //Redondeamos el precio ingresado a dos decimales
             int Cantidad = int.Parse(Txt_Cantidad.Text);
 
             if(Precio == 0 || Cantidad == 0) //Validamos que precio y cantidad no sean iguales a 0
@@ -420,8 +462,8 @@ namespace Proyecto_Final_Equipo_1
                 }
 
                 //Segundo comando SQL para insertar el registro
-                string query = "INSERT INTO Productos (Nombre, Descripcion, Marca, Precio, Cantidad_en_Stock, Imagen) " +
-                   "VALUES (@Nombre, @Descripcion, @Marca, @Precio, @CantidadEnStock, @Imagen)";
+                string query = "INSERT INTO Productos (Nombre, Descripcion, Marca, Precio, Cantidad_en_Stock) " +
+                   "VALUES (@Nombre, @Descripcion, @Marca, @Precio, @CantidadEnStock)";
 
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
                 {
@@ -431,7 +473,6 @@ namespace Proyecto_Final_Equipo_1
                     comando.Parameters.AddWithValue("@Marca", Marca);
                     comando.Parameters.AddWithValue("@Precio", Precio);
                     comando.Parameters.AddWithValue("@CantidadEnStock", Cantidad);
-                    comando.Parameters.AddWithValue("@Imagen", string.Empty); //Por el momento una cadena vacía en el apartado imagen
 
                     comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
                 }
@@ -450,7 +491,7 @@ namespace Proyecto_Final_Equipo_1
             //Obtenemos la ruta destino tomando en cuenta la ubicación de la carpeta Imagenes, el nombre de la imagen y .jpg
             string RutaDestino = "..\\..\\..\\Imagenes\\" + IdGenerado.ToString() + ".jpg";
 
-            //ERORR RUTA VACIA
+            
             // Copiar el archivo de la ruta temporal a la ruta destino (ya con el nombre correcto)
             File.Copy(RutaImagenTemporal, RutaDestino, true);
 
@@ -473,12 +514,12 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            //Limpiamos las cajas de texto y liberamos el Picture Box
-            Txt_Nombre.Clear();
-            Txt_Descripcion.Clear();
-            Txt_Marca.Clear();
-            Txt_Precio.Clear();
-            Txt_Cantidad.Clear();
+            //Restablecemos las cajas de texto y liberamos el Picture Box
+            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
+            Txt_Descripcion.Text = Txt_Descripcion.Tag.ToString();
+            Txt_Marca.Text = Txt_Marca.Tag.ToString();
+            Txt_Precio.Text = Txt_Precio.Tag.ToString();
+            Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
             PicImagenProducto.Image = null;
 
             //Mensaje de registro de producto exitoso
@@ -637,9 +678,9 @@ namespace Proyecto_Final_Equipo_1
             float Precio = float.Parse(Txt_Precio.Text);
             float Cantidad = int.Parse(Txt_Cantidad.Text);
 
-            if (Precio == 0 || Cantidad == 0) //Validamos que precio y cantidad no sean iguales a 0
+            if (Precio == 0) //Validamos que precio sea  0
             {
-                MessageBox.Show("Error. No se puede ingresar 0 como valor de Precio o Cantidad en Existencia", "ERROR. 0 NO ES VALIDO",
+                MessageBox.Show("Error. No se puede ingresar 0 como valor de Precio", "ERROR. 0 NO ES VALIDO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -830,29 +871,19 @@ namespace Proyecto_Final_Equipo_1
         }
 
 
-        //NO FUNCIONA LA ETIQUETA DE ERROR EN LOS CAMPOS DE BUSCAR POR ALGUNA RAZON :(
-        public static void ValidarEntradaTxtBuscar(KeyPressEventArgs e, RadioButton RdId, RadioButton RdNombre, Label LblErrorBuscar)
+        
+        public static void ValidarEntradaTxtBuscar(KeyPressEventArgs e, RadioButton RdId, RadioButton RdNombre, Label LblErrorBuscar, TextBox TxtBuscar)
         {
-            LblErrorBuscar.Visible = false; //Ocultamos siempre que se ingresa un caracter
-
             if (RdId.Checked) // Si está seleccionado el RadioButton de Id hay restricciones
             {
                 // Validar que solo se ingresen números o backspace
-                if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-                {                  
-                    LblErrorBuscar.Visible = true;
-                    e.Handled = true; // Cancelar la entrada
-                }
+                ValidarEntradaTxtCantidad(e, LblErrorBuscar);
             }
 
             else //Si está seleccionado el RadioButton de Nombre también hay restricciones 
             {
                 // Validar que solo se ingresen letras, números, backspace, space, comillas dobles, guiones o barras diagonales
-                if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 32 && e.KeyChar != 34 && e.KeyChar != 45 && e.KeyChar != 47)
-                {
-                    LblErrorBuscar.Visible = true;
-                    e.Handled = true; // Cancelar la entrada
-                }
+                ValidarEntradaTxtNombreDescripcionMarca(e, LblErrorBuscar, TxtBuscar);
             }
         }
 
@@ -860,7 +891,7 @@ namespace Proyecto_Final_Equipo_1
         //FUNCIONES PARA VALIDAR LA ENTRADA DE  CAMPOS NOMBRE, DESCRIPCION Y MARCA
         public static void ValidarEntradaTxtNombreDescripcionMarca(KeyPressEventArgs e, Label LblError, TextBox TxtCampo)
         {
-            //Si la caja de texto es la de Marca no se pueden ingresar comillas dobles, guiones ni barras diagonales
+            //Si la caja de texto es la de Marca no se pueden ingresar comillas dobles, guiones, barras diagonales
             if (TxtCampo.Name.Contains("Marca") && (e.KeyChar == 34 || e.KeyChar == 45 || e.KeyChar == 47))
             {
                 LblError.Visible = true;
@@ -868,8 +899,8 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
-            // Validar que solo se ingresen letras, números, backspace, space, comillas dobles, guiones o barras diagonales
-            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 32 && e.KeyChar != 34 && e.KeyChar != 45 && e.KeyChar != 47)
+            // Validar que solo se ingresen letras, números, backspace, space, comillas dobles, guiones, barras diagonales o puntos
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 32 && e.KeyChar != 34 && e.KeyChar != 45 && e.KeyChar != 47 && e.KeyChar != 46)
             {
                 LblError.Visible = true;
                 e.Handled = true; // Cancelar la entrada
@@ -887,7 +918,6 @@ namespace Proyecto_Final_Equipo_1
             //Validar que solo es ingresen numeros, backspace o punto decimal
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != 46)
             {
-                LblErrorPrecio.Text = "Solo se permiten números y un punto decimal";
                 LblErrorPrecio.Visible = true;
                 e.Handled = true;
             }
@@ -896,7 +926,6 @@ namespace Proyecto_Final_Equipo_1
             else if (Txt_Precio.Text.IndexOf('.') >= 0 && e.KeyChar == 46)
             //Si en la caja ya hay un "." y la tecla preionada es "."
             {
-                LblErrorPrecio.Text = "Solo se permite un punto decimal";
                 LblErrorPrecio.Visible = true;
                 e.Handled = true; //No se permite ingresar el "."
             }
@@ -1045,7 +1074,7 @@ namespace Proyecto_Final_Equipo_1
             if (ConfirmarVaciarCarrito == DialogResult.No) return;
 
             LvCarrito.Items.Clear(); //Limpiamos ListView de Carrito
-            TxtPorPagar.Clear(); //Limpiamos caja de texto PorPagar
+            TxtPorPagar.Text = TxtPorPagar.Tag.ToString(); //Limpiamos caja de texto PorPagar
             PorPagar = 0; //Reiniciamos PorPagar
             LblCantidadRegistrosCarrito.Text = LblCantidadRegistrosCarrito.Tag.ToString(); //Etiqueta cantidad a su original
             CantidadEnCarrito = 0;
@@ -1111,8 +1140,8 @@ namespace Proyecto_Final_Equipo_1
                     conexion.Open(); //Abrimos conexion
 
                     //Primer Comando SQL para insertar la venta de un producto a la BDDS de ventas
-                    string query = "INSERT INTO Ventas (Nombre_Completo, Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total, Total_IVA, Fecha_Hora) " +
-                       "VALUES (@NombreCompleto, @Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total, @TotalIVA, @FechaHora)";
+                    string query = "INSERT INTO Ventas (Id_Usuario, Usuario, Tipo, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total, Total_IVA, Fecha_Hora) " +
+                       "VALUES (@IdUsuario, @Usuario, @Tipo, @IdProducto, @NombreProducto, @Precio, @Cantidad, @Total, @TotalIVA, @FechaHora)";
 
                     using (OleDbCommand comando = new OleDbCommand(query, conexion)) //Comando SQL
                     {
@@ -1123,7 +1152,7 @@ namespace Proyecto_Final_Equipo_1
                             comando.Parameters.Clear();
 
                             // Parametros de consulta, los valores que se van a insertar a la base de datos
-                            comando.Parameters.AddWithValue("@NombreCompleto", NombreCompleto);
+                            comando.Parameters.AddWithValue("@IdUsuario", IdUsuario);
                             comando.Parameters.AddWithValue("@Usuario", Usuario);
                             comando.Parameters.AddWithValue("@TipoUsuario", TipoUsuario);
                             comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
@@ -1161,7 +1190,7 @@ namespace Proyecto_Final_Equipo_1
                 LblCantidadRegistrosCarrito.Text = "Productos en Carrito: "; //AActualizamos la etiqueta de Cantidad de Registros de Carrito
 
                 LvCarrito.Items.Clear(); //Limpiamos el Carrito
-                TxtPorPagar.Clear(); //Limpiamos la caja con el total de la venta
+                TxtPorPagar.Text = TxtPorPagar.Tag.ToString(); //Reestablecemos la caja del total de la venta
 
                 //Mensaje de Venta Exitosa
                 MessageBox.Show("La venta ha sido completada.", "VENTA EXITOSA DE PRODUCTOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1260,24 +1289,8 @@ namespace Proyecto_Final_Equipo_1
 
 
 
-
-
         //FUNCIONES UTILIZADAS PARA LA VENTANA DE HACER COBRO
-        public static void ValidarEntradaTxtRecibo(KeyPressEventArgs e, Label LblErrorDineroRecibo)
-        {
-            //Validar que solo se ingresen numeros o backspace
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                LblErrorDineroRecibo.Visible = true;
-                e.Handled = true;
-            }
-
-            else //Si no hay errores, ocultar la etiqueta de error
-            {
-                LblErrorDineroRecibo.Visible = false;
-            }
-        }
-
+        
         public static bool HacerCobro(TextBox TxtDineroRecibo, Label LblErrorDineroRecibo)
         {
             SeCompletoOperacion = false; //Booleano empieza en falso
@@ -1292,8 +1305,8 @@ namespace Proyecto_Final_Equipo_1
             }
 
             ReciboDinero = 0; //Reinciamos el dinero que se recibe
-            ReciboDinero = float.Parse(TxtDineroRecibo.Text); //Obtenemos el dinero ingresado
-
+            ReciboDinero = (float)Math.Round(float.Parse(TxtDineroRecibo.Text), 2); //Redondeamos el dinero con el que se paga a dos decimales
+            
             //Si el dinero es menor a la cantidad que se tiene que pagar mensaje de error
             if (ReciboDinero < PorPagar)
             {
@@ -1302,31 +1315,48 @@ namespace Proyecto_Final_Equipo_1
                 return false;
             }
 
+            //Si el cambio a dar es mayor o igual a 1000 mensaje de error
+            if((ReciboDinero - PorPagar) >= 1000)
+            {
+                MessageBox.Show("El cambio es mayor a lo posible. Verifique el monto ingresado. El cambio no puede llegar a 1000 pesos.",
+                    "ERROR. CAMBIO EXCEDIO LO PERMITIDO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            //Si el cambio a dar es mayor que lo que se tiene en caja mensaje de error
+            if ((ReciboDinero - PorPagar) > DineroEnCaja)
+            {
+                MessageBox.Show("No se tiene suficiente dinero en Caja para dar cambio", "ERROR. DINERO EN CAJA INSUFICIENTE",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            //Si se completara la venta le añadimos al dinero en caja lo que se tiene que pagar
+            DineroEnCaja += PorPagar; //Esto para estar listos para hacer la validación en la siguiente venta de acuerdo al nuevo dinero en caja
+
             //MessageBoxShow con el cambio a entregar
-            MessageBox.Show("Cambio: $ " + (ReciboDinero - PorPagar).ToString() , "CAMBIO A ENTREGAR",
+            MessageBox.Show("Cambio: " + (ReciboDinero - PorPagar).ToString("C") , "CAMBIO A ENTREGAR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
-
         }
 
 
+
         //FUNCIONES UTILIZADAS PARA EL CORTE DE CAJA
-        public static void CargarVentas(ListView LvVentas, Label LblCantidadRegistros, TextBox TxtDineroVentas)
+        public static void CargarVentas(ListView LvVentas, Label LblCantidadRegistros, TextBox TxtDineroInicial, TextBox TxtDineroVentas, PictureBox PicCorte, Panel PanelCorteCaja)
         {
-            //Si la no se han realizado ventas mensaje de error
-            if (HayVentas == false)
+            if (HayVentas == false) //Si no se han hecho ventas se deshabilita subapartado de corte
             {
-                MessageBox.Show("Error. No se han realizado ventas.", "ERROR. NO HAY VENTAS POR MOSTRAR",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                PicCorte.Image = Properties.Resources.TextoCorteDes; //Mostramos imagen deshabilitado
+                TxtDineroInicial.Text = DineroInicial.ToString("C"); //Cargamos el dinero incial en la caja de texto dinero ventas
+                TxtDineroVentas.Text = DineroVentas.ToString("C"); //Cargamos 0 en la caja de texto de DineroVentas
+                PanelCorteCaja.Enabled = false; //Deshabilitamos el panel
                 return;
             }
 
-            if (LvVentas.Items.Count > 0) // Si las ventas ya están cargadas indicamos advertencia
-            {
-                MessageBox.Show("Advertencia. Las ventas ya han sido cargadas.", "ADVERTENCIA. VENTAS YA CARGADAS",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //Si se han hecho ventas se habilita
+            PanelCorteCaja.Enabled = true; //Habilitamos el panel
+            PicCorte.Image = Properties.Resources.TextoCorte; //Mostramos imagen habilitada
 
             //using para establecer conexion con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -1334,8 +1364,8 @@ namespace Proyecto_Final_Equipo_1
                 conexion.Open(); //Abrimos conexion
                 ListViewItem Venta;
 
-                string ComandoVentas = "SELECT Usuario, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total, Total_IVA, Fecha_Hora" +
-                    " FROM Ventas WHERE SeGuardo = False"; //Consulta para seleccionar las ventas hechas por el Usuario
+                string ComandoVentas = "SELECT Id_Usuario, Usuario, Id_Producto, Nombre_Producto, Precio_Producto, Cantidad_Producto, Total, Total_IVA, Fecha_Hora" +
+                    " FROM Ventas WHERE SeGuardo = False ORDER BY Fecha_Hora, Id_Producto"; //Consulta para seleccionar las ventas hechas por el Usuario
 
                 //Using para liberar objeto cuando ya no se use
                 using (OleDbCommand comando = new OleDbCommand(ComandoVentas, conexion)) //pasamos consulta y conexion
@@ -1344,44 +1374,42 @@ namespace Proyecto_Final_Equipo_1
 
                     ContarVentas = 0; //Variable para contar los registros
                     DineroVentas = 0; //Variable para contar el dinero generado
+                    
+                    LvVentas.Items.Clear(); //Limpiamos el contenido del ListView
 
-                    if (LeerVentas.HasRows) //Si se obtuvieron registros de la busqueda
+                    while (LeerVentas.Read()) //Para cada registro obtenido
                     {
-                        LvVentas.Items.Clear(); //Limpiamos el contenido del ListView
+                        //Aumentamos el contador de registros
+                        ContarVentas++;
 
-                        while (LeerVentas.Read()) //Para cada registro obtenido
-                        {
-                            //Aumentamos el contador de registros
-                            ContarVentas++;
+                        //Ingresamos a las columnas del ListView los valores de la base de datos 
+                        Venta = new ListViewItem(LeerVentas["Id_Usuario"].ToString());
+                        Venta.SubItems.Add(LeerVentas["Usuario"].ToString());
+                        Venta.SubItems.Add(LeerVentas["Id_Producto"].ToString());
+                        Venta.SubItems.Add(LeerVentas["Nombre_Producto"].ToString());
+                        Venta.SubItems.Add(LeerVentas["Precio_Producto"].ToString());
+                        Venta.SubItems.Add(LeerVentas["Cantidad_Producto"].ToString());
+                        Venta.SubItems.Add(LeerVentas["Total"].ToString());
+                        Venta.SubItems.Add(LeerVentas["Total_IVA"].ToString());
+                        Venta.SubItems.Add(LeerVentas["Fecha_Hora"].ToString());
 
-                            //Ingresamos a las columnas del ListView los valores de la base de datos 
-                            Venta = new ListViewItem(LeerVentas["Usuario"].ToString());
-                            Venta.SubItems.Add(LeerVentas["Id_Producto"].ToString());
-                            Venta.SubItems.Add(LeerVentas["Nombre_Producto"].ToString());
-                            Venta.SubItems.Add(LeerVentas["Precio_Producto"].ToString());
-                            Venta.SubItems.Add(LeerVentas["Cantidad_Producto"].ToString());
-                            Venta.SubItems.Add(LeerVentas["Total"].ToString());
-                            Venta.SubItems.Add(LeerVentas["Total_IVA"].ToString());
-                            Venta.SubItems.Add(LeerVentas["Fecha_Hora"].ToString());
+                        //Cargamos el registro al ListView
+                        LvVentas.Items.Add(Venta);
 
-                            //Cargamos el registro al ListView
-                            LvVentas.Items.Add(Venta);
-
-                            DineroVentas += float.Parse(LeerVentas["Total_IVA"].ToString()); //Sumamos el dinero generado de cada Venta
-
-                            //Actualizamos la etiqueta que cuenta los registros
-                            LblCantidadRegistros.Text = "Ventas Realizadas: " + ContarVentas.ToString();
-                        }
-                    }
+                        DineroVentas += float.Parse(LeerVentas["Total_IVA"].ToString()); //Sumamos el dinero generado de cada Venta
+                    } 
                 }
+                //Actualizamos la etiqueta que cuenta los registros
+                LblCantidadRegistros.Text = "Ventas Realizadas: " + ContarVentas.ToString();
 
-                TxtDineroVentas.Text = DineroVentas.ToString("C"); //Actualizamos la caja de texto de Dinero Ventas
+                TxtDineroInicial.Text = DineroInicial.ToString("C"); //Actualizamos la caja de texto de Dinero Inicial
+                TxtDineroVentas.Text = DineroVentas.ToString("C"); //Actualizamos la caja de texto de Dinero Ventas  
             }
         }
 
 
         //FUNCION PARA MOSTRAR LOS DETALLES DE UNA VENTA SELECCIOANADA
-        public static void MostrarVentaSeleccionada(ListView LvVentas)
+        public static void MostrarVenta(ListView LvVentas)
         {
             //Si no hay registro seleccionado menssaje de Error
             if (LvVentas.SelectedItems.Count == 0)
@@ -1395,33 +1423,35 @@ namespace Proyecto_Final_Equipo_1
 
             //Mostramos en un Message Box la información obtenida de la venta seleccionada
             MessageBox.Show("Datos de la Venta Seleccioada Seleccionada:" +
-                "\n\n\nUsuario: " + VentaSeleccionada.SubItems[0].Text +
-                " \n\nId de Producto: " + VentaSeleccionada.SubItems[1].Text +
-                " \n\nNombre de Producto: " + VentaSeleccionada.SubItems[2].Text +
-                " \n\nPrecio: $ " + VentaSeleccionada.SubItems[3].Text +
-                " \n\nCantidad Vendida: " + VentaSeleccionada.SubItems[4].Text +
-                " \n\nTotal sin IVA: $ " + VentaSeleccionada.SubItems[5].Text +
+                "\n\n\nId de Usuario: " + VentaSeleccionada.SubItems[0].Text +
+                "\n\nUsuario: " + VentaSeleccionada.SubItems[1].Text +
+                " \n\nId de Producto: " + VentaSeleccionada.SubItems[2].Text +
+                " \n\nNombre de Producto: " + VentaSeleccionada.SubItems[3].Text +
+                " \n\nPrecio: $ " + VentaSeleccionada.SubItems[4].Text +
+                " \n\nCantidad Vendida: " + VentaSeleccionada.SubItems[5].Text +
                 " \n\nTotal sin IVA: $ " + VentaSeleccionada.SubItems[6].Text +
-                " \n\nFecha y Hora: " + VentaSeleccionada.SubItems[7].Text,
+                " \n\nTotal sin IVA: $ " + VentaSeleccionada.SubItems[7].Text +
+                " \n\nFecha y Hora: " + VentaSeleccionada.SubItems[8].Text,
                 "INFORMACIÓN DE LA VENTA SELECCIONADA", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
         //FUNCION PARA REGISTRAR LAS VENTAS Y CERRAR SESION
-        public static void GuardarVentasCerrarSesion(ListView LvVentas)
+        public static void CorteCajaYCerrarSesion(TextBox TxtDineroFinal, Label ErrorDineroFinal)
         {
-            //Si no se han realizado ventas mensaje de error
-            if (HayVentas == false)
+            DineroFinal = (float)Math.Round(float.Parse(TxtDineroFinal.Text), 2); //DineroFinal es el ingresaado por el usuario redondeado a dos decimales
+
+            if (DineroFinal < DineroInicial)  //Si el dinero Final es menor al Inical mensaje de error
             {
-                MessageBox.Show("Error. No se han realizado ventas.", "ERROR. NO HAY VENTAS POR REGISTRAR",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El dinero final no puede ser menor al inicial. Verifique los valores.",
+                    "ERROR. DINERO FINAL MENOR AL INICIAL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (LvVentas.Items.Count == 0) // Si las ventas no han sido cargadas mensaje de error
+            if (DineroInicial == DineroFinal) //Si el dinero no se genero ingreso mensaje de error
             {
-                MessageBox.Show("Cargue las ventas para poder guardarlas correctamente.", "ERROR. NO SE HAN CARGADO VENTAS",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hay ventas realizadas, pero no hay dinero generado ya que el dinero inicial es igual al final. Verifique los valores.",
+                    "ERROR. HAY VENTAS PERO NO DINERO GENERADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -1431,6 +1461,9 @@ namespace Proyecto_Final_Equipo_1
                 "CONFIRMACIÓN DE GUARDADO DE VENTAS Y CIERRE DE SESIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (ConfirmarGuardarVentas == DialogResult.No) return;
+
+            DineroGenerado = DineroFinal - DineroInicial; //Dinero generado es la resta del final menos el inicial
+            Diferencia = DineroGenerado - DineroVentas; //Diferencia es la resta del generado menos el que se registro en sistema
 
             //using para establecer conexion con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -1448,29 +1481,36 @@ namespace Proyecto_Final_Equipo_1
 
 
                 //Segunda Consulta Insertamos un nuevo registro en la tabla cortes
-                string ComandoCorte = "INSERT INTO Cortes (Usuario, Dinero_Inicial, Ventas_Totales, Dinero_Final, Fecha_Hora) " +
-                    "VALUES (@Usuario, @DineroInicial, @VentasTotales, @DineroFinal, @FechaHora)";
+                string ComandoCorte = "INSERT INTO Cortes (Id_Usuario, Usuario, Dinero_Inicial, Dinero_Final, Dinero_Generado, Total_Ventas, Diferencia, Fecha_Hora) " +
+                    "VALUES (@IdUsuario, @Usuario, @DineroInicial, @DineroFinal, @DineroGenerado, @VentasTotales, @Diferencia, @FechaHora)";
 
                 //Using para liberar objeto cuando ya no se use
                 using (OleDbCommand comando = new OleDbCommand(ComandoCorte, conexion)) //pasamos consulta y conexion
                 {
+                    comando.Parameters.AddWithValue("@IdUsuario", IdUsuario);
                     comando.Parameters.AddWithValue("@Usuario", Usuario);
-                    comando.Parameters.AddWithValue("@DineroInicial", Properties.Settings.Default.DineroEnCaja);
-                    comando.Parameters.AddWithValue("@DineroInicial", DineroVentas);
-                    comando.Parameters.AddWithValue("@DineroFinal", Properties.Settings.Default.DineroEnCaja + DineroVentas);
+                    comando.Parameters.AddWithValue("@DineroInicial", DineroInicial);
+                    comando.Parameters.AddWithValue("@DineroFinal", DineroFinal);
+                    comando.Parameters.AddWithValue("@DineroGenerado", DineroGenerado);
+                    comando.Parameters.AddWithValue("@VentasTotales", DineroVentas);
+                    comando.Parameters.AddWithValue("@Diferencia", Diferencia);
                     comando.Parameters.AddWithValue("@FechaHora", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")); //Fecha y Hora Actuales
                     comando.ExecuteNonQuery(); //Ejecutamos consulta
                 }
             }
 
-            
-            // Sumar las ventas del usuario al dinero que tenemos en la caja
-            Properties.Settings.Default.DineroEnCaja += DineroVentas;
-
-            Properties.Settings.Default.Save(); // Guardamos los cambios de la variable DineroEnCaja
+            //Mostramos mensaje de reporte de corte de caja
+            MessageBox.Show("Id de Usuario: " + IdUsuario.ToString() +
+                "\n\nUsuario: " + Usuario +
+                " \n\nDinero Inicial: " + DineroInicial.ToString("C") +
+                " \n\nDinero Final: " + DineroFinal.ToString("C") +
+                " \n\nDinero Generado: " + DineroGenerado.ToString("C") +
+                " \n\nTotal de Ventas: " + DineroVentas.ToString("C") +
+                " \n\nDiferencia: " + Diferencia.ToString("C"),
+                "REPORTE DE CORTE DE CAJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Mostramos un mensaje de éxito en el Guardado de Ventas
-            MessageBox.Show("Las ventas han sido guardadas con Éxito. Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
+            MessageBox.Show("Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
                 "VENTAS GUARDADAS CON EXITO. CERRANDO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Application.Exit(); //Cerramos Aplicacion

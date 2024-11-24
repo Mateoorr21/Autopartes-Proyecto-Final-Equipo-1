@@ -28,6 +28,14 @@ namespace Proyecto_Final_Equipo_1
             eliminarUsuario = new EliminarUsuario(); 
         }
 
+        private void LimpiarTodosLosControles()
+        {
+            //Funcion para Limpiar todos los Controles de Usuario 
+            FuncionesAplicacion.LimpiarControles(registroUsuario);
+            FuncionesAplicacion.LimpiarControles(modificarUsuario);
+            FuncionesAplicacion.LimpiarControles(eliminarUsuario);
+        }
+
         //Funcion para ver si tenemos que abrir un nuevo control de usuario o no
         private void MostrarControlCatalogo(Control control)
         {
@@ -43,23 +51,24 @@ namespace Proyecto_Final_Equipo_1
             // Agregar el nuevo control
             PanelCatalogo.Controls.Add(control);
             control.Dock = DockStyle.Fill;
-
-            FuncionesAplicacion.ReiniciarVariables(); // Reiniciamos las variables
         }
 
         private void BtnRegistrarUsuario_Click(object sender, EventArgs e)
         {
+            LimpiarTodosLosControles();
             MostrarControlCatalogo(registroUsuario); //Llamamos a la función mostrrar el control
         }
 
         private void BtnModificarUsuario_Click(object sender, EventArgs e)
         {
+            LimpiarTodosLosControles();
             MostrarControlCatalogo(modificarUsuario); //Llamamos a la función mostrar el control
             modificarUsuario.CargarUsuariosModificar();
         }
 
         private void BtnEliminarUsuario_Click(object sender, EventArgs e)
         {
+            LimpiarTodosLosControles();
             MostrarControlCatalogo(eliminarUsuario); //Llamamos a la función mostrar el control
             eliminarUsuario.CargarUsuariosEliminar();
         }

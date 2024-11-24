@@ -37,7 +37,7 @@ namespace Proyecto_Final_Equipo_1
 
         private void TxtDineroRecibo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            FuncionesAplicacion.ValidarEntradaTxtRecibo(e, LblErrorDineroRecibo); //Llamamos la función para validar el dinero que recibo
+            FuncionesAplicacion.ValidarEntradaTxtCantidad(e, LblErrorDineroRecibo); //Llamamos la función para validar el dinero que recibo
         }
     }
 }

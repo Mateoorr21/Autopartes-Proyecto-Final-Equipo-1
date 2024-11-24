@@ -32,30 +32,30 @@
             this.LblCantidadRegistros = new System.Windows.Forms.Label();
             this.LvProductos = new System.Windows.Forms.ListView();
             this.PanelAddInventario = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.LblErrorCantidad = new System.Windows.Forms.Label();
-            this.Txt_Cantidad = new System.Windows.Forms.TextBox();
-            this.TxtProducto = new System.Windows.Forms.TextBox();
-            this.LblCantidad = new System.Windows.Forms.Label();
-            this.LblProducto = new System.Windows.Forms.Label();
-            this.ToolTipInventario = new System.Windows.Forms.ToolTip(this.components);
             this.BtnAgregarInventario = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnMenos = new System.Windows.Forms.Button();
             this.BtnMas = new System.Windows.Forms.Button();
+            this.LblErrorCantidad = new System.Windows.Forms.Label();
+            this.Txt_Cantidad = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.TxtProducto = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LblCantidad = new System.Windows.Forms.Label();
+            this.LblProducto = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.PicInventario = new System.Windows.Forms.PictureBox();
+            this.ToolTipInventario = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.PanelAddInventario.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicInventario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -112,6 +112,161 @@
             this.PanelAddInventario.TabIndex = 2;
             this.PanelAddInventario.TabStop = true;
             // 
+            // BtnAgregarInventario
+            // 
+            this.BtnAgregarInventario.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonInventario;
+            this.BtnAgregarInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnAgregarInventario.FlatAppearance.BorderSize = 0;
+            this.BtnAgregarInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarInventario.Location = new System.Drawing.Point(19, 320);
+            this.BtnAgregarInventario.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnAgregarInventario.Name = "BtnAgregarInventario";
+            this.BtnAgregarInventario.Size = new System.Drawing.Size(144, 137);
+            this.BtnAgregarInventario.TabIndex = 6;
+            this.ToolTipInventario.SetToolTip(this.BtnAgregarInventario, "Agregar inventario");
+            this.BtnAgregarInventario.UseVisualStyleBackColor = true;
+            this.BtnAgregarInventario.Click += new System.EventHandler(this.BtnAgregarInventario_Click);
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoReset;
+            this.BtnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnCancelar.FlatAppearance.BorderSize = 0;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.Location = new System.Drawing.Point(163, 325);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(133, 128);
+            this.BtnCancelar.TabIndex = 7;
+            this.ToolTipInventario.SetToolTip(this.BtnCancelar, "Resetear acción");
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
+            // BtnMenos
+            // 
+            this.BtnMenos.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.BotonMenosDes;
+            this.BtnMenos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnMenos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnMenos.Enabled = false;
+            this.BtnMenos.FlatAppearance.BorderSize = 0;
+            this.BtnMenos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMenos.Location = new System.Drawing.Point(173, 232);
+            this.BtnMenos.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMenos.Name = "BtnMenos";
+            this.BtnMenos.Size = new System.Drawing.Size(86, 80);
+            this.BtnMenos.TabIndex = 5;
+            this.BtnMenos.UseVisualStyleBackColor = true;
+            this.BtnMenos.Click += new System.EventHandler(this.BtnMenos_Click);
+            // 
+            // BtnMas
+            // 
+            this.BtnMas.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.BotonMasDes;
+            this.BtnMas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnMas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnMas.Enabled = false;
+            this.BtnMas.FlatAppearance.BorderSize = 0;
+            this.BtnMas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnMas.Location = new System.Drawing.Point(53, 232);
+            this.BtnMas.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMas.Name = "BtnMas";
+            this.BtnMas.Size = new System.Drawing.Size(86, 80);
+            this.BtnMas.TabIndex = 4;
+            this.BtnMas.UseVisualStyleBackColor = true;
+            this.BtnMas.Click += new System.EventHandler(this.BtnMas_Click);
+            // 
+            // LblErrorCantidad
+            // 
+            this.LblErrorCantidad.AutoSize = true;
+            this.LblErrorCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblErrorCantidad.ForeColor = System.Drawing.Color.Red;
+            this.LblErrorCantidad.Location = new System.Drawing.Point(17, 209);
+            this.LblErrorCantidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblErrorCantidad.Name = "LblErrorCantidad";
+            this.LblErrorCantidad.Size = new System.Drawing.Size(242, 16);
+            this.LblErrorCantidad.TabIndex = 143;
+            this.LblErrorCantidad.Text = "Solo admite números enteros positivos ";
+            this.LblErrorCantidad.Visible = false;
+            // 
+            // Txt_Cantidad
+            // 
+            this.Txt_Cantidad.BackColor = System.Drawing.SystemColors.Control;
+            this.Txt_Cantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txt_Cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Cantidad.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.Txt_Cantidad.Location = new System.Drawing.Point(25, 177);
+            this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(2);
+            this.Txt_Cantidad.Name = "Txt_Cantidad";
+            this.Txt_Cantidad.Size = new System.Drawing.Size(248, 15);
+            this.Txt_Cantidad.TabIndex = 3;
+            this.Txt_Cantidad.Tag = "0";
+            this.Txt_Cantidad.Text = "0";
+            this.Txt_Cantidad.TextChanged += new System.EventHandler(this.Txt_Cantidad_TextChanged);
+            this.Txt_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Cantidad_KeyPress);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
+            this.pictureBox3.InitialImage = null;
+            this.pictureBox3.Location = new System.Drawing.Point(17, 166);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(265, 37);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 142;
+            this.pictureBox3.TabStop = false;
+            // 
+            // TxtProducto
+            // 
+            this.TxtProducto.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtProducto.Enabled = false;
+            this.TxtProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtProducto.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.TxtProducto.Location = new System.Drawing.Point(24, 84);
+            this.TxtProducto.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtProducto.Name = "TxtProducto";
+            this.TxtProducto.Size = new System.Drawing.Size(248, 15);
+            this.TxtProducto.TabIndex = 0;
+            this.TxtProducto.TabStop = false;
+            this.TxtProducto.Tag = "Nombre del Producto";
+            this.TxtProducto.Text = "Nombre del Producto";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 73);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(265, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 140;
+            this.pictureBox1.TabStop = false;
+            // 
+            // LblCantidad
+            // 
+            this.LblCantidad.AutoSize = true;
+            this.LblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCantidad.ForeColor = System.Drawing.Color.SteelBlue;
+            this.LblCantidad.Location = new System.Drawing.Point(13, 137);
+            this.LblCantidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblCantidad.Name = "LblCantidad";
+            this.LblCantidad.Size = new System.Drawing.Size(175, 20);
+            this.LblCantidad.TabIndex = 139;
+            this.LblCantidad.Text = "Cantidad a Agregar: \r\n";
+            // 
+            // LblProducto
+            // 
+            this.LblProducto.AutoSize = true;
+            this.LblProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblProducto.ForeColor = System.Drawing.Color.SteelBlue;
+            this.LblProducto.Location = new System.Drawing.Point(12, 44);
+            this.LblProducto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblProducto.Name = "LblProducto";
+            this.LblProducto.Size = new System.Drawing.Size(175, 20);
+            this.LblProducto.TabIndex = 138;
+            this.LblProducto.Text = "Producto a Agregar: \r\n";
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Navy;
@@ -148,159 +303,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(303, 37);
             this.panel2.TabIndex = 0;
-            // 
-            // LblErrorCantidad
-            // 
-            this.LblErrorCantidad.AutoSize = true;
-            this.LblErrorCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblErrorCantidad.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorCantidad.Location = new System.Drawing.Point(17, 209);
-            this.LblErrorCantidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblErrorCantidad.Name = "LblErrorCantidad";
-            this.LblErrorCantidad.Size = new System.Drawing.Size(242, 16);
-            this.LblErrorCantidad.TabIndex = 143;
-            this.LblErrorCantidad.Text = "Solo admite números enteros positivos ";
-            this.LblErrorCantidad.Visible = false;
-            // 
-            // Txt_Cantidad
-            // 
-            this.Txt_Cantidad.BackColor = System.Drawing.SystemColors.Control;
-            this.Txt_Cantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Txt_Cantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Cantidad.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.Txt_Cantidad.Location = new System.Drawing.Point(25, 177);
-            this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(2);
-            this.Txt_Cantidad.Name = "Txt_Cantidad";
-            this.Txt_Cantidad.Size = new System.Drawing.Size(248, 15);
-            this.Txt_Cantidad.TabIndex = 3;
-            this.Txt_Cantidad.Tag = "0";
-            this.Txt_Cantidad.Text = "0";
-            this.Txt_Cantidad.TextChanged += new System.EventHandler(this.Txt_Cantidad_TextChanged);
-            this.Txt_Cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_Cantidad_KeyPress);
-            // 
-            // TxtProducto
-            // 
-            this.TxtProducto.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtProducto.Enabled = false;
-            this.TxtProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtProducto.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.TxtProducto.Location = new System.Drawing.Point(24, 84);
-            this.TxtProducto.Margin = new System.Windows.Forms.Padding(2);
-            this.TxtProducto.Name = "TxtProducto";
-            this.TxtProducto.Size = new System.Drawing.Size(248, 15);
-            this.TxtProducto.TabIndex = 0;
-            this.TxtProducto.TabStop = false;
-            this.TxtProducto.Tag = "Nombre del Producto";
-            this.TxtProducto.Text = "Nombre del Producto";
-            // 
-            // LblCantidad
-            // 
-            this.LblCantidad.AutoSize = true;
-            this.LblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCantidad.ForeColor = System.Drawing.Color.SteelBlue;
-            this.LblCantidad.Location = new System.Drawing.Point(13, 137);
-            this.LblCantidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblCantidad.Name = "LblCantidad";
-            this.LblCantidad.Size = new System.Drawing.Size(175, 20);
-            this.LblCantidad.TabIndex = 139;
-            this.LblCantidad.Text = "Cantidad a Agregar: \r\n";
-            // 
-            // LblProducto
-            // 
-            this.LblProducto.AutoSize = true;
-            this.LblProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblProducto.ForeColor = System.Drawing.Color.SteelBlue;
-            this.LblProducto.Location = new System.Drawing.Point(12, 44);
-            this.LblProducto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblProducto.Name = "LblProducto";
-            this.LblProducto.Size = new System.Drawing.Size(175, 20);
-            this.LblProducto.TabIndex = 138;
-            this.LblProducto.Text = "Producto a Agregar: \r\n";
-            // 
-            // BtnAgregarInventario
-            // 
-            this.BtnAgregarInventario.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoBotonInventario;
-            this.BtnAgregarInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnAgregarInventario.FlatAppearance.BorderSize = 0;
-            this.BtnAgregarInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAgregarInventario.Location = new System.Drawing.Point(19, 320);
-            this.BtnAgregarInventario.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnAgregarInventario.Name = "BtnAgregarInventario";
-            this.BtnAgregarInventario.Size = new System.Drawing.Size(144, 137);
-            this.BtnAgregarInventario.TabIndex = 6;
-            this.ToolTipInventario.SetToolTip(this.BtnAgregarInventario, "Agregar inventario");
-            this.BtnAgregarInventario.UseVisualStyleBackColor = true;
-            this.BtnAgregarInventario.Click += new System.EventHandler(this.BtnAgregarInventario_Click);
-            // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoReset;
-            this.BtnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnCancelar.FlatAppearance.BorderSize = 0;
-            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancelar.Location = new System.Drawing.Point(163, 325);
-            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(133, 128);
-            this.BtnCancelar.TabIndex = 7;
-            this.ToolTipInventario.SetToolTip(this.BtnCancelar, "Resetear acción");
-            this.BtnCancelar.UseVisualStyleBackColor = true;
-            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
-            // 
-            // BtnMenos
-            // 
-            this.BtnMenos.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.BotonMenosDes;
-            this.BtnMenos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnMenos.Enabled = false;
-            this.BtnMenos.FlatAppearance.BorderSize = 0;
-            this.BtnMenos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMenos.Location = new System.Drawing.Point(173, 232);
-            this.BtnMenos.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMenos.Name = "BtnMenos";
-            this.BtnMenos.Size = new System.Drawing.Size(86, 80);
-            this.BtnMenos.TabIndex = 5;
-            this.BtnMenos.UseVisualStyleBackColor = true;
-            this.BtnMenos.Click += new System.EventHandler(this.BtnMenos_Click);
-            // 
-            // BtnMas
-            // 
-            this.BtnMas.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.BotonMasDes;
-            this.BtnMas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnMas.Enabled = false;
-            this.BtnMas.FlatAppearance.BorderSize = 0;
-            this.BtnMas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMas.Location = new System.Drawing.Point(53, 232);
-            this.BtnMas.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMas.Name = "BtnMas";
-            this.BtnMas.Size = new System.Drawing.Size(86, 80);
-            this.BtnMas.TabIndex = 4;
-            this.BtnMas.UseVisualStyleBackColor = true;
-            this.BtnMas.Click += new System.EventHandler(this.BtnMas_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
-            this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(17, 166);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(265, 37);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 142;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.cajagris;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 73);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(265, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 140;
-            this.pictureBox1.TabStop = false;
             // 
             // PicInventario
             // 
@@ -361,15 +363,15 @@
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.LblCantidadRegistros);
             this.Controls.Add(this.LvProductos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "InventarioProductos";
             this.Size = new System.Drawing.Size(1135, 669);
             this.Load += new System.EventHandler(this.InventarioProductos_Load);
             this.PanelAddInventario.ResumeLayout(false);
             this.PanelAddInventario.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicInventario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();

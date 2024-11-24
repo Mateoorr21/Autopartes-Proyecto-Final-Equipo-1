@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Proyecto_Final_Equipo_1
     public class FuncionesCatalogoUsuarios
     {
         //Declaramos la cadena de conexion que usaremos en el codigo
-        public static string cadconexion = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\Base\Mi_prueva_personal.accdb;Persist Security Info=False;";
+        public static string cadconexion = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\Base\BDDS_AutoOne.accdb;Persist Security Info=False;";
 
         //Variables Usadas en el Catalogo de Usuarios
         public static int IdSeleccionado = 0;
@@ -95,19 +96,17 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            //Limpiamos las cajas de texto y Radio Buttons
-            Txt_Nombre.Clear();
-            Txt_Usuario.Clear();
-            Txt_Password.Clear();
+            //Reestablecemos las cajas de texto y Radio Button por default es Cajero
+            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
+            Txt_Usuario.Text = Txt_Usuario.Tag.ToString();
+            Txt_Password.Text = Txt_Password.Tag.ToString();
             RdAdmin.Checked = false;
-            RdCajero.Checked = false;
+            RdCajero.Checked = true;
 
             //Mensaje de registro de usuario exitoso
             MessageBox.Show("Registro de " + Permiso + " " + Nombre + " Exitoso",
                 "Registro exitoso de Nuevo Usuario Operativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-
 
 
         //FUNCIONES PARA ELIMINAR A UN USUARIO
@@ -167,6 +166,7 @@ namespace Proyecto_Final_Equipo_1
 
                     if (LeerRegistros.HasRows) //Si se obtuvieron registros de la busqueda
                     {
+                        ContarUsuarios = 0;
                         LvUsuarios.Items.Clear();
 
                         while (LeerRegistros.Read()) //Para cada registro obtenido
@@ -184,9 +184,6 @@ namespace Proyecto_Final_Equipo_1
                             //Cargamos  el registro al ListView
                             LvUsuarios.Items.Add(Usuario);
                         }
-
-                        // Actualizamos la etiqueta que cuenta los registros
-                        LblCantidadRegistros.Text = "Cantidad de Usuarios: " + ContarUsuarios.ToString();
                     }
 
                     else //Si no se obtuvieron registros, indicarlo con un MessageBox
@@ -194,13 +191,15 @@ namespace Proyecto_Final_Equipo_1
                         MessageBox.Show("No se encontraron Usuarios Operativos", "NO SE ENCONTRARON USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+                // Actualizamos la etiqueta que cuenta los registros
+                LblCantidadRegistros.Text = "Cantidad de Usuarios: " + ContarUsuarios.ToString();
 
                 TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja de texto Buscar
             }
         }
 
         //FUNCION ELIMINAR A UN USUARIO
-        public static void BorrarUsuario(int Id, ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar, TextBox TxtBuscar)
+        public static void BorrarUsuario(ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar, TextBox TxtBuscar)
         {
             //Si no hay registro seleccionado menssaje de Error
             if (LvUsuarios.SelectedItems.Count == 0)
@@ -229,7 +228,7 @@ namespace Proyecto_Final_Equipo_1
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //using para liberar objeto cuando se termine de usar
                 {
                     //Asignamos a un parametro de consulta el Id del Registro seleccionado
-                    comando.Parameters.AddWithValue("@Id", Id);
+                    comando.Parameters.AddWithValue("@Id", IdSeleccionado);
 
                     comando.ExecuteNonQuery(); //Ejecutamos consulta de acción
                 }
@@ -256,8 +255,8 @@ namespace Proyecto_Final_Equipo_1
         //FUNCIONES PARA MODIFICAR UN USUARIO
 
         //FUNCION BUSCAR UN USUARIO PARA MODIFICARLO
-        public static void BuscarUsuarioModificar(string buscar, string Username, string Permiso, TextBox TxtBuscar, 
-            RadioButton RdAproximada, RadioButton RdNombre, ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar)
+        public static void BuscarUsuarioModificar(string buscar, TextBox TxtBuscar, RadioButton RdAproximada, 
+            RadioButton RdNombre, ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar)
         {
             LblErrorBuscar.Visible = false; //Ocultamos la etiqueta de Error al Buscar
             ContarUsuarios = 0; //Valor de ContarUsuarios en 0
@@ -291,8 +290,8 @@ namespace Proyecto_Final_Equipo_1
                     else query = "SELECT * FROM Usuarios_Operativos WHERE Usuario = @PorBuscar";
                 }
 
-                if (Permiso == "Admin") query += " AND (Tipo = @Cajero OR  Usuario = @PropioUsuario) ORDER BY Id, Nombre_Completo"; //Si es Admin solo modifica cajeros y el mismo
-                else query += " ORDER BY Id"; //Si es Propietario solo añadimos el OrderBy Id
+                if (FuncionesAplicacion.TipoUsuario == "Admin") query += " AND (Tipo = @Cajero OR Usuario = @PropioUsuario) ORDER BY Id, Nombre_Completo"; //Si es Admin solo modifica cajeros y el mismo
+                else query += " ORDER BY Tipo, Id"; //Si es Propietario solo añadimos el OrderBy Tipo y Id
 
                 //Using para liberar objeto cuando ya no se use
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //pasamos consulta y conexion
@@ -302,10 +301,10 @@ namespace Proyecto_Final_Equipo_1
                     else comando.Parameters.AddWithValue("@PorBuscar", buscar); //De lo contrario no
 
                     //Si es Admin establecemos los demas parametros de busqueda
-                    if (Permiso == "Admin")
+                    if (FuncionesAplicacion.TipoUsuario == "Admin")
                     {
                         comando.Parameters.AddWithValue("@Cajero", "Cajero");
-                        comando.Parameters.AddWithValue("@PropioUsuario", Username);
+                        comando.Parameters.AddWithValue("@PropioUsuario", FuncionesAplicacion.Usuario);
                     }
 
                     OleDbDataReader LeerRegistros = comando.ExecuteReader(); //Objeto de lectura
@@ -313,7 +312,7 @@ namespace Proyecto_Final_Equipo_1
                     if (LeerRegistros.HasRows) //Si se obtuvieron registros de la busqueda
                     {
                         LvUsuarios.Items.Clear();
-
+                        ContarUsuarios = 0;
                         while (LeerRegistros.Read()) //Para cada registro obtenido
                         {
                             ContarUsuarios++; //Agregamos uno al contador de usuarios
@@ -327,9 +326,6 @@ namespace Proyecto_Final_Equipo_1
 
                             //Cargamos  el registro al ListView
                             LvUsuarios.Items.Add(Usuario);
-
-                            // Actualizamos la etiqueta que cuenta los registros
-                            LblCantidadRegistros.Text = "Cantidad de Usuarios: " + ContarUsuarios.ToString();
                         }
                     }
 
@@ -338,16 +334,19 @@ namespace Proyecto_Final_Equipo_1
                         MessageBox.Show("No se encontraron Usuarios Operativos", "NO SE ENCONTRARON USUARIOS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+                // Actualizamos la etiqueta que cuenta los registros
+                LblCantidadRegistros.Text = "Cantidad de Usuarios: " + ContarUsuarios.ToString();
 
                 TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja Buscar
             }
         }
 
         //FUNCION PARA MODFICIAR A UN USUARIO
-        public static void ActualizarUsuario(string NombreModificado, string UsuarioModificado, string PasswordModificado, int Id, ListView LvUsuarios, 
+        public static void ActualizarUsuario(string NombreModificado, string UsuarioModificado, string PasswordModificado, ListView LvUsuarios, 
             TextBox Txt_Nombre, TextBox Txt_Usuario, TextBox Txt_Password, RadioButton RdAdmin, RadioButton RdCajero, Label LblErrorBuscar, TextBox TxtBuscar)
-        {
-            //El booleano empieza como false
+        {   
+            //El booleano comienzan como false
+            FuncionesAplicacion.SeCompletoOperacion = false;
             SeAutoModifico = false;
 
             //Si no hay registro seleccionado menssaje de Error
@@ -366,6 +365,47 @@ namespace Proyecto_Final_Equipo_1
                 MessageBox.Show("Error. Ingrese información a modificar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            //Primera conexión a base de datos para verificar que el usuario y contraseña a los que se quiere modificar no existan en la base de datos
+            using (OleDbConnection conexion = new OleDbConnection(cadconexion))
+            {
+                conexion.Open();
+                //Primer comando SQL para validar que el usuario no se encuentra en la base de datos
+                string BuscarUsuario = "SELECT Usuario FROM Usuarios_Operativos WHERE Usuario = @NuevoUsuario AND Id <> @Id";
+
+                using (OleDbCommand ComandoBuscar = new OleDbCommand(BuscarUsuario, conexion))
+                {
+                    ComandoBuscar.Parameters.AddWithValue("@NuevoUsuario", UsuarioModificado);
+                    ComandoBuscar.Parameters.AddWithValue("@Id", IdSeleccionado);
+
+                    OleDbDataReader LeerBuscar = ComandoBuscar.ExecuteReader();
+
+                    if (LeerBuscar.HasRows) //Si hay un registro con el mismo usuario
+                    {
+                        MessageBox.Show("El usuario " + UsuarioModificado + " ya se encuentra registrado en el catálogo de usuarios. Ingrese otro",
+                            "ADVERTENCIA. USUARIO " + UsuarioModificado + " YA ESTÁ EN USO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                }
+
+                //Segundo comando SQL para validar que el nombre del producto y marca no se encuentren en la BDDS, no debe devolver el registro seleccionado
+                string BuscarPassword = "SELECT Usuario FROM Usuarios_Operativos WHERE Password = @NuevoPassword AND Id <> @Id";
+
+                using (OleDbCommand ComandoBuscar = new OleDbCommand(BuscarPassword, conexion))
+                {
+                    ComandoBuscar.Parameters.AddWithValue("@NuevoPassword", PasswordModificado);
+                    ComandoBuscar.Parameters.AddWithValue("@Id", IdSeleccionado);
+
+                    OleDbDataReader LeerBuscar = ComandoBuscar.ExecuteReader();
+
+                    if (LeerBuscar.HasRows) //Si hay un registro con el mismo password
+                    {
+                        MessageBox.Show("El password ya se encuentra registrado en el catálogo de usuarios. Ingrese otro",
+                            "ADVERTENCIA. PASSWORD YA ESTÁ EN USO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                }
             }
 
             //Confirmamos que el usuario desea modificar el registro seleccioando
@@ -389,7 +429,7 @@ namespace Proyecto_Final_Equipo_1
                 SeAutoModifico = true;
             }
 
-            //using para establecer conexion con la base de datos
+            //Segunda conexion a base de datos para actualizar la tabla de usuarios operativos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
             {
                 conexion.Open(); //Abrimos conexion
@@ -397,7 +437,7 @@ namespace Proyecto_Final_Equipo_1
                 //Consulta SQL para actualizar los campos de un registro
                 string query = "UPDATE Usuarios_Operativos SET Nombre_Completo = @Nombre, Usuario = @Usuario, " +
                                 "[Password] = @Password, Tipo = @Permiso WHERE Id = @Id";
-
+                
                 using (OleDbCommand comando = new OleDbCommand(query, conexion)) //using para liberar objeto cuando se termine de usar
                 {
                     //Asignamos a los parámetros de la consulta lo que recibe la función 
@@ -405,27 +445,9 @@ namespace Proyecto_Final_Equipo_1
                     comando.Parameters.AddWithValue("@Usuario", UsuarioModificado);
                     comando.Parameters.AddWithValue("@Password", PasswordModificado);
                     comando.Parameters.AddWithValue("@Permiso", PermisoModificado);
-                    comando.Parameters.AddWithValue("@Id", Id);
+                    comando.Parameters.AddWithValue("@Id", IdSeleccionado);
 
                     comando.ExecuteNonQuery(); //Ejecutamos consulta
-                }
-
-
-                //Consulta SQL para actualizar la tabla de Ventas
-                string ActualizarVentas = "UPDATE Ventas SET Nombre_Completo = @Nombre, Usuario = @Usuario, Tipo = @Permiso WHERE Usuario = @UsuarioViejo";
-
-                using (OleDbCommand comandoVentas = new OleDbCommand(ActualizarVentas, conexion))
-                {
-                    // Obtener el usuario anterior del registro seleccionado
-                    string UsuarioViejo = LvUsuarios.SelectedItems[0].SubItems[2].Text;
-
-                    //Asignar valores a los parámetros de la consulta
-                    comandoVentas.Parameters.AddWithValue("@Nombre", NombreModificado);
-                    comandoVentas.Parameters.AddWithValue("@Usuario", UsuarioModificado);
-                    comandoVentas.Parameters.AddWithValue("@Permiso", PermisoModificado);
-                    comandoVentas.Parameters.AddWithValue("@UsuarioViejo", UsuarioViejo);
-
-                    comandoVentas.ExecuteNonQuery(); //Ejecutamos consulta de Actualización
                 }
             }
 
@@ -449,6 +471,8 @@ namespace Proyecto_Final_Equipo_1
             //Mensaje de Actualización de datos exitosa
             MessageBox.Show("Datos del Usuario Operativo actualizados correctamente.", "ACTUALIZACION DE DATOS DE USUARIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            
         }
 
 
@@ -492,7 +516,6 @@ namespace Proyecto_Final_Equipo_1
                 TxtBuscar.Text = Regex.Replace(TxtBuscar.Text, @"[^a-zA-Z]", "");
                 LblCampoBuscar.Text = "Nombre";
                 LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "Solo admite letras";
             }
         }
 
@@ -503,37 +526,19 @@ namespace Proyecto_Final_Equipo_1
             {
                 LblCampoBuscar.Text = "Usuario";
                 LblErrorBuscar.Visible = false;
-                LblErrorBuscar.Text = "Admite letras, numeros \ny caracteres especiales";
             }
         }
+
         public static void ValidarEntradaTxtBuscarUsuarioOperativo(KeyPressEventArgs e, RadioButton RdNombre, Label LblErrorBuscar)
         {
             if (RdNombre.Checked) //Si esta seleccionado el RadioButton de Nombre
             {
-                if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != (char)Keys.Back) //Si no es letra, espacio o backspace no ingresar
-                {
-                    LblErrorBuscar.Visible = true;
-                    e.Handled = true;
-                }
-
-                else
-                {
-                    LblErrorBuscar.Visible = false;
-                }
+                ValidarEntradaTxtNombreCompleto(e, LblErrorBuscar); //Llamamos al método validar entrada de nombre completo
             }
 
             else //Si esta seleccionado el RadioButton de Usuario
             {
-                if (e.KeyChar > 126 || e.KeyChar == 32) //Si es espacio o un caracter no admitido no ingresar
-                {
-                    LblErrorBuscar.Visible = true;
-                    e.Handled = true;
-                }
-
-                else
-                {
-                    LblErrorBuscar.Visible = false;
-                }
+                ValidarEntradaTxtUsuarioOPassword(e, LblErrorBuscar); //Método de validar entrada de usuario
             }
         }
     }
