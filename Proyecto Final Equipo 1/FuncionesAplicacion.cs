@@ -1460,11 +1460,11 @@ namespace Proyecto_Final_Equipo_1
             }
 
             //Confirmamos que el usuario desea realizar la venta de los productos seleccionados
-            DialogResult ConfirmarGuardarVentas;
-            ConfirmarGuardarVentas = MessageBox.Show("¿Esta seguro que desea guardar las ventas realizadas? Se cerrará sesión automáticamente.",
-                "CONFIRMACIÓN DE GUARDADO DE VENTAS Y CIERRE DE SESIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult ConfirmarCorteCaja;
+            ConfirmarCorteCaja = MessageBox.Show("¿Esta seguro que desea continuar con el corte de caja? Se cerrará sesión automáticamente.",
+                "CONFIRMACIÓN DE CORTE Y CIERRE DE SESIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (ConfirmarGuardarVentas == DialogResult.No) return;
+            if (ConfirmarCorteCaja == DialogResult.No) return;
 
             DineroGenerado = DineroFinal - DineroInicial; //Dinero generado es la resta del final menos el inicial
             Diferencia = DineroGenerado - DineroVentas; //Diferencia es la resta del generado menos el que se registro en sistema
@@ -1515,7 +1515,7 @@ namespace Proyecto_Final_Equipo_1
 
             //Mostramos un mensaje de éxito en el Guardado de Ventas
             MessageBox.Show("Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
-                "VENTAS GUARDADAS CON EXITO. CERRANDO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                "CORTE EXITOSO. CERRANDO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Application.Exit(); //Cerramos Aplicacion
         }
