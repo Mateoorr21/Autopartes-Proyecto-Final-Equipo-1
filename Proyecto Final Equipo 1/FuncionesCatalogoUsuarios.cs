@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Proyecto_Final_Equipo_1
 {
@@ -51,33 +52,29 @@ namespace Proyecto_Final_Equipo_1
                 connection.Open();
 
                 //Verificamos que el usuario que se quiera ingresar no exista en la BDDS
-                string ConsultaUsuarioExiste = "SELECT COUNT(*) FROM Usuarios_Operativos WHERE Usuario = @Usuario";
+                string ConsultaUsuarioExiste = "SELECT Usuario FROM Usuarios_Operativos WHERE Usuario = @Usuario";
                 using (OleDbCommand ComandoUsuario = new OleDbCommand(ConsultaUsuarioExiste, connection))
                 {
                     ComandoUsuario.Parameters.AddWithValue("@Usuario", Username);
 
-                    int UsuarioExiste = Convert.ToInt32(ComandoUsuario.ExecuteScalar()); // Ejecutamos el comando y obtenemos el resultado con ExecuteScalar
-                    if (UsuarioExiste > 0)
+                    // Usamos 'using' para el lector de datos
+                    using (OleDbDataReader lector = ComandoUsuario.ExecuteReader()) //Ejecutar lectura
                     {
-                        MessageBox.Show("Error. El nombre de usuario que ingresó ya existe. Pruebe con otro nombre de usuario", "ERROR. USUARIO YA EXISTENTE",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; //Salimos de la funcion si el usuario ya existe
-                    }
-                }
+                        if (lector.HasRows) //Si se obtuvieron registros
+                        {
+                            while(lector.Read()) //Para cada registro obtenido
+                            {
+                                string UsuarioEnBase = lector["Usuario"].ToString(); //Usuario en base a cadena String
 
-                //Verificamos que la contraseña que se quiera ingresar no exista en la BDDS
-                string ConsultaPasswordExiste = "SELECT COUNT(*) FROM Usuarios_Operativos WHERE [Password] = @Password";
-                using (OleDbCommand ComandoPassword = new OleDbCommand(ConsultaPasswordExiste, connection))
-                {
-                    ComandoPassword.Parameters.AddWithValue("@Password", Password);
-
-                    int PasswordExiste = Convert.ToInt32(ComandoPassword.ExecuteScalar()); // Ejecutamos el comando y obtenemos el resultado con ExecuteScalar
-                    if (PasswordExiste > 0)
-                    {
-                        MessageBox.Show("Error. La contraseña ingresada ya existe. Pruebe con otra contraseña", "ERROR. CONTRASEÑA YA EXISTENTE",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; //Salimos de la funcion si la contraseña ya existe
-                    }
+                                if (UsuarioEnBase == Username) //Si el usuario coincide con el usuario en base del registro mensaje de error
+                                {
+                                    MessageBox.Show("Error. El nombre de usuario que ingresó ya existe. Pruebe con otro nombre de usuario", "ERROR. USUARIO YA EXISTENTE",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return; //Salimos de la funcion si el usuario ya existe
+                                }
+                            }
+                        }
+                    } 
                 }
 
                 // Crea la consulta SQL para insertar el nuevo registro
@@ -143,8 +140,8 @@ namespace Proyecto_Final_Equipo_1
                 //Consulta SQL si la casilla Exacta esta seleccionada
                 else
                 {
-                    if (RdNombre.Checked) query = "SELECT * FROM Usuarios_Operativos WHERE Nombre_Completo = @PorBuscar";
-                    else query = "SELECT * FROM Usuarios_Operativos WHERE Usuario = @PorBuscar";
+                    if (RdNombre.Checked) query = "SELECT * FROM Usuarios_Operativos WHERE StrComp(Nombre_Completo, @PorBuscar, 0) = 0";
+                    else query = "SELECT * FROM Usuarios_Operativos WHERE StrComp(Usuario, @PorBuscar, 0) = 0";
                 }
 
                 if (Permiso == "Admin") query += " AND Tipo = @Cajero ORDER BY Id, Nombre_Completo"; //Si es Admin solo puede eliminar cajeros
@@ -286,8 +283,8 @@ namespace Proyecto_Final_Equipo_1
                 //Consulta SQL si la casilla Exacta esta seleccionada
                 else
                 {
-                    if (RdNombre.Checked) query = "SELECT * FROM Usuarios_Operativos WHERE Nombre_Completo = @PorBuscar";
-                    else query = "SELECT * FROM Usuarios_Operativos WHERE Usuario = @PorBuscar";
+                    if (RdNombre.Checked) query = "SELECT * FROM Usuarios_Operativos WHERE StrComp(Nombre_Completo, @PorBuscar, 0) = 0";
+                    else query = "SELECT * FROM Usuarios_Operativos WHERE StrComp(Usuario, @PorBuscar, 0) = 0";
                 }
 
                 if (FuncionesAplicacion.TipoUsuario == "Admin") query += " AND (Tipo = @Cajero OR Usuario = @PropioUsuario) ORDER BY Id, Nombre_Completo"; //Si es Admin solo modifica cajeros y el mismo
@@ -379,31 +376,23 @@ namespace Proyecto_Final_Equipo_1
                     ComandoBuscar.Parameters.AddWithValue("@NuevoUsuario", UsuarioModificado);
                     ComandoBuscar.Parameters.AddWithValue("@Id", IdSeleccionado);
 
-                    OleDbDataReader LeerBuscar = ComandoBuscar.ExecuteReader();
-
-                    if (LeerBuscar.HasRows) //Si hay un registro con el mismo usuario
+                    // Usamos 'using' para el lector de datos
+                    using (OleDbDataReader lector = ComandoBuscar.ExecuteReader()) //Ejecutar lectura
                     {
-                        MessageBox.Show("El usuario " + UsuarioModificado + " ya se encuentra registrado en el catálogo de usuarios. Ingrese otro",
-                            "ADVERTENCIA. USUARIO " + UsuarioModificado + " YA ESTÁ EN USO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-                }
+                        if (lector.HasRows) //Si se obtuvieron registros
+                        {
+                            while (lector.Read()) //Para cada registro obtenido
+                            {
+                                string UsuarioEnBase = lector["Usuario"].ToString(); //Usuario en base a cadena String
 
-                //Segundo comando SQL para validar que el nombre del producto y marca no se encuentren en la BDDS, no debe devolver el registro seleccionado
-                string BuscarPassword = "SELECT Usuario FROM Usuarios_Operativos WHERE Password = @NuevoPassword AND Id <> @Id";
-
-                using (OleDbCommand ComandoBuscar = new OleDbCommand(BuscarPassword, conexion))
-                {
-                    ComandoBuscar.Parameters.AddWithValue("@NuevoPassword", PasswordModificado);
-                    ComandoBuscar.Parameters.AddWithValue("@Id", IdSeleccionado);
-
-                    OleDbDataReader LeerBuscar = ComandoBuscar.ExecuteReader();
-
-                    if (LeerBuscar.HasRows) //Si hay un registro con el mismo password
-                    {
-                        MessageBox.Show("El password ya se encuentra registrado en el catálogo de usuarios. Ingrese otro",
-                            "ADVERTENCIA. PASSWORD YA ESTÁ EN USO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
+                                if (UsuarioEnBase == UsuarioModificado) //Si el usuario modificado coincide con el usuario en base del registro mensaje de error
+                                {
+                                    MessageBox.Show("El usuario " + UsuarioModificado + " ya se encuentra registrado en el catálogo de usuarios. Ingrese otro",
+                                        "ADVERTENCIA. USUARIO " + UsuarioModificado + " YA ESTÁ EN USO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return; //Salimos de la funcion si el usuario ya existe
+                                }
+                            }
+                        }
                     }
                 }
             }

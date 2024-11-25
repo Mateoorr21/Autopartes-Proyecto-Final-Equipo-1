@@ -15,6 +15,10 @@ namespace Proyecto_Final_Equipo_1
     public partial class InicioSesion : Form
     {
         Inicio Inicio_Recibido;
+
+        //Booleano para controlar la primer tecla ingresada
+        bool PrimerTeclaPresionada = true;
+
         public InicioSesion(Inicio inicio) 
         {
             InitializeComponent();
@@ -38,6 +42,10 @@ namespace Proyecto_Final_Equipo_1
 
         private void InicioSesion_Load(object sender, EventArgs e)
         {
+            KeyPreview = true; //Habilitamos el KeyPreview para capturar teclas antes de que lleguen a los controles
+
+            this.ActiveControl = null; // Desactiva el foco inicial en cualquier control
+            this.Focus(); // Asegura que el formulario capture el foco
         }
 
         private void BtnVolverInicio_Click(object sender, EventArgs e)
@@ -56,6 +64,24 @@ namespace Proyecto_Final_Equipo_1
         {
             BtnPassword.BackgroundImage = Properties.Resources.Esconder_Password; // Imagen de ocultar contraseña
             Txt_Password.PasswordChar = '*'; //Se oculta
+        }
+
+        private void InicioSesion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (PrimerTeclaPresionada) //Si es la primer tecla que se presiona
+            {
+                Txt_Usuario.TabStop = true; //Indicamos que los controles se recorran con tabindex
+                Txt_Password.TabStop = true;
+                Btn_Ingreso.TabStop = true;
+                BtnVolverInicio.TabStop = true;
+                Txt_Usuario.Clear(); //Limpiamos las cajas
+                Txt_Password.Clear();
+                Txt_Usuario.Focus(); //Foco en la caja de usuario
+                BtnPassword.BackgroundImage = Properties.Resources.Esconder_Password; // Imagen de ocultar contraseña
+                Txt_Password.PasswordChar = '*'; //Se oculta
+                LblIndicacion.Visible = false; //Escondemos la etiqueta con el texto de presionar cualquier tecla
+                PrimerTeclaPresionada = false; //Booleano falso para indicar que ya se ingresó la primer tecla
+            }
         }
     }
 }

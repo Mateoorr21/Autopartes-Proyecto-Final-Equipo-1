@@ -81,7 +81,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
             else
             {
-                TxtProducto.Clear(); //Si no se selecciona algo limpiamos la caja Producto
+                TxtProducto.Text = TxtProducto.Tag.ToString(); //Si no se selecciona algo reestablecemos la caja de producto
                 BtnMenos.Enabled = false; //Inhabilitamos Botones de (+) y (-)
                 BtnMas.Enabled = false;
                 BtnMenos.BackgroundImage = Properties.Resources.BotonMenosDes; //Imagenes de botones Deshabilitados
@@ -119,7 +119,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             if (ConfirmarCancelarAgregarInventario == DialogResult.No) return;
 
             LvProductos.SelectedItems.Clear(); //Quitamos el seleccionado
-            TxtProducto.Clear(); //Limpiamos las cajas de texto
+            TxtProducto.Text = TxtProducto.Tag.ToString(); //Reestablecemos la caja de producto
             Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Restablecemos la Caja de Cantidad
             LblErrorCantidad.Visible = false;
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables

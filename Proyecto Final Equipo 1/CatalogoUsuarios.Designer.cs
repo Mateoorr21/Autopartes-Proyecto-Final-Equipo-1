@@ -72,7 +72,7 @@
             this.PicIndicaciones.Location = new System.Drawing.Point(5, 2);
             this.PicIndicaciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PicIndicaciones.Name = "PicIndicaciones";
-            this.PicIndicaciones.Size = new System.Drawing.Size(1501, 818);
+            this.PicIndicaciones.Size = new System.Drawing.Size(1501, 824);
             this.PicIndicaciones.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicIndicaciones.TabIndex = 13;
             this.PicIndicaciones.TabStop = false;
@@ -93,6 +93,7 @@
             // 
             this.BtnSalir.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.Boton_X_Blanco;
             this.BtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnSalir.FlatAppearance.BorderSize = 0;
             this.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -195,7 +196,7 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel5.Location = new System.Drawing.Point(11, 542);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(267, 1);
             this.panel5.TabIndex = 17;
@@ -204,7 +205,7 @@
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel4.Location = new System.Drawing.Point(11, 272);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(267, 1);
             this.panel4.TabIndex = 16;
@@ -216,10 +217,10 @@
             this.BtnRegistrarUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnRegistrarUsuario.FlatAppearance.BorderSize = 0;
             this.BtnRegistrarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnRegistrarUsuario.Location = new System.Drawing.Point(11, 2);
+            this.BtnRegistrarUsuario.Location = new System.Drawing.Point(6, -3);
             this.BtnRegistrarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRegistrarUsuario.Name = "BtnRegistrarUsuario";
-            this.BtnRegistrarUsuario.Size = new System.Drawing.Size(267, 272);
+            this.BtnRegistrarUsuario.Size = new System.Drawing.Size(272, 277);
             this.BtnRegistrarUsuario.TabIndex = 1;
             this.BtnRegistrarUsuario.UseVisualStyleBackColor = true;
             this.BtnRegistrarUsuario.Click += new System.EventHandler(this.BtnRegistrarUsuario_Click);
@@ -231,10 +232,10 @@
             this.BtnModificarUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnModificarUsuario.FlatAppearance.BorderSize = 0;
             this.BtnModificarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnModificarUsuario.Location = new System.Drawing.Point(13, 272);
+            this.BtnModificarUsuario.Location = new System.Drawing.Point(3, 272);
             this.BtnModificarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnModificarUsuario.Name = "BtnModificarUsuario";
-            this.BtnModificarUsuario.Size = new System.Drawing.Size(264, 270);
+            this.BtnModificarUsuario.Size = new System.Drawing.Size(275, 270);
             this.BtnModificarUsuario.TabIndex = 2;
             this.BtnModificarUsuario.UseVisualStyleBackColor = true;
             this.BtnModificarUsuario.Click += new System.EventHandler(this.BtnModificarUsuario_Click);
@@ -246,10 +247,10 @@
             this.BtnEliminarUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnEliminarUsuario.FlatAppearance.BorderSize = 0;
             this.BtnEliminarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEliminarUsuario.Location = new System.Drawing.Point(23, 546);
+            this.BtnEliminarUsuario.Location = new System.Drawing.Point(3, 542);
             this.BtnEliminarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnEliminarUsuario.Name = "BtnEliminarUsuario";
-            this.BtnEliminarUsuario.Size = new System.Drawing.Size(244, 266);
+            this.BtnEliminarUsuario.Size = new System.Drawing.Size(276, 281);
             this.BtnEliminarUsuario.TabIndex = 3;
             this.BtnEliminarUsuario.UseVisualStyleBackColor = true;
             this.BtnEliminarUsuario.Click += new System.EventHandler(this.BtnEliminarUsuario_Click);
@@ -260,6 +261,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CancelButton = this.BtnSalir;
             this.ClientSize = new System.Drawing.Size(1781, 953);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);

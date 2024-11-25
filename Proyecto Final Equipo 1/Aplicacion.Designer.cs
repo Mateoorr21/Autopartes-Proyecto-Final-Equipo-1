@@ -124,10 +124,10 @@
             this.BtnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnEliminar.FlatAppearance.BorderSize = 0;
             this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnEliminar.Location = new System.Drawing.Point(3, 507);
+            this.BtnEliminar.Location = new System.Drawing.Point(-1, 507);
             this.BtnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(272, 110);
+            this.BtnEliminar.Size = new System.Drawing.Size(276, 110);
             this.BtnEliminar.TabIndex = 8;
             this.BtnEliminar.UseVisualStyleBackColor = true;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
@@ -139,10 +139,10 @@
             this.BtnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnModificar.FlatAppearance.BorderSize = 0;
             this.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnModificar.Location = new System.Drawing.Point(3, 411);
+            this.BtnModificar.Location = new System.Drawing.Point(-1, 411);
             this.BtnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(272, 95);
+            this.BtnModificar.Size = new System.Drawing.Size(276, 95);
             this.BtnModificar.TabIndex = 7;
             this.BtnModificar.UseVisualStyleBackColor = true;
             this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -169,10 +169,10 @@
             this.BtnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnAgregar.FlatAppearance.BorderSize = 0;
             this.BtnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAgregar.Location = new System.Drawing.Point(3, 190);
+            this.BtnAgregar.Location = new System.Drawing.Point(-1, 190);
             this.BtnAgregar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(272, 117);
+            this.BtnAgregar.Size = new System.Drawing.Size(276, 117);
             this.BtnAgregar.TabIndex = 5;
             this.BtnAgregar.UseVisualStyleBackColor = true;
             this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
@@ -196,7 +196,7 @@
             // 
             this.BtnInventario.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoInventario;
             this.BtnInventario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnInventario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnInventario.Cursor = System.Windows.Forms.Cursors.Default;
             this.BtnInventario.FlatAppearance.BorderSize = 0;
             this.BtnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnInventario.Location = new System.Drawing.Point(0, 0);
@@ -215,7 +215,7 @@
             this.panel3.Location = new System.Drawing.Point(272, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1509, 134);
+            this.panel3.Size = new System.Drawing.Size(1513, 134);
             this.panel3.TabIndex = 1;
             this.panel3.TabStop = true;
             // 
@@ -223,6 +223,7 @@
             // 
             this.BtnSalir.BackgroundImage = global::Proyecto_Final_Equipo_1.Properties.Resources.Boton_X_Blanco;
             this.BtnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnSalir.FlatAppearance.BorderSize = 0;
             this.BtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -324,6 +325,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CancelButton = this.BtnSalir;
             this.ClientSize = new System.Drawing.Size(1781, 953);
             this.ControlBox = false;
             this.Controls.Add(this.PanelAutoPartes);
@@ -338,6 +340,7 @@
             this.Name = "Aplicacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aplicación AutoPartes One";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Aplicacion_FormClosing);
             this.Load += new System.EventHandler(this.Aplicacion_Load);
             this.Shown += new System.EventHandler(this.Aplicacion_Shown);
             this.panel1.ResumeLayout(false);

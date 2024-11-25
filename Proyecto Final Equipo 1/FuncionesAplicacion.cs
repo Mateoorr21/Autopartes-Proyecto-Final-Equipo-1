@@ -28,6 +28,7 @@ namespace Proyecto_Final_Equipo_1
         public static string PasswordBD = null;
         public static bool TienePermiso = false;
         public static int ErroresInicioSesion = 0;
+        public static bool SalirAplicacion = false;
 
         //Declaramos e Inicializamos variables que se utilizan en la Aplicacion
         public static int IdGenerado = 0;
@@ -37,6 +38,7 @@ namespace Proyecto_Final_Equipo_1
         public static int ContarProductos = 0;
         public static bool SeCompletoOperacion = false;
         public static int ColumnaOrdenar = -1; //Variable para OrdenarColumnas
+        public static bool ConfirmarLimpiezaDeVenta = true;
 
         //Declaramos e Inicializamos variables que se utilizan en Ventas y Corte de Caja
         public static int CantidadEnStockSeleccionado = 0;
@@ -87,6 +89,9 @@ namespace Proyecto_Final_Equipo_1
         //FUNCION PARA LIMPIAR LOS CONTROLES DE UN CONTENEDOR
         public static void LimpiarControles(Control ControlUsuario)
         {
+            //Si el que se quiere limpiar es uno de venta y no se confirmo la limpieza de este salimos de la función
+            if ((ControlUsuario.Name.Contains("venta") || ControlUsuario.Name.Contains("Venta")) && ConfirmarLimpiezaDeVenta == false) return;
+
             foreach (Control control in ControlUsuario.Controls)
             {
                 if (control is TextBox textBox)
@@ -114,10 +119,12 @@ namespace Proyecto_Final_Equipo_1
                 {
                     Etiqueta2.Text = Etiqueta2.Tag.ToString(); //Si la etiqueta indica cantidad de Registros vuelve a su texto original
                 }
+
                 else if (control is ListView listView)
-                {
+                {   
                     listView.Items.Clear(); //Limpiamos el ListView
                 }
+
                 // Si el control es otro contenedor de controles, llamamos a la funcion de nuevo
                 else if (control.HasChildren)
                 {
@@ -170,50 +177,52 @@ namespace Proyecto_Final_Equipo_1
                     {
                         if (lector.HasRows) //Si hay un resultado, es decir, si existe la cuenta
                         {
-                            lector.Read(); //Leemos el registro obtenido
-
-                            IdUsuario = (int)lector["Id"]; //Guardamos id del usuario
-                            NombreCompleto = lector["Nombre_Completo"].ToString(); //Nombre a cadena String
-                            Usuario = lector["Usuario"].ToString(); //Usuario a cadena String
-                            PasswordBD = lector["Password"].ToString(); //Contraseña en base de datos
-                            TipoUsuario = lector["Tipo"].ToString(); //Tipo de Permiso a cadena String
-
-                            if (Username == Usuario && Password == PasswordBD) //Si coinciden Inicio Sesión
+                            while(lector.Read())  //Leemos cada registro obtenido
                             {
-                                //Limpiamos las cajas de Texto
-                                TxtUsuario.Clear();
-                                TxtPassword.Clear();
+                                IdUsuario = (int)lector["Id"]; //Guardamos id del usuario
+                                NombreCompleto = lector["Nombre_Completo"].ToString(); //Nombre a cadena String
+                                Usuario = lector["Usuario"].ToString(); //Usuario a cadena String
+                                PasswordBD = lector["Password"].ToString(); //Contraseña en base de datos
+                                TipoUsuario = lector["Tipo"].ToString(); //Tipo de Permiso a cadena String
 
-                                // Variable booleana (Es un Admin o no)
-                                TienePermiso = TipoUsuario == "Admin" || TipoUsuario == "Propietario";
-
-                                //Mensaje de inicio de sesión exitoso
-                                DialogResult MostrarDineroInicio = MessageBox.Show("Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",
-                                    "INICIO DE SESIÓN EXITOSO. BIENVENIDO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                VentanaInicioSesion.Hide(); //Ocultamos la ventana de Inicio de Sesion
-                                DineroInicial dineroInicial = new DineroInicial(); //Abrimos ventana de Dinero Inicial
-
-                                if (MostrarDineroInicio == DialogResult.OK) dineroInicial.ShowDialog(); //Cuando se de OK mostramos el siguiente formulario
-
-                                ReiniciarVariables(); //Reinciamos las variables a usar.
-                            }
-                                
-                            else //Mensaje de error
-                            {
-                                MessageBox.Show("Usuario y/o Contraseña incorrectos.", "Error. No existe la cuenta.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                                ErroresInicioSesion++; //Sumamos un "Strike"
-
-                                if (ErroresInicioSesion == 3)
+                                if (Username == Usuario && Password == PasswordBD) //Si coinciden Inicio Sesión
                                 {
-                                    Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
+                                    //Limpiamos las cajas de Texto
+                                    TxtUsuario.Clear();
+                                    TxtPassword.Clear();
+
+                                    // Variable booleana (Es un Admin o no)
+                                    TienePermiso = TipoUsuario == "Admin" || TipoUsuario == "Propietario";
+
+                                    //Mensaje de inicio de sesión exitoso
+                                    DialogResult MostrarDineroInicio = MessageBox.Show("Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",
+                                        "INICIO DE SESIÓN EXITOSO. BIENVENIDO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    VentanaInicioSesion.Hide(); //Ocultamos la ventana de Inicio de Sesion
+                                    DineroInicial dineroInicial = new DineroInicial(); //Abrimos ventana de Dinero Inicial
+
+                                    if (MostrarDineroInicio == DialogResult.OK) dineroInicial.ShowDialog(); //Cuando se de OK mostramos el siguiente formulario
+
+                                    ReiniciarVariables(); //Reinciamos las variables a usar.
+                                    return;
                                 }
                             }
+                                
+                            //Si no se inició sesión indicamos mensaje de error
+                            MessageBox.Show("Usuario y/o Contraseña incorrectos.", "Error. No existe la cuenta.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            ErroresInicioSesion++; //Sumamos un "Strike"
+
+                            if (ErroresInicioSesion == 3)
+                            {
+                                    Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
+                            }
+                            
                         }
-                        else
+
+                        else //Si no se encontraron registros
                         {
-                            //Error en caso de que no exista el usuario y/o contraseña
+                            //Error indicando que no existe la cuenta
                             MessageBox.Show("Usuario y/o Contraseña incorrectos.", "Error. No existe la cuenta.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             
                             ErroresInicioSesion++; //Sumamos un "Strike"
@@ -562,7 +571,7 @@ namespace Proyecto_Final_Equipo_1
                 //Consulta SQL si la casilla Exacta esta seleccionada
                 else
                 {
-                    if (RdNombre.Checked) query = "SELECT * FROM Productos WHERE Nombre = @PorBuscar";
+                    if (RdNombre.Checked) query = "SELECT * FROM Productos WHERE StrComp(Nombre, @PorBuscar, 0) = 0";
                     else query = "SELECT * FROM Productos WHERE Id = @PorBuscar";
                 }
 
@@ -1516,6 +1525,8 @@ namespace Proyecto_Final_Equipo_1
             //Mostramos un mensaje de éxito en el Guardado de Ventas
             MessageBox.Show("Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
                 "CORTE EXITOSO. CERRANDO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            SalirAplicacion = true;
 
             Application.Exit(); //Cerramos Aplicacion
         }

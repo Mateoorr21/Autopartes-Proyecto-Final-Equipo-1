@@ -48,6 +48,12 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             LvCarrito.Columns.Add("Total IVA", 65);
         }
 
+        //Funcion que devuelve con true o false si hay productos cargados en el carrito
+        public bool HayRegistrosEnCarrito()
+        {
+            return LvCarrito.Items.Count > 0;
+        }
+
         //Funcion Cargar Productos que se llama cada vez que se da click en el Boton Ventas
         public void CargarProductos()
         {
@@ -162,6 +168,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             if (ConfirmarCancelarVenta == DialogResult.No) return;
 
             FuncionesAplicacion.LimpiarControles(this); //Si se Selecciona Cancelar limpiamos todos los controles
+            CargarProductos();
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
