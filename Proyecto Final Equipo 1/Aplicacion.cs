@@ -27,14 +27,7 @@ namespace Proyecto_Final_Equipo_1
 
         [DllImport("user32.dll")]
         private static extern int ShowWindow(IntPtr hWnd, int nCmdShow);
-        private void HideTaskbar()
-        {
-            IntPtr taskbarHandle = FindWindow("Shell_TrayWnd", null);
-            if (taskbarHandle != IntPtr.Zero)
-            {
-                ShowWindow(taskbarHandle, SW_HIDE);
-            }
-        }
+
 
         //Declaramos los diferentes tipos de controles de usuario que se utilizaran en la aplicacion
         AgregarProducto agregarProducto; 
@@ -84,7 +77,7 @@ namespace Proyecto_Final_Equipo_1
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
             // Si la resolución es 1366 x 768, quitamos borde y ocultamos la barra de tareas
-            if (screenWidth == 1366 && screenHeight == 768)
+            if ((screenWidth == 1366 && screenHeight == 768) || (screenWidth == 1360 && screenHeight == 768))
             {
                 this.FormBorderStyle = FormBorderStyle.None;
                 OcultarTaskbar();

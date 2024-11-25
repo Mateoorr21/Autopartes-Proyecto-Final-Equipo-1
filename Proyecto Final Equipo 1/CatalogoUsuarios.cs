@@ -159,7 +159,7 @@ namespace Proyecto_Final_Equipo_1
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
             // Si la resolución es 1366 x 768, quitamos borde y ocultamos la barra de tareas
-            if (screenWidth == 1366 && screenHeight == 768)
+            if ((screenWidth == 1366 && screenHeight == 768) || (screenWidth == 1360 && screenHeight == 768))
             {
                 FormBorderStyle = FormBorderStyle.None;
                 OcultarTaskbar();
