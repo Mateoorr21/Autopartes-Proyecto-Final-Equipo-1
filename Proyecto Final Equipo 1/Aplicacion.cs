@@ -302,8 +302,11 @@ namespace Proyecto_Final_Equipo_1
 
         private void Aplicacion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (FuncionesAplicacion.SalirAplicacion == false) e.Cancel = true; //Si no se sale de aplicacion cancelamos el evento
-            
+            if (FuncionesAplicacion.SalirAplicacion == false)
+            {
+                e.Cancel = true; //Si no se sale de aplicacion cancelamos el evento
+                return;
+            }
             // Asegurarse de mostrar la barra de tareas al cerrar el formulario
             ShowTaskbar();
         }
