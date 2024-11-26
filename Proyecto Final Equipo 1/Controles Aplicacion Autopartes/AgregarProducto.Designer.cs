@@ -89,6 +89,7 @@
             this.Txt_Descripcion.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.Txt_Descripcion.Location = new System.Drawing.Point(35, 210);
             this.Txt_Descripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Txt_Descripcion.MaxLength = 1000;
             this.Txt_Descripcion.Multiline = true;
             this.Txt_Descripcion.Name = "Txt_Descripcion";
             this.Txt_Descripcion.Size = new System.Drawing.Size(416, 59);
@@ -105,8 +106,9 @@
             this.Txt_Nombre.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.Txt_Nombre.Location = new System.Drawing.Point(35, 89);
             this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Txt_Nombre.MaxLength = 50;
             this.Txt_Nombre.Name = "Txt_Nombre";
-            this.Txt_Nombre.Size = new System.Drawing.Size(416, 19);
+            this.Txt_Nombre.Size = new System.Drawing.Size(416, 15);
             this.Txt_Nombre.TabIndex = 2;
             this.Txt_Nombre.Tag = "Nombre del Producto";
             this.Txt_Nombre.Text = "Nombre del Producto";
@@ -118,7 +120,7 @@
             this.LblNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNota.Location = new System.Drawing.Point(536, 178);
             this.LblNota.Name = "LblNota";
-            this.LblNota.Size = new System.Drawing.Size(416, 20);
+            this.LblNota.Size = new System.Drawing.Size(331, 16);
             this.LblNota.TabIndex = 44;
             this.LblNota.Text = "Nota: El Id del producto se generará automáticamente ";
             // 
@@ -129,7 +131,7 @@
             this.LblNombre.ForeColor = System.Drawing.Color.Maroon;
             this.LblNombre.Location = new System.Drawing.Point(21, 50);
             this.LblNombre.Name = "LblNombre";
-            this.LblNombre.Size = new System.Drawing.Size(93, 20);
+            this.LblNombre.Size = new System.Drawing.Size(76, 16);
             this.LblNombre.TabIndex = 39;
             this.LblNombre.Text = "Nombre: *";
             // 
@@ -140,7 +142,7 @@
             this.LblDescripcion.ForeColor = System.Drawing.Color.Maroon;
             this.LblDescripcion.Location = new System.Drawing.Point(21, 172);
             this.LblDescripcion.Name = "LblDescripcion";
-            this.LblDescripcion.Size = new System.Drawing.Size(129, 20);
+            this.LblDescripcion.Size = new System.Drawing.Size(104, 16);
             this.LblDescripcion.TabIndex = 35;
             this.LblDescripcion.Text = "Descripción: *";
             // 
@@ -150,7 +152,7 @@
             this.LblInstruccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblInstruccion.Location = new System.Drawing.Point(345, 154);
             this.LblInstruccion.Name = "LblInstruccion";
-            this.LblInstruccion.Size = new System.Drawing.Size(766, 20);
+            this.LblInstruccion.Size = new System.Drawing.Size(612, 16);
             this.LblInstruccion.TabIndex = 49;
             this.LblInstruccion.Text = "Ingrese los datos (Nombre, Precio, Cantidad, etc) del producto que desea registra" +
     "r a la base de datos\r\n";
@@ -162,7 +164,7 @@
             this.LblImagen.ForeColor = System.Drawing.Color.Maroon;
             this.LblImagen.Location = new System.Drawing.Point(29, 348);
             this.LblImagen.Name = "LblImagen";
-            this.LblImagen.Size = new System.Drawing.Size(82, 20);
+            this.LblImagen.Size = new System.Drawing.Size(68, 16);
             this.LblImagen.TabIndex = 58;
             this.LblImagen.Text = "Imagen *";
             // 
@@ -173,7 +175,7 @@
             this.LblErrorNombre.ForeColor = System.Drawing.Color.Red;
             this.LblErrorNombre.Location = new System.Drawing.Point(21, 126);
             this.LblErrorNombre.Name = "LblErrorNombre";
-            this.LblErrorNombre.Size = new System.Drawing.Size(275, 20);
+            this.LblErrorNombre.Size = new System.Drawing.Size(210, 16);
             this.LblErrorNombre.TabIndex = 66;
             this.LblErrorNombre.Text = "Solo admite letras, números   /   \"  -";
             this.LblErrorNombre.Visible = false;
@@ -185,7 +187,7 @@
             this.LblErrorDescripcion.ForeColor = System.Drawing.Color.Red;
             this.LblErrorDescripcion.Location = new System.Drawing.Point(21, 286);
             this.LblErrorDescripcion.Name = "LblErrorDescripcion";
-            this.LblErrorDescripcion.Size = new System.Drawing.Size(275, 20);
+            this.LblErrorDescripcion.Size = new System.Drawing.Size(210, 16);
             this.LblErrorDescripcion.TabIndex = 67;
             this.LblErrorDescripcion.Text = "Solo admite letras, números   /   \"  -";
             this.LblErrorDescripcion.Visible = false;
@@ -208,7 +210,7 @@
             this.panel1.Controls.Add(this.PicImagenProducto);
             this.panel1.Controls.Add(this.LblImagen);
             this.panel1.Location = new System.Drawing.Point(104, 254);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(479, 512);
             this.panel1.TabIndex = 1;
@@ -221,7 +223,7 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(21, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(219, 27);
+            this.label5.Size = new System.Drawing.Size(174, 22);
             this.label5.TabIndex = 75;
             this.label5.Text = "Información General";
             // 
@@ -309,7 +311,7 @@
             this.panel2.Controls.Add(this.LblErrorPrecio);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(631, 254);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(786, 283);
             this.panel2.TabIndex = 6;
@@ -322,7 +324,7 @@
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(21, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(217, 27);
+            this.label6.Size = new System.Drawing.Size(175, 22);
             this.label6.TabIndex = 76;
             this.label6.Text = "Precios y Existencias";
             // 
@@ -333,7 +335,7 @@
             this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(21, 171);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.Size = new System.Drawing.Size(64, 16);
             this.label1.TabIndex = 78;
             this.label1.Text = "Marca: *";
             // 
@@ -345,8 +347,9 @@
             this.Txt_Marca.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.Txt_Marca.Location = new System.Drawing.Point(35, 209);
             this.Txt_Marca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Txt_Marca.MaxLength = 30;
             this.Txt_Marca.Name = "Txt_Marca";
-            this.Txt_Marca.Size = new System.Drawing.Size(335, 19);
+            this.Txt_Marca.Size = new System.Drawing.Size(335, 15);
             this.Txt_Marca.TabIndex = 8;
             this.Txt_Marca.Tag = "Marca del Producto";
             this.Txt_Marca.Text = "Marca del Producto";
@@ -359,7 +362,7 @@
             this.LblErrorMarca.ForeColor = System.Drawing.Color.Red;
             this.LblErrorMarca.Location = new System.Drawing.Point(21, 244);
             this.LblErrorMarca.Name = "LblErrorMarca";
-            this.LblErrorMarca.Size = new System.Drawing.Size(227, 20);
+            this.LblErrorMarca.Size = new System.Drawing.Size(180, 16);
             this.LblErrorMarca.TabIndex = 76;
             this.LblErrorMarca.Text = "Solo admite letras y números";
             this.LblErrorMarca.Visible = false;
@@ -385,7 +388,7 @@
             this.Txt_Cantidad.Location = new System.Drawing.Point(437, 89);
             this.Txt_Cantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
-            this.Txt_Cantidad.Size = new System.Drawing.Size(311, 19);
+            this.Txt_Cantidad.Size = new System.Drawing.Size(311, 15);
             this.Txt_Cantidad.TabIndex = 7;
             this.Txt_Cantidad.Tag = "0";
             this.Txt_Cantidad.Text = "0";
@@ -400,7 +403,7 @@
             this.Txt_Precio.Location = new System.Drawing.Point(35, 89);
             this.Txt_Precio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Precio.Name = "Txt_Precio";
-            this.Txt_Precio.Size = new System.Drawing.Size(335, 19);
+            this.Txt_Precio.Size = new System.Drawing.Size(335, 15);
             this.Txt_Precio.TabIndex = 6;
             this.Txt_Precio.Tag = "0";
             this.Txt_Precio.Text = "0";
@@ -437,7 +440,7 @@
             this.LblErrorCantidad.ForeColor = System.Drawing.Color.Red;
             this.LblErrorCantidad.Location = new System.Drawing.Point(421, 126);
             this.LblErrorCantidad.Name = "LblErrorCantidad";
-            this.LblErrorCantidad.Size = new System.Drawing.Size(228, 20);
+            this.LblErrorCantidad.Size = new System.Drawing.Size(182, 16);
             this.LblErrorCantidad.TabIndex = 67;
             this.LblErrorCantidad.Text = "Solo admite números enteros\r\n";
             this.LblErrorCantidad.Visible = false;
@@ -449,7 +452,7 @@
             this.label2.ForeColor = System.Drawing.Color.Maroon;
             this.label2.Location = new System.Drawing.Point(21, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 20);
+            this.label2.Size = new System.Drawing.Size(112, 16);
             this.label2.TabIndex = 39;
             this.label2.Text = "Precio (MXN): *";
             // 
@@ -460,7 +463,7 @@
             this.LblErrorPrecio.ForeColor = System.Drawing.Color.Red;
             this.LblErrorPrecio.Location = new System.Drawing.Point(21, 126);
             this.LblErrorPrecio.Name = "LblErrorPrecio";
-            this.LblErrorPrecio.Size = new System.Drawing.Size(312, 20);
+            this.LblErrorPrecio.Size = new System.Drawing.Size(248, 16);
             this.LblErrorPrecio.TabIndex = 66;
             this.LblErrorPrecio.Text = "Solo admite números y un punto decimal";
             this.LblErrorPrecio.Visible = false;
@@ -472,7 +475,7 @@
             this.label4.ForeColor = System.Drawing.Color.Maroon;
             this.label4.Location = new System.Drawing.Point(421, 50);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(221, 20);
+            this.label4.Size = new System.Drawing.Size(179, 16);
             this.label4.TabIndex = 35;
             this.label4.Text = "Cantidad en Existencia: *";
             // 

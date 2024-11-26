@@ -96,13 +96,16 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnMenos_Click(object sender, EventArgs e)
         {
-            //Validamos que no pueda ingresar algo demasiado grande
-            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad))
+            Txt_Cantidad.Text = (FuncionesAplicacion.CantidadIngresada - 1).ToString(); //Restamos 1 a la cantidad ingresada
+
+            // Variables de validación
+            bool cantidadInvalida = !int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) || ValidarCantidad > 1000000;
+
+            if (cantidadInvalida) // Si la cantidad es invalida
             {
-                MessageBox.Show("El valor contenido en la caja no es válido. Supera el rango permitido.",
-                    "ERROR. VALOR NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                TxtProducto.Text = TxtProducto.Tag.ToString(); // Reestablecemos la caja de TxtProducto a su valor original
-                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); // Reestablecemos la caja de TxtCantidad a su valor original
+                MessageBox.Show("El valor contenido en la caja de cantidad no es valido. Debe estar entre 1 y 1,000,000.",
+                    "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
                 return;
             }
 
@@ -111,17 +114,18 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnMas_Click(object sender, EventArgs e)
         {
-            //Validamos que no pueda ingresar algo demasiado grande
-            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad))
+            Txt_Cantidad.Text = (FuncionesAplicacion.CantidadIngresada + 1).ToString(); //Aumentamos la cantidad ingresada en 1
+
+            // Variables de validación
+            bool cantidadInvalida = !int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) || ValidarCantidad > 1000000;
+
+            if (cantidadInvalida) // Si la cantidad es invalida
             {
-                MessageBox.Show("El valor contenido en la caja no es válido. Supera el rango permitido.",
-                    "ERROR. VALOR NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                TxtProducto.Text = TxtProducto.Tag.ToString(); // Reestablecemos la caja de TxtProducto a su valor original
-                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); // Reestablecemos la caja de TxtCantidad a su valor original
+                MessageBox.Show("El valor contenido en la caja de cantidad no es valido. Debe estar entre 1 y 1,000,000.",
+                    "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
                 return;
             }
-
-            Txt_Cantidad.Text = (FuncionesAplicacion.CantidadIngresada + 1).ToString(); //Aumentamos la cantidad ingresada en 1
         }
 
         private void Txt_Cantidad_TextChanged(object sender, EventArgs e)

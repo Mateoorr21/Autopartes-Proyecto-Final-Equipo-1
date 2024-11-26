@@ -85,7 +85,7 @@
             this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
             this.LblErrorBuscar.Location = new System.Drawing.Point(57, 594);
             this.LblErrorBuscar.Name = "LblErrorBuscar";
-            this.LblErrorBuscar.Size = new System.Drawing.Size(148, 20);
+            this.LblErrorBuscar.Size = new System.Drawing.Size(118, 16);
             this.LblErrorBuscar.TabIndex = 151;
             this.LblErrorBuscar.Text = "Caracter no Valido";
             this.LblErrorBuscar.Visible = false;
@@ -98,7 +98,7 @@
             this.LblCampoBuscar.ForeColor = System.Drawing.Color.DarkRed;
             this.LblCampoBuscar.Location = new System.Drawing.Point(55, 514);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
-            this.LblCampoBuscar.Size = new System.Drawing.Size(94, 25);
+            this.LblCampoBuscar.Size = new System.Drawing.Size(76, 20);
             this.LblCampoBuscar.TabIndex = 150;
             this.LblCampoBuscar.Text = "Nombre:";
             // 
@@ -126,8 +126,9 @@
             this.TxtBuscar.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.TxtBuscar.Location = new System.Drawing.Point(27, 34);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtBuscar.MaxLength = 50;
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(191, 19);
+            this.TxtBuscar.Size = new System.Drawing.Size(191, 15);
             this.TxtBuscar.TabIndex = 5;
             this.TxtBuscar.Tag = "Buscar...";
             this.TxtBuscar.Text = "Buscar...";
@@ -209,7 +210,7 @@
             this.RdId.Location = new System.Drawing.Point(37, 97);
             this.RdId.Margin = new System.Windows.Forms.Padding(4);
             this.RdId.Name = "RdId";
-            this.RdId.Size = new System.Drawing.Size(149, 31);
+            this.RdId.Size = new System.Drawing.Size(120, 25);
             this.RdId.TabIndex = 4;
             this.RdId.Text = "Id_Producto";
             this.RdId.UseVisualStyleBackColor = true;
@@ -254,7 +255,7 @@
             this.RdNombre.Location = new System.Drawing.Point(37, 60);
             this.RdNombre.Margin = new System.Windows.Forms.Padding(4);
             this.RdNombre.Name = "RdNombre";
-            this.RdNombre.Size = new System.Drawing.Size(113, 31);
+            this.RdNombre.Size = new System.Drawing.Size(91, 25);
             this.RdNombre.TabIndex = 3;
             this.RdNombre.TabStop = true;
             this.RdNombre.Text = "Nombre";
@@ -309,7 +310,7 @@
             this.RdExacta.Location = new System.Drawing.Point(36, 97);
             this.RdExacta.Margin = new System.Windows.Forms.Padding(4);
             this.RdExacta.Name = "RdExacta";
-            this.RdExacta.Size = new System.Drawing.Size(93, 31);
+            this.RdExacta.Size = new System.Drawing.Size(77, 25);
             this.RdExacta.TabIndex = 2;
             this.RdExacta.Text = "Exacta";
             this.RdExacta.UseVisualStyleBackColor = true;
@@ -333,7 +334,7 @@
             this.RdAproximada.Location = new System.Drawing.Point(36, 60);
             this.RdAproximada.Margin = new System.Windows.Forms.Padding(4);
             this.RdAproximada.Name = "RdAproximada";
-            this.RdAproximada.Size = new System.Drawing.Size(150, 31);
+            this.RdAproximada.Size = new System.Drawing.Size(120, 25);
             this.RdAproximada.TabIndex = 1;
             this.RdAproximada.TabStop = true;
             this.RdAproximada.Text = "Aproximada";
@@ -389,7 +390,7 @@
             this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCantidadRegistros.Location = new System.Drawing.Point(995, 756);
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
-            this.LblCantidadRegistros.Size = new System.Drawing.Size(211, 20);
+            this.LblCantidadRegistros.Size = new System.Drawing.Size(172, 16);
             this.LblCantidadRegistros.TabIndex = 146;
             this.LblCantidadRegistros.Tag = "Productos Encontrados:";
             this.LblCantidadRegistros.Text = "Productos Encontrados:";

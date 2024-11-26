@@ -43,6 +43,20 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
+            if (Txt_Usuario.Text.Length < 4) //Validar que el usuario por lo menos 4 caracteres
+            {
+                MessageBox.Show("El usuario debe tener al menos 4 caracteres.",
+                    "ERROR. USUARIO INVÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Txt_Password.Text.Length < 5) //Validar que la contraseña tenga por lo menos 5 caracteres
+            {
+                MessageBox.Show("La contraseña debe tener al menos 5 caracteres.",
+                    "ERROR. CONTRASEÑA INVÁLIDA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string Permiso = RdAdmin.Checked ? "Admin" : "Cajero";
 
             // Usamos un bloque 'using' para asegurarnos de que la conexión se cierre automáticamente
@@ -364,6 +378,20 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
+            if (Txt_Usuario.Text.Length < 4) //Validar que el usuario por lo menos 4 caracteres
+            {
+                MessageBox.Show("El usuario debe tener al menos 4 caracteres.",
+                    "ERROR. USUARIO INVÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Txt_Password.Text.Length < 5) //Validar que la contraseña tenga por lo menos 5 caracteres
+            {
+                MessageBox.Show("La contraseña debe tener al menos 5 caracteres.",
+                    "ERROR. CONTRASEÑA INVÁLIDA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             //Primera conexión a base de datos para verificar que el usuario y contraseña a los que se quiere modificar no existan en la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
             {
@@ -415,6 +443,7 @@ namespace Proyecto_Final_Equipo_1
                 FuncionesAplicacion.NombreCompleto = NombreModificado;
                 FuncionesAplicacion.Usuario = UsuarioModificado;
                 FuncionesAplicacion.TipoUsuario = PermisoModificado;
+                FuncionesAplicacion.PasswordBD = PasswordModificado;
                 SeAutoModifico = true;
             }
 

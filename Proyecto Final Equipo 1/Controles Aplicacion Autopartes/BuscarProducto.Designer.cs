@@ -84,7 +84,7 @@
             this.LvProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LvProductos.HideSelection = false;
             this.LvProductos.Location = new System.Drawing.Point(309, 191);
-            this.LvProductos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LvProductos.Margin = new System.Windows.Forms.Padding(4);
             this.LvProductos.MultiSelect = false;
             this.LvProductos.Name = "LvProductos";
             this.LvProductos.Size = new System.Drawing.Size(931, 557);
@@ -99,7 +99,7 @@
             this.LblCantidadRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCantidadRegistros.Location = new System.Drawing.Point(999, 756);
             this.LblCantidadRegistros.Name = "LblCantidadRegistros";
-            this.LblCantidadRegistros.Size = new System.Drawing.Size(211, 20);
+            this.LblCantidadRegistros.Size = new System.Drawing.Size(172, 16);
             this.LblCantidadRegistros.TabIndex = 131;
             this.LblCantidadRegistros.Tag = "Productos Encontrados:";
             this.LblCantidadRegistros.Text = "Productos Encontrados:";
@@ -114,7 +114,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(44, 191);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(240, 150);
             this.panel1.TabIndex = 1;
@@ -126,9 +126,9 @@
             this.RdExacta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RdExacta.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RdExacta.Location = new System.Drawing.Point(36, 97);
-            this.RdExacta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RdExacta.Margin = new System.Windows.Forms.Padding(4);
             this.RdExacta.Name = "RdExacta";
-            this.RdExacta.Size = new System.Drawing.Size(93, 31);
+            this.RdExacta.Size = new System.Drawing.Size(77, 25);
             this.RdExacta.TabIndex = 3;
             this.RdExacta.Text = "Exacta";
             this.RdExacta.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
             this.panel5.BackColor = System.Drawing.Color.Tan;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(1, 149);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(238, 1);
             this.panel5.TabIndex = 3;
@@ -150,9 +150,9 @@
             this.RdAproximada.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RdAproximada.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RdAproximada.Location = new System.Drawing.Point(36, 60);
-            this.RdAproximada.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RdAproximada.Margin = new System.Windows.Forms.Padding(4);
             this.RdAproximada.Name = "RdAproximada";
-            this.RdAproximada.Size = new System.Drawing.Size(150, 31);
+            this.RdAproximada.Size = new System.Drawing.Size(120, 25);
             this.RdAproximada.TabIndex = 1;
             this.RdAproximada.TabStop = true;
             this.RdAproximada.Text = "Aproximada";
@@ -163,7 +163,7 @@
             this.panel4.BackColor = System.Drawing.Color.Tan;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(239, 46);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1, 104);
             this.panel4.TabIndex = 2;
@@ -173,7 +173,7 @@
             this.panel3.BackColor = System.Drawing.Color.Tan;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 46);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1, 104);
             this.panel3.TabIndex = 1;
@@ -184,7 +184,7 @@
             this.panel2.Controls.Add(this.PicLogo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(240, 46);
             this.panel2.TabIndex = 0;
@@ -212,7 +212,7 @@
             this.panel6.Controls.Add(this.RdNombre);
             this.panel6.Controls.Add(this.panel10);
             this.panel6.Location = new System.Drawing.Point(43, 353);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(240, 148);
             this.panel6.TabIndex = 4;
@@ -224,9 +224,9 @@
             this.RdId.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RdId.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RdId.Location = new System.Drawing.Point(37, 97);
-            this.RdId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RdId.Margin = new System.Windows.Forms.Padding(4);
             this.RdId.Name = "RdId";
-            this.RdId.Size = new System.Drawing.Size(149, 31);
+            this.RdId.Size = new System.Drawing.Size(120, 25);
             this.RdId.TabIndex = 5;
             this.RdId.Text = "Id_Producto";
             this.RdId.UseVisualStyleBackColor = true;
@@ -237,7 +237,7 @@
             this.panel7.BackColor = System.Drawing.Color.Tan;
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Location = new System.Drawing.Point(1, 147);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(238, 1);
             this.panel7.TabIndex = 3;
@@ -247,7 +247,7 @@
             this.panel8.BackColor = System.Drawing.Color.Tan;
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel8.Location = new System.Drawing.Point(239, 46);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1, 102);
             this.panel8.TabIndex = 2;
@@ -257,7 +257,7 @@
             this.panel9.BackColor = System.Drawing.Color.Tan;
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel9.Location = new System.Drawing.Point(0, 46);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1, 102);
             this.panel9.TabIndex = 1;
@@ -269,9 +269,9 @@
             this.RdNombre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RdNombre.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RdNombre.Location = new System.Drawing.Point(37, 60);
-            this.RdNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RdNombre.Margin = new System.Windows.Forms.Padding(4);
             this.RdNombre.Name = "RdNombre";
-            this.RdNombre.Size = new System.Drawing.Size(113, 31);
+            this.RdNombre.Size = new System.Drawing.Size(91, 25);
             this.RdNombre.TabIndex = 4;
             this.RdNombre.TabStop = true;
             this.RdNombre.Text = "Nombre";
@@ -284,7 +284,7 @@
             this.panel10.Controls.Add(this.pictureBox1);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(240, 46);
             this.panel10.TabIndex = 0;
@@ -310,7 +310,7 @@
             this.LblCampoBuscar.ForeColor = System.Drawing.Color.SaddleBrown;
             this.LblCampoBuscar.Location = new System.Drawing.Point(55, 514);
             this.LblCampoBuscar.Name = "LblCampoBuscar";
-            this.LblCampoBuscar.Size = new System.Drawing.Size(94, 25);
+            this.LblCampoBuscar.Size = new System.Drawing.Size(76, 20);
             this.LblCampoBuscar.TabIndex = 135;
             this.LblCampoBuscar.Text = "Nombre:";
             // 
@@ -324,7 +324,7 @@
             this.panel11.Controls.Add(this.panel14);
             this.panel11.Controls.Add(this.panel15);
             this.panel11.Location = new System.Drawing.Point(44, 526);
-            this.panel11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel11.Margin = new System.Windows.Forms.Padding(4);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(237, 82);
             this.panel11.TabIndex = 6;
@@ -338,8 +338,9 @@
             this.TxtBuscar.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.TxtBuscar.Location = new System.Drawing.Point(27, 34);
             this.TxtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtBuscar.MaxLength = 50;
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(191, 19);
+            this.TxtBuscar.Size = new System.Drawing.Size(191, 15);
             this.TxtBuscar.TabIndex = 6;
             this.TxtBuscar.Tag = "Buscar...";
             this.TxtBuscar.Text = "Buscar...";
@@ -362,7 +363,7 @@
             this.panel12.BackColor = System.Drawing.Color.Tan;
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel12.Location = new System.Drawing.Point(1, 81);
-            this.panel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel12.Margin = new System.Windows.Forms.Padding(4);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(235, 1);
             this.panel12.TabIndex = 3;
@@ -372,7 +373,7 @@
             this.panel13.BackColor = System.Drawing.Color.Tan;
             this.panel13.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel13.Location = new System.Drawing.Point(236, 1);
-            this.panel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel13.Margin = new System.Windows.Forms.Padding(4);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(1, 81);
             this.panel13.TabIndex = 2;
@@ -382,7 +383,7 @@
             this.panel14.BackColor = System.Drawing.Color.Tan;
             this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel14.Location = new System.Drawing.Point(0, 1);
-            this.panel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel14.Margin = new System.Windows.Forms.Padding(4);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(1, 81);
             this.panel14.TabIndex = 1;
@@ -392,7 +393,7 @@
             this.panel15.BackColor = System.Drawing.Color.Tan;
             this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel15.Location = new System.Drawing.Point(0, 0);
-            this.panel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel15.Margin = new System.Windows.Forms.Padding(4);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(237, 1);
             this.panel15.TabIndex = 0;
@@ -404,7 +405,7 @@
             this.LblErrorBuscar.ForeColor = System.Drawing.Color.Red;
             this.LblErrorBuscar.Location = new System.Drawing.Point(57, 594);
             this.LblErrorBuscar.Name = "LblErrorBuscar";
-            this.LblErrorBuscar.Size = new System.Drawing.Size(148, 20);
+            this.LblErrorBuscar.Size = new System.Drawing.Size(118, 16);
             this.LblErrorBuscar.TabIndex = 137;
             this.LblErrorBuscar.Text = "Caracter no Valido";
             this.LblErrorBuscar.Visible = false;

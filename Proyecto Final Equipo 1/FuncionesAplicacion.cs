@@ -44,17 +44,17 @@ namespace Proyecto_Final_Equipo_1
         public static int CantidadEnStockSeleccionado = 0;
         public static int CantidadIngresada = 0;
         public static int CantidadEnCarrito = 0;
-        public static float PorPagar = 0;
-        public static float ProductoPaga = 0;
-        public static float ReciboDinero = 0;
+        public static decimal PorPagar = 0;
+        public static decimal ProductoPaga = 0;
+        public static decimal ReciboDinero = 0;
         public static bool HayVentas = false;
         public static int ContarVentas = 0;
-        public static float DineroVentas = 0;
-        public static float DineroEnCaja = 0;
-        public static float DineroInicial = 0;
-        public static float DineroFinal = 0;
-        public static float DineroGenerado = 0;
-        public static float Diferencia = 0;
+        public static decimal DineroVentas = 0;
+        public static decimal DineroEnCaja = 0;
+        public static decimal DineroInicial = 0;
+        public static decimal DineroFinal = 0;
+        public static decimal DineroGenerado = 0;
+        public static decimal Diferencia = 0;
 
 
         //FUNCION PARA ORDENAR LAS COLUMANS DE UN LISTVIEW, RECIBE UN LISTVIEW COMO PARAMETRO
@@ -253,17 +253,20 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
-            //Validamos que no pueda ingresar algo demasiado grande
-            if (!float.TryParse(Txt_DineroInicial.Text, out DineroInicial))
+            //Validar DineroInicial
+            bool inicialInvalido = !decimal.TryParse(Txt_DineroInicial.Text, out decimal ValidarInicial) || ValidarInicial > 999999.99m;
+
+            // Si el dinero inicial es invalido mensaje de error
+            if (inicialInvalido)
             {
-                MessageBox.Show("El valor ingresado no es válido. Supera el rango permitido.",
-                    "ERROR. VALOR NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Txt_DineroInicial.Text = Txt_DineroInicial.Tag.ToString(); // Reestablecemos la caja de DineroInicial a su valor original
+                MessageBox.Show("El valor ingresado para Dinero en Caja no es válido. Debe estar entre $0.01 y $999,999.99.",
+                    "ERROR. DINERO EN CAJA NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_DineroInicial.Text = Txt_DineroInicial.Tag.ToString();
                 return;
             }
 
-            DineroInicial = (float)Math.Round(float.Parse(Txt_DineroInicial.Text), 2); //Redondeamos el dinero ingresado a dos decimales
-            
+            DineroInicial = Math.Round(ValidarInicial, 2); //Redondeamos el dinero ingresado a dos decimales
+
             if (DineroInicial == 0)
             {
                 DialogResult Confirmar0 = MessageBox.Show("El dinero en caja ingresado $0. ¿Desea continuar e ingresar al sistema?",
@@ -375,21 +378,14 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
-            //Validamos que no pueda ingresar algo demasiado grande
-            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad))
-            {
-                MessageBox.Show("El valor ingresado no es válido. Supera el rango permitido.",
-                    "ERROR. VALOR NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                TxtProducto.Text = TxtProducto.Tag.ToString(); // Reestablecemos la caja de TxtProducto a su valor original
-                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); // Reestablecemos la caja de TxtCantidad a su valor original
-                return;
-            }
+            // Variables de validación
+            bool cantidadInvalida = !int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) || ValidarCantidad == 0 || ValidarCantidad > 1000000;
 
-            //Si se quieren agregar 0 productos mensaje de error
-            if (CantidadIngresada == 0)
+            if (cantidadInvalida) // Si la cantidad es invalida
             {
-                MessageBox.Show("No se pueden agregar 0 ejemplares al inventario.",
+                MessageBox.Show("El valor ingresado para cantidad no es válido. Debe estar entre 1 y 1,000,000.",
                     "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
                 return;
             }
 
@@ -400,6 +396,18 @@ namespace Proyecto_Final_Equipo_1
 
             if (ConfirmarInventario == DialogResult.No) return;
 
+            // Sumamos la cantidad ingresada al stock actual
+            int CantidadNuevaEnStock = CantidadEnStockSeleccionado + ValidarCantidad;
+
+            // Si el stock supera el límite de 1,000,000, mostramos un mensaje de error
+            if (CantidadNuevaEnStock > 1000000)
+            {
+                MessageBox.Show("La cantidad total en inventario supera el límite permitido de 1,000,000 ejemplares.",
+                                "ERROR. LÍMITE DE INVENTARIO EXCEDIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Si no sucede esto actualizamos la cantidad en stock del seleccionado
             CantidadEnStockSeleccionado += CantidadIngresada; //Actualizamos la cantidad en Stock
 
             ListViewItem ProductoSeleccioando = LvProductos.SelectedItems[0]; //Obtenemos el producto seleccionado;
@@ -455,42 +463,43 @@ namespace Proyecto_Final_Equipo_1
                 return false;
             }
 
-            //Validamos que no pueda ingresar cantidad demasiado grande
-            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) && !float.TryParse(Txt_Precio.Text, out float ValidarPrecio)) //Si las dos se ingresan muy grandes
+            // Variables de validación
+            bool cantidadInvalida = !int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) || ValidarCantidad == 0 || ValidarCantidad > 1000000;
+            bool precioInvalido = !decimal.TryParse(Txt_Precio.Text, out decimal ValidarPrecio) || ValidarPrecio < 0.01m || ValidarPrecio > 999999.99m;
+
+            if (cantidadInvalida && precioInvalido) //Si cantidad y precio no son validos
             {
-                MessageBox.Show("Los valores ingresados para precio y cantidad no son validios. Superan el rango permitido.",
-                    "ERROR. VALOR DE PRECIO Y CANTIDAD NO VALIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Los valores ingresados para precio y cantidad para registrar producto no son válidos. Verifique los rangos permitidos:\n" +
+                    "- Cantidad: 1 a 1,000,000\n" +
+                    "- Precio: $0.01 a $999,999.99.",
+                    "ERROR. VALORES NO VÁLIDOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Reestablecemos los valores en ambos campos
                 Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
                 Txt_Precio.Text = Txt_Precio.Tag.ToString();
                 return false;
             }
 
-            else if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad2)) //Si solo la cantidad supera lo permitido
+            if (cantidadInvalida) // Si solo la cantidad es invalida
             {
-                MessageBox.Show("El valor ingresado para cantidad no es valido. Supera el rango permitido.",
+                MessageBox.Show("El valor ingresado para cantidad no es válido. Debe estar entre 1 y 1,000,000.",
                     "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
                 return false;
             }
 
-            else if (!float.TryParse(Txt_Precio.Text, out float ValidarPrecio2)) //Si solo el precio supera lo permitido
+            // Validamos si solo el precio es inválido
+            if (precioInvalido)
             {
-                MessageBox.Show("El valor ingresado para precio no es valido. Supera el rango permitido.",
+                MessageBox.Show("El valor ingresado para precio no es válido. Debe estar entre $0.01 y $999,999.99.",
                     "ERROR. VALOR DE PRECIO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_Precio.Text = Txt_Precio.Tag.ToString();
                 return false;
             }
 
-            //Convertimos el valor de las cajas en tipo float y entero
-            float Precio = (float)Math.Round(float.Parse(Txt_Precio.Text), 2); //Redondeamos el precio ingresado a dos decimales
+            //Convertimos el valor de las cajas en tipo decimal y entero
+            decimal Precio = Math.Round(ValidarPrecio, 2); //Redondeamos el precio ingresado a dos decimales
             int Cantidad = int.Parse(Txt_Cantidad.Text);
-
-            if(Precio == 0 || Cantidad == 0) //Validamos que precio y cantidad no sean iguales a 0
-            {
-                MessageBox.Show("Error. No se puede ingresar 0 como valor de Precio o Cantidad en Existencia", "ERROR. 0 NO ES VALIDO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
 
             //Establecemos el obejto OledbConnection para conectar con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -728,42 +737,43 @@ namespace Proyecto_Final_Equipo_1
                 return false;
             }
 
-            //Validamos que no pueda ingresar cantidad demasiado grande
-            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) && !float.TryParse(Txt_Precio.Text, out float ValidarPrecio)) //Si las dos se ingresan muy grandes
+            // Variables de validación
+            bool cantidadInvalida = !int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) || ValidarCantidad > 1000000;
+            bool precioInvalido = !decimal.TryParse(Txt_Precio.Text, out decimal ValidarPrecio) || ValidarPrecio < 0.01m || ValidarPrecio > 999999.99m;
+
+            if (cantidadInvalida && precioInvalido) //Si cantidad y precio no son validos
             {
-                MessageBox.Show("Los valores ingresados para precio y cantidad no son validios. Superan el rango permitido.",
-                    "ERROR. VALOR DE PRECIO Y CANTIDAD NO VALIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Los valores ingresados para precio y cantidad para modificar producto no son válidos. Verifique los rangos permitidos:\n" +
+                    "- Cantidad: 0 a 1,000,000\n" +
+                    "- Precio: $0.01 a $999,999.99.",
+                    "ERROR. VALORES NO VÁLIDOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Reestablecemos los valores en ambos campos
                 Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
                 Txt_Precio.Text = Txt_Precio.Tag.ToString();
                 return false;
             }
 
-            else if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad2)) //Si solo la cantidad supera lo permitido
+            if (cantidadInvalida) // Si solo la cantidad es invalida
             {
-                MessageBox.Show("El valor ingresado para cantidad no es valido. Supera el rango permitido.",
+                MessageBox.Show("El valor ingresado para modificar cantidad no es válido. Debe estar entre 0 y 1,000,000.",
                     "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
                 return false;
             }
 
-            else if (!float.TryParse(Txt_Precio.Text, out float ValidarPrecio2)) //Si solo el precio supera lo permitido
+            // Validamos si solo el precio es inválido
+            if (precioInvalido)
             {
-                MessageBox.Show("El valor ingresado para precio no es valido. Supera el rango permitido.",
+                MessageBox.Show("El valor ingresado para modificar precio no es válido. Debe estar entre $0.01 y $999,999.99.",
                     "ERROR. VALOR DE PRECIO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_Precio.Text = Txt_Precio.Tag.ToString();
                 return false;
             }
 
-            //Convertimos el valor de las cajas en tipo float y entero
-            float Precio = float.Parse(Txt_Precio.Text);
-            float Cantidad = int.Parse(Txt_Cantidad.Text);
-
-            if (Precio == 0) //Validamos que precio sea  0
-            {
-                MessageBox.Show("Error. No se puede ingresar 0 como valor de Precio", "ERROR. 0 NO ES VALIDO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            //Convertimos el valor de las cajas en tipo decimal y entero
+            decimal Precio = Math.Round(ValidarPrecio, 2);
+            int Cantidad = int.Parse(Txt_Cantidad.Text);
 
             //using para establecer conexion con la base de datos
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -1116,7 +1126,7 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            ProductoPaga = CantidadIngresada * float.Parse(ProductoPrecio) * 1.16F; //Obtenemos lo que se pagara por ese producto con IVA.
+            ProductoPaga = CantidadIngresada * decimal.Parse(ProductoPrecio) * 1.16m; //Obtenemos lo que se pagara por ese producto con IVA.
 
             PorPagar += ProductoPaga; //Lo agregamos al total de la venta         
 
@@ -1127,7 +1137,7 @@ namespace Proyecto_Final_Equipo_1
             ProductoCarrito.SubItems.Add(ProductoNombre);
             ProductoCarrito.SubItems.Add(ProductoPrecio);
             ProductoCarrito.SubItems.Add(ProductoCantidad);
-            ProductoCarrito.SubItems.Add((CantidadIngresada * float.Parse(ProductoPrecio)).ToString()); //Total del producto sin IVA
+            ProductoCarrito.SubItems.Add((CantidadIngresada * decimal.Parse(ProductoPrecio)).ToString()); //Total del producto sin IVA
             ProductoCarrito.SubItems.Add(ProductoPaga.ToString()); //Total del producto con IVA
 
             LvCarrito.Items.Add(ProductoCarrito); //Cargamos el producto
@@ -1186,7 +1196,7 @@ namespace Proyecto_Final_Equipo_1
 
             ListViewItem ItemSeleccionado = LvCarrito.SelectedItems[0]; //Obtenemos el producto seleccionado del carrito
 
-            ProductoPaga = float.Parse(ItemSeleccionado.SubItems[5].Text); //Obtenemos lo que se paga por los ejemplares de ese producto
+            ProductoPaga = decimal.Parse(ItemSeleccionado.SubItems[5].Text); //Obtenemos lo que se paga por los ejemplares de ese producto
 
             PorPagar -= ProductoPaga; //Lo restamos del total de la venta
 
@@ -1241,10 +1251,10 @@ namespace Proyecto_Final_Equipo_1
                             comando.Parameters.AddWithValue("@TipoUsuario", TipoUsuario);
                             comando.Parameters.AddWithValue("@IdProducto", int.Parse(ProductoEnCarrito.SubItems[0].Text));
                             comando.Parameters.AddWithValue("@NombreProducto", ProductoEnCarrito.SubItems[1].Text);
-                            comando.Parameters.AddWithValue("@Precio", float.Parse(ProductoEnCarrito.SubItems[2].Text));
-                            comando.Parameters.AddWithValue("@Cantidad", int.Parse(ProductoEnCarrito.SubItems[3].Text));
-                            comando.Parameters.AddWithValue("@Total", float.Parse(ProductoEnCarrito.SubItems[4].Text));
-                            comando.Parameters.AddWithValue("@TotalIVA", float.Parse(ProductoEnCarrito.SubItems[4].Text) * 1.16);
+                            comando.Parameters.AddWithValue("@Precio", decimal.Parse(ProductoEnCarrito.SubItems[2].Text));
+                            comando.Parameters.AddWithValue("@Cantidad", decimal.Parse(ProductoEnCarrito.SubItems[3].Text));
+                            comando.Parameters.AddWithValue("@Total", decimal.Parse(ProductoEnCarrito.SubItems[4].Text));
+                            comando.Parameters.AddWithValue("@TotalIVA", decimal.Parse(ProductoEnCarrito.SubItems[4].Text) * 1.16m);
                             comando.Parameters.AddWithValue("@FechaHora", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")); //Fecha y Hora Actuales
 
                             comando.ExecuteNonQuery(); //Ejectuamos comando de inserción
@@ -1388,16 +1398,20 @@ namespace Proyecto_Final_Equipo_1
                 return false;
             }
 
-            if (!float.TryParse(TxtDineroRecibo.Text, out float ValidarDineroRecibo)) //Si el dinero supera lo permmitido
+            //Validar DineroRecibo
+            bool dineroReciboInvalido = !decimal.TryParse(TxtDineroRecibo.Text, out decimal ValidarRecibo) || ValidarRecibo < .01m || ValidarRecibo > 999999.99m;
+
+            // Si el dinero recibido es invalido mensaje de error
+            if (dineroReciboInvalido)
             {
-                MessageBox.Show("El valor ingresado para dinero recibido no es valido. Supera el rango permitido.",
-                    "ERROR. VALOR DE DINERO RECIBIDO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El dinero con el que paga el usuario no es válido. Debe estar entre $0.01 y $999,999.99.",
+                    "ERROR. DINERO CON EL QUE SE PAGA INVALIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 TxtDineroRecibo.Text = TxtDineroRecibo.Tag.ToString();
                 return false;
             }
 
             ReciboDinero = 0; //Reinciamos el dinero que se recibe
-            ReciboDinero = (float)Math.Round(float.Parse(TxtDineroRecibo.Text), 2); //Redondeamos el dinero con el que se paga a dos decimales
+            ReciboDinero = Math.Round(ValidarRecibo, 2); //Redondeamos el dinero con el que se paga a dos decimales
             
             //Si el dinero es menor a la cantidad que se tiene que pagar mensaje de error
             if (ReciboDinero < PorPagar)
@@ -1488,7 +1502,7 @@ namespace Proyecto_Final_Equipo_1
                         //Cargamos el registro al ListView
                         LvVentas.Items.Add(Venta);
 
-                        DineroVentas += float.Parse(LeerVentas["Total_IVA"].ToString()); //Sumamos el dinero generado de cada Venta
+                        DineroVentas += decimal.Parse(LeerVentas["Total_IVA"].ToString()); //Sumamos el dinero generado de cada Venta
                     } 
                 }
                 //Actualizamos la etiqueta que cuenta los registros
@@ -1531,15 +1545,19 @@ namespace Proyecto_Final_Equipo_1
         //FUNCION PARA REGISTRAR LAS VENTAS Y CERRAR SESION
         public static void CorteCajaYCerrarSesion(TextBox TxtDineroFinal, Label ErrorDineroFinal)
         {
-            if (!float.TryParse(TxtDineroFinal.Text, out float ValidarDineroRecibo)) //Si el dinero supera lo permmitido
+            //Validar DineroFinal
+            bool finalInvalido = !decimal.TryParse(TxtDineroFinal.Text, out decimal ValidarFinal) || ValidarFinal < .01m || ValidarFinal > 999999.99m;
+
+            // Si el dinero final es invalido mensaje de error
+            if (finalInvalido)
             {
-                MessageBox.Show("El valor ingresado para dinero final no es valido. Supera el rango permitido.",
-                    "ERROR. VALOR DE DINERO FINAL NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El valor ingresado para Dinero Final no es válido. Debe estar entre $0.01 y $999,999.99.",
+                    "ERROR. DINERO EN CAJA NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 TxtDineroFinal.Text = TxtDineroFinal.Tag.ToString();
                 return;
             }
 
-            DineroFinal = (float)Math.Round(float.Parse(TxtDineroFinal.Text), 2); //DineroFinal es el ingresaado por el usuario redondeado a dos decimales
+            DineroFinal = Math.Round(ValidarFinal, 2); //DineroFinal es el ingresaado por el usuario redondeado a dos decimales
 
             if (DineroFinal < DineroInicial)  //Si el dinero Final es menor al Inical mensaje de error
             {
