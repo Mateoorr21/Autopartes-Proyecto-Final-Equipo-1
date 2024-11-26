@@ -96,11 +96,31 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnMenos_Click(object sender, EventArgs e)
         {
+            //Validamos que no pueda ingresar algo demasiado grande
+            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad))
+            {
+                MessageBox.Show("El valor contenido en la caja no es válido. Supera el rango permitido.",
+                    "ERROR. VALOR NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtProducto.Text = TxtProducto.Tag.ToString(); // Reestablecemos la caja de TxtProducto a su valor original
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); // Reestablecemos la caja de TxtCantidad a su valor original
+                return;
+            }
+
             Txt_Cantidad.Text = (FuncionesAplicacion.CantidadIngresada - 1).ToString(); //Restamos 1 a la cantidad ingresada
         }
 
         private void BtnMas_Click(object sender, EventArgs e)
         {
+            //Validamos que no pueda ingresar algo demasiado grande
+            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad))
+            {
+                MessageBox.Show("El valor contenido en la caja no es válido. Supera el rango permitido.",
+                    "ERROR. VALOR NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtProducto.Text = TxtProducto.Tag.ToString(); // Reestablecemos la caja de TxtProducto a su valor original
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); // Reestablecemos la caja de TxtCantidad a su valor original
+                return;
+            }
+
             Txt_Cantidad.Text = (FuncionesAplicacion.CantidadIngresada + 1).ToString(); //Aumentamos la cantidad ingresada en 1
         }
 

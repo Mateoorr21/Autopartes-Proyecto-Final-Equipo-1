@@ -253,6 +253,15 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
+            //Validamos que no pueda ingresar algo demasiado grande
+            if (!float.TryParse(Txt_DineroInicial.Text, out DineroInicial))
+            {
+                MessageBox.Show("El valor ingresado no es válido. Supera el rango permitido.",
+                    "ERROR. VALOR NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_DineroInicial.Text = Txt_DineroInicial.Tag.ToString(); // Reestablecemos la caja de DineroInicial a su valor original
+                return;
+            }
+
             DineroInicial = (float)Math.Round(float.Parse(Txt_DineroInicial.Text), 2); //Redondeamos el dinero ingresado a dos decimales
             
             if (DineroInicial == 0)
@@ -366,6 +375,16 @@ namespace Proyecto_Final_Equipo_1
                 return;
             }
 
+            //Validamos que no pueda ingresar algo demasiado grande
+            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad))
+            {
+                MessageBox.Show("El valor ingresado no es válido. Supera el rango permitido.",
+                    "ERROR. VALOR NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtProducto.Text = TxtProducto.Tag.ToString(); // Reestablecemos la caja de TxtProducto a su valor original
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); // Reestablecemos la caja de TxtCantidad a su valor original
+                return;
+            }
+
             //Si se quieren agregar 0 productos mensaje de error
             if (CantidadIngresada == 0)
             {
@@ -433,6 +452,32 @@ namespace Proyecto_Final_Equipo_1
             {
                 MessageBox.Show("Error. Ingrese la información del producto a ingresar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            //Validamos que no pueda ingresar cantidad demasiado grande
+            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) && !float.TryParse(Txt_Precio.Text, out float ValidarPrecio)) //Si las dos se ingresan muy grandes
+            {
+                MessageBox.Show("Los valores ingresados para precio y cantidad no son validios. Superan el rango permitido.",
+                    "ERROR. VALOR DE PRECIO Y CANTIDAD NO VALIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
+                Txt_Precio.Text = Txt_Precio.Tag.ToString();
+                return false;
+            }
+
+            else if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad2)) //Si solo la cantidad supera lo permitido
+            {
+                MessageBox.Show("El valor ingresado para cantidad no es valido. Supera el rango permitido.",
+                    "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
+                return false;
+            }
+
+            else if (!float.TryParse(Txt_Precio.Text, out float ValidarPrecio2)) //Si solo el precio supera lo permitido
+            {
+                MessageBox.Show("El valor ingresado para precio no es valido. Supera el rango permitido.",
+                    "ERROR. VALOR DE PRECIO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Precio.Text = Txt_Precio.Tag.ToString();
                 return false;
             }
 
@@ -680,6 +725,32 @@ namespace Proyecto_Final_Equipo_1
             {
                 MessageBox.Show("Error. Ingrese información a modificar", "ERROR. ALGUNO DE LOS CAMPOS ESTA VACÍO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            //Validamos que no pueda ingresar cantidad demasiado grande
+            if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) && !float.TryParse(Txt_Precio.Text, out float ValidarPrecio)) //Si las dos se ingresan muy grandes
+            {
+                MessageBox.Show("Los valores ingresados para precio y cantidad no son validios. Superan el rango permitido.",
+                    "ERROR. VALOR DE PRECIO Y CANTIDAD NO VALIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
+                Txt_Precio.Text = Txt_Precio.Tag.ToString();
+                return false;
+            }
+
+            else if (!int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad2)) //Si solo la cantidad supera lo permitido
+            {
+                MessageBox.Show("El valor ingresado para cantidad no es valido. Supera el rango permitido.",
+                    "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
+                return false;
+            }
+
+            else if (!float.TryParse(Txt_Precio.Text, out float ValidarPrecio2)) //Si solo el precio supera lo permitido
+            {
+                MessageBox.Show("El valor ingresado para precio no es valido. Supera el rango permitido.",
+                    "ERROR. VALOR DE PRECIO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Txt_Precio.Text = Txt_Precio.Tag.ToString();
                 return false;
             }
 
@@ -1317,6 +1388,14 @@ namespace Proyecto_Final_Equipo_1
                 return false;
             }
 
+            if (!float.TryParse(TxtDineroRecibo.Text, out float ValidarDineroRecibo)) //Si el dinero supera lo permmitido
+            {
+                MessageBox.Show("El valor ingresado para dinero recibido no es valido. Supera el rango permitido.",
+                    "ERROR. VALOR DE DINERO RECIBIDO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtDineroRecibo.Text = TxtDineroRecibo.Tag.ToString();
+                return false;
+            }
+
             ReciboDinero = 0; //Reinciamos el dinero que se recibe
             ReciboDinero = (float)Math.Round(float.Parse(TxtDineroRecibo.Text), 2); //Redondeamos el dinero con el que se paga a dos decimales
             
@@ -1452,6 +1531,14 @@ namespace Proyecto_Final_Equipo_1
         //FUNCION PARA REGISTRAR LAS VENTAS Y CERRAR SESION
         public static void CorteCajaYCerrarSesion(TextBox TxtDineroFinal, Label ErrorDineroFinal)
         {
+            if (!float.TryParse(TxtDineroFinal.Text, out float ValidarDineroRecibo)) //Si el dinero supera lo permmitido
+            {
+                MessageBox.Show("El valor ingresado para dinero final no es valido. Supera el rango permitido.",
+                    "ERROR. VALOR DE DINERO FINAL NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtDineroFinal.Text = TxtDineroFinal.Tag.ToString();
+                return;
+            }
+
             DineroFinal = (float)Math.Round(float.Parse(TxtDineroFinal.Text), 2); //DineroFinal es el ingresaado por el usuario redondeado a dos decimales
 
             if (DineroFinal < DineroInicial)  //Si el dinero Final es menor al Inical mensaje de error
