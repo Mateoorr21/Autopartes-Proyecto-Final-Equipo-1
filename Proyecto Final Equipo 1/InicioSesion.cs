@@ -15,6 +15,7 @@ namespace Proyecto_Final_Equipo_1
     public partial class InicioSesion : Form
     {
         Inicio Inicio_Recibido;
+        bool CorrectoInicioSesion;
 
         //Booleano para controlar la primer tecla ingresada
         bool PrimerTeclaPresionada = true;
@@ -27,7 +28,14 @@ namespace Proyecto_Final_Equipo_1
 
         private void Btn_Ingreso_Click(object sender, EventArgs e)
         {
-            FuncionesAplicacion.IniciarSesion(Txt_Usuario.Text, Txt_Password.Text, Txt_Usuario, Txt_Password, this); //llamda a función de Inicio de Sesion
+            CorrectoInicioSesion = FuncionesAplicacion.IniciarSesion(Txt_Usuario.Text, Txt_Password.Text, Txt_Usuario, Txt_Password, this); //llamda a función de Inicio de Sesion
+
+            if( CorrectoInicioSesion ) //Mostramos la ventan de dinero en caja
+            {
+                this.Hide();
+                DineroInicial VentanaDineroInicial = new DineroInicial(Inicio_Recibido, this);
+                VentanaDineroInicial.ShowDialog();
+            }
         }
 
         private void Txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -70,6 +78,9 @@ namespace Proyecto_Final_Equipo_1
         {
             if (PrimerTeclaPresionada) //Si es la primer tecla que se presiona
             {
+                Txt_Password.Enabled = true;
+                Txt_Usuario.Enabled = true;
+                Btn_Ingreso.Enabled = true;
                 Txt_Usuario.TabStop = true; //Indicamos que los controles se recorran con tabindex
                 Txt_Password.TabStop = true;
                 Btn_Ingreso.TabStop = true;

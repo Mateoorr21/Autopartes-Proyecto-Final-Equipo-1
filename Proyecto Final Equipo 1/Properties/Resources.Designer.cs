@@ -603,6 +603,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconoCerrarSesion {
+            get {
+                object obj = ResourceManager.GetObject("IconoCerrarSesion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconoCorteCaja {
             get {
                 object obj = ResourceManager.GetObject("IconoCorteCaja", resourceCulture);
@@ -636,6 +646,16 @@ namespace Proyecto_Final_Equipo_1.Properties {
         internal static System.Drawing.Bitmap IconoEliminarUsuario {
             get {
                 object obj = ResourceManager.GetObject("IconoEliminarUsuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoInstruccion {
+            get {
+                object obj = ResourceManager.GetObject("IconoInstruccion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,4 +1,5 @@
-﻿using Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios;
+﻿using Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes;
+using Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,9 @@ namespace Proyecto_Final_Equipo_1
                 ShowWindow(taskbarHandle, SW_HIDE);
             }
         }
+
+        //Variable con el control actual
+        string ControlActual = null;
 
         //Declaramos variables de tipo UserControl a utilizar
         RegistrarUsuario registroUsuario;
@@ -89,6 +93,12 @@ namespace Proyecto_Final_Equipo_1
         //Funcion para ver si tenemos que abrir un nuevo control de usuario o no
         private void CambiarControlCatalogo(Control control, Button button)
         {
+            FuncionesAplicacion.CambioControl = true; //Se Cambio de control
+            FuncionesAplicacion.PrimeraTecla = true;
+            ControlActual = control.Name; //Guardamos el nombre del control en el que estamos
+
+            FuncionesAplicacion.ReestablecerPrimeraTecla(control);
+
             // Limpiar todos los controles del panel
             PanelCatalogo.Controls.Clear();
 
@@ -109,16 +119,16 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnModificarUsuario_Click(object sender, EventArgs e)
         {
-            CambiarControlCatalogo(modificarUsuario, BtnModificarUsuario); //Llamamos a la función mostrar el control
             LimpiarTodosLosControles();
             modificarUsuario.CargarUsuariosModificar();
+            CambiarControlCatalogo(modificarUsuario, BtnModificarUsuario); //Llamamos a la función mostrar el control
         }
 
         private void BtnEliminarUsuario_Click(object sender, EventArgs e)
         {
-            CambiarControlCatalogo(eliminarUsuario, BtnEliminarUsuario); //Llamamos a la función mostrar el control
             LimpiarTodosLosControles();
             eliminarUsuario.CargarUsuariosEliminar();
+            CambiarControlCatalogo(eliminarUsuario, BtnEliminarUsuario); //Llamamos a la función mostrar el control
         }
 
         private void BtnSalir_Click(object sender, EventArgs e)
@@ -154,6 +164,8 @@ namespace Proyecto_Final_Equipo_1
 
         private void CatalogoUsuarios_Load(object sender, EventArgs e)
         {
+            KeyPreview = true; //Habilitamos el KeyPreview para capturar teclas antes de que lleguen a los controles
+
             // Detectar resolución de pantalla
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -169,6 +181,31 @@ namespace Proyecto_Final_Equipo_1
             LblUsuario.Text = FuncionesAplicacion.Usuario;
             LblNombreCompleto.Text = FuncionesAplicacion.NombreCompleto;
             LblPermiso.Text = "(" + FuncionesAplicacion.TipoUsuario + ")";
+        }
+
+        private void CatalogoUsuarios_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (FuncionesAplicacion.CambioControl == true && FuncionesAplicacion.PrimeraTecla == true)
+            {
+                switch (ControlActual)
+                {
+                    case "EliminarUsuario":
+                        FuncionesAplicacion.LaPrimeraTecla(eliminarUsuario);
+                        eliminarUsuario.TxtBuscar.Focus();
+                        break;
+                    case "ModificarUsuario":
+                        FuncionesAplicacion.LaPrimeraTecla(modificarUsuario);
+                        modificarUsuario.TxtBuscar.Focus();
+                        break;
+                    case "RegistrarUsuario":
+                        FuncionesAplicacion.LaPrimeraTecla(registroUsuario);
+                        registroUsuario.Txt_Nombre.Focus();
+                        break;
+                }
+
+                FuncionesAplicacion.PrimeraTecla = false;
+                FuncionesAplicacion.CambioControl = false;
+            }
         }
     }
 }

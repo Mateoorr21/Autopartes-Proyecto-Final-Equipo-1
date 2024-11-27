@@ -29,15 +29,13 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
 
             //Reestablecemos los campos de edicion
-            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
-            Txt_Usuario.Text = Txt_Usuario.Tag.ToString();
-            Txt_Password.Text = Txt_Password.Tag.ToString();
             RdAdmin.Checked = false;
             RdCajero.Checked = false;
 
             //Llamamos a la función BuscarUsuarioModificar de Inicio
             FuncionesCatalogoUsuarios.BuscarUsuarioModificar(TxtBuscar.Text, TxtBuscar, RdAproximada, 
                 RdNombre, LvUsuarios,LblCantidadRegistros, LblErrorBuscar);
+            LvUsuarios.Focus();
         }
 
         private void ModificarUsuario_Load(object sender, EventArgs e)
@@ -76,9 +74,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
 
             //Reestablecemos los campos de edicion
-            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
-            Txt_Usuario.Text = Txt_Usuario.Tag.ToString();
-            Txt_Password.Text = Txt_Password.Tag.ToString();
+            Txt_Nombre.Clear();
+            Txt_Usuario.Clear();
+            Txt_Password.Clear();
             RdAdmin.Checked = false;
             RdCajero.Checked = false;
 
@@ -148,6 +146,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             //Llamamos a la función actualizar y pasamos los parametros
             FuncionesCatalogoUsuarios.ActualizarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, 
                 LvUsuarios,Txt_Nombre, Txt_Usuario, Txt_Password, RdAdmin, RdCajero, LblErrorBuscar, TxtBuscar);
+            TxtBuscar.Focus();
 
             //Si el usuario se modifico a si mismo, actualizamos los datos de inicio de sesion en Aplicacion y Catalogo
             if (FuncionesCatalogoUsuarios.SeAutoModifico == true)
@@ -168,6 +167,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
 
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
             CargarUsuariosModificar();
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
         }
 
         private void LvUsuarios_ColumnClick(object sender, ColumnClickEventArgs e)

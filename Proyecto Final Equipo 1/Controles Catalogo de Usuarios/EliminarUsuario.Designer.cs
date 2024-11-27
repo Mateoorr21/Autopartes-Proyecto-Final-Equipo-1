@@ -64,6 +64,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.PicInstruccion = new System.Windows.Forms.PictureBox();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel6.SuspendLayout();
@@ -76,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInstruccion)).BeginInit();
             this.SuspendLayout();
             // 
             // LblErrorBuscar
@@ -487,10 +489,22 @@
             this.pictureBox5.TabIndex = 174;
             this.pictureBox5.TabStop = false;
             // 
+            // PicInstruccion
+            // 
+            this.PicInstruccion.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.PicInstruccion.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoInstruccion;
+            this.PicInstruccion.Location = new System.Drawing.Point(-15, 0);
+            this.PicInstruccion.Name = "PicInstruccion";
+            this.PicInstruccion.Size = new System.Drawing.Size(1243, 25);
+            this.PicInstruccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicInstruccion.TabIndex = 175;
+            this.PicInstruccion.TabStop = false;
+            // 
             // EliminarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PicInstruccion);
             this.Controls.Add(this.BtnBuscar);
             this.Controls.Add(this.PicLogo);
             this.Controls.Add(this.BtnCancelar);
@@ -524,6 +538,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInstruccion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,7 +553,6 @@
         private System.Windows.Forms.Label LblErrorBuscar;
         private System.Windows.Forms.Label LblCampoBuscar;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
@@ -566,5 +580,7 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.ToolTip ToolTipBorrarUsuario;
+        public System.Windows.Forms.TextBox TxtBuscar;
+        private System.Windows.Forms.PictureBox PicInstruccion;
     }
 }

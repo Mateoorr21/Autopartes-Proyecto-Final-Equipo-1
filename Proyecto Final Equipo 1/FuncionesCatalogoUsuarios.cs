@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
@@ -108,9 +109,9 @@ namespace Proyecto_Final_Equipo_1
             }
 
             //Reestablecemos las cajas de texto y Radio Button por default es Cajero
-            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
-            Txt_Usuario.Text = Txt_Usuario.Tag.ToString();
-            Txt_Password.Text = Txt_Password.Tag.ToString();
+            Txt_Nombre.Clear();
+            Txt_Usuario.Clear();
+            Txt_Password.Clear();
             RdAdmin.Checked = false;
             RdCajero.Checked = true;
 
@@ -205,7 +206,7 @@ namespace Proyecto_Final_Equipo_1
                 // Actualizamos la etiqueta que cuenta los registros
                 LblCantidadRegistros.Text = "Cantidad de Usuarios: " + ContarUsuarios.ToString();
 
-                TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja de texto Buscar
+                TxtBuscar.Clear(); //Restablecemos la caja de texto Buscar
             }
         }
 
@@ -213,7 +214,7 @@ namespace Proyecto_Final_Equipo_1
         public static void BorrarUsuario(ListView LvUsuarios, Label LblCantidadRegistros, Label LblErrorBuscar, TextBox TxtBuscar)
         {
             LblErrorBuscar.Visible = false; //Ocultamos la etiqueta de Error al Buscar
-            TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja de texto Buscar
+            TxtBuscar.Clear(); //Restablecemos la caja de texto Buscar
 
             //Si no hay registro seleccionado menssaje de Error
             if (LvUsuarios.SelectedItems.Count == 0)
@@ -348,7 +349,7 @@ namespace Proyecto_Final_Equipo_1
                 // Actualizamos la etiqueta que cuenta los registros
                 LblCantidadRegistros.Text = "Cantidad de Usuarios: " + ContarUsuarios.ToString();
 
-                TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos la caja Buscar
+                TxtBuscar.Clear(); //Restablecemos la caja Buscar
             }
         }
 
@@ -478,13 +479,13 @@ namespace Proyecto_Final_Equipo_1
 
             //Restablecemos los controles de Actualización de Datos (Cajas de Texto y Radios) y se Deselecciona el ListView
             LvUsuarios.SelectedItems.Clear();
-            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
-            Txt_Usuario.Text = Txt_Usuario.Tag.ToString();
-            Txt_Password.Text = Txt_Password.Tag.ToString();
+            Txt_Nombre.Clear();
+            Txt_Usuario.Clear();
+            Txt_Password.Clear();
             RdAdmin.Checked = false;
             RdCajero.Checked = false;
             LblErrorBuscar.Visible = false;
-            TxtBuscar.Text = TxtBuscar.Tag.ToString();
+            TxtBuscar.Clear();
 
             //Mensaje de Actualización de datos exitosa
             MessageBox.Show("Datos del Usuario Operativo actualizados correctamente.", "ACTUALIZACION DE DATOS DE USUARIO",

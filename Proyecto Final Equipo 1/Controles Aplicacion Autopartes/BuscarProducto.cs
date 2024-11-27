@@ -45,6 +45,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         {
             //Llamamos a la función EncontrarProductos
             FuncionesAplicacion.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros, LblErrorBuscar);
+            LvProductos.Focus();
         }
 
         private void RdId_CheckedChanged(object sender, EventArgs e)
@@ -84,6 +85,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
             CargarProductos();
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
+            TxtBuscar.Clear();
+            TxtBuscar.Focus();
         }
 
         private void LvProductos_ColumnClick(object sender, ColumnClickEventArgs e)

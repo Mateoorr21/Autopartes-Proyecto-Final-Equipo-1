@@ -23,6 +23,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             //Llamamos a la función BuscarUsuarioEliminar de Inicio
             FuncionesCatalogoUsuarios.BuscarUsuarioEliminar(TxtBuscar.Text, FuncionesAplicacion.Usuario, FuncionesAplicacion.TipoUsuario,
                 TxtBuscar, RdAproximada, RdNombre, LvUsuarios, LblCantidadRegistros, LblErrorBuscar);
+            LvUsuarios.Focus();
         }
 
         private void LvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,12 +79,14 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         {
             //Llamamos a la función Eliminar que está en Inicio y pasamos el parametro del Id del Registro Seleccionado
             FuncionesCatalogoUsuarios.BorrarUsuario(LvUsuarios, LblCantidadRegistros, LblErrorBuscar, TxtBuscar);
+            TxtBuscar.Focus();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
             CargarUsuariosEliminar();
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
         }
 
         private void LvUsuarios_ColumnClick(object sender, ColumnClickEventArgs e)

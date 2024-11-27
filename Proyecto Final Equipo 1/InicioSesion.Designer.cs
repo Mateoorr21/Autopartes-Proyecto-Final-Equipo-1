@@ -55,10 +55,9 @@
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Stencil", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.LblTitulo.Location = new System.Drawing.Point(108, 136);
-            this.LblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblTitulo.Location = new System.Drawing.Point(144, 167);
             this.LblTitulo.Name = "LblTitulo";
-            this.LblTitulo.Size = new System.Drawing.Size(180, 57);
+            this.LblTitulo.Size = new System.Drawing.Size(222, 71);
             this.LblTitulo.TabIndex = 1;
             this.LblTitulo.Text = "LOG IN";
             // 
@@ -66,10 +65,9 @@
             // 
             this.LblErrorPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorPassword.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorPassword.Location = new System.Drawing.Point(104, 307);
-            this.LblErrorPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblErrorPassword.Location = new System.Drawing.Point(139, 378);
             this.LblErrorPassword.Name = "LblErrorPassword";
-            this.LblErrorPassword.Size = new System.Drawing.Size(143, 20);
+            this.LblErrorPassword.Size = new System.Drawing.Size(191, 25);
             this.LblErrorPassword.TabIndex = 15;
             this.LblErrorPassword.Text = "Entrada no valida";
             this.LblErrorPassword.Visible = false;
@@ -77,13 +75,14 @@
             // Txt_Password
             // 
             this.Txt_Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txt_Password.Enabled = false;
             this.Txt_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_Password.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(78)))), ((int)(((byte)(176)))));
-            this.Txt_Password.Location = new System.Drawing.Point(139, 282);
-            this.Txt_Password.Margin = new System.Windows.Forms.Padding(2);
+            this.Txt_Password.Location = new System.Drawing.Point(185, 347);
+            this.Txt_Password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Password.MaxLength = 20;
             this.Txt_Password.Name = "Txt_Password";
-            this.Txt_Password.Size = new System.Drawing.Size(113, 16);
+            this.Txt_Password.Size = new System.Drawing.Size(151, 20);
             this.Txt_Password.TabIndex = 6;
             this.Txt_Password.TabStop = false;
             this.Txt_Password.Text = "Contraseña...";
@@ -93,10 +92,9 @@
             // 
             this.LblErrorUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblErrorUsuario.ForeColor = System.Drawing.Color.Red;
-            this.LblErrorUsuario.Location = new System.Drawing.Point(106, 250);
-            this.LblErrorUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblErrorUsuario.Location = new System.Drawing.Point(141, 308);
             this.LblErrorUsuario.Name = "LblErrorUsuario";
-            this.LblErrorUsuario.Size = new System.Drawing.Size(149, 18);
+            this.LblErrorUsuario.Size = new System.Drawing.Size(199, 22);
             this.LblErrorUsuario.TabIndex = 16;
             this.LblErrorUsuario.Text = "Entrada no valida";
             this.LblErrorUsuario.Visible = false;
@@ -106,14 +104,15 @@
             this.Btn_Ingreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.Btn_Ingreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Btn_Ingreso.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_Ingreso.Enabled = false;
             this.Btn_Ingreso.FlatAppearance.BorderSize = 0;
             this.Btn_Ingreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Ingreso.Font = new System.Drawing.Font("Bahnschrift", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ingreso.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Btn_Ingreso.Location = new System.Drawing.Point(104, 340);
-            this.Btn_Ingreso.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Ingreso.Location = new System.Drawing.Point(139, 418);
+            this.Btn_Ingreso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Ingreso.Name = "Btn_Ingreso";
-            this.Btn_Ingreso.Size = new System.Drawing.Size(184, 34);
+            this.Btn_Ingreso.Size = new System.Drawing.Size(245, 42);
             this.Btn_Ingreso.TabIndex = 7;
             this.Btn_Ingreso.TabStop = false;
             this.Btn_Ingreso.Text = "LOG IN";
@@ -123,13 +122,14 @@
             // Txt_Usuario
             // 
             this.Txt_Usuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Txt_Usuario.Enabled = false;
             this.Txt_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_Usuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(78)))), ((int)(((byte)(176)))));
-            this.Txt_Usuario.Location = new System.Drawing.Point(140, 224);
-            this.Txt_Usuario.Margin = new System.Windows.Forms.Padding(2);
+            this.Txt_Usuario.Location = new System.Drawing.Point(187, 276);
+            this.Txt_Usuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Usuario.MaxLength = 20;
             this.Txt_Usuario.Name = "Txt_Usuario";
-            this.Txt_Usuario.Size = new System.Drawing.Size(142, 16);
+            this.Txt_Usuario.Size = new System.Drawing.Size(189, 20);
             this.Txt_Usuario.TabIndex = 5;
             this.Txt_Usuario.TabStop = false;
             this.Txt_Usuario.Text = "Usuario...";
@@ -145,10 +145,10 @@
             this.BtnVolverInicio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnVolverInicio.Font = new System.Drawing.Font("Bahnschrift", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnVolverInicio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BtnVolverInicio.Location = new System.Drawing.Point(104, 392);
-            this.BtnVolverInicio.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnVolverInicio.Location = new System.Drawing.Point(139, 482);
+            this.BtnVolverInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnVolverInicio.Name = "BtnVolverInicio";
-            this.BtnVolverInicio.Size = new System.Drawing.Size(184, 34);
+            this.BtnVolverInicio.Size = new System.Drawing.Size(245, 42);
             this.BtnVolverInicio.TabIndex = 8;
             this.BtnVolverInicio.TabStop = false;
             this.BtnVolverInicio.Text = "SALIR";
@@ -159,10 +159,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.White;
             this.pictureBox4.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.Password1;
-            this.pictureBox4.Location = new System.Drawing.Point(108, 278);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Location = new System.Drawing.Point(144, 342);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(21, 23);
+            this.pictureBox4.Size = new System.Drawing.Size(28, 28);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 25;
             this.pictureBox4.TabStop = false;
@@ -175,10 +175,10 @@
             this.BtnPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnPassword.FlatAppearance.BorderSize = 0;
             this.BtnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnPassword.Location = new System.Drawing.Point(259, 280);
-            this.BtnPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnPassword.Location = new System.Drawing.Point(345, 345);
+            this.BtnPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnPassword.Name = "BtnPassword";
-            this.BtnPassword.Size = new System.Drawing.Size(22, 20);
+            this.BtnPassword.Size = new System.Drawing.Size(29, 25);
             this.BtnPassword.TabIndex = 4;
             this.BtnPassword.TabStop = false;
             this.BtnPassword.UseVisualStyleBackColor = false;
@@ -188,10 +188,10 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.UsuariosInicioSesion;
-            this.pictureBox3.Location = new System.Drawing.Point(145, 29);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Location = new System.Drawing.Point(193, 36);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(99, 104);
+            this.pictureBox3.Size = new System.Drawing.Size(132, 128);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 24;
             this.pictureBox3.TabStop = false;
@@ -200,10 +200,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.Usuario;
-            this.pictureBox2.Location = new System.Drawing.Point(109, 220);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(145, 271);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(22, 24);
+            this.pictureBox2.Size = new System.Drawing.Size(29, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 23;
             this.pictureBox2.TabStop = false;
@@ -211,10 +211,10 @@
             // PicCaja
             // 
             this.PicCaja.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.CajaDatos;
-            this.PicCaja.Location = new System.Drawing.Point(104, 218);
-            this.PicCaja.Margin = new System.Windows.Forms.Padding(2);
+            this.PicCaja.Location = new System.Drawing.Point(139, 268);
+            this.PicCaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PicCaja.Name = "PicCaja";
-            this.PicCaja.Size = new System.Drawing.Size(184, 28);
+            this.PicCaja.Size = new System.Drawing.Size(245, 34);
             this.PicCaja.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicCaja.TabIndex = 21;
             this.PicCaja.TabStop = false;
@@ -222,10 +222,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.CajaDatos;
-            this.pictureBox1.Location = new System.Drawing.Point(104, 275);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(139, 338);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(184, 28);
+            this.pictureBox1.Size = new System.Drawing.Size(245, 34);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
@@ -236,21 +236,20 @@
             this.LblIndicacion.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.LblIndicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblIndicacion.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.LblIndicacion.Location = new System.Drawing.Point(107, 183);
-            this.LblIndicacion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblIndicacion.Location = new System.Drawing.Point(143, 225);
             this.LblIndicacion.Name = "LblIndicacion";
-            this.LblIndicacion.Size = new System.Drawing.Size(177, 20);
+            this.LblIndicacion.Size = new System.Drawing.Size(220, 25);
             this.LblIndicacion.TabIndex = 26;
             this.LblIndicacion.Text = "(ingrese cualquier tecla)";
             // 
             // InicioSesion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.CancelButton = this.BtnVolverInicio;
-            this.ClientSize = new System.Drawing.Size(392, 489);
+            this.ClientSize = new System.Drawing.Size(523, 602);
             this.ControlBox = false;
             this.Controls.Add(this.LblIndicacion);
             this.Controls.Add(this.pictureBox4);
@@ -268,7 +267,7 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InicioSesion";

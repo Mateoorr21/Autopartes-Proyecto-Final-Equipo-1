@@ -45,7 +45,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.SeCompletoOperacion = FuncionesAplicacion.RegistrarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, 
                 Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
 
-            if(FuncionesAplicacion.SeCompletoOperacion) FuncionesAplicacion.ReiniciarVariables(); //Si se registro reiniciamos las Variables
+            if (FuncionesAplicacion.SeCompletoOperacion)
+            {
+                FuncionesAplicacion.ReiniciarVariables(); //Si se registro reiniciamos las Variables
+                Txt_Nombre.Focus();
+            }
         }
 
         private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)
@@ -55,6 +59,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void AgregarProducto_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = null; // Desactiva el foco inicial en cualquier control
+            this.Focus(); // Asegura que el formulario capture el foco
+
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 
@@ -62,6 +69,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         {
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
         }
 
         private void Txt_Nombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -77,6 +85,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         private void Txt_Marca_KeyPress(object sender, KeyPressEventArgs e)
         {
             FuncionesAplicacion.ValidarEntradaTxtNombreDescripcionMarca(e, LblErrorMarca, Txt_Marca); //Llamamos a la función de validar entrada
+        }
+
+        private void AgregarProducto_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

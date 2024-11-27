@@ -46,6 +46,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
         {
             //Llamamos a la función EncontrarProductos de Inicio
             FuncionesAplicacion.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros, LblErrorBuscar);
+            LvProductos.Focus();
         }
 
         /*  Idéntico que en User Control de BuscarProducto  */
@@ -81,6 +82,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             //Llamamos a la función Eliminar de la clase FuncionesAplicacion y pasamos paramatros solicitados
             FuncionesAplicacion.BorrarProducto(LvProductos, LblCantidadRegistros, LblErrorBuscar, TxtBuscar);
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            TxtBuscar.Clear();
+            TxtBuscar.Focus();
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -88,6 +91,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
             CargarProductos();
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            TxtBuscar.Clear();
+            TxtBuscar.Focus();
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
         }
 
         private void LvProductos_ColumnClick(object sender, ColumnClickEventArgs e)

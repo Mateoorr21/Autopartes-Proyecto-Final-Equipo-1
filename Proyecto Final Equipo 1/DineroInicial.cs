@@ -12,9 +12,15 @@ namespace Proyecto_Final_Equipo_1
 {
     public partial class DineroInicial : Form
     {
-        public DineroInicial()
+        bool DineroEnCajaValido = false;
+
+        Inicio Inicio_Recibido;
+        InicioSesion Sesion_Recibido;
+        public DineroInicial(Inicio inicio, InicioSesion inicioSesion)
         {
             InitializeComponent();
+            Inicio_Recibido = inicio;
+            Sesion_Recibido = inicioSesion;
         }
 
         private void Txt_DineroInicial_KeyPress(object sender, KeyPressEventArgs e)
@@ -24,7 +30,14 @@ namespace Proyecto_Final_Equipo_1
 
         private void BtnDineroEnCaja_Click(object sender, EventArgs e)
         {
-            FuncionesAplicacion.GuardarDineroInicialYContinuar(Txt_DineroInicial, LblErrorDineroInicial, this); //Procedimiento de Guardar Dinero Inicial para continuar al sisetma
+            DineroEnCajaValido = FuncionesAplicacion.GuardarDineroInicialYContinuar(Txt_DineroInicial, LblErrorDineroInicial, this); //Procedimiento de Guardar Dinero Inicial para continuar al sisetma
+
+            if(DineroEnCajaValido)
+            {
+                this.Hide();
+                Aplicacion aplicacion = new Aplicacion(this, Sesion_Recibido, Inicio_Recibido); //Abrimos el de aplicacion
+                aplicacion.ShowDialog();
+            }
         }
     }
 }

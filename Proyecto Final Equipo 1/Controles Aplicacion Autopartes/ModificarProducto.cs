@@ -48,9 +48,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
             
             //Reestablecemos el valor de las cajas de texto
-            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
-            Txt_Descripcion.Text = Txt_Descripcion.Tag.ToString();
-            Txt_Marca.Text = Txt_Marca.Tag.ToString();
+            Txt_Nombre.Clear();
+            Txt_Descripcion.Clear();
+            Txt_Marca.Clear();
             Txt_Precio.Text = Txt_Precio.Tag.ToString();
             Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
             PicImagenProducto.Image = null;
@@ -58,6 +58,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
             //Llamamos a la función EncontrarProductos de Inicio
             FuncionesAplicacion.EncontrarProductos(TxtBuscar.Text, TxtBuscar, RdAproximada, RdNombre, LvProductos, LblCantidadRegistros, LblErrorBuscar);
+            LvProductos.Focus();
         }
 
         private void RdId_CheckedChanged(object sender, EventArgs e)
@@ -80,9 +81,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.OcultarEtiquetasDeError(this); //Ocultamos las etiquetas de error
 
             //Reestablecemos el valor de las cajas de texto
-            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
-            Txt_Descripcion.Text = Txt_Descripcion.Tag.ToString();
-            Txt_Marca.Text = Txt_Marca.Tag.ToString();
+            Txt_Nombre.Clear();
+            Txt_Descripcion.Clear();
+            Txt_Marca.Clear();
             Txt_Precio.Text = Txt_Precio.Tag.ToString();
             Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
             PicImagenProducto.Image = null;
@@ -128,7 +129,11 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.SeCompletoOperacion = FuncionesAplicacion.ActualizarProducto(Txt_Nombre.Text, Txt_Descripcion.Text, Txt_Marca.Text, LvProductos,
                 Txt_Nombre, Txt_Descripcion, Txt_Marca, Txt_Precio, Txt_Cantidad, PicImagenProducto);
 
-            if(FuncionesAplicacion.SeCompletoOperacion) FuncionesAplicacion.ReiniciarVariables(); //Si se modifico reiniciamos las Variables
+            if(FuncionesAplicacion.SeCompletoOperacion) {
+                TxtBuscar.Clear();
+                TxtBuscar.Focus();
+                FuncionesAplicacion.ReiniciarVariables(); //Si se modifico reiniciamos las Variables
+            }
         }
 
         private void BtnDeseleccionarImagen_Click(object sender, EventArgs e)
@@ -158,6 +163,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
             CargarProductos();
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos Variables
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
         }
 
         private void LvProductos_ColumnClick(object sender, ColumnClickEventArgs e)

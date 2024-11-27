@@ -96,16 +96,17 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnMenos_Click(object sender, EventArgs e)
         {
-            Txt_Cantidad.Text = (FuncionesAplicacion.CantidadIngresada - 1).ToString(); //Restamos 1 a la cantidad ingresada
+            //Txt_Cantidad.Text = (FuncionesAplicacion.CantidadIngresada - 1).ToString(); //Restamos 1 a la cantidad ingresada
 
             // Variables de validación
-            bool cantidadInvalida = !int.TryParse(Txt_Cantidad.Text, out int ValidarCantidad) || ValidarCantidad > 1000000;
+            bool cantidadInvalida = !int.TryParse((FuncionesAplicacion.CantidadIngresada - 1).ToString(), out int ValidarCantidad) || ValidarCantidad > 1000000;
 
             if (cantidadInvalida) // Si la cantidad es invalida
             {
                 MessageBox.Show("El valor contenido en la caja de cantidad no es valido. Debe estar entre 1 y 1,000,000.",
                     "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
+                LblErrorCantidad.Visible = false;
                 return;
             }
 
@@ -124,6 +125,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
                 MessageBox.Show("El valor contenido en la caja de cantidad no es valido. Debe estar entre 1 y 1,000,000.",
                     "ERROR. VALOR DE CANTIDAD NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
+                LblErrorCantidad.Visible = false;
                 return;
             }
         }
@@ -146,6 +148,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             TxtProducto.Text = TxtProducto.Tag.ToString(); //Reestablecemos la caja de producto
             Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString(); //Restablecemos la Caja de Cantidad
             LblErrorCantidad.Visible = false;
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
         }
 

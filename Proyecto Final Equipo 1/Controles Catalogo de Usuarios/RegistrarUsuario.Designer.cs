@@ -60,12 +60,14 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.PicInstruccion = new System.Windows.Forms.PictureBox();
             this.PanelAddInventario.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInstruccion)).BeginInit();
             this.SuspendLayout();
             // 
             // LblUsuario
@@ -447,10 +449,22 @@
             this.pictureBox8.TabIndex = 107;
             this.pictureBox8.TabStop = false;
             // 
+            // PicInstruccion
+            // 
+            this.PicInstruccion.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.PicInstruccion.Image = global::Proyecto_Final_Equipo_1.Properties.Resources.IconoInstruccion;
+            this.PicInstruccion.Location = new System.Drawing.Point(-15, 0);
+            this.PicInstruccion.Name = "PicInstruccion";
+            this.PicInstruccion.Size = new System.Drawing.Size(1243, 25);
+            this.PicInstruccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicInstruccion.TabIndex = 128;
+            this.PicInstruccion.TabStop = false;
+            // 
             // RegistrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PicInstruccion);
             this.Controls.Add(this.PanelAddInventario);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
@@ -469,6 +483,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicInstruccion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,7 +500,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.TextBox Txt_Nombre;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel PanelAddInventario;
         private System.Windows.Forms.Label LblErrorNombre;
@@ -506,5 +520,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtnRegistrar;
         private System.Windows.Forms.ToolTip ToolTipRegistrar;
+        public System.Windows.Forms.TextBox Txt_Nombre;
+        private System.Windows.Forms.PictureBox PicInstruccion;
     }
 }

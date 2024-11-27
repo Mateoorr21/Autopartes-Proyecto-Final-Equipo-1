@@ -29,6 +29,13 @@ namespace Proyecto_Final_Equipo_1
         private static extern int ShowWindow(IntPtr hWnd, int nCmdShow);
 
 
+        //Cadena que contiene el control en el que estamos
+        string ControlActual = null;
+
+        DineroInicial CerrarVentana2;
+        InicioSesion CerrarVentana1;
+        Inicio MostrarVentanaInicio;
+
         //Declaramos los diferentes tipos de controles de usuario que se utilizaran en la aplicacion
         AgregarProducto agregarProducto; 
         BuscarProducto buscarProducto; 
@@ -38,9 +45,14 @@ namespace Proyecto_Final_Equipo_1
         Ventas ventaProducto;
         CorteCaja corteCaja;
 
-        public Aplicacion() 
+        public Aplicacion(DineroInicial dineroInicial, InicioSesion inicioSesion, Inicio inicio) 
         {
             InitializeComponent();
+
+            MostrarVentanaInicio = inicio;
+            CerrarVentana1 = inicioSesion;
+            CerrarVentana2 = dineroInicial;
+
             //Inicializamos todos los controle de Usuario
             agregarProducto = new AgregarProducto();
             buscarProducto = new BuscarProducto();
@@ -49,8 +61,17 @@ namespace Proyecto_Final_Equipo_1
             modificarProducto = new ModificarProducto();
             ventaProducto = new Ventas();
             corteCaja = new CorteCaja();
+
+            //Evento de cerrar sesion lo asignamos a un evento aqui que funga como click al cerrar sesion
+            corteCaja.CerrarSesion += CerrarSesionCorteCaja;
         }
-        
+
+        private void CerrarSesionCorteCaja(object sender, EventArgs e)
+        {
+            // Ejecuta el clic del botón de cierre de sesion
+            BtnCerrarSesion.PerformClick();
+        }
+
         //FUNCIONES PARA OCULTAR Y MOSTRAR BARRA DE TAREAS (IGNORESE)
         private void OcultarTaskbar()
         {
@@ -72,6 +93,8 @@ namespace Proyecto_Final_Equipo_1
 
         private void Aplicacion_Load(object sender, EventArgs e)
         {
+            KeyPreview = true; //Habilitamos el KeyPreview para capturar teclas antes de que lleguen a los controles
+
             // Detectar resolución de pantalla
             var screenWidth = Screen.PrimaryScreen.Bounds.Width;
             var screenHeight = Screen.PrimaryScreen.Bounds.Height;
@@ -144,11 +167,20 @@ namespace Proyecto_Final_Equipo_1
         //Funcion para ver si tenemos que abrir un nuevo control de usuario o no
         private void CambioDeControlUsuario(Control control, Button button)
         {
+            FuncionesAplicacion.CambioControl = false; //Todavia no se cambia de control
+            FuncionesAplicacion.PrimeraTecla = true;
+
             // Verificamos si el cambio de control es permitido
             if (!ConfirmarCambioControl())
             {
                 return; // Si el cambio no es confirmado, salimos de la función
             }
+
+            FuncionesAplicacion.CambioControl = true; //Se Cambio de control
+            FuncionesAplicacion.PrimeraTecla = true;
+            ControlActual = control.Name; //Guardamos el nombre del control en el que estamos
+
+            FuncionesAplicacion.ReestablecerPrimeraTecla(control);
 
             HabilitarTodosLosBotones();
             button.BackColor = Color.FromArgb(0, 83, 198); //EL botón se colorea de azul indicando que está seleccionado
@@ -241,8 +273,8 @@ namespace Proyecto_Final_Equipo_1
         {
             if (FuncionesAplicacion.HayVentas == true) //Si ya se realizaron ventas indicamos que debe ir a Corte de Caja
             {
-                MessageBox.Show("Hay ventas realizadas. Dirijase al apartado Corte de Caja para poder cerrar sesión.",
-                    "ADVERTENCIA. VENTAS REALIZADAS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hay ventas realizadas. Dirijase al apartado Corte de Caja para poder cerrar.",
+                    "ADVERTENCIA DE CIERRE DE APLICACION. VENTAS REALIZADAS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -304,11 +336,95 @@ namespace Proyecto_Final_Equipo_1
         {
             if (FuncionesAplicacion.SalirAplicacion == false)
             {
-                e.Cancel = true; //Si no se sale de aplicacion cancelamos el evento
+                e.Cancel = true; //Si no se sale del sistema cancelamos el evento
                 return;
+
             }
+
             // Asegurarse de mostrar la barra de tareas al cerrar el formulario
             ShowTaskbar();
+        }
+
+        private void Aplicacion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (FuncionesAplicacion.CambioControl == true && FuncionesAplicacion.PrimeraTecla == true)
+            {   
+
+                switch(ControlActual) {
+                    case "AgregarProducto":
+                        FuncionesAplicacion.LaPrimeraTecla(agregarProducto);
+                        agregarProducto.Txt_Nombre.Focus();
+                        break;
+                    case "BuscarProducto":
+                        FuncionesAplicacion.LaPrimeraTecla(buscarProducto);
+                        buscarProducto.TxtBuscar.Focus();
+                        break;
+                    case "CorteCaja":
+                        FuncionesAplicacion.LaPrimeraTecla(corteCaja);
+                        corteCaja.TxtDineroFinal.Focus();
+                        break;
+                    case "EliminarProducto":
+                        FuncionesAplicacion.LaPrimeraTecla(eliminarProducto);
+                        eliminarProducto.TxtBuscar.Focus();
+                        break;
+                    case "InventarioProductos":
+                        FuncionesAplicacion.LaPrimeraTecla(inventarioProductos);
+                        inventarioProductos.LvProductos.Focus();
+                        break;
+                    case "ModificarProducto":
+                        FuncionesAplicacion.LaPrimeraTecla(modificarProducto);
+                        modificarProducto.TxtBuscar.Focus();
+                        break;
+                    case "Ventas":
+                        FuncionesAplicacion.LaPrimeraTecla(ventaProducto);
+                        ventaProducto.TxtBuscar.Focus();
+                        break;
+                }
+
+                FuncionesAplicacion.PrimeraTecla = false;
+                FuncionesAplicacion.CambioControl = false;
+            }
+        }
+
+        private void BtnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            FuncionesAplicacion.SalirAplicacion = false;
+
+            if (FuncionesAplicacion.HayVentas == true) //Si ya se realizaron ventas indicamos que debe ir a Corte de Caja
+            {
+                MessageBox.Show("Hay ventas realizadas. Dirijase al apartado Corte de Caja para poder cerrar sesión.",
+                    "ADVERTENCIA DE CIERRE DE SESION. VENTAS REALIZADAS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if(FuncionesAplicacion.SeHizoCorte == false)
+            {
+                //Solo si no se hizo corte confirmarmos que quiere salir de sesion
+                DialogResult ConfirmarCierreSesion;
+                ConfirmarCierreSesion = MessageBox.Show("¿Esta seguro que desea cerrar sesión?",
+                    "CONFIRMACIÓN DE CIERRE DE SESIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (ConfirmarCierreSesion == DialogResult.No) return;
+
+                //Mostramos un mensaje de Agradecimiento
+                MessageBox.Show("Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
+                    "CIERRE DE SESIÓN EXITOSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            else
+            {
+                //Mostramos un mensaje de Agradecimiento
+                MessageBox.Show("Gracias por su jornada. Tenga un buen día!",
+                    "CORTE EXITOSO. CERRANDO SESIÓN...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            FuncionesAplicacion.SalirAplicacion = true;
+
+            //Regresamos a inicio
+            this.Dispose();
+            CerrarVentana2.Dispose();
+            CerrarVentana1.Dispose();
+            MostrarVentanaInicio.Show();
         }
     }
 }

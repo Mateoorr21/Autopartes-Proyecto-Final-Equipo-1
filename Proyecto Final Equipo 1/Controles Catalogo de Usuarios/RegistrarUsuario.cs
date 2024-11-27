@@ -23,6 +23,8 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
             //Llamamos a la función Registrar Usuarios
             FuncionesCatalogoUsuarios.AgregarUsuario(Txt_Nombre.Text, Txt_Usuario.Text, Txt_Password.Text, RdAdminAgregar, RdCajeroAgregar, 
                 Txt_Nombre, Txt_Usuario, Txt_Password, LblErrorNombre, LblErrorUsuario, LblErrorPassword);
+
+            Txt_Nombre.Focus();
         }
 
         private void Txt_Nombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -43,6 +45,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Catalogo_de_Usuarios
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona Cancelar limpiamos todos los controles
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
         }
     }
 }

@@ -12,7 +12,8 @@ using System.Windows.Forms;
 namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 {
     public partial class CorteCaja : UserControl
-    {   
+    {
+        public event EventHandler CerrarSesion; // Evento de cerrar sesion
         public CorteCaja()
         {
             InitializeComponent();
@@ -51,6 +52,7 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
             FuncionesAplicacion.LimpiarControles(this); //Si se selecciona cancelar limpiamos el control de Usuario
             CargarVentas(); //Cargamos las ventas
             FuncionesAplicacion.ReiniciarVariables(); //Reiniciamos las Variables
+            FuncionesAplicacion.ReestablecerPrimeraTecla(this);
         }
 
         private void LvVentas_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -60,7 +62,9 @@ namespace Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes
 
         private void BtnCorteCaja_Click(object sender, EventArgs e)
         {
-            FuncionesAplicacion.CorteCajaYCerrarSesion(TxtDineroFinal, LblErrorDineroFinal); //Llamamos a la función de Guardar Ventas y Cierre de Sesión
+            FuncionesAplicacion.SeHizoCorte = FuncionesAplicacion.CorteCajaYCerrarSesion(TxtDineroFinal, LblErrorDineroFinal); //Llamamos a la función de Guardar Ventas y Cierre de Sesión
+
+            if(FuncionesAplicacion.SeHizoCorte) CerrarSesion.Invoke(this, EventArgs.Empty); //Invocamos al evento de CerrarSesion
         }
 
         private void TxtDineroFinal_KeyPress(object sender, KeyPressEventArgs e)

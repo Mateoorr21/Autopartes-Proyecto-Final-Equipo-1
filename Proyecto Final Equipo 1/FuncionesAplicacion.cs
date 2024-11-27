@@ -12,6 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Security.Policy;
 using Proyecto_Final_Equipo_1.Controles_Aplicacion_Autopartes;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Proyecto_Final_Equipo_1
 {
@@ -19,6 +20,11 @@ namespace Proyecto_Final_Equipo_1
     {
         //Declaramos la cadena de conexion que usaremos en el codigo
         public static string cadconexion = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\Base\BDDS_AutoOne.accdb;Persist Security Info=False;";
+
+        // Variable de primera tecla
+        public static bool PrimeraTecla = true;
+        public static bool CambioControl = false;
+        public static bool SeHizoCorte = false;
 
         //Declaramos el Id, Nombre Completo, Usuario y Permiso del usuario que inicia sesión
         public static int IdUsuario = 0;
@@ -158,7 +164,7 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA INICIAR SESION AL SISTEMA
-        public static void IniciarSesion(string Username, string Password, TextBox TxtUsuario, TextBox TxtPassword, Control VentanaInicioSesion)
+        public static bool IniciarSesion(string Username, string Password, TextBox TxtUsuario, TextBox TxtPassword, Control VentanaInicioSesion)
         {
             // Usamos 'using' para gestionar la conexión y asegurar que se liberen los recursos automáticamente
             using (OleDbConnection conexion = new OleDbConnection(cadconexion))
@@ -198,13 +204,11 @@ namespace Proyecto_Final_Equipo_1
                                     DialogResult MostrarDineroInicio = MessageBox.Show("Bienvenido " + TipoUsuario + " " + NombreCompleto + ".",
                                         "INICIO DE SESIÓN EXITOSO. BIENVENIDO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    VentanaInicioSesion.Hide(); //Ocultamos la ventana de Inicio de Sesion
-                                    DineroInicial dineroInicial = new DineroInicial(); //Abrimos ventana de Dinero Inicial
-
-                                    if (MostrarDineroInicio == DialogResult.OK) dineroInicial.ShowDialog(); //Cuando se de OK mostramos el siguiente formulario
-
-                                    ReiniciarVariables(); //Reinciamos las variables a usar.
-                                    return;
+                                    if (MostrarDineroInicio == DialogResult.OK)
+                                    {
+                                        ReiniciarVariables(); //Reinciamos las variables a usar.
+                                        return true;
+                                    }
                                 }
                             }
                                 
@@ -217,6 +221,8 @@ namespace Proyecto_Final_Equipo_1
                             {
                                     Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
                             }
+
+                            return false;
                             
                         }
 
@@ -232,6 +238,8 @@ namespace Proyecto_Final_Equipo_1
                                 Application.Exit(); // Si se llegan a 3 errores se cierra la aplicacion
                             }
                         }
+
+                        return false;
                     }
                 }
             }
@@ -240,7 +248,7 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA GUARDAR EL DINERO INICIAL EN CAJA Y CONTINUAR A SISTEMA
-        public static void GuardarDineroInicialYContinuar(TextBox Txt_DineroInicial, Label LblErrorDineroInicial, Control dineroInicial)
+        public static bool GuardarDineroInicialYContinuar(TextBox Txt_DineroInicial, Label LblErrorDineroInicial, Control dineroInicial)
         {
             LblErrorDineroInicial.Visible = false; //Ocultamos la etiqetua de error
 
@@ -250,7 +258,7 @@ namespace Proyecto_Final_Equipo_1
                 MessageBox.Show("No se ingresó dinero en caja. Verifique lo ingresado.",
                     "ERROR. DINERO EN CAJA VACÍO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 Txt_DineroInicial.Text = Txt_DineroInicial.Tag.ToString(); //Reestablecemos la caja de DineroInicial a su valor original
-                return;
+                return false;
             }
 
             //Validar DineroInicial
@@ -262,7 +270,7 @@ namespace Proyecto_Final_Equipo_1
                 MessageBox.Show("El valor ingresado para Dinero en Caja no es válido. Debe estar entre $0.01 y $999,999.99.",
                     "ERROR. DINERO EN CAJA NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Txt_DineroInicial.Text = Txt_DineroInicial.Tag.ToString();
-                return;
+                return false;
             }
 
             DineroInicial = Math.Round(ValidarInicial, 2); //Redondeamos el dinero ingresado a dos decimales
@@ -272,14 +280,12 @@ namespace Proyecto_Final_Equipo_1
                 DialogResult Confirmar0 = MessageBox.Show("El dinero en caja ingresado $0. ¿Desea continuar e ingresar al sistema?",
                     "CONFIRMACIÓN DE INGRESO AL SISTEMA (INGRESO $0)", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (Confirmar0 == DialogResult.No) return;
+                if (Confirmar0 == DialogResult.No) return false;
             }
 
             DineroEnCaja = DineroInicial; //El dinero en caja comienza igual al inicial ingresado por el usuario operativo
 
-            dineroInicial.Hide(); //Ocultamos ventana de dinero en caja
-            Aplicacion aplicacion = new Aplicacion(); // Abrir el formulario de aplicación
-            aplicacion.ShowDialog();
+            return true;
         }
 
 
@@ -578,9 +584,9 @@ namespace Proyecto_Final_Equipo_1
             }
 
             //Restablecemos las cajas de texto y liberamos el Picture Box
-            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
-            Txt_Descripcion.Text = Txt_Descripcion.Tag.ToString();
-            Txt_Marca.Text = Txt_Marca.Tag.ToString();
+            Txt_Nombre.Clear();
+            Txt_Descripcion.Clear();
+            Txt_Marca.Clear();
             Txt_Precio.Text = Txt_Precio.Tag.ToString();
             Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
             PicImagenProducto.Image = null;
@@ -673,7 +679,7 @@ namespace Proyecto_Final_Equipo_1
                 }
             }
 
-            TxtBuscar.Text = TxtBuscar.Tag.ToString(); //Restablecemos el TextBox Buscar
+            TxtBuscar.Clear(); //Restablecemos el TextBox Buscar
         }
 
 
@@ -847,9 +853,9 @@ namespace Proyecto_Final_Equipo_1
             Modificado.SubItems[5].Text = Cantidad.ToString();
 
             //Restablecemos los controles de Actualización de Datos (Cajas de Texto ) y deseleccionamos ListView
-            Txt_Nombre.Text = Txt_Nombre.Tag.ToString();
-            Txt_Descripcion.Text = Txt_Descripcion.Tag.ToString();
-            Txt_Marca.Text = Txt_Marca.Tag.ToString();
+            Txt_Nombre.Clear();
+            Txt_Descripcion.Clear();
+            Txt_Marca.Clear();
             Txt_Precio.Text = Txt_Precio.Tag.ToString();
             Txt_Cantidad.Text = Txt_Cantidad.Tag.ToString();
             LvProductos.SelectedItems.Clear();
@@ -868,7 +874,6 @@ namespace Proyecto_Final_Equipo_1
         {
             //Ocultamos la etiqueta de error al buscar y reestablecemos la caja con el texto a buscar
             LblErrorBuscar.Visible = false;
-            TxtBuscar.Text = TxtBuscar.Tag.ToString(); 
 
             //Si no hay registro seleccionado menssaje de Error
             if (LvProductos.SelectedItems.Count == 0)
@@ -1543,7 +1548,7 @@ namespace Proyecto_Final_Equipo_1
 
 
         //FUNCION PARA REGISTRAR LAS VENTAS Y CERRAR SESION
-        public static void CorteCajaYCerrarSesion(TextBox TxtDineroFinal, Label ErrorDineroFinal)
+        public static bool CorteCajaYCerrarSesion(TextBox TxtDineroFinal, Label ErrorDineroFinal)
         {
             //Validar DineroFinal
             bool finalInvalido = !decimal.TryParse(TxtDineroFinal.Text, out decimal ValidarFinal) || ValidarFinal < .01m || ValidarFinal > 999999.99m;
@@ -1554,7 +1559,7 @@ namespace Proyecto_Final_Equipo_1
                 MessageBox.Show("El valor ingresado para Dinero Final no es válido. Debe estar entre $0.01 y $999,999.99.",
                     "ERROR. DINERO EN CAJA NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 TxtDineroFinal.Text = TxtDineroFinal.Tag.ToString();
-                return;
+                return false;
             }
 
             DineroFinal = Math.Round(ValidarFinal, 2); //DineroFinal es el ingresaado por el usuario redondeado a dos decimales
@@ -1563,14 +1568,14 @@ namespace Proyecto_Final_Equipo_1
             {
                 MessageBox.Show("El dinero final no puede ser menor al inicial. Verifique los valores.",
                     "ERROR. DINERO FINAL MENOR AL INICIAL", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             if (DineroInicial == DineroFinal) //Si el dinero no se genero ingreso mensaje de error
             {
                 MessageBox.Show("Hay ventas realizadas, pero no hay dinero generado ya que el dinero inicial es igual al final. Verifique los valores.",
                     "ERROR. HAY VENTAS PERO NO DINERO GENERADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             //Confirmamos que el usuario desea realizar la venta de los productos seleccionados
@@ -1578,7 +1583,7 @@ namespace Proyecto_Final_Equipo_1
             ConfirmarCorteCaja = MessageBox.Show("¿Esta seguro que desea continuar con el corte de caja? Se cerrará sesión automáticamente.",
                 "CONFIRMACIÓN DE CORTE Y CIERRE DE SESIÓN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (ConfirmarCorteCaja == DialogResult.No) return;
+            if (ConfirmarCorteCaja == DialogResult.No) return false;
 
             DineroGenerado = DineroFinal - DineroInicial; //Dinero generado es la resta del final menos el inicial
             Diferencia = DineroGenerado - DineroVentas; //Diferencia es la resta del generado menos el que se registro en sistema
@@ -1627,13 +1632,10 @@ namespace Proyecto_Final_Equipo_1
                 " \n\nDiferencia: " + Diferencia.ToString("C"),
                 "REPORTE DE CORTE DE CAJA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //Mostramos un mensaje de éxito en el Guardado de Ventas
-            MessageBox.Show("Gracias por usar nuestro sistema. ¡Vuelva Pronto!",
-                "CORTE EXITOSO. CERRANDO SESIÓN Y APLICACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             SalirAplicacion = true;
+            HayVentas = false;
 
-            Application.Exit(); //Cerramos Aplicacion
+            return true;
         }
 
 
@@ -1644,6 +1646,68 @@ namespace Proyecto_Final_Equipo_1
             LblUsuario.Text = Usuario;
             LblNombreCompleto.Text = NombreCompleto;
             LblPermiso.Text = "(" + TipoUsuario + ")";
+        }
+
+
+        public static void LaPrimeraTecla(Control controlusuario)
+        {
+            foreach (Control control in controlusuario.Controls)
+            {
+                //Habilitamos los controles
+                if (control is RadioButton radio) radio.Enabled = true;
+                if (control is ListView list) list.Enabled = true;
+                if (control is PictureBox picturebox && !picturebox.Name.Contains("Instruccion")) picturebox.Enabled = true;
+                if (control is PictureBox picturebox2 && picturebox2.Name.Contains("Instruccion")) picturebox2.Visible = false;
+                if (control is Button boton && !boton.Name.Contains("Mas") && !boton.Name.Contains("Menos")) boton.Enabled = true;
+
+                if(control is TextBox caja)
+                {                
+                    if(!caja.Name.Contains("Pagar") && 
+                        !caja.Name.Contains("Producto") && 
+                        !caja.Name.Contains("Ventas") &&
+                        !caja.Name.Contains("Inicial")) caja.Enabled = true;
+
+                    if (!caja.Name.Contains("Ventas") &&
+                        !caja.Name.Contains("Pagar") &&
+                        !caja.Name.Contains("Inicial") &&
+                        !caja.Name.Contains("Cantidad") &&
+                        !caja.Name.Contains("Precio") &&
+                        !caja.Name.Contains("Final") &&
+                        !caja.Name.Contains("Producto")) caja.Clear();
+                }
+
+                if (control is Control Contenedor)
+                {
+                    LaPrimeraTecla(Contenedor); //Llamamos a la funcion recursivamente
+                }
+            }
+
+            PrimeraTecla = false;
+        }
+
+        public static void ReestablecerPrimeraTecla(Control controlusuario)
+        {
+            //Reestablecemos lo booleanos
+            PrimeraTecla = true;
+            CambioControl = true;
+
+            foreach (Control control in controlusuario.Controls)
+            {
+                //Desabilitamos los controles
+                if (control is RadioButton radio) radio.Enabled = false;
+                if (control is ListView list) list.Enabled = false;
+                if (control is PictureBox picturebox && !picturebox.Name.Contains("Instruccion")) picturebox.Enabled = false;
+                if (control is PictureBox picturebox2 && picturebox2.Name.Contains("Instruccion")) picturebox2.Visible = true;
+                if (control is Button boton) boton.Enabled = false;
+                if (control is TextBox caja) caja.Enabled = false;
+
+                if(control is TextBox caja2 && caja2.Tag  != null) caja2.Text = caja2.Tag.ToString();   
+
+                if (control is Control contenedor)
+                {
+                    ReestablecerPrimeraTecla(contenedor);
+                }
+            }
         }
     }
 }
